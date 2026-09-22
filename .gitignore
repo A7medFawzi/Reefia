@@ -1,0 +1,4 @@
+cloudflared.exe
+*.pyc
+__pycache__/
+.vscode/

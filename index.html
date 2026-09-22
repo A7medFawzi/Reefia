@@ -1,0 +1,3005 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REEFIYA — Premium Egyptian Produce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Color Palette */
+    :root {
+      --color-cream: #fffef2;
+      --color-orange: #f47d2d;
+      --color-light-green: #6dc455;
+      --color-dark-green: #326325;
+      --color-deep-forest: #0d1e12;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    [dir="rtl"] {
+      --font-heading: 'Alexandria', 'Cairo', system-ui, sans-serif;
+      --font-sans: 'Cairo', system-ui, sans-serif;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background-color: #08100a;
+      color: var(--color-cream);
+      overflow-x: hidden;
+      font-family: var(--font-sans);
+      user-select: none;
+      scroll-behavior: auto;
+    }
+
+    /* Transparent Modern Navbar (Sunrock Style Capsule Nav) */
+    .site-nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 22px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      will-change: transform;
+    }
+
+    /* Smart Scroll: Hide navbar on scroll down, reveal on scroll up */
+    .site-nav-container.nav-hidden {
+      transform: translateY(-115%);
+      opacity: 0;
+      pointer-events: none !important;
+    }
+
+    /* Logo Styling: Clean, premium badge integration */
+    .nav-brand {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.94);
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+    }
+
+    .nav-brand:hover {
+      transform: translateY(-1.5px) scale(1.02);
+      background: #ffffff;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-brand-img {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Center Pill Menu */
+    .nav-pill-group {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      height: 48px;
+      gap: 4px;
+      padding: 4px 6px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      box-sizing: border-box;
+    }
+
+    .nav-pill-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 38px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      box-sizing: border-box;
+      line-height: 1;
+    }
+
+    [dir="rtl"] .nav-pill-item {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding-top: 1px; /* Optical center alignment for Arabic baseline */
+    }
+
+    .nav-pill-item:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .nav-pill-item.active {
+      background: #ffffff;
+      color: var(--color-dark-green);
+      font-weight: 600;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Navbar Theme Adaptation for Light Section */
+    .site-nav-container.scrolled-light .nav-pill-group {
+      background: rgba(22, 45, 26, 0.85);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .site-nav-container.scrolled-light .lang-pill-btn {
+      background: rgba(22, 45, 26, 0.85);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Right Actions: Request a Quote (Orange Pill) & Flag Language Selector */
+    .nav-right-actions {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      height: 48px;
+      gap: 12px;
+    }
+
+    .quote-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      gap: 8px;
+      padding: 0 22px;
+      background: var(--color-orange);
+      color: #1a2f1e;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(244, 125, 45, 0.4);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-sizing: border-box;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    [dir="rtl"] .quote-pill-btn {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding-top: 1px;
+    }
+
+    .quote-pill-btn:hover {
+      background: #ff8b3d;
+      transform: translateY(-1.5px);
+      box-shadow: 0 8px 25px rgba(244, 125, 45, 0.55);
+      color: #112214;
+    }
+
+    /* Language Selector Component */
+    .lang-dropdown-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height: 48px;
+    }
+
+    .lang-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      gap: 8px;
+      padding: 0 14px;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-sizing: border-box;
+      line-height: 1;
+    }
+
+    .lang-pill-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .lang-flag-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      flex-shrink: 0;
+    }
+
+    .lang-flag-circle svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 7-Languages Dropdown Menu */
+    .lang-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      min-width: 180px;
+      background: rgba(14, 28, 18, 0.85);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 8px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 200;
+      transform-origin: top right;
+      animation: menuPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [dir="rtl"] .lang-menu {
+      right: auto;
+      left: 0;
+      transform-origin: top left;
+    }
+
+    .lang-menu.open {
+      display: flex;
+    }
+
+    @keyframes menuPop {
+      from { opacity: 0; transform: scale(0.95) translateY(-6px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .lang-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: var(--color-cream);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .lang-menu-item:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .lang-menu-item.selected {
+      background: rgba(244, 125, 45, 0.18);
+      color: var(--color-orange);
+      font-weight: 600;
+    }
+
+    /* Scroll Track - Ample scroll space so all 5 chapters & transitions play completely before Section 02 */
+    .scroll-container {
+      height: 460vh;
+      position: relative;
+    }
+
+    /* Fixed Canvas Scene */
+    .canvas-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    /* Cinematic Vignette Overlay matching original site */
+    .vignette-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 2;
+      background: 
+        radial-gradient(circle at 60% 45%, transparent 20%, rgba(13, 30, 18, 0.45) 60%, rgba(13, 30, 18, 0.9) 100%),
+        linear-gradient(90deg, rgba(13, 30, 18, 0.88) 0%, rgba(13, 30, 18, 0.35) 50%, rgba(13, 30, 18, 0.6) 100%),
+        linear-gradient(to bottom, rgba(13, 30, 18, 0.75) 0%, transparent 25%, transparent 70%, rgba(13, 30, 18, 0.95) 100%);
+    }
+
+    /* Floating Story Sections */
+    .story-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 70px 6vw 110px 6vw; /* Reserved breathing room for header (top) and journey bar (bottom) */
+      z-index: 5;
+      pointer-events: none;
+      box-sizing: border-box;
+    }
+
+    .story-card {
+      max-width: 680px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: absolute;
+      left: 6vw;
+      pointer-events: none;
+      box-sizing: border-box;
+    }
+
+    .story-card.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .story-eyebrow {
+      display: inline-block;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--color-orange);
+      margin-bottom: 16px;
+    }
+
+    .story-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+      line-height: 1.15;
+      font-weight: 500;
+      color: var(--color-cream);
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .story-title em {
+      color: #fff4d2;
+      font-style: italic;
+    }
+
+    .story-desc {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: rgba(255, 254, 242, 0.88);
+      font-weight: 400;
+      max-width: 540px;
+      margin-bottom: 26px;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+    }
+
+    /* RTL Arabic Fine-tuning: Position story card cleanly on the left side
+       with elegant, organic typography that matches the English luxury feel */
+    [dir="rtl"] .story-container {
+      padding: 70px 6vw 110px 6vw;
+      justify-content: flex-end;
+    }
+
+    [dir="rtl"] .story-card {
+      left: 6vw;
+      right: auto;
+      text-align: right;
+      max-width: 620px;
+      background: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+
+    [dir="rtl"] .hero-actions {
+      justify-content: flex-start; /* starts from right in RTL */
+      margin-top: 6px;
+    }
+
+    [dir="rtl"] .story-title {
+      font-family: 'Alexandria', sans-serif;
+      font-size: clamp(1.75rem, 3vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.55;
+      letter-spacing: normal;
+      margin-bottom: 18px;
+      color: var(--color-cream);
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.9);
+      word-spacing: 0.05em;
+    }
+
+    [dir="rtl"] .story-title em {
+      color: #fff4d2;
+      font-style: normal;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    [dir="rtl"] .story-desc {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 500;
+      line-height: 1.95;
+      letter-spacing: normal;
+      word-spacing: 0.04em;
+      max-width: 580px;
+      color: rgba(255, 254, 242, 0.92);
+      margin-bottom: 26px;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
+    }
+
+    [dir="rtl"] .story-eyebrow {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: normal;
+      margin-bottom: 16px;
+    }
+
+    [dir="rtl"] .chapter-item {
+      font-family: 'Cairo', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      gap: 6px;
+    }
+
+    [dir="rtl"] .chapter-item b {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    /* Flip navigation and action SVG arrows in Arabic to point naturally left-upward */
+    [dir="rtl"] .quote-pill-btn svg,
+    [dir="rtl"] .skip-to-produce-btn span[aria-hidden="true"] {
+      transform: scaleX(-1);
+      display: inline-block;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      color: #1a2f1e;
+      background: var(--color-orange);
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 20px rgba(244, 125, 45, 0.35);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      background: #ff8b3d;
+      box-shadow: 0 10px 25px rgba(244, 125, 45, 0.45);
+    }
+
+    .text-link {
+      color: var(--color-cream);
+      text-decoration: none;
+      font-size: 0.92rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      padding-bottom: 3px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .text-link:hover {
+      border-color: #fff;
+      color: #fff;
+    }
+
+    /* Journey Bottom Chapters (Exact Reefiya Style) */
+    .journey-bottom {
+      position: fixed;
+      bottom: 25px;
+      left: 6vw;
+      right: 6vw;
+      z-index: 10;
+      pointer-events: auto;
+      transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    }
+
+    .journey-bottom.fade-out {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    .story-container.fade-out {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .chapters {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      max-width: 860px;
+    }
+
+    .chapter-item {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chapter-item b {
+      font-size: 0.78rem;
+      font-weight: 500;
+      opacity: 0.7;
+    }
+
+    .chapter-item.active {
+      color: var(--color-cream);
+    }
+
+    .chapter-item.active b {
+      color: var(--color-orange);
+      opacity: 1;
+    }
+
+    /* Instruction row: replaced % counter with "Skip to produce ↗" */
+    .journey-instruction {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      letter-spacing: 0.03em;
+      margin-top: 26px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .skip-to-produce-btn {
+      color: var(--color-cream);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+      padding-bottom: 2px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .skip-to-produce-btn:hover {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    .progress-track {
+      background: rgba(255, 255, 255, 0.15);
+      height: 2px;
+      margin-top: 14px;
+      position: relative;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-track-fill {
+      background: var(--color-orange);
+      height: 100%;
+      width: 0%;
+      transition: width 0.08s linear;
+    }
+
+    /* Luxury Reefiya Preloader */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #112818 0%, #08120b 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.7s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: loaderAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .loader-logo-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 36px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 999px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 50px rgba(109, 196, 85, 0.25);
+      margin-bottom: 28px;
+    }
+
+    .loader-logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.12));
+    }
+
+    .loader-progress-track {
+      width: 220px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .loader-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-orange) 0%, #ffaa60 100%);
+      border-radius: 999px;
+      transition: width 0.12s ease;
+      box-shadow: 0 0 12px rgba(244, 125, 45, 0.8);
+    }
+
+    .loader-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 220px;
+      margin-top: 12px;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 254, 242, 0.6);
+      font-family: var(--font-sans);
+    }
+
+    .loader-pct {
+      color: var(--color-orange);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @keyframes loaderAppear {
+      from { opacity: 0; transform: scale(0.92) translateY(12px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Mobile Nav Toggle Button */
+    .mobile-nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0;
+      transition: all 0.25s ease;
+      color: #fff;
+    }
+
+    .mobile-nav-toggle:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .hamburger-bar {
+      width: 18px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile Navigation Drawer Sheet */
+    .mobile-nav-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 1100;
+      pointer-events: none;
+      visibility: hidden;
+      transition: visibility 0.35s ease;
+    }
+
+    .mobile-nav-drawer.open {
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .mobile-nav-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 18, 11, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .mobile-nav-drawer.open .mobile-nav-backdrop {
+      opacity: 1;
+    }
+
+    .mobile-nav-sheet {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(85vw, 360px);
+      height: 100%;
+      background: rgba(13, 30, 18, 0.96);
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+    }
+
+    [dir="rtl"] .mobile-nav-sheet {
+      right: auto;
+      left: 0;
+      border-left: none;
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+      transform: translateX(-100%);
+    }
+
+    .mobile-nav-drawer.open .mobile-nav-sheet {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-nav-brand-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--color-orange);
+    }
+
+    .mobile-nav-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .mobile-nav-close:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: auto 0;
+    }
+
+    .mobile-nav-link {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-cream);
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 12px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mobile-nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-orange);
+    }
+
+    .mobile-nav-footer {
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-quote-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      height: 48px;
+      background: var(--color-orange);
+      color: #1a2f1e;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(244, 125, 45, 0.4);
+    }
+
+    /* -------------------------------------------
+       Comprehensive Responsive Media Queries
+    ------------------------------------------- */
+
+    /* Tablets & Small Laptops (<= 1024px) */
+    @media (max-width: 1024px) {
+      .site-nav-container {
+        padding: 18px 4vw;
+      }
+      .nav-pill-group {
+        gap: 2px;
+        padding: 3px 5px;
+      }
+      .nav-pill-item {
+        padding: 0 14px;
+        font-size: 0.82rem;
+      }
+      .story-container {
+        padding: 80px 5vw 100px 5vw;
+      }
+      .story-card {
+        max-width: 580px;
+      }
+      [dir="rtl"] .story-card {
+        max-width: 580px;
+      }
+      .journey-bottom {
+        left: 4vw;
+        right: 4vw;
+      }
+    }
+
+    /* Tablets & Large Phones (<= 860px) */
+    @media (max-width: 860px) {
+      .nav-pill-group {
+        display: none !important;
+      }
+      .mobile-nav-toggle {
+        display: flex;
+      }
+      .site-nav-container {
+        padding: 16px 5vw;
+      }
+      .quote-pill-btn {
+        display: none !important; /* Clean mobile header: available inside the drawer and in story cards */
+      }
+      .lang-pill-btn {
+        height: 42px;
+        padding: 0 12px;
+      }
+      .nav-brand {
+        height: 42px;
+        padding: 0 14px;
+      }
+      .nav-brand-img {
+        height: 26px;
+      }
+      .mobile-nav-toggle {
+        width: 42px;
+        height: 42px;
+      }
+
+      /* Story Card Mobile Adaptation */
+      .story-container {
+        padding: 80px 4vw 120px 4vw;
+        justify-content: center; /* Center horizontally on mobile */
+        align-items: center;
+      }
+
+      .story-card {
+        left: 4vw;
+        right: 4vw;
+        max-width: 100%;
+        text-align: left;
+        background: radial-gradient(circle at center, rgba(8, 20, 12, 0.75) 0%, rgba(8, 20, 12, 0.4) 70%, transparent 100%);
+        padding: 22px 16px !important;
+        border-radius: 20px !important;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+
+      [dir="rtl"] .story-container {
+        padding: 80px 4vw 120px 4vw;
+        justify-content: center;
+      }
+
+      [dir="rtl"] .story-card {
+        left: 4vw;
+        right: 4vw;
+        max-width: 100%;
+        text-align: right;
+        background: radial-gradient(circle at center, rgba(8, 20, 12, 0.75) 0%, rgba(8, 20, 12, 0.4) 70%, transparent 100%) !important;
+        padding: 22px 16px !important;
+        border-radius: 20px !important;
+      }
+
+      .story-title {
+        font-size: clamp(1.75rem, 5.8vw, 2.35rem);
+        line-height: 1.25;
+        margin-bottom: 12px;
+      }
+
+      [dir="rtl"] .story-title {
+        font-size: clamp(1.55rem, 5.2vw, 2.15rem);
+        line-height: 1.45;
+        margin-bottom: 12px;
+      }
+
+      .story-desc {
+        font-size: 0.92rem;
+        line-height: 1.65;
+        margin-bottom: 18px;
+        max-width: 100%;
+      }
+
+      [dir="rtl"] .story-desc {
+        font-size: 0.92rem;
+        line-height: 1.75;
+        margin-bottom: 18px;
+        max-width: 100%;
+      }
+
+      /* Journey Bottom Mobile Adaptation: Clean, horizontally scrollable pills with no overlapping in any language */
+      .journey-bottom {
+        bottom: 14px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 0 4vw;
+        box-sizing: border-box;
+      }
+
+      .chapters {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding: 4px 2px;
+        box-sizing: border-box;
+      }
+
+      .chapters::-webkit-scrollbar {
+        display: none;
+      }
+
+      .chapter-item {
+        font-size: 0.76rem;
+        padding: 6px 12px;
+        flex: 0 0 auto; /* Natural width so long words in Dutch, Russian, German never collide */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        white-space: nowrap;
+        gap: 5px;
+        color: rgba(255, 255, 255, 0.75);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      [dir="rtl"] .chapter-item {
+        font-size: 0.76rem;
+        padding: 6px 12px;
+        gap: 5px;
+      }
+
+      .chapter-item b {
+        font-size: 0.72rem;
+        opacity: 0.85;
+      }
+
+      .chapter-item.active {
+        background: rgba(244, 125, 45, 0.28);
+        border-color: rgba(244, 125, 45, 0.85);
+        color: #ffffff;
+        font-weight: 700;
+        box-shadow: 0 2px 10px rgba(244, 125, 45, 0.35);
+      }
+
+      .journey-instruction {
+        margin-top: 10px;
+        font-size: 0.74rem;
+        padding: 0 2px;
+      }
+    }
+
+    /* Small Phones (<= 480px) */
+    @media (max-width: 480px) {
+      .site-nav-container {
+        padding: 12px 3.5vw;
+      }
+
+      .story-card {
+        padding: 18px 14px !important;
+      }
+
+      .story-title {
+        font-size: clamp(1.5rem, 6.5vw, 1.95rem);
+      }
+
+      [dir="rtl"] .story-title {
+        font-size: clamp(1.4rem, 5.8vw, 1.85rem);
+      }
+
+      .story-desc {
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+
+      [dir="rtl"] .story-desc {
+        font-size: 0.86rem;
+        line-height: 1.68;
+      }
+
+      .cta-btn {
+        padding: 10px 20px;
+        font-size: 0.84rem;
+      }
+
+      .hero-actions {
+        gap: 10px;
+      }
+
+      /* Compact chapters for small screens: show number and name smoothly */
+      .chapter-item {
+        font-size: 0.7rem;
+        padding: 4px 4px;
+      }
+      [dir="rtl"] .chapter-item {
+        font-size: 0.7rem;
+        padding: 4px 3px;
+      }
+    }
+
+    /* ----------------------------------------------------------------
+       SECTION 02: ABOUT REEFIYA (Rooted in Egypt. Built for Global Trade)
+       Editorial B2B Agricultural Export Aesthetic
+       ---------------------------------------------------------------- */
+    .about-reefiya-section {
+      position: relative;
+      width: 100%;
+      min-height: auto;
+      background-color: #f7f4ed;
+      background-image: url('./about-bg-map.png');
+      background-size: cover;
+      background-position: center right;
+      background-repeat: no-repeat;
+      color: #172d1a;
+      z-index: 10;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 1px solid rgba(176, 130, 61, 0.22);
+    }
+
+    /* Ambient Warm Vignette Layer - subtle to let the world map appear crisp and clear */
+    .about-reefiya-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 45%, rgba(247, 244, 237, 0.45) 0%, rgba(247, 244, 237, 0.1) 65%, rgba(225, 215, 196, 0.35) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .about-reefiya-container {
+      position: relative;
+      width: 100%;
+      flex: 1 0 auto;
+      display: grid;
+      grid-template-columns: 48% 52%;
+      min-height: clamp(560px, 80vh, 760px);
+      z-index: 2;
+    }
+
+    /* Left Content Column (~46-48%) */
+    .about-content-col {
+      position: relative;
+      z-index: 3;
+      padding: clamp(38px, 4.5vw, 68px) clamp(32px, 5.5vw, 84px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 640px;
+    }
+
+    /* 02 — ABOUT REEFIYA Section Identifier */
+    .about-section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .about-badge-num {
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #8c6838;
+      font-family: var(--font-sans);
+    }
+
+    .about-badge-line {
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: #c5a368;
+    }
+
+    .about-badge-text {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #2b452f;
+      font-family: var(--font-sans);
+    }
+
+    /* Eyebrow: EGYPTIAN ORIGIN. GLOBAL OUTLOOK. */
+    .about-subheading-tag {
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #8c6838;
+      margin-bottom: 16px;
+      line-height: 1.4;
+      font-family: var(--font-sans);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+    }
+
+    /* Main Headline: Rooted in Egypt. / Built for global trade. */
+    .about-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.3rem, 3.8vw, 3.8rem);
+      line-height: 1.12;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 22px;
+    }
+
+    .about-title-line1 {
+      display: block;
+      color: #17381d; /* Deep REEFIYA green */
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+    }
+
+    .about-title-line2 {
+      display: block;
+      font-style: italic;
+      font-weight: 400;
+      color: #b0823d; /* Warm gold */
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    }
+
+    [dir="rtl"] .about-title {
+      font-family: 'Alexandria', 'Cairo', serif;
+      font-size: clamp(2rem, 3.4vw, 3.2rem);
+      line-height: 1.42;
+      font-weight: 800;
+      letter-spacing: normal;
+      margin-bottom: 20px;
+    }
+
+    [dir="rtl"] .about-title-line1 {
+      color: #112a15;
+    }
+
+    [dir="rtl"] .about-title-line2 {
+      font-style: normal;
+      font-weight: 700;
+      color: #b0823d;
+      margin-top: 4px;
+    }
+
+    [dir="rtl"] .about-subheading-tag {
+      font-family: 'Cairo', sans-serif;
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: normal;
+      color: #8c6838;
+      margin-bottom: 14px;
+    }
+
+    [dir="rtl"] .about-badge-text {
+      font-family: 'Cairo', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+    }
+
+    /* Body Paragraphs */
+    .about-paragraphs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: clamp(0.96rem, 1.1vw, 1.05rem);
+      line-height: 1.76;
+      color: #2e3e32;
+      margin-bottom: 30px;
+      font-family: var(--font-sans);
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+    }
+
+    [dir="rtl"] .about-paragraphs {
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(1.02rem, 1.15vw, 1.12rem);
+      line-height: 1.95;
+      font-weight: 500;
+      color: #213524;
+      text-align: justify;
+      text-justify: kashida;
+    }
+
+    /* CTA: Discover REEFIYA ↗ (Refined text-link with thin underline) */
+    .about-cta-wrap {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+    }
+
+    .about-link-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #17381d;
+      text-decoration: none;
+      padding-bottom: 5px;
+      border-bottom: 1.2px solid #b0823d;
+      width: fit-content;
+      transition: all 0.28s ease;
+      cursor: pointer;
+    }
+
+    [dir="rtl"] .about-link-action {
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      font-size: 1.02rem;
+      letter-spacing: normal;
+    }
+
+    .about-link-action span:last-child {
+      font-size: 1rem;
+      transition: transform 0.25s ease;
+      color: #b0823d;
+    }
+
+    .about-link-action:hover {
+      color: #b0823d;
+      border-bottom-color: #17381d;
+    }
+
+    .about-link-action:hover span:last-child {
+      transform: translate(3px, -3px);
+    }
+
+    [dir="rtl"] .about-link-action:hover span:last-child {
+      transform: translate(-3px, -3px);
+    }
+
+    /* Right Visual Column (~48-52%) */
+    .about-visual-col {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-end;
+    }
+
+    /* SVG Organic Mask Container with Flowing Curved Left Edge */
+    .about-visual-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateX(35px) scale(0.98);
+      transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    }
+
+    /* Organic flowing shape: clip-path using SVG url */
+    .about-organic-viewport {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      clip-path: url(#organicApertureClip);
+      -webkit-clip-path: url(#organicApertureClip);
+      overflow: hidden;
+    }
+
+    [dir="rtl"] .about-organic-viewport {
+      clip-path: url(#organicApertureClipRTL);
+      -webkit-clip-path: url(#organicApertureClipRTL);
+    }
+
+    .about-farm-photo {
+      width: 100%;
+      height: 112%;
+      object-fit: cover;
+      object-position: center 58%;
+      transform: translateY(0px) scale(1.02);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    /* Subtle Gold Accent Outline following the curved edge */
+    .about-gold-contour-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    [dir="rtl"] .about-gold-contour-svg {
+      transform: scaleX(-1);
+    }
+
+    .gold-contour-path {
+      fill: none;
+      stroke: #d4af6a;
+      stroke-width: 1.2px;
+      opacity: 0.75;
+      filter: drop-shadow(0 0 4px rgba(212, 175, 106, 0.4));
+    }
+
+    /* Subtle Cinematic Lighting Gradient over farm photo */
+    .about-photo-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(247, 244, 237, 0.22) 0%,
+        rgba(247, 244, 237, 0) 35%,
+        rgba(13, 30, 18, 0.2) 75%,
+        rgba(13, 30, 18, 0.5) 100%
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Global Trade Graphic: Conceptual Market-Direction SVG Routes */
+    .trade-routes-container {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      left: 20px;
+      height: 240px;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    [dir="rtl"] .trade-routes-container {
+      right: 20px;
+      left: 20px;
+    }
+
+    .trade-network-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* Route lines animation (path-drawing effect) with distinct glowing gold */
+    .route-arc {
+      stroke: #d8a24a;
+      stroke-width: 1.8;
+      stroke-dasharray: 280;
+      stroke-dashoffset: 280;
+      fill: none;
+      transition: stroke-dashoffset 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0.95;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+    }
+
+    .route-arc.secondary {
+      stroke: #c89d54;
+      stroke-width: 1.6;
+      stroke-dasharray: 260;
+      stroke-dashoffset: 260;
+      opacity: 0.9;
+    }
+
+    .about-reefiya-section.is-revealed .route-arc {
+      stroke-dashoffset: 0;
+    }
+
+    /* Origin & Destination Nodes */
+    .node-origin-glow {
+      animation: originPulse 2.8s infinite ease-in-out;
+    }
+
+    .node-origin-dot {
+      fill: #e5a93c;
+      stroke: #ffffff;
+      stroke-width: 2;
+    }
+
+    .node-dest-dot {
+      fill: #1b3820;
+      stroke: #e5a93c;
+      stroke-width: 1.5;
+    }
+
+    /* Premium Legible Pill Badges for Destination & Origin Labels */
+    .node-badge-bg {
+      fill: rgba(18, 36, 22, 0.88);
+      stroke: rgba(229, 169, 60, 0.45);
+      stroke-width: 1;
+      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
+      rx: 5px;
+    }
+
+    .node-badge-bg.origin {
+      fill: rgba(176, 130, 61, 0.95);
+      stroke: #ffffff;
+      stroke-width: 1.2;
+    }
+
+    .node-text {
+      font-family: var(--font-sans);
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      fill: #ffffff;
+    }
+
+    [dir="rtl"] .node-text {
+      font-family: 'Cairo', sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: normal;
+    }
+
+    .node-text.origin-text {
+      fill: #ffffff;
+      font-weight: 800;
+    }
+
+    @keyframes originPulse {
+      0%, 100% { transform: scale(1); opacity: 0.35; }
+      50% { transform: scale(1.55); opacity: 0.75; }
+    }
+
+    /* Section Entry Trigger States */
+    .about-reefiya-section.is-revealed .about-section-badge,
+    .about-reefiya-section.is-revealed .about-subheading-tag,
+    .about-reefiya-section.is-revealed .about-title-line1,
+    .about-reefiya-section.is-revealed .about-title-line2,
+    .about-reefiya-section.is-revealed .about-paragraphs,
+    .about-reefiya-section.is-revealed .about-cta-wrap,
+    .about-reefiya-section.is-revealed .about-visual-wrapper {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+    }
+
+    /* -------------------------------------------
+       Responsive Adaptations
+       ------------------------------------------- */
+    /* Tablet (<= 1024px) */
+    @media (max-width: 1024px) {
+      .about-reefiya-container {
+        grid-template-columns: 50% 50%;
+      }
+
+      .about-title {
+        font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+      }
+
+      .about-content-col {
+        padding: 50px 4vw;
+      }
+    }
+
+    /* Mobile (<= 860px): Stack content vertically */
+    @media (max-width: 860px) {
+      .about-reefiya-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .about-content-col {
+        padding: 60px 6vw 40px 6vw;
+        max-width: 100%;
+        order: 1;
+      }
+
+      .about-visual-col {
+        order: 2;
+        min-height: 420px;
+        height: 420px;
+      }
+
+      .about-visual-wrapper {
+        min-height: 420px;
+      }
+
+      .about-title {
+        font-size: clamp(2rem, 7.5vw, 2.75rem);
+        margin-bottom: 24px;
+      }
+
+      .about-paragraphs {
+        font-size: 0.95rem;
+        line-height: 1.68;
+        margin-bottom: 28px;
+      }
+
+      .trade-routes-container {
+        top: 15px;
+        right: 15px;
+        left: 15px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Luxury Reefiya Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-logo-wrap">
+        <img src="./reefiya-logo-clean.png" alt="Reefiya" class="loader-logo-img">
+      </div>
+      <div class="loader-progress-track">
+        <div class="loader-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-meta">
+        <span>Loading Journey</span>
+        <span class="loader-pct" id="loaderPct">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transparent Sunrock-Style Header with Logo & Flag -->
+  <header class="site-nav-container">
+    <!-- High Res Clean Logo -->
+    <a href="#" class="nav-brand" aria-label="REEFIYA">
+      <img src="./reefiya-logo-clean.png" alt="Reefiya" class="nav-brand-img">
+    </a>
+
+    <!-- Center Capsule Pill Menu -->
+    <nav class="nav-pill-group">
+      <a href="#produce" class="nav-pill-item" data-i18n="nav_produce">Our Produce</a>
+      <a href="#specifications" class="nav-pill-item" data-i18n="nav_specs">Specifications</a>
+      <a href="#journey" class="nav-pill-item" data-i18n="nav_process">Export Process</a>
+      <a href="#global" class="nav-pill-item" data-i18n="nav_global">Global Presence</a>
+      <a href="#about" class="nav-pill-item" data-i18n="nav_about">About Us</a>
+    </nav>
+
+    <!-- Right Actions: Request a Quote (Orange Pill) & 7-Language Flag Selector -->
+    <div class="nav-right-actions">
+      <!-- Orange Quote Button -->
+      <a href="#quote" class="quote-pill-btn">
+        <span data-i18n="btn_quote">Request a quote</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 7h10v10"></path>
+          <path d="M7 17 17 7"></path>
+        </svg>
+      </a>
+
+      <!-- Language Selector -->
+      <div class="lang-dropdown-wrapper">
+        <button class="lang-pill-btn" id="langBtn" type="button" aria-expanded="false" aria-label="Select Language">
+          <div class="lang-flag-circle" id="currentFlag">
+            <!-- Default UK Flag (English) -->
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+              <clipPath id="circleClipEn">
+                <circle cx="30" cy="30" r="30"/>
+              </clipPath>
+              <g clip-path="url(#circleClipEn)">
+                <path d="M0 0h60v60H0z" fill="#012169"/>
+                <path d="M0 0l60 60m0-60L0 60" stroke="#fff" stroke-width="6"/>
+                <path d="M0 0l60 60m0-60L0 60" stroke="#C8102E" stroke-width="4"/>
+                <path d="M30 0v60M0 30h60" stroke="#fff" stroke-width="10"/>
+                <path d="M30 0v60M0 30h60" stroke="#C8102E" stroke-width="6"/>
+              </g>
+            </svg>
+          </div>
+          <span id="currentLangCode">EN</span>
+          <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- 7-Languages Dropdown Menu -->
+        <div class="lang-menu" id="langMenu" role="menu">
+          <div class="lang-menu-item selected" data-lang="en">
+            <div class="lang-flag-circle">
+              <!-- UK Flag -->
+              <svg viewBox="0 0 60 60"><clipPath id="cEn"><circle cx="30" cy="30" r="30"/></clipPath><g clip-path="url(#cEn)"><path d="M0 0h60v60H0z" fill="#012169"/><path d="M0 0l60 60m0-60L0 60" stroke="#fff" stroke-width="6"/><path d="M0 0l60 60m0-60L0 60" stroke="#C8102E" stroke-width="4"/><path d="M30 0v60M0 30h60" stroke="#fff" stroke-width="10"/><path d="M30 0v60M0 30h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+            </div>
+            <span>English</span>
+          </div>
+          <div class="lang-menu-item" data-lang="ar">
+            <div class="lang-flag-circle">
+              <!-- Egypt Flag -->
+              <svg viewBox="0 0 60 60"><path d="M0 0h60v20H0z" fill="#ce1126"/><path d="M0 20h60v20H0z" fill="#fff"/><path d="M0 40h60v20H0z" fill="#000"/><circle cx="30" cy="30" r="4.5" fill="#c09b38"/></svg>
+            </div>
+            <span>العربية</span>
+          </div>
+          <div class="lang-menu-item" data-lang="de">
+            <div class="lang-flag-circle">
+              <!-- Germany Flag -->
+              <svg viewBox="0 0 60 60"><path d="M0 0h60v20H0z" fill="#000"/><path d="M0 20h60v20H0z" fill="#dd0000"/><path d="M0 40h60v20H0z" fill="#ffce00"/></svg>
+            </div>
+            <span>Deutsch</span>
+          </div>
+          <div class="lang-menu-item" data-lang="fr">
+            <div class="lang-flag-circle">
+              <!-- France Flag -->
+              <svg viewBox="0 0 60 60"><path d="M0 0h20v60H0z" fill="#002395"/><path d="M20 0h20v60H20z" fill="#fff"/><path d="M40 0h20v60H40z" fill="#ed2939"/></svg>
+            </div>
+            <span>Français</span>
+          </div>
+          <div class="lang-menu-item" data-lang="nl">
+            <div class="lang-flag-circle">
+              <!-- Netherlands Flag -->
+              <svg viewBox="0 0 60 60"><path d="M0 0h60v20H0z" fill="#ae1c28"/><path d="M0 20h60v20H0z" fill="#fff"/><path d="M0 40h60v20H0z" fill="#21468b"/></svg>
+            </div>
+            <span>Nederlands</span>
+          </div>
+          <div class="lang-menu-item" data-lang="es">
+            <div class="lang-flag-circle">
+              <!-- Spain Flag -->
+              <svg viewBox="0 0 60 60"><path d="M0 0h60v15H0z" fill="#aa151b"/><path d="M0 15h60v30H0z" fill="#f1bf00"/><path d="M0 45h60v15H0z" fill="#aa151b"/></svg>
+            </div>
+            <span>Español</span>
+          </div>
+          <div class="lang-menu-item" data-lang="ru">
+            <div class="lang-flag-circle">
+              <!-- Russia Flag -->
+              <svg viewBox="0 0 60 60"><path d="M0 0h60v20H0z" fill="#fff"/><path d="M0 20h60v20H0z" fill="#0039a6"/><path d="M0 40h60v20H0z" fill="#d52b1e"/></svg>
+            </div>
+            <span>Русский</span>
+          </div>
+          <div class="lang-menu-item" data-lang="tr">
+            <div class="lang-flag-circle">
+              <!-- Turkey Flag -->
+              <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <rect width="60" height="60" fill="#E30A17"/>
+                <circle cx="26" cy="30" r="14" fill="#fff"/>
+                <circle cx="29.5" cy="30" r="11.2" fill="#E30A17"/>
+                <polygon points="37.5,30 33.2,31.4 34.8,27.2 34.8,32.8 33.2,28.6" fill="#fff" transform="scale(1.2) translate(-6, -5)"/>
+              </svg>
+            </div>
+            <span>Türkçe</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Hamburger Button -->
+      <button class="mobile-nav-toggle" id="mobileNavToggle" type="button" aria-label="Toggle Menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Fullscreen Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-sheet">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-brand-title">REEFIYA</span>
+        <button class="mobile-nav-close" id="mobileNavClose" type="button" aria-label="Close Menu">✕</button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#produce" class="mobile-nav-link" data-i18n="nav_produce">Our Produce</a>
+        <a href="#specifications" class="mobile-nav-link" data-i18n="nav_specs">Specifications</a>
+        <a href="#journey" class="mobile-nav-link" data-i18n="nav_process">Export Process</a>
+        <a href="#global" class="mobile-nav-link" data-i18n="nav_global">Global Presence</a>
+        <a href="#about" class="mobile-nav-link" data-i18n="nav_about">About Us</a>
+      </nav>
+      <div class="mobile-nav-footer">
+        <a href="#quote" class="mobile-quote-btn" id="mobileQuoteBtn">
+          <span data-i18n="btn_quote">Request a quote</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 7h10v10"></path>
+            <path d="M7 17 17 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vignette -->
+  <div class="vignette-overlay"></div>
+
+  <!-- Canvas Scene -->
+  <div class="canvas-wrapper">
+    <canvas id="sequenceCanvas"></canvas>
+  </div>
+
+  <!-- Story Overlay Texts (Hero & Chapters) -->
+  <div class="story-container">
+    <!-- Chapter 1: Origin (Hero) -->
+    <div class="story-card active" id="story-1">
+      <span class="story-eyebrow" data-i18n="hero_eyebrow">PREMIUM EGYPTIAN PRODUCE</span>
+      <h1 class="story-title" data-i18n="hero_title">From Egyptian fields.<br/><em>To global shelves.</em></h1>
+      <p class="story-desc" data-i18n="hero_desc">Egyptian sweet potatoes, carefully sourced and prepared for international markets.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="cta-btn" data-i18n="cta_quote">Request a quote ↗</a>
+        <a href="#produce" class="text-link" data-i18n="cta_explore">Explore our produce ↗</a>
+      </div>
+    </div>
+
+    <!-- Chapter 2: Selection -->
+    <div class="story-card" id="story-2">
+      <span class="story-eyebrow" data-i18n="ch2_eyebrow">02 — CAREFUL SELECTION</span>
+      <h1 class="story-title" data-i18n="ch2_title">Curated grading.<br/><em>Consistent quality.</em></h1>
+      <p class="story-desc" data-i18n="ch2_desc">Rigorous sorting and uniform sizing to meet buyer specifications across international markets.</p>
+      <div class="hero-actions">
+        <a href="#specifications" class="cta-btn" data-i18n="cta_specs">View Specifications ↗</a>
+      </div>
+    </div>
+
+    <!-- Chapter 3: Packing -->
+    <div class="story-card" id="story-3">
+      <span class="story-eyebrow" data-i18n="ch3_eyebrow">03 — EXPORT PACKING</span>
+      <h1 class="story-title" data-i18n="ch3_title">Engineered for export.<br/><em>Protected in every carton.</em></h1>
+      <p class="story-desc" data-i18n="ch3_desc">Corrugated export cartons with ventilation designed to help preserve freshness, product integrity, and skin condition throughout transit.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="cta-btn" data-i18n="cta_packing">Discuss packing ↗</a>
+      </div>
+    </div>
+
+    <!-- Chapter 4: Shipment -->
+    <div class="story-card" id="story-4">
+      <span class="story-eyebrow" data-i18n="ch4_eyebrow">04 — TEMPERATURE-CONTROLLED LOGISTICS</span>
+      <h1 class="story-title" data-i18n="ch4_title">Temperature controlled.<br/><em>Ready for the journey.</em></h1>
+      <p class="story-desc" data-i18n="ch4_desc">Refrigerated shipping with controlled temperature and airflow throughout international transit.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="cta-btn" data-i18n="cta_logistics">Discuss logistics ↗</a>
+      </div>
+    </div>
+
+    <!-- Chapter 5: Destination -->
+    <div class="story-card" id="story-5">
+      <span class="story-eyebrow" data-i18n="ch5_eyebrow">05 — GLOBAL MARKETS</span>
+      <h1 class="story-title" data-i18n="ch5_title">Market ready.<br/><em>Prepared for global buyers.</em></h1>
+      <p class="story-desc" data-i18n="ch5_desc">Export-ready Egyptian produce for importers, distributors, retailers, wholesalers, and food-industry buyers worldwide.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="cta-btn" data-i18n="cta_quote">Request a quote ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Journey Controls (Reefiya Chapters) -->
+  <div class="journey-bottom">
+    <div class="chapters">
+      <span class="chapter-item active" data-chapter="1"><b data-i18n="ch_num_1">01</b> <span data-i18n="ch_name_1">Origin</span></span>
+      <span class="chapter-item" data-chapter="2"><b data-i18n="ch_num_2">02</b> <span data-i18n="ch_name_2">Selection</span></span>
+      <span class="chapter-item" data-chapter="3"><b data-i18n="ch_num_3">03</b> <span data-i18n="ch_name_3">Packing</span></span>
+      <span class="chapter-item" data-chapter="4"><b data-i18n="ch_num_4">04</b> <span data-i18n="ch_name_4">Shipment</span></span>
+      <span class="chapter-item" data-chapter="5"><b data-i18n="ch_num_5">05</b> <span data-i18n="ch_name_5">Destination</span></span>
+    </div>
+    
+    <div class="journey-instruction">
+      <span data-i18n="scroll_hint">Scroll to follow the journey ↓</span>
+      <a href="#about" class="skip-to-produce-btn" id="skipToProduceBtn">
+        <span data-i18n="skip_produce">About Reefiya</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-track-fill" id="progressTrackFill"></div>
+    </div>
+  </div>
+
+  <!-- Scroll Height Container for Sequence Hero -->
+  <div class="scroll-container" id="scrollContainer"></div>
+
+  <!-- ================================================================
+       SECTION 02: ABOUT REEFIYA (Rooted in Egypt. Built for Global Trade)
+       ================================================================ -->
+  <!-- SVG Clip Path Definitions for Organic Curved Mask -->
+  <svg width="0" height="0" style="position: absolute; pointer-events: none;">
+    <defs>
+      <!-- Desktop & Tablet Clip Path: Flowing curved left edge (aperture curve) -->
+      <clipPath id="organicApertureClip" clipPathUnits="objectBoundingBox">
+        <path d="M 1,0 
+                 L 0.28,0 
+                 C 0.12,0.18  0.42,0.38  0.22,0.58 
+                 C 0.08,0.74  0.30,0.88  0.15,1 
+                 L 1,1 
+                 Z" />
+      </clipPath>
+      <!-- RTL Clip Path: Mirrored flowing curve on right edge -->
+      <clipPath id="organicApertureClipRTL" clipPathUnits="objectBoundingBox">
+        <path d="M 0,0 
+                 L 0.72,0 
+                 C 0.88,0.18  0.58,0.38  0.78,0.58 
+                 C 0.92,0.74  0.70,0.88  0.85,1 
+                 L 0,1 
+                 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <section class="about-reefiya-section" id="about">
+    <div class="about-reefiya-container">
+      
+      <!-- Left Content Column (~46-48%) -->
+      <div class="about-content-col">
+        <!-- Small section identifier -->
+        <div class="about-section-badge">
+          <span class="about-badge-num">02</span>
+          <span class="about-badge-line"></span>
+          <span class="about-badge-text" data-i18n="sec2_badge">ABOUT REEFIYA</span>
+        </div>
+
+        <!-- Eyebrow -->
+        <div class="about-subheading-tag" data-i18n="sec2_subheading">
+          EGYPTIAN ORIGIN. GLOBAL OUTLOOK.
+        </div>
+
+        <!-- Main Headline -->
+        <h2 class="about-title">
+          <span class="about-title-line1" data-i18n="sec2_title_l1">Rooted in Egypt.</span>
+          <span class="about-title-line2" data-i18n="sec2_title_l2">Built for global trade.</span>
+        </h2>
+
+        <!-- Body copy -->
+        <div class="about-paragraphs">
+          <p data-i18n="sec2_p1">
+            REEFIYA is an Egyptian agricultural produce company focused on connecting carefully sourced crops with buyers in international markets.
+          </p>
+          <p data-i18n="sec2_p2">
+            We begin with sweet potatoes — a product we understand from sourcing and selection through grading, packing, and export preparation — while building REEFIYA into a broader platform for premium Egyptian produce.
+          </p>
+        </div>
+
+        <!-- Refined Text-link CTA with thin underline -->
+        <div class="about-cta-wrap">
+          <a href="#produce" class="about-link-action">
+            <span data-i18n="sec2_cta">Discover REEFIYA</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Photographic Visual Column (48–52% Desktop Viewport) -->
+      <div class="about-visual-col">
+        <div class="about-visual-wrapper">
+          <!-- Organic SVG/CSS Mask Aperture -->
+          <div class="about-organic-viewport">
+            <img 
+              src="./about-farm.jpg" 
+              alt="Egyptian sweet potato farm at sunset with Nile landscape" 
+              class="about-farm-photo" 
+              loading="lazy"
+              id="aboutFarmPhoto"
+            >
+            <div class="about-photo-gradient"></div>
+          </div>
+
+          <!-- Subtle 1px Muted-Gold Contour Line following the organic edge -->
+          <svg class="about-gold-contour-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="gold-contour-path" d="M 28,0 C 12,18 42,38 22,58 C 8,74 30,88 15,100" vector-effect="non-scaling-stroke" />
+          </svg>
+        </div>
+
+        <!-- Global Trade Graphic (Conceptual Market-Direction SVG Routes from Egypt) -->
+        <div class="trade-routes-container">
+          <svg class="trade-network-svg" viewBox="0 0 460 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="goldRouteGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#b0823d"/>
+                <stop offset="100%" stop-color="#f6ca68"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Market Direction Curved Arcs Originating from Egypt (Coord approx: 200, 155) -->
+            <!-- Route 1: Egypt to Europe (North-West) -->
+            <path class="route-arc" stroke="url(#goldRouteGrad)" d="M 200,150 C 185,100  150,65  120,40" />
+            <!-- Route 2: Egypt to GCC / Gulf (East-SouthEast) -->
+            <path class="route-arc" stroke="url(#goldRouteGrad)" d="M 200,150 C 235,145  280,140  325,142" />
+            <!-- Route 3: Egypt to North America (West-NorthWest) -->
+            <path class="route-arc secondary" stroke="url(#goldRouteGrad)" d="M 200,150 C 150,110  90,85  50,75" />
+            <!-- Route 4: Egypt to Asia / International Markets (East-NorthEast) -->
+            <path class="route-arc" stroke="url(#goldRouteGrad)" d="M 200,150 C 260,115  330,85  385,65" />
+
+            <!-- Highlighted Origin Node: Egypt (Pulsing Glow & Core Badge) -->
+            <g transform="translate(200, 150)">
+              <circle cx="0" cy="0" r="14" fill="rgba(176, 130, 61, 0.25)" class="node-origin-glow" />
+              <circle cx="0" cy="0" r="6" fill="rgba(176, 130, 61, 0.55)" />
+              <circle cx="0" cy="0" r="3.5" class="node-origin-dot" />
+              <!-- Legible Pill Badge for Egypt Origin -->
+              <rect x="10" y="-11" width="94" height="22" class="node-badge-bg origin" />
+              <text x="57" y="3.5" text-anchor="middle" class="node-text origin-text" data-i18n="route_egypt">EGYPT (ORIGIN)</text>
+            </g>
+
+            <!-- Destination Nodes with Clear Pill Badges -->
+            <!-- Europe -->
+            <g transform="translate(120, 40)">
+              <circle cx="0" cy="0" r="3.5" class="node-dest-dot" />
+              <rect x="-35" y="-24" width="70" height="19" class="node-badge-bg" />
+              <text x="0" y="-11.5" text-anchor="middle" class="node-text" data-i18n="route_europe">EUROPE</text>
+            </g>
+
+            <!-- GCC / Gulf -->
+            <g transform="translate(325, 142)">
+              <circle cx="0" cy="0" r="3.5" class="node-dest-dot" />
+              <rect x="8" y="-10" width="80" height="20" class="node-badge-bg" />
+              <text x="48" y="3.5" text-anchor="middle" class="node-text" data-i18n="route_gcc">GCC / GULF</text>
+            </g>
+
+            <!-- North America -->
+            <g transform="translate(50, 75)">
+              <circle cx="0" cy="0" r="3.5" class="node-dest-dot" />
+              <rect x="-42" y="-24" width="96" height="19" class="node-badge-bg" />
+              <text x="6" y="-11.5" text-anchor="middle" class="node-text" data-i18n="route_na">NORTH AMERICA</text>
+            </g>
+
+            <!-- Asia / International -->
+            <g transform="translate(385, 65)">
+              <circle cx="0" cy="0" r="3.5" class="node-dest-dot" />
+              <rect x="-46" y="-24" width="102" height="19" class="node-badge-bg" />
+              <text x="5" y="-11.5" text-anchor="middle" class="node-text" data-i18n="route_asia">ASIA &amp; GLOBAL</text>
+            </g>
+          </svg>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* ------------------------------
+       7 Languages Dictionaries
+    ------------------------------ */
+    const translations = {
+      en: {
+        dir: 'ltr',
+        code: 'EN',
+        nav_produce: 'Our Produce',
+        nav_specs: 'Specifications',
+        nav_process: 'Export Process',
+        nav_global: 'Global Presence',
+        nav_about: 'About Us',
+        btn_quote: 'Request a quote',
+        hero_eyebrow: 'PREMIUM EGYPTIAN PRODUCE',
+        hero_title: 'From Egyptian fields.<br/><em>To global shelves.</em>',
+        hero_desc: 'Egyptian sweet potatoes, carefully sourced and prepared for international markets.',
+        cta_quote: 'Request a quote ↗',
+        cta_explore: 'Explore our produce ↗',
+        cta_specs: 'View Specifications ↗',
+        cta_packing: 'Discuss packing ↗',
+        cta_logistics: 'Discuss logistics ↗',
+        ch_name_1: 'Origin',
+        ch_name_2: 'Selection',
+        ch_name_3: 'Packing',
+        ch_name_4: 'Shipment',
+        ch_name_5: 'Destination',
+        scroll_hint: 'Scroll to follow the journey ↓',
+        skip_produce: 'About Reefiya',
+        ch2_eyebrow: '02 — CAREFUL SELECTION',
+        ch2_title: 'Curated grading.<br/><em>Consistent quality.</em>',
+        ch2_desc: 'Rigorous sorting and uniform sizing to meet buyer specifications across international markets.',
+        ch3_eyebrow: '03 — EXPORT PACKING',
+        ch3_title: 'Engineered for export.<br/><em>Protected in every carton.</em>',
+        ch3_desc: 'Corrugated export cartons with ventilation designed to help preserve freshness, product integrity, and skin condition throughout transit.',
+        ch4_eyebrow: '04 — TEMPERATURE-CONTROLLED LOGISTICS',
+        ch4_title: 'Temperature controlled.<br/><em>Ready for the journey.</em>',
+        ch4_desc: 'Refrigerated shipping with controlled temperature and airflow throughout international transit.',
+        ch5_eyebrow: '05 — GLOBAL MARKETS',
+        ch5_title: 'Market ready.<br/><em>Prepared for global buyers.</em>',
+        ch5_desc: 'Export-ready Egyptian produce for importers, distributors, retailers, wholesalers, and food-industry buyers worldwide.',
+        sec2_badge: 'ABOUT REEFIYA',
+        sec2_subheading: 'EGYPTIAN ORIGIN. GLOBAL OUTLOOK.',
+        sec2_title_l1: 'Rooted in Egypt.',
+        sec2_title_l2: 'Built for global trade.',
+        route_egypt: 'EGYPT (ORIGIN)',
+        route_europe: 'EUROPE',
+        route_gcc: 'GCC / GULF',
+        route_na: 'NORTH AMERICA',
+        route_asia: 'ASIA & GLOBAL',
+        sec2_p1: 'REEFIYA is an Egyptian agricultural produce company focused on connecting carefully sourced crops with buyers in international markets.',
+        sec2_p2: 'We begin with sweet potatoes — a product we understand from sourcing and selection through grading, packing, and export preparation — while building REEFIYA into a broader platform for premium Egyptian produce.',
+        sec2_cta: 'Discover REEFIYA',
+        coord_from: 'FROM EGYPT',
+        coord_to: 'TO',
+        coord_shelves: 'GLOBAL SHELVES',
+        tag_people: 'PEOPLE',
+        tag_land: 'LAND',
+        tag_quality: 'QUALITY',
+        tag_partnerships: 'PARTNERSHIPS',
+        tag_global: 'GLOBAL MARKETS',
+        tag_motto: 'MORE THAN A CROP<br/>A BRIGHTER TOMORROW',
+        pillar1_title: 'Egyptian Origin',
+        pillar1_desc: 'Carefully sourced produce.',
+        pillar2_title: 'Export Focus',
+        pillar2_desc: 'Built around international buyers.',
+        pillar3_title: 'Global Outlook',
+        pillar3_desc: 'Structured for international trade.',
+        video_title: 'OUR STORY',
+        video_time: 'IN 60 SECONDS'
+      },
+      ar: {
+        dir: 'rtl',
+        code: 'AR',
+        nav_produce: 'محاصيلنا',
+        nav_specs: 'المواصفات',
+        nav_process: 'مسار التصدير',
+        nav_global: 'التواجد الدولي',
+        nav_about: 'من نحن',
+        btn_quote: 'طلب عرض سعر',
+        hero_eyebrow: 'محاصيل مصرية فاخرة',
+        hero_title: 'من قلب الحقول المصرية.<br/><em>إلى رفوف الأسواق العالمية.</em>',
+        hero_desc: 'بطاطا حلوة مصرية، ننتقيها بعناية فائقة ونجهّزها وفق المعايير المطلوبة للتصدير الدولي.',
+        cta_quote: 'طلب عرض سعر ↖',
+        cta_explore: 'استكشف محاصيلنا ↖',
+        cta_specs: 'عرض المواصفات ↖',
+        cta_packing: 'ناقش خيارات التعبئة ↖',
+        cta_logistics: 'ناقش خدمات الشحن ↖',
+        ch_name_1: 'المنشأ',
+        ch_name_2: 'الفرز',
+        ch_name_3: 'التعبئة',
+        ch_name_4: 'الشحن',
+        ch_name_5: 'الوجهة',
+        scroll_hint: 'مرر لأسفل لمتابعة الرحلة ↓',
+        skip_produce: 'عن ريفية',
+        ch2_eyebrow: '02 — الفرز والانتقاء',
+        ch2_title: 'فرز دقيق.<br/><em>جودة متسقة وموثوقة.</em>',
+        ch2_desc: 'فرز صارم وتوحيد للأحجام بما يتوافق مع مواصفات المشترين عبر مختلف الأسواق العالمية.',
+        ch3_eyebrow: '03 — التعبئة التصديرية',
+        ch3_title: 'تعبئة مصممة للتصدير.<br/><em>حماية متكاملة في كل كرتونة.</em>',
+        ch3_desc: 'عبوات كرتونية مضلعة مزودة بفتحات تهوية للمحافظة على نضارة المحصول، وسلامته، وتماسك قشرته طوال فترة الشحن.',
+        ch4_eyebrow: '04 — سلاسل الإمداد المبردة',
+        ch4_title: 'حرارة تحت السيطرة.<br/><em>جاهزية تامة لرحلة الشحن.</em>',
+        ch4_desc: 'شحن مبرد مع ضبط لدرجات الحرارة وتدفق الهواء طوال فترة الشحن الدولي.',
+        ch5_eyebrow: '05 — الأسواق العالمية',
+        ch5_title: 'جاهزة للعرض في الأسواق.<br/><em>مجهزة للمشترين حول العالم.</em>',
+        ch5_desc: 'حاصلات زراعية مصرية جاهزة للتصدير للمستوردين، وشركات التوزيع، وسلاسل التجزئة، وتجار الجملة، ومصنعي الأغذية عالمياً.',
+        sec2_badge: 'عن ريفية',
+        sec2_subheading: 'أصل مصري أصيل. أفق عالمي واسع.',
+        sec2_title_l1: 'جذورها في مصر.',
+        sec2_title_l2: 'صُممت للتجارة العالمية.',
+        route_egypt: 'مصر (المنشأ)',
+        route_europe: 'أوروبا',
+        route_gcc: 'الخليج العربي',
+        route_na: 'أمريكا الشمالية',
+        route_asia: 'آسيا والأسواق العالمية',
+        sec2_p1: 'ريفية (REEFIYA) شركة مصرية للحاصلات الزراعية ترتكز على إيصال محاصيل منتقاة بعناية فائقة إلى كبار المستوردين والمشترين في الأسواق الدولية.',
+        sec2_p2: 'نبدأ رحلتنا بالبطاطا الحلوة — وهو محصول نفهم تفاصيله بدقة من زراعته وانتقائه وحتى فرزه، وتعبئته، وتجهيزه للتصدير — لنبني ريفية منصة رائدة للمحاصيل الزراعية المصرية الفاخرة.',
+        sec2_cta: 'اكتشف ريفية',
+        coord_from: 'من مصر',
+        coord_to: 'إلى',
+        coord_shelves: 'الأسواق العالمية',
+        tag_people: 'الناس',
+        tag_land: 'الأرض',
+        tag_quality: 'الجودة',
+        tag_partnerships: 'الشراكات',
+        tag_global: 'الأسواق الدولية',
+        tag_motto: 'أكثر من مجرد محصول<br/>غدٌ أكثر إشراقاً',
+        pillar1_title: 'أصل مصري أصيل',
+        pillar1_desc: 'محاصيل منتقاة بعناية فائقة.',
+        pillar2_title: 'تركيز تصديري',
+        pillar2_desc: 'مصممة لتلبية متطلبات المشترين الدوليين.',
+        pillar3_title: 'رؤية عالمية',
+        pillar3_desc: 'هيكلية احترافية للتجارة الدولية.',
+        video_title: 'قصتنا',
+        video_time: 'في 60 ثانية'
+      },
+      de: {
+        dir: 'ltr',
+        code: 'DE',
+        nav_produce: 'Produkte',
+        nav_specs: 'Spezifikationen',
+        nav_process: 'Exportprozess',
+        nav_global: 'Globale Präsenz',
+        nav_about: 'Über uns',
+        btn_quote: 'Angebot anfordern',
+        hero_eyebrow: 'PREMIUM ÄGYPTISCHE ERZEUGNISSE',
+        hero_title: 'Von ägyptischen Feldern.<br/><em>In die Regale weltweit.</em>',
+        hero_desc: 'Ägyptische Süßkartoffeln, sorgfältig bezogen und für internationale Märkte vorbereitet.',
+        cta_quote: 'Angebot anfordern ↗',
+        cta_explore: 'Produkte entdecken ↗',
+        cta_specs: 'Spezifikationen ansehen ↗',
+        cta_packing: 'Verpackung besprechen ↗',
+        cta_logistics: 'Logistik anfragen ↗',
+        ch_name_1: 'Ursprung',
+        ch_name_2: 'Selektion',
+        ch_name_3: 'Verpackung',
+        ch_name_4: 'Transport',
+        ch_name_5: 'Bestimmung',
+        scroll_hint: 'Scrollen Sie, um der Reise zu folgen ↓',
+        skip_produce: 'Zu Produkten springen',
+        ch2_eyebrow: '02 — SORGFÄLTIGE AUSWAHL',
+        ch2_title: 'Kuratierte Sortierung.<br/><em>Konsistente Qualität.</em>',
+        ch2_desc: 'Strenge Größensortierung und homogene Kalibrierung nach Käufervorgaben für internationale Märkte.',
+        ch3_eyebrow: '03 — EXPORTVERPACKUNG',
+        ch3_title: 'Entwickelt für den Export.<br/><em>Geschützt in jedem Karton.</em>',
+        ch3_desc: 'Wellpappenkartons mit Belüftungskanälen für maximale Frische, Integrität und makellose Schale während des Transports.',
+        ch4_eyebrow: '04 — KÜHLKETTEN-LOGISTIK',
+        ch4_title: 'Temperaturgeführt.<br/><em>Bereit für die Reise.</em>',
+        ch4_desc: 'Kühltransporte mit kontrollierter Temperatur und Luftstrom während des gesamten internationalen Transports.',
+        ch5_eyebrow: '05 — GLOBALE MÄRKTE',
+        ch5_title: 'Marktfertig.<br/><em>Vorbereitet für globale Einkäufer.</em>',
+        ch5_desc: 'Exportfertige ägyptische Agrarprodukte für Importeure, Distributoren, Einzel- und Großhändler weltweit.',
+        sec2_badge: 'ÜBER REEFIYA',
+        sec2_subheading: 'ÄGYPTISCHER URSPRUNG. GLOBALE PERSPEKTIVE.',
+        sec2_title_l1: 'Verwurzelt in Ägypten.',
+        sec2_title_l2: 'Geschaffen für den Welthandel.',
+        route_egypt: 'ÄGYPTEN (URSPRUNG)',
+        route_europe: 'EUROPA',
+        route_gcc: 'GOLF-REGION',
+        route_na: 'NORDAMERIKA',
+        route_asia: 'ASIEN & GLOBAL',
+        sec2_p1: 'REEFIYA ist ein ägyptisches Agrarunternehmen, das sich darauf konzentriert, erstklassige Erzeugnisse mit Einkäufern auf den internationalen Märkten zu verbinden.',
+        sec2_p2: 'Wir beginnen mit Süßkartoffeln — einem Produkt, das wir von der Ernte und Selektion über Kalibrierung bis zur Exportverpackung beherrschen.',
+        sec2_cta: 'REEFIYA entdecken',
+        coord_from: 'AUS ÄGYPTEN',
+        coord_to: 'IN DIE',
+        coord_shelves: 'REGALE WELTWEIT',
+        tag_people: 'MENSCHEN',
+        tag_land: 'LAND',
+        tag_quality: 'QUALITÄT',
+        tag_partnerships: 'PARTNERSCHAFTEN',
+        tag_global: 'GLOBALE MÄRKTE',
+        tag_motto: 'MEHR ALS EINE ERNTE<br/>EINE BESSERE ZUKUNFT',
+        pillar1_title: 'Ägyptischer Ursprung',
+        pillar1_desc: 'Sorgfältig bezogene Agrarprodukte.',
+        pillar2_title: 'Exportfokus',
+        pillar2_desc: 'Abgestimmt auf internationale Einkäufer.',
+        pillar3_title: 'Globale Struktur',
+        pillar3_desc: 'Aufgebaut für den internationalen Handel.',
+        video_title: 'UNSERE GESCHICHTE',
+        video_time: 'IN 60 SEKUNDEN'
+      },
+      fr: {
+        dir: 'ltr',
+        code: 'FR',
+        nav_produce: 'Nos produits',
+        nav_specs: 'Spécifications',
+        nav_process: 'Processus d’export',
+        nav_global: 'Présence mondiale',
+        nav_about: 'À propos',
+        btn_quote: 'Demander un devis',
+        hero_eyebrow: 'PRODUITS ÉGYPTIENS DE PREMIÈRE QUALITÉ',
+        hero_title: 'Des champs égyptiens.<br/><em>Aux rayons du monde entier.</em>',
+        hero_desc: 'Patates douces égyptiennes, rigoureusement sélectionnées et préparées pour les marchés internationaux.',
+        cta_quote: 'Demander un devis ↗',
+        cta_explore: 'Découvrir nos produits ↗',
+        cta_specs: 'Voir les spécifications ↗',
+        cta_packing: 'Options d’emballage ↗',
+        cta_logistics: 'Solutions logistiques ↗',
+        ch_name_1: 'Origine',
+        ch_name_2: 'Sélection',
+        ch_name_3: 'Emballage',
+        ch_name_4: 'Expédition',
+        ch_name_5: 'Destination',
+        scroll_hint: 'Faites défiler pour suivre le voyage ↓',
+        skip_produce: 'Aller aux produits',
+        ch2_eyebrow: '02 — SÉLECTION RIGOUREUSE',
+        ch2_title: 'Calibrage soigné.<br/><em>Qualité constante.</em>',
+        ch2_desc: 'Tri rigoureux et calibrage uniforme conformes aux exigences des acheteurs sur les marchés internationaux.',
+        ch3_eyebrow: '03 — EMBALLAGE EXPORT',
+        ch3_title: 'Conçu pour l’export.<br/><em>Protégé dans chaque carton.</em>',
+        ch3_desc: 'Cartons ondulés ventilés préservant la fraîcheur, l’intégrité du produit et l’état de la peau en transit.',
+        ch4_eyebrow: '04 — CHAÎNE DU FROID',
+        ch4_title: 'Température contrôlée.<br/><em>Prêt pour l’expédition.</em>',
+        ch4_desc: 'Transport maritime réfrigéré avec régulation thermique et flux d’air constant tout au long du transit international.',
+        ch5_eyebrow: '05 — MARCHÉS MONDIAUX',
+        ch5_title: 'Prêt pour le marché.<br/><em>Préparé pour les acheteurs internationaux.</em>',
+        ch5_desc: 'Produits égyptiens prêts à l’exportation pour les importateurs, distributeurs, détaillants et grossistes à travers le monde.',
+        sec2_badge: 'À PROPOS DE REEFIYA',
+        sec2_subheading: 'ORIGINE ÉGYPTIENNE. HORIZON MONDIAL.',
+        sec2_title_l1: 'Enraciné en Égypte.',
+        sec2_title_l2: 'Conçu pour le commerce mondial.',
+        route_egypt: 'ÉGYPTE (ORIGINE)',
+        route_europe: 'EUROPE',
+        route_gcc: 'GOLFE / CCG',
+        route_na: 'AMÉRIQUE DU NORD',
+        route_asia: 'ASIE & MONDE',
+        sec2_p1: 'REEFIYA est une entreprise égyptienne de production agricole reliant des récoltes de premier choix aux acheteurs sur les marchés internationaux.',
+        sec2_p2: 'Nous débutons avec la patate douce — un produit maîtrisé de l’approvisionnement et du calibrage jusqu’à l’emballage export.',
+        sec2_cta: 'Découvrir REEFIYA',
+        coord_from: 'DEPUIS L’ÉGYPTE',
+        coord_to: 'VERS LES',
+        coord_shelves: 'RAYONS MONDIAUX',
+        tag_people: 'HUMAINS',
+        tag_land: 'TERRE',
+        tag_quality: 'QUALITÉ',
+        tag_partnerships: 'PARTENARIATS',
+        tag_global: 'MARCHÉS MONDIAUX',
+        tag_motto: 'PLUS QU’UNE RÉCOLTE<br/>UN AVENIR PLUS RADIEUX',
+        pillar1_title: 'Origine Égyptienne',
+        pillar1_desc: 'Fruits et légumes soigneusement sourcés.',
+        pillar2_title: 'Vocation Export',
+        pillar2_desc: 'Conçu pour les acheteurs internationaux.',
+        pillar3_title: 'Perspective Mondiale',
+        pillar3_desc: 'Structuré pour le grand export.',
+        video_title: 'NOTRE HISTOIRE',
+        video_time: 'EN 60 SECONDES'
+      },
+      nl: {
+        dir: 'ltr',
+        code: 'NL',
+        nav_produce: 'Onze producten',
+        nav_specs: 'Specificaties',
+        nav_process: 'Exportproces',
+        nav_global: 'Wereldwijde aanwezigheid',
+        nav_about: 'Over ons',
+        btn_quote: 'Offerte aanvragen',
+        hero_eyebrow: 'PREMIUM EGYPTISCHE AGF',
+        hero_title: 'Van Egyptische velden.<br/><em>Naar wereldwijde schappen.</em>',
+        hero_desc: 'Egyptische zoete aardappelen, zorgvuldig geselecteerd en klaargemaakt voor internationale markten.',
+        cta_quote: 'Offerte aanvragen ↗',
+        cta_explore: 'Ontdek producten ↗',
+        cta_specs: 'Specificaties bekijken ↗',
+        cta_packing: 'Verpakking bespreken ↗',
+        cta_logistics: 'Logistiek afstemmen ↗',
+        ch_name_1: 'Oorsprong',
+        ch_name_2: 'Selectie',
+        ch_name_3: 'Verpakking',
+        ch_name_4: 'Verzending',
+        ch_name_5: 'Bestemming',
+        scroll_hint: 'Scroll om de reis te volgen ↓',
+        skip_produce: 'Naar producten springen',
+        ch2_eyebrow: '02 — ZORGVULDIGE SELECTIE',
+        ch2_title: 'Nauwkeurige sortering.<br/><em>Constante kwaliteit.</em>',
+        ch2_desc: 'Uniforme maten en handmatige selectie volgens specificaties van internationale kopers.',
+        ch3_eyebrow: '03 — EXPORTVERPAKKING',
+        ch3_title: 'Ontworpen voor export.<br/><em>Beschermd in elke doos.</em>',
+        ch3_desc: 'Geavanceerde geventileerde golfkartonnen dozen voor optimaal behoud van versheid en schilkwaliteit.',
+        ch4_eyebrow: '04 — KOELKETENLOGISTIEK',
+        ch4_title: 'Geconditioneerd transport.<br/><em>Klaar voor de reis.</em>',
+        ch4_desc: 'Gekoeld transport met gecontroleerde temperatuur en luchtstroom gedurende het gehele internationale transport.',
+        ch5_eyebrow: '05 — WERELDWIJDE MARKTEN',
+        ch5_title: 'Klaar voor de markt.<br/><em>Voorbereid op wereldwijde kopers.</em>',
+        ch5_desc: 'Exportklare Egyptische AGF voor importeurs, distributeurs, supermarkten en groothandels wereldwijd.',
+        sec2_badge: 'OVER REEFIYA',
+        sec2_subheading: 'EGYPTISCHE OORSPRONG. WERELDWIJDE VISIE.',
+        sec2_title_l1: 'Geworteld in Egypte.',
+        sec2_title_l2: 'Gebouwd voor wereldwijde handel.',
+        route_egypt: 'EGYPTE (OORSPRONG)',
+        route_europe: 'EUROPA',
+        route_gcc: 'GOLFREGIO',
+        route_na: 'NOORD-AMERIKA',
+        route_asia: 'AZIË & WERELDWIJD',
+        sec2_p1: 'REEFIYA is een Egyptisch AGF-exportbedrijf dat geselecteerde teelt verbindt met internationale afnemers.',
+        sec2_p2: 'We starten met zoete aardappelen — een product dat we beheersen van sortering tot geconditioneerde export.',
+        sec2_cta: 'Ontdek REEFIYA',
+        coord_from: 'UIT EGYPTE',
+        coord_to: 'NAAR',
+        coord_shelves: 'WERELDWIJDE SCHAPPEN',
+        tag_people: 'MENSEN',
+        tag_land: 'LAND',
+        tag_quality: 'KWALITEIT',
+        tag_partnerships: 'PARTNERSCHAPPEN',
+        tag_global: 'WERELDWIJDE MARKTEN',
+        tag_motto: 'MEER DAN EEN OOGST<br/>EEN BETERE TOEKOMST',
+        pillar1_title: 'Egyptische Oorsprong',
+        pillar1_desc: 'Zorgvuldig geselecteerde AGF.',
+        pillar2_title: 'Exportgericht',
+        pillar2_desc: 'Afgestemd op internationale kopers.',
+        pillar3_title: 'Wereldwijde Structuur',
+        pillar3_desc: 'Klaar voor wereldwijde distributie.',
+        video_title: 'ONS VERHAAL',
+        video_time: 'IN 60 SECONDEN'
+      },
+      es: {
+        dir: 'ltr',
+        code: 'ES',
+        nav_produce: 'Nuestros productos',
+        nav_specs: 'Especificaciones',
+        nav_process: 'Proceso de exportación',
+        nav_global: 'Presencia global',
+        nav_about: 'Nosotros',
+        btn_quote: 'Solicitar cotización',
+        hero_eyebrow: 'PRODUCTOS EGIPCIOS DE ALTA CALIDAD',
+        hero_title: 'De los campos egipcios.<br/><em>A los mercados globales.</em>',
+        hero_desc: 'Batatas egipcias, cuidadosamente seleccionadas y preparadas para mercados internacionales.',
+        cta_quote: 'Solicitar cotización ↗',
+        cta_explore: 'Explorar productos ↗',
+        cta_specs: 'Ver especificaciones ↗',
+        cta_packing: 'Detalles de empaque ↗',
+        cta_logistics: 'Coordinar logística ↗',
+        ch_name_1: 'Origen',
+        ch_name_2: 'Selección',
+        ch_name_3: 'Envasado',
+        ch_name_4: 'Transporte',
+        ch_name_5: 'Destino',
+        scroll_hint: 'Desplácese para seguir el viaje ↓',
+        skip_produce: 'Ir a productos',
+        ch2_eyebrow: '02 — SELECCIÓN CUIDADOSA',
+        ch2_title: 'Clasificación precisa.<br/><em>Calidad constante.</em>',
+        ch2_desc: 'Selección rigurosa y calibrado uniforme para satisfacer los estándares de compradores internacionales.',
+        ch3_eyebrow: '03 — EMBALAJE DE EXPORTACIÓN',
+        ch3_title: 'Diseñado para exportación.<br/><em>Protegido en cada caja.</em>',
+        ch3_desc: 'Cajas de cartón corrugado con ventilación que preservan la frescura, integridad y piel durante el transporte.',
+        ch4_eyebrow: '04 — CADENA DE FRÍO',
+        ch4_title: 'Temperatura controlada.<br/><em>Listo para la travesía.</em>',
+        ch4_desc: 'Transporte refrigerado con temperatura y flujo de aire controlados durante todo el tránsito internacional.',
+        ch5_eyebrow: '05 — MERCADOS GLOBALES',
+        ch5_title: 'Listo para comercializar.<br/><em>Preparado para compradores globales.</em>',
+        ch5_desc: 'Productos agrícolas egipcios listos para exportar para importadores, distribuidores, minoristas y mayoristas de todo el mundo.',
+        sec2_badge: 'SOBRE REEFIYA',
+        sec2_subheading: 'ORIGEN EGIPCIO. VISIÓN GLOBAL.',
+        sec2_title_l1: 'Arraigado en Egipto.',
+        sec2_title_l2: 'Creado para el comercio global.',
+        route_egypt: 'EGIPTO (ORIGEN)',
+        route_europe: 'EUROPA',
+        route_gcc: 'GOLFO / CCG',
+        route_na: 'NORTEAMÉRICA',
+        route_asia: 'ASIA Y GLOBAL',
+        sec2_p1: 'REEFIYA es una empresa egipcia de productos agrícolas enfocada en conectar cosechas selectas con compradores internacionales.',
+        sec2_p2: 'Iniciamos con batatas dulces — un producto que dominamos desde la cosecha y calibrado hasta el empaque de exportación.',
+        sec2_cta: 'Descubra REEFIYA',
+        coord_from: 'DESDE EGIPTO',
+        coord_to: 'A LOS',
+        coord_shelves: 'MERCADOS GLOBALES',
+        tag_people: 'GENTE',
+        tag_land: 'TIERRA',
+        tag_quality: 'CALIDAD',
+        tag_partnerships: 'ALIANZAS',
+        tag_global: 'MERCADOS GLOBALES',
+        tag_motto: 'MÁS QUE UN CULTIVO<br/>UN FUTURO BRILLANTE',
+        pillar1_title: 'Origen Egipcio',
+        pillar1_desc: 'Productos agrícolas rigurosamente seleccionados.',
+        pillar2_title: 'Enfoque Exportador',
+        pillar2_desc: 'Diseñado para compradores internacionales.',
+        pillar3_title: 'Visión Global',
+        pillar3_desc: 'Estructurado para el comercio mundial.',
+        video_title: 'NUESTRA HISTORIA',
+        video_time: 'EN 60 SEGUNDOS'
+      },
+      ru: {
+        dir: 'ltr',
+        code: 'RU',
+        nav_produce: 'Продукция',
+        nav_specs: 'Спецификации',
+        nav_process: 'Процесс экспорта',
+        nav_global: 'Мировое присутствие',
+        nav_about: 'О компании',
+        btn_quote: 'Запросить расчет',
+        hero_eyebrow: 'ЕГИПЕТСКАЯ ПРОДУКЦИЯ ВЫСШЕГО КАЧЕСТВА',
+        hero_title: 'С полей Египта.<br/><em>На мировые прилавки.</em>',
+        hero_desc: 'Египетский батат, тщательно отобранный и подготовленный для международных рынков.',
+        cta_quote: 'Запросить расчет ↗',
+        cta_explore: 'Наша продукция ↗',
+        cta_specs: 'Спецификации ↗',
+        cta_packing: 'Обсудить упаковку ↗',
+        cta_logistics: 'Обсудить логистику ↗',
+        ch_name_1: 'Происхождение',
+        ch_name_2: 'Сортировка',
+        ch_name_3: 'Упаковка',
+        ch_name_4: 'Доставка',
+        ch_name_5: 'Назначение',
+        scroll_hint: 'Прокрутите вниз, чтобы увидеть путь ↓',
+        skip_produce: 'К продукции',
+        ch2_eyebrow: '02 — ТЩАТЕЛЬНЫЙ ОТБОР',
+        ch2_title: 'Точная калибровка.<br/><em>Стабильное качество.</em>',
+        ch2_desc: 'Строгий отбор и равномерный калибр по спецификациям международных покупателей.',
+        ch3_eyebrow: '03 — ЭКСПОРТНАЯ УПАКОВКА',
+        ch3_title: 'Создано для экспорта.<br/><em>Защита в каждой коробке.</em>',
+        ch3_desc: 'Вентилируемые гофрокороба, сохраняющие свежесть, структуру и идеальное состояние кожицы при транспортировке.',
+        ch4_eyebrow: '04 — ХОЛОДОВАЯ ЦЕПЬ',
+        ch4_title: 'Контроль температуры.<br/><em>Готов к морскому пути.</em>',
+        ch4_desc: 'Рефрижераторные перевозки с контролируемой температурой и циркуляцией воздуха на протяжении всего международного пути.',
+        ch5_eyebrow: '05 — МИРОВЫЕ РЫНКИ',
+        ch5_title: 'Готово к реализации.<br/><em>Подготовлено для мировых импортеров.</em>',
+        ch5_desc: 'Египетская сельхозпродукция экспортного качества для импортеров, дистрибьюторов, ритейлеров и оптовиков по всему миру.',
+        sec2_badge: 'О КОМПАНИИ REEFIYA',
+        sec2_subheading: 'ЕГИПЕТСКИЕ КОРНИ. МИРОВОЙ МАСШТАБ.',
+        sec2_title_l1: 'С полей Египта.',
+        sec2_title_l2: 'Для мировой торговли.',
+        route_egypt: 'ЕГИПЕТ (ИСТОКИ)',
+        route_europe: 'ЕВРОПА',
+        route_gcc: 'СТРАНЫ ЗАЛИВА',
+        route_na: 'СЕВЕРНАЯ АМЕРИКА',
+        route_asia: 'АЗИЯ И МИР',
+        sec2_p1: 'REEFIYA — египетская сельскохозяйственная компания, соединяющая отборную продукцию с покупателями на международных рынках.',
+        sec2_p2: 'Мы начинаем со сладкого картофеля (батат) — продукта, который мы досконально знаем от сбора и калибровки до экспортной упаковки.',
+        sec2_cta: 'Узнать больше о REEFIYA',
+        coord_from: 'ИЗ ЕГИПТА',
+        coord_to: 'НА',
+        coord_shelves: 'МИРОВЫЕ ПРИЛАВКИ',
+        tag_people: 'ЛЮДИ',
+        tag_land: 'ЗЕМЛЯ',
+        tag_quality: 'КАЧЕСТВО',
+        tag_partnerships: 'ПАРТНЕРСТВО',
+        tag_global: 'МИРОВЫЕ РЫНКИ',
+        tag_motto: 'БОЛЬШЕ ЧЕМ УРОЖАЙ<br/>СВЕТЛОЕ БУДУЩЕЕ',
+        pillar1_title: 'Египетские истоки',
+        pillar1_desc: 'Тщательно отобранная продукция.',
+        pillar2_title: 'Экспортный фокус',
+        pillar2_desc: 'Создано под стандарты мировых ритейлеров.',
+        pillar3_title: 'Глобальный масштаб',
+        pillar3_desc: 'Выстроенная система международной торговли.',
+        video_title: 'НАША ИСТОРИЯ',
+        video_time: 'ЗА 60 СЕКУНД'
+      },
+      tr: {
+        dir: 'ltr',
+        code: 'TR',
+        nav_produce: 'Ürünlerimiz',
+        nav_specs: 'Spesifikasyonlar',
+        nav_process: 'İhracat Süreci',
+        nav_global: 'Küresel Varlık',
+        nav_about: 'Hakkımızda',
+        btn_quote: 'Teklif Alın',
+        hero_eyebrow: 'BİRİNCİ SINIF MISIR TARIM ÜRÜNLERİ',
+        hero_title: 'Mısır tarlalarından.<br/><em>Dünya raflarına.</em>',
+        hero_desc: 'Uluslararası pazarlar için özenle tedarik edilmiş ve hazırlanmış birinci sınıf Mısır tatlı patatesleri.',
+        cta_quote: 'Teklif Alın ↗',
+        cta_explore: 'Ürünleri Keşfedin ↗',
+        cta_specs: 'Spesifikasyonları Görün ↗',
+        cta_packing: 'Paketleme Detayları ↗',
+        cta_logistics: 'Lojistik Bilgisi ↗',
+        ch_name_1: 'Köken',
+        ch_name_2: 'Seçim',
+        ch_name_3: 'Paketleme',
+        ch_name_4: 'Sevkiyat',
+        ch_name_5: 'Hedef Pazar',
+        scroll_hint: 'Yolculuğu takip etmek için kaydırın ↓',
+        skip_produce: 'Ürünlere geç',
+        ch2_eyebrow: '02 — ÖZENLİ SEÇİM VE AYIKLAMA',
+        ch2_title: 'Hassas kalibrasyon.<br/><em>İstikrarlı yüksek kalite.</em>',
+        ch2_desc: 'Uluslararası pazar standartlarına ve alıcı gereksinimlerine uygun titiz boylama ve ayıklama.',
+        ch3_eyebrow: '03 — İHRACAT PAKETLEME',
+        ch3_title: 'İhracat için tasarlandı.<br/><em>Her kolide tam koruma.</em>',
+        ch3_desc: 'Taşıma boyunca tazeliği, ürün bütünlüğünü ve kabuk sağlamlığını koruyan özel havalandırmalı ihracat kolileri.',
+        ch4_eyebrow: '04 — SOĞUK ZİNCİR LOJİSTİĞİ',
+        ch4_title: 'Sıcaklık kontrollü.<br/><em>Yolculuğa hazır.</em>',
+        ch4_desc: 'Uluslararası transit boyunca kontrollü sıcaklık ve hava akışına sahip soğutmalı taşımacılık.',
+        ch5_eyebrow: '05 — KÜRESEL PAZARLAR',
+        ch5_title: 'Rafa hazır.<br/><em>Küresel alıcılar için hazırlandı.</em>',
+        ch5_desc: 'Dünya çapındaki ithalatçılar, dağıtıcılar, zincir marketler ve toptancılar için ihracata hazır Mısır tarım ürünleri.',
+        sec2_badge: 'REEFIYA HAKKINDA',
+        sec2_subheading: 'MISIR MENŞELİ. KÜRESEL VİZYON.',
+        sec2_title_l1: 'Mısır topraklarından.',
+        sec2_title_l2: 'Küresel ticaret için üretildi.',
+        route_egypt: 'MISIR (KÖKEN)',
+        route_europe: 'AVRUPA',
+        route_gcc: 'KÖRFEZ / GCC',
+        route_na: 'KUZEY AMERİKA',
+        route_asia: 'ASYA & KÜRESEL',
+        sec2_p1: 'REEFIYA, özenle tedarik edilen mahsulleri uluslararası pazarlardaki alıcılarla buluşturan Mısır merkezli bir tarım ihracat şirketidir.',
+        sec2_p2: 'Tedarik ve seçimden boylama, paketleme ve ihracata kadar her adımını uzmanlıkla yürüttüğümüz tatlı patates ile başlıyoruz.',
+        sec2_cta: 'REEFIYA’yı Keşfedin',
+        coord_from: 'MISIR’DAN',
+        coord_to: 'DÜNYA',
+        coord_shelves: 'RAFLARINA',
+        tag_people: 'İNSAN',
+        tag_land: 'TOPRAK',
+        tag_quality: 'KALİTE',
+        tag_partnerships: 'ORTAKLIKLAR',
+        tag_global: 'KÜRESEL PAZARLAR',
+        tag_motto: 'BİR MAHSULDEN FAZLASI<br/>DAHA AYDINLIK BİR GELECEK',
+        pillar1_title: 'Mısır Menşei',
+        pillar1_desc: 'Özenle seçilmiş taze mahsuller.',
+        pillar2_title: 'İhracat Odağı',
+        pillar2_desc: 'Uluslararası alıcıların talepleri doğrultusunda.',
+        pillar3_title: 'Küresel Perspektif',
+        pillar3_desc: 'Uluslararası ticaret standartlarında yapılandırılmış.',
+        video_title: 'HİKAYEMİZ',
+        video_time: '60 SANİYEDE'
+      }
+    };
+
+    /* ------------------------------
+       Language Switcher Logic
+    ------------------------------ */
+    const langBtn = document.getElementById('langBtn');
+    const langMenu = document.getElementById('langMenu');
+    const currentFlag = document.getElementById('currentFlag');
+    const currentLangCode = document.getElementById('currentLangCode');
+    const langMenuItems = document.querySelectorAll('.lang-menu-item');
+
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = langMenu.classList.contains('open');
+      langMenu.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', !isOpen);
+    });
+
+    document.addEventListener('click', () => {
+      langMenu.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', 'false');
+    });
+
+    function setLanguage(langKey) {
+      const data = translations[langKey];
+      if (!data) return;
+
+      document.documentElement.lang = langKey;
+      document.documentElement.dir = data.dir;
+      currentLangCode.textContent = data.code;
+
+      // Update active flag icon
+      const selectedItem = document.querySelector(`.lang-menu-item[data-lang="${langKey}"]`);
+      if (selectedItem) {
+        langMenuItems.forEach(item => item.classList.remove('selected'));
+        selectedItem.classList.add('selected');
+        const flagSvg = selectedItem.querySelector('.lang-flag-circle').innerHTML;
+        currentFlag.innerHTML = flagSvg;
+      }
+
+      // Update all translated strings
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key]) {
+          el.innerHTML = data[key];
+        }
+      });
+    }
+
+    document.querySelectorAll('.lang-menu-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const chosenLang = item.getAttribute('data-lang');
+        localStorage.setItem('reefiya_lang', chosenLang);
+        setLanguage(chosenLang);
+        langMenu.classList.remove('open');
+        langBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Auto-restore saved language preference if previously selected
+    const savedLang = localStorage.getItem('reefiya_lang');
+    if (savedLang && translations[savedLang]) {
+      setLanguage(savedLang);
+    }
+
+    /* ------------------------------
+       Mobile Drawer Menu Logic
+    ------------------------------ */
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const mobileQuoteBtn = document.getElementById('mobileQuoteBtn');
+
+    function openMobileDrawer() {
+      mobileNavDrawer.classList.add('open');
+      mobileNavDrawer.setAttribute('aria-hidden', 'false');
+      mobileNavToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden'; // prevent background scrolling while menu open
+    }
+
+    function closeMobileDrawer() {
+      mobileNavDrawer.classList.remove('open');
+      mobileNavDrawer.setAttribute('aria-hidden', 'true');
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    if (mobileNavToggle) mobileNavToggle.addEventListener('click', openMobileDrawer);
+    if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileDrawer);
+    if (mobileNavBackdrop) mobileNavBackdrop.addEventListener('click', closeMobileDrawer);
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeMobileDrawer);
+    });
+    if (mobileQuoteBtn) {
+      mobileQuoteBtn.addEventListener('click', closeMobileDrawer);
+    }
+
+    /* ------------------------------
+       Scroll Image Sequence Logic
+    ------------------------------ */
+    const frameCount = 100;
+    const canvas = document.getElementById('sequenceCanvas');
+    const ctx = canvas.getContext('2d', { alpha: false });
+    const loader = document.getElementById('loader');
+    const loaderFill = document.getElementById('loaderFill');
+    const loaderPct = document.getElementById('loaderPct');
+    const progressTrackFill = document.getElementById('progressTrackFill');
+
+    const chapterItems = document.querySelectorAll('.chapter-item');
+    const storyCards = [
+      document.getElementById('story-1'),
+      document.getElementById('story-2'),
+      document.getElementById('story-3'),
+      document.getElementById('story-4'),
+      document.getElementById('story-5')
+    ];
+
+    const padZero = (num, size = 3) => {
+      let s = num + "";
+      while (s.length < size) s = "0" + s;
+      return s;
+    };
+
+    const currentFrame = index => `./ezgif-frame-${padZero(index, 3)}.jpg`;
+
+    const images = [];
+    let loadedCount = 0;
+
+    function resizeCanvas() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      renderFrame(Math.round(currentRenderIndex));
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+
+    function renderFrame(index) {
+      const img = images[index - 1];
+      if (!img || !img.complete || img.naturalWidth === 0) return;
+
+      const cWidth = canvas.width;
+      const cHeight = canvas.height;
+
+      ctx.fillStyle = '#08100a';
+      ctx.fillRect(0, 0, cWidth, cHeight);
+
+      const hRatio = cWidth / img.width;
+      const vRatio = cHeight / img.height;
+      const ratio = Math.max(hRatio, vRatio);
+
+      const centerShiftX = (cWidth - img.width * ratio) / 2;
+      const centerShiftY = (cHeight - img.height * ratio) / 2;
+
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        img.width,
+        img.height,
+        centerShiftX,
+        centerShiftY,
+        img.width * ratio,
+        img.height * ratio
+      );
+    }
+
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      img.src = currentFrame(i);
+      img.onload = () => {
+        loadedCount++;
+        const percent = Math.round((loadedCount / frameCount) * 100);
+        if (loaderFill) {
+          loaderFill.style.width = `${percent}%`;
+        }
+        if (loaderPct) {
+          loaderPct.textContent = `${percent}%`;
+        }
+        if (loadedCount === 1) {
+          resizeCanvas();
+          renderFrame(1);
+        }
+        if (loadedCount === frameCount) {
+          setTimeout(() => {
+            loader.classList.add('hidden');
+          }, 350);
+        }
+      };
+      images.push(img);
+    }
+
+    let targetIndex = 1;
+    let currentRenderIndex = 1;
+    let lastDrawnIndex = -1;
+    let currentActiveChapter = -1;
+    const journeyBottomEl = document.querySelector('.journey-bottom');
+    const storyContainerEl = document.querySelector('.story-container');
+    const scrollContainerEl = document.getElementById('scrollContainer');
+
+    function getTargetProgress() {
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
+      const rawRatio = heroScrollDistance > 0 ? scrollTop / heroScrollDistance : 0;
+      // Complete all frames comfortably within the first 82% of the hero scroll track,
+      // providing a dedicated resting dwell zone for Chapter 5 (Destination / Global Markets)
+      // before Section 02 arrives.
+      const frameProgress = rawRatio / 0.82;
+      return Math.min(Math.max(frameProgress, 0), 1);
+    }
+
+    // Click on chapter to smoothly jump to that exact scene
+    chapterItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const chapterNum = parseInt(item.dataset.chapter, 10);
+        // Fractions scaled with the 0.82 hero animation timeline:
+        const chapterFractions = [0.00, 0.38, 0.55, 0.68, 0.80];
+        const fraction = chapterFractions[chapterNum - 1];
+        const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
+        window.scrollTo({
+          top: fraction * heroScrollDistance,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    function updateOverlayStates(progress, frame) {
+      const pct = Math.round(progress * 100);
+      progressTrackFill.style.width = `${pct}%`;
+
+      // When scrolled past the hero canvas into Section 02, smoothly fade out the journey bar & story overlay
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
+      const isPastHero = scrollTop >= (heroScrollDistance - 100);
+
+      const navContainerEl = document.querySelector('.site-nav-container');
+      if (navContainerEl) {
+        navContainerEl.classList.toggle('scrolled-light', isPastHero);
+      }
+
+      if (journeyBottomEl) {
+        journeyBottomEl.classList.toggle('fade-out', isPastHero);
+      }
+      if (storyContainerEl) {
+        storyContainerEl.classList.toggle('fade-out', isPastHero);
+      }
+
+      // Synchronized with video scene transitions:
+      // Frame 01 - 36: Egyptian soil, leaves & sweet potato root (Origin)
+      // Frame 37 - 60: Washing facility & optical grading conveyor (Selection)
+      // Frame 61 - 75: Packing inside ventilated export cartons (Packing)
+      // Frame 76 - 92: Warehouse forklift loading into 40ft reefer truck (Cold Chain)
+      // Frame 93 - 100: Port terminal, container stacking & cargo vessel (Destination)
+      let chapter = 1;
+      if (frame >= 93) chapter = 5;
+      else if (frame >= 76) chapter = 4;
+      else if (frame >= 61) chapter = 3;
+      else if (frame >= 37) chapter = 2;
+
+      if (chapter !== currentActiveChapter) {
+        currentActiveChapter = chapter;
+
+        chapterItems.forEach((item, idx) => {
+          if (idx + 1 === chapter) {
+            item.classList.add('active');
+            // Ensure active pill is smoothly centered in view on mobile
+            if (window.innerWidth <= 860) {
+              item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+          } else {
+            item.classList.remove('active');
+          }
+        });
+
+        storyCards.forEach((card, idx) => {
+          if (idx + 1 === chapter) {
+            card.classList.add('active');
+          } else {
+            card.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    let lastScrollY = -1;
+
+    function tick() {
+      const progress = getTargetProgress();
+      targetIndex = 1 + progress * (frameCount - 1);
+
+      // 0.28 provides lightning-fast direct response with silky interpolation
+      currentRenderIndex += (targetIndex - currentRenderIndex) * 0.28;
+      const rounded = Math.min(Math.max(Math.round(currentRenderIndex), 1), frameCount);
+
+      const currentScrollY = window.scrollY || window.pageYOffset;
+      if (rounded !== lastDrawnIndex || currentScrollY !== lastScrollY) {
+        renderFrame(rounded);
+        updateOverlayStates(progress, rounded);
+        lastDrawnIndex = rounded;
+        lastScrollY = currentScrollY;
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+    resizeCanvas();
+
+    /* -------------------------------------------------------------
+       Section 02 Animation Trigger & Subtle Parallax Effect
+       ------------------------------------------------------------- */
+    const aboutSectionEl = document.getElementById('about');
+    const aboutFarmPhotoEl = document.getElementById('aboutFarmPhoto');
+
+    if (aboutSectionEl) {
+      const aboutObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            aboutSectionEl.classList.add('is-revealed');
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      aboutObserver.observe(aboutSectionEl);
+
+      // Subtle Parallax effect on farm photo as user scrolls through Section 02
+      window.addEventListener('scroll', () => {
+        if (!aboutFarmPhotoEl) return;
+        const rect = aboutSectionEl.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          // Calculate relative scroll offset inside section (-1 to 1 range)
+          const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
+          const translateY = (scrollProgress - 0.5) * 40; // subtle +-20px parallax
+          aboutFarmPhotoEl.style.transform = `translateY(${translateY.toFixed(1)}px) scale(1.04)`;
+        }
+      }, { passive: true });
+    }
+
+    // Smart Navbar: Hide on scroll down, show on scroll up
+    let lastNavScrollY = window.scrollY || window.pageYOffset;
+    const navEl = document.querySelector('.site-nav-container');
+
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY || window.pageYOffset;
+      const scrollDiff = currentY - lastNavScrollY;
+
+      // Only apply hide/show after passing initial top banner zone (120px)
+      if (currentY > 120) {
+        if (scrollDiff > 10) {
+          // Scrolling down - smoothly hide navbar so it never blocks content
+          if (navEl && !navEl.classList.contains('nav-hidden')) {
+            navEl.classList.add('nav-hidden');
+          }
+          // Close language dropdown if open
+          if (langMenu && langMenu.classList.contains('open')) {
+            langMenu.classList.remove('open');
+            langBtn.setAttribute('aria-expanded', 'false');
+          }
+        } else if (scrollDiff < -10) {
+          // Scrolling up - smoothly bring navbar back
+          if (navEl && navEl.classList.contains('nav-hidden')) {
+            navEl.classList.remove('nav-hidden');
+          }
+        }
+      } else {
+        // At the very top: always keep navbar visible
+        if (navEl && navEl.classList.contains('nav-hidden')) {
+          navEl.classList.remove('nav-hidden');
+        }
+      }
+
+      lastNavScrollY = currentY;
+    }, { passive: true });
+
+    // Logo click smooth scroll to top of page
+    const navBrandLogo = document.querySelector('.nav-brand');
+    if (navBrandLogo) {
+      navBrandLogo.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
+</body>
+</html>
