@@ -1163,7 +1163,7 @@
     .about-reefiya-section {
       position: relative;
       width: 100%;
-      min-height: auto;
+      min-height: 100vh;
       background-color: #f7f4ed;
       background-image: url('./about-bg-map.png');
       background-size: cover;
@@ -1176,6 +1176,7 @@
       flex-direction: column;
       justify-content: center;
       border-top: 1px solid rgba(176, 130, 61, 0.22);
+      box-shadow: 0 -20px 40px rgba(8, 16, 10, 0.35);
     }
 
     /* Ambient Warm Vignette Layer - subtle to let the world map appear crisp and clear */
@@ -1191,10 +1192,11 @@
     .about-reefiya-container {
       position: relative;
       width: 100%;
-      flex: 1 0 auto;
+      flex: 1 1 auto;
       display: grid;
       grid-template-columns: 48% 52%;
-      min-height: clamp(560px, 80vh, 760px);
+      min-height: 100vh;
+      align-items: stretch;
       z-index: 2;
     }
 
@@ -1202,7 +1204,7 @@
     .about-content-col {
       position: relative;
       z-index: 3;
-      padding: clamp(38px, 4.5vw, 68px) clamp(32px, 5.5vw, 84px);
+      padding: clamp(60px, 7vh, 100px) clamp(36px, 5.5vw, 84px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -1417,7 +1419,7 @@
       min-height: 480px;
       overflow: hidden;
       opacity: 0;
-      transform: translateX(35px) scale(0.98);
+      transform: translateY(30px) scale(0.98);
       transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
     }
 
@@ -1484,108 +1486,159 @@
       z-index: 2;
     }
 
-    /* Global Trade Graphic: Conceptual Market-Direction SVG Routes */
-    .trade-routes-container {
+    /* Luxury Trade Network Terminal: Elegant Floating Glass HUD Badge */
+    .trade-network-terminal {
       position: absolute;
-      top: 16px;
-      right: 20px;
-      left: 20px;
-      height: 240px;
-      pointer-events: none;
-      z-index: 5;
+      top: 32px;
+      right: 36px;
+      z-index: 6;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 320px;
+      pointer-events: auto;
+      opacity: 0;
+      transform: translateY(-16px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
     }
 
-    [dir="rtl"] .trade-routes-container {
-      right: 20px;
-      left: 20px;
+    [dir="rtl"] .trade-network-terminal {
+      right: auto;
+      left: 36px;
     }
 
-    .trade-network-svg {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
+    .about-reefiya-section.is-revealed .trade-network-terminal {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* Route lines animation (path-drawing effect) with distinct glowing gold */
-    .route-arc {
-      stroke: #d8a24a;
-      stroke-width: 1.8;
-      stroke-dasharray: 280;
-      stroke-dashoffset: 280;
-      fill: none;
-      transition: stroke-dashoffset 1.6s cubic-bezier(0.16, 1, 0.3, 1);
-      opacity: 0.95;
-      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+    .trade-terminal-badge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 18px;
+      background: rgba(13, 30, 18, 0.72);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(212, 175, 106, 0.35);
+      border-radius: 999px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     }
 
-    .route-arc.secondary {
-      stroke: #c89d54;
-      stroke-width: 1.6;
-      stroke-dasharray: 260;
-      stroke-dashoffset: 260;
-      opacity: 0.9;
+    .trade-origin-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .about-reefiya-section.is-revealed .route-arc {
-      stroke-dashoffset: 0;
+    .trade-origin-pulse-dot {
+      position: relative;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #f47d2d;
+      box-shadow: 0 0 10px #f47d2d;
     }
 
-    /* Origin & Destination Nodes */
-    .node-origin-glow {
-      animation: originPulse 2.8s infinite ease-in-out;
+    .trade-origin-pulse-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1.5px solid #f47d2d;
+      animation: originRadar 2s infinite cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .node-origin-dot {
-      fill: #e5a93c;
-      stroke: #ffffff;
-      stroke-width: 2;
+    @keyframes originRadar {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
     }
 
-    .node-dest-dot {
-      fill: #1b3820;
-      stroke: #e5a93c;
-      stroke-width: 1.5;
-    }
-
-    /* Premium Legible Pill Badges for Destination & Origin Labels */
-    .node-badge-bg {
-      fill: rgba(18, 36, 22, 0.88);
-      stroke: rgba(229, 169, 60, 0.45);
-      stroke-width: 1;
-      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
-      rx: 5px;
-    }
-
-    .node-badge-bg.origin {
-      fill: rgba(176, 130, 61, 0.95);
-      stroke: #ffffff;
-      stroke-width: 1.2;
-    }
-
-    .node-text {
-      font-family: var(--font-sans);
-      font-size: 8.5px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+    .trade-origin-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: #ffffff;
       text-transform: uppercase;
-      fill: #ffffff;
+      font-family: var(--font-sans);
     }
 
-    [dir="rtl"] .node-text {
+    [dir="rtl"] .trade-origin-label {
       font-family: 'Cairo', sans-serif;
-      font-size: 9.5px;
-      font-weight: 700;
+      font-size: 0.82rem;
       letter-spacing: normal;
     }
 
-    .node-text.origin-text {
-      fill: #ffffff;
-      font-weight: 800;
+    .trade-export-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      background: rgba(212, 175, 106, 0.2);
+      border: 1px solid rgba(212, 175, 106, 0.45);
+      border-radius: 6px;
+      color: #f7d28b;
+      text-transform: uppercase;
     }
 
-    @keyframes originPulse {
-      0%, 100% { transform: scale(1); opacity: 0.35; }
-      50% { transform: scale(1.55); opacity: 0.75; }
+    [dir="rtl"] .trade-export-tag {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: normal;
+    }
+
+    /* Destination corridors grid */
+    .trade-corridors-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      justify-content: flex-end;
+    }
+
+    [dir="rtl"] .trade-corridors-list {
+      justify-content: flex-start;
+    }
+
+    .trade-corridor-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 13px;
+      background: rgba(13, 30, 18, 0.62);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    [dir="rtl"] .trade-corridor-item {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: normal;
+    }
+
+    .trade-corridor-item:hover {
+      background: rgba(22, 50, 30, 0.85);
+      border-color: rgba(212, 175, 106, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      color: #ffffff;
+    }
+
+    .corridor-ping {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #6dc455;
+      box-shadow: 0 0 6px #6dc455;
     }
 
     /* Section Entry Trigger States */
@@ -1616,6 +1669,17 @@
       .about-content-col {
         padding: 50px 4vw;
       }
+
+      .trade-network-terminal {
+        top: 24px;
+        right: 24px;
+        max-width: 280px;
+      }
+
+      [dir="rtl"] .trade-network-terminal {
+        right: auto;
+        left: 24px;
+      }
     }
 
     /* Mobile (<= 860px): Stack content vertically */
@@ -1623,6 +1687,7 @@
       .about-reefiya-container {
         display: flex;
         flex-direction: column;
+        min-height: auto;
       }
 
       .about-content-col {
@@ -1633,12 +1698,12 @@
 
       .about-visual-col {
         order: 2;
-        min-height: 420px;
-        height: 420px;
+        min-height: 440px;
+        height: 440px;
       }
 
       .about-visual-wrapper {
-        min-height: 420px;
+        min-height: 440px;
       }
 
       .about-title {
@@ -1652,11 +1717,20 @@
         margin-bottom: 28px;
       }
 
-      .trade-routes-container {
-        top: 15px;
-        right: 15px;
-        left: 15px;
-        height: 200px;
+      .trade-network-terminal {
+        top: 18px;
+        right: 18px;
+        left: 18px;
+        max-width: none;
+      }
+
+      [dir="rtl"] .trade-network-terminal {
+        right: 18px;
+        left: 18px;
+      }
+
+      .trade-corridors-list {
+        justify-content: flex-start;
       }
     }
   </style>
@@ -2010,65 +2084,36 @@
           </svg>
         </div>
 
-        <!-- Global Trade Graphic (Conceptual Market-Direction SVG Routes from Egypt) -->
-        <div class="trade-routes-container">
-          <svg class="trade-network-svg" viewBox="0 0 460 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="goldRouteGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#b0823d"/>
-                <stop offset="100%" stop-color="#f6ca68"/>
-              </linearGradient>
-            </defs>
+        <!-- Luxury Trade Network HUD: Modern Global Export Corridors & Origin Badge -->
+        <div class="trade-network-terminal">
+          <!-- Main Origin Badge -->
+          <div class="trade-terminal-badge">
+            <div class="trade-origin-status">
+              <span class="trade-origin-pulse-dot"></span>
+              <span class="trade-origin-label" data-i18n="route_egypt">EGYPT (ORIGIN)</span>
+            </div>
+            <span class="trade-export-tag" data-i18n="tag_global">GLOBAL MARKETS</span>
+          </div>
 
-            <!-- Market Direction Curved Arcs Originating from Egypt (Coord approx: 200, 155) -->
-            <!-- Route 1: Egypt to Europe (North-West) -->
-            <path class="route-arc" stroke="url(#goldRouteGrad)" d="M 200,150 C 185,100  150,65  120,40" />
-            <!-- Route 2: Egypt to GCC / Gulf (East-SouthEast) -->
-            <path class="route-arc" stroke="url(#goldRouteGrad)" d="M 200,150 C 235,145  280,140  325,142" />
-            <!-- Route 3: Egypt to North America (West-NorthWest) -->
-            <path class="route-arc secondary" stroke="url(#goldRouteGrad)" d="M 200,150 C 150,110  90,85  50,75" />
-            <!-- Route 4: Egypt to Asia / International Markets (East-NorthEast) -->
-            <path class="route-arc" stroke="url(#goldRouteGrad)" d="M 200,150 C 260,115  330,85  385,65" />
-
-            <!-- Highlighted Origin Node: Egypt (Pulsing Glow & Core Badge) -->
-            <g transform="translate(200, 150)">
-              <circle cx="0" cy="0" r="14" fill="rgba(176, 130, 61, 0.25)" class="node-origin-glow" />
-              <circle cx="0" cy="0" r="6" fill="rgba(176, 130, 61, 0.55)" />
-              <circle cx="0" cy="0" r="3.5" class="node-origin-dot" />
-              <!-- Legible Pill Badge for Egypt Origin -->
-              <rect x="10" y="-11" width="94" height="22" class="node-badge-bg origin" />
-              <text x="57" y="3.5" text-anchor="middle" class="node-text origin-text" data-i18n="route_egypt">EGYPT (ORIGIN)</text>
-            </g>
-
-            <!-- Destination Nodes with Clear Pill Badges -->
-            <!-- Europe -->
-            <g transform="translate(120, 40)">
-              <circle cx="0" cy="0" r="3.5" class="node-dest-dot" />
-              <rect x="-35" y="-24" width="70" height="19" class="node-badge-bg" />
-              <text x="0" y="-11.5" text-anchor="middle" class="node-text" data-i18n="route_europe">EUROPE</text>
-            </g>
-
-            <!-- GCC / Gulf -->
-            <g transform="translate(325, 142)">
-              <circle cx="0" cy="0" r="3.5" class="node-dest-dot" />
-              <rect x="8" y="-10" width="80" height="20" class="node-badge-bg" />
-              <text x="48" y="3.5" text-anchor="middle" class="node-text" data-i18n="route_gcc">GCC / GULF</text>
-            </g>
-
-            <!-- North America -->
-            <g transform="translate(50, 75)">
-              <circle cx="0" cy="0" r="3.5" class="node-dest-dot" />
-              <rect x="-42" y="-24" width="96" height="19" class="node-badge-bg" />
-              <text x="6" y="-11.5" text-anchor="middle" class="node-text" data-i18n="route_na">NORTH AMERICA</text>
-            </g>
-
-            <!-- Asia / International -->
-            <g transform="translate(385, 65)">
-              <circle cx="0" cy="0" r="3.5" class="node-dest-dot" />
-              <rect x="-46" y="-24" width="102" height="19" class="node-badge-bg" />
-              <text x="5" y="-11.5" text-anchor="middle" class="node-text" data-i18n="route_asia">ASIA &amp; GLOBAL</text>
-            </g>
-          </svg>
+          <!-- Active Export Destination Pills -->
+          <div class="trade-corridors-list">
+            <div class="trade-corridor-item">
+              <span class="corridor-ping"></span>
+              <span data-i18n="route_europe">EUROPE</span>
+            </div>
+            <div class="trade-corridor-item">
+              <span class="corridor-ping"></span>
+              <span data-i18n="route_gcc">GCC / GULF</span>
+            </div>
+            <div class="trade-corridor-item">
+              <span class="corridor-ping"></span>
+              <span data-i18n="route_na">NORTH AMERICA</span>
+            </div>
+            <div class="trade-corridor-item">
+              <span class="corridor-ping"></span>
+              <span data-i18n="route_asia">ASIA &amp; GLOBAL</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -2956,18 +3001,20 @@
       }, { passive: true });
     }
 
-    // Smart Navbar: Hide on scroll down, show on scroll up
+    // Smart Navbar: Keep completely visible throughout Hero Journey (Chapters 1-5).
+    // Once scrolled past the hero track into Section 02 and below: hide on scroll down, show on scroll up.
     let lastNavScrollY = window.scrollY || window.pageYOffset;
     const navEl = document.querySelector('.site-nav-container');
 
     window.addEventListener('scroll', () => {
       const currentY = window.scrollY || window.pageYOffset;
       const scrollDiff = currentY - lastNavScrollY;
+      const heroDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
+      const isPastHero = currentY >= (heroDistance - 100);
 
-      // Only apply hide/show after passing initial top banner zone (120px)
-      if (currentY > 120) {
+      if (isPastHero) {
         if (scrollDiff > 10) {
-          // Scrolling down - smoothly hide navbar so it never blocks content
+          // Scrolling down in content sections - smoothly hide navbar
           if (navEl && !navEl.classList.contains('nav-hidden')) {
             navEl.classList.add('nav-hidden');
           }
@@ -2983,7 +3030,7 @@
           }
         }
       } else {
-        // At the very top: always keep navbar visible
+        // Within Hero Journey (Chapters 1 to 5): Navbar ALWAYS stays visible & clickable
         if (navEl && navEl.classList.contains('nav-hidden')) {
           navEl.classList.remove('nav-hidden');
         }
