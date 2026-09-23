@@ -1735,22 +1735,22 @@
       .about-visual-col {
         order: 2;
         width: 100%;
-        min-height: 380px;
-        height: 400px;
-        padding: 0 5vw;
+        min-height: 320px;
+        height: 360px;
+        padding: 0 6vw;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
         position: relative;
         overflow: visible;
       }
 
       .about-visual-wrapper {
-        min-height: 380px;
+        min-height: 320px;
         height: 100%;
-        border-radius: 28px;
+        border-radius: 24px;
         overflow: hidden;
-        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(212, 175, 106, 0.35);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 106, 0.4);
       }
 
       /* Override desktop aperture clip-path on mobile so photo shows naturally */
@@ -1758,7 +1758,7 @@
       [dir="rtl"] .about-organic-viewport {
         clip-path: none !important;
         -webkit-clip-path: none !important;
-        border-radius: 28px;
+        border-radius: 24px;
         overflow: hidden;
       }
 
@@ -1768,54 +1768,13 @@
 
       .about-farm-photo {
         height: 100%;
-        object-position: center 60%;
-        border-radius: 28px;
+        object-position: center 65%;
+        border-radius: 24px;
       }
 
-      /* Trade Network Terminal on Mobile: Placed at the bottom of the card like a luxury cockpit HUD */
+      /* Hide trade overlay completely on mobile so the photography is clean and unblocked */
       .trade-network-terminal {
-        top: auto;
-        bottom: 16px;
-        right: 16px;
-        left: 16px;
-        max-width: none;
-        gap: 8px;
-      }
-
-      [dir="rtl"] .trade-network-terminal {
-        right: 16px;
-        left: 16px;
-      }
-
-      .trade-terminal-badge {
-        padding: 8px 14px;
-      }
-
-      .trade-origin-label {
-        font-size: 0.72rem;
-      }
-
-      [dir="rtl"] .trade-origin-label {
-        font-size: 0.78rem;
-      }
-
-      .trade-export-tag {
-        font-size: 0.62rem;
-        padding: 2px 7px;
-      }
-
-      .trade-corridors-list {
-        justify-content: center;
-        gap: 6px;
-      }
-
-      .trade-corridor-item {
-        padding: 5px 11px;
-        font-size: 0.7rem;
-      }
-
-      [dir="rtl"] .trade-corridor-item {
-        font-size: 0.74rem;
+        display: none !important;
       }
     }
   </style>
