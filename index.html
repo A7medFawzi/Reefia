@@ -1155,9 +1155,9 @@
         padding: 4px 3px;
       }
 
-      /* Tailored scroll track height for mobile thumb swipe ergonomics */
+      /* Ample scroll track on mobile so all 5 chapters and transitions complete with generous dwell before Section 02 */
       .scroll-container {
-        height: 290vh;
+        height: 420vh;
       }
     }
 
@@ -2912,10 +2912,10 @@
       const scrollTop = window.scrollY || window.pageYOffset;
       const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
       const rawRatio = heroScrollDistance > 0 ? scrollTop / heroScrollDistance : 0;
-      // Complete all frames comfortably within the first 82% of the hero scroll track,
-      // providing a dedicated resting dwell zone for Chapter 5 (Destination / Global Markets)
-      // before Section 02 arrives.
-      const frameProgress = rawRatio / 0.82;
+      // Complete all 100 frames smoothly by 75% of the hero scroll track.
+      // The remaining 25% provides a dedicated, stable resting zone for Chapter 5 (Destination / Global Markets)
+      // so the user can easily see and read Chapter 5 in its entirety before Section 02 begins to enter.
+      const frameProgress = rawRatio / 0.75;
       return Math.min(Math.max(frameProgress, 0), 1);
     }
 
@@ -2923,8 +2923,8 @@
     chapterItems.forEach(item => {
       item.addEventListener('click', () => {
         const chapterNum = parseInt(item.dataset.chapter, 10);
-        // Fractions scaled with the 0.82 hero animation timeline:
-        const chapterFractions = [0.00, 0.38, 0.55, 0.68, 0.80];
+        // Fractions scaled with the 0.75 hero animation timeline:
+        const chapterFractions = [0.00, 0.28, 0.44, 0.58, 0.72];
         const fraction = chapterFractions[chapterNum - 1];
         const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
         window.scrollTo({
@@ -2941,7 +2941,7 @@
       // When scrolled past the hero canvas into Section 02, smoothly fade out the journey bar & story overlay
       const scrollTop = window.scrollY || window.pageYOffset;
       const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
-      const isPastHero = scrollTop >= (heroScrollDistance - 100);
+      const isPastHero = scrollTop >= (heroScrollDistance - 60);
 
       const navContainerEl = document.querySelector('.site-nav-container');
       if (navContainerEl) {
@@ -2959,10 +2959,10 @@
       // Frame 01 - 36: Egyptian soil, leaves & sweet potato root (Origin)
       // Frame 37 - 60: Washing facility & optical grading conveyor (Selection)
       // Frame 61 - 75: Packing inside ventilated export cartons (Packing)
-      // Frame 76 - 92: Warehouse forklift loading into 40ft reefer truck (Cold Chain)
-      // Frame 93 - 100: Port terminal, container stacking & cargo vessel (Destination)
+      // Frame 76 - 88: Warehouse forklift loading into 40ft reefer truck (Cold Chain)
+      // Frame 89 - 100: Port terminal, container stacking & cargo vessel (Destination)
       let chapter = 1;
-      if (frame >= 93) chapter = 5;
+      if (frame >= 89) chapter = 5;
       else if (frame >= 76) chapter = 4;
       else if (frame >= 61) chapter = 3;
       else if (frame >= 37) chapter = 2;
