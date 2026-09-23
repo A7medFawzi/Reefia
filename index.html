@@ -1154,6 +1154,11 @@
         font-size: 0.7rem;
         padding: 4px 3px;
       }
+
+      /* Tailored scroll track height for mobile thumb swipe ergonomics */
+      .scroll-container {
+        height: 290vh;
+      }
     }
 
     /* ----------------------------------------------------------------
@@ -2993,8 +2998,10 @@
       const progress = getTargetProgress();
       targetIndex = 1 + progress * (frameCount - 1);
 
-      // 0.28 provides lightning-fast direct response with silky interpolation
-      currentRenderIndex += (targetIndex - currentRenderIndex) * 0.28;
+      // Dynamic responsiveness: 0.42 on mobile for immediate thumb response, 0.28 on desktop for silky mouse wheel inertia
+      const isMobile = window.innerWidth <= 860;
+      const lerpSpeed = isMobile ? 0.42 : 0.28;
+      currentRenderIndex += (targetIndex - currentRenderIndex) * lerpSpeed;
       const rounded = Math.min(Math.max(Math.round(currentRenderIndex), 1), frameCount);
 
       const currentScrollY = window.scrollY || window.pageYOffset;
