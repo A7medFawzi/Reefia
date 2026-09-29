@@ -6,7 +6,7 @@
   <title>REEFIYA — Premium Egyptian Produce</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@400;600;700;800;900&family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -64,7 +64,7 @@
       pointer-events: none !important;
     }
 
-    /* Logo Styling: Clean, premium badge integration */
+    /* Logo Styling: Clean, transparent */
     .nav-brand {
       pointer-events: auto;
       display: inline-flex;
@@ -72,26 +72,28 @@
       justify-content: center;
       height: 48px;
       text-decoration: none;
-      background: rgba(255, 255, 255, 0.94);
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       box-sizing: border-box;
     }
 
     .nav-brand:hover {
       transform: translateY(-1.5px) scale(1.02);
-      background: #ffffff;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+      background: transparent;
+      box-shadow: none;
     }
 
     .nav-brand-img {
-      height: 32px;
+      height: 38px; /* Slightly larger since there's no background padding */
       width: auto;
       object-fit: contain;
       display: block;
+      /* Invert the green logo to white and add a subtle drop shadow for clarity */
+      filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.4));
     }
 
     /* Center Pill Menu */
@@ -336,6 +338,8 @@
       z-index: 1;
     }
 
+
+
     canvas {
       display: block;
       width: 100vw;
@@ -503,10 +507,13 @@
     }
 
     /* Flip navigation and action SVG arrows in Arabic to point naturally left-upward */
-    [dir="rtl"] .quote-pill-btn svg,
-    [dir="rtl"] .skip-to-produce-btn span[aria-hidden="true"] {
+    [dir="rtl"] .quote-pill-btn svg {
       transform: scaleX(-1);
       display: inline-block;
+    }
+
+    [dir="rtl"] .skip-to-produce-btn {
+      padding: 6px 20px 6px 6px;
     }
 
     .hero-actions {
@@ -572,6 +579,10 @@
       pointer-events: none;
       visibility: hidden;
     }
+    
+    .journey-bottom.fade-out * {
+      pointer-events: none !important;
+    }
 
     .story-container.fade-out {
       opacity: 0;
@@ -623,20 +634,44 @@
     }
 
     .skip-to-produce-btn {
-      color: var(--color-cream);
+      color: #ffffff;
+      background: #101c13;
       text-decoration: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-      padding-bottom: 2px;
-      transition: border-color 0.2s ease, color 0.2s ease;
+      border: 1px solid rgba(181, 112, 40, 0.4);
+      border-radius: 999px;
+      padding: 6px 6px 6px 20px;
+      transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 12px;
       cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
     }
 
     .skip-to-produce-btn:hover {
-      color: #fff;
-      border-bottom-color: #fff;
+      background: #18281a;
+      border-color: #B57028;
+      transform: translateY(-2px);
+    }
+
+    @keyframes goldPulse {
+      0% { box-shadow: 0 0 0 0 rgba(181, 112, 40, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(181, 112, 40, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(181, 112, 40, 0); }
+    }
+
+    .skip-btn-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(181, 112, 40, 0.2);
+      color: #db9c5b;
+      animation: goldPulse 2s infinite;
     }
 
     .progress-track {
@@ -687,19 +722,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 18px 36px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 999px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 50px rgba(109, 196, 85, 0.25);
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
       margin-bottom: 28px;
     }
 
     .loader-logo-img {
-      height: 44px;
+      height: 52px; /* Made slightly larger since it has no background padding */
       width: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.12));
+      /* Invert the green logo to white and add a subtle drop shadow */
+      filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,0.4));
     }
 
     .loader-progress-track {
@@ -1162,336 +1198,701 @@
     }
 
     /* ----------------------------------------------------------------
+
        SECTION 02: ABOUT REEFIYA (Rooted in Egypt. Built for Global Trade)
+
        Editorial B2B Agricultural Export Aesthetic
+
        ---------------------------------------------------------------- */
+
     .about-reefiya-section {
+
       position: relative;
+
       width: 100%;
+
       min-height: 100vh;
+
       background-color: #f7f4ed;
+
       background-image: url('./about-bg-map.png');
+
       background-size: cover;
+
       background-position: center right;
+
       background-repeat: no-repeat;
+
       color: #172d1a;
+
       z-index: 10;
+
       overflow: hidden;
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
+
       border-top: 1px solid rgba(176, 130, 61, 0.22);
+
       box-shadow: 0 -20px 40px rgba(8, 16, 10, 0.35);
+
     }
+
+
 
     /* Ambient Warm Vignette Layer - subtle to let the world map appear crisp and clear */
+
     .about-reefiya-section::before {
+
       content: '';
+
       position: absolute;
+
       inset: 0;
+
       background: radial-gradient(circle at 30% 45%, rgba(247, 244, 237, 0.45) 0%, rgba(247, 244, 237, 0.1) 65%, rgba(225, 215, 196, 0.35) 100%);
+
       pointer-events: none;
+
       z-index: 1;
+
     }
+
+
 
     .about-reefiya-container {
+
       position: relative;
+
       width: 100%;
+
       flex: 1 1 auto;
+
       display: grid;
+
       grid-template-columns: 48% 52%;
+
       min-height: 100vh;
+
       align-items: stretch;
+
       z-index: 2;
+
     }
+
+
 
     /* Left Content Column (~46-48%) */
+
     .about-content-col {
+
       position: relative;
+
       z-index: 3;
+
       padding: clamp(60px, 7vh, 100px) clamp(36px, 5.5vw, 84px);
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
+
       max-width: 640px;
+
     }
+
+
 
     /* 02 — ABOUT REEFIYA Section Identifier */
+
     .about-section-badge {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 12px;
+
       margin-bottom: 14px;
+
       opacity: 0;
+
       transform: translateY(18px);
+
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
     }
+
+
 
     .about-badge-num {
+
       font-size: 0.84rem;
+
       font-weight: 700;
+
       letter-spacing: 0.16em;
+
       color: #8c6838;
+
       font-family: var(--font-sans);
+
     }
+
+
 
     .about-badge-line {
+
       display: inline-block;
+
       width: 28px;
+
       height: 1px;
+
       background: #c5a368;
+
     }
+
+
 
     .about-badge-text {
+
       font-size: 0.78rem;
+
       letter-spacing: 0.22em;
+
       font-weight: 700;
+
       text-transform: uppercase;
+
       color: #2b452f;
+
       font-family: var(--font-sans);
+
     }
+
+
 
     /* Eyebrow: EGYPTIAN ORIGIN. GLOBAL OUTLOOK. */
+
     .about-subheading-tag {
+
       font-size: 0.82rem;
+
       letter-spacing: 0.2em;
+
       text-transform: uppercase;
+
       font-weight: 700;
+
       color: #8c6838;
+
       margin-bottom: 16px;
+
       line-height: 1.4;
+
       font-family: var(--font-sans);
+
       opacity: 0;
+
       transform: translateY(20px);
+
       transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+
     }
+
+
 
     /* Main Headline: Rooted in Egypt. / Built for global trade. */
+
     .about-title {
+
       font-family: var(--font-heading);
+
       font-size: clamp(2.3rem, 3.8vw, 3.8rem);
+
       line-height: 1.12;
+
       font-weight: 600;
+
       letter-spacing: -0.02em;
+
       margin-bottom: 22px;
+
     }
+
+
 
     .about-title-line1 {
+
       display: block;
+
       color: #17381d; /* Deep REEFIYA green */
+
       opacity: 0;
+
       transform: translateY(24px);
+
       transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+
     }
+
+
 
     .about-title-line2 {
+
       display: block;
+
       font-style: italic;
+
       font-weight: 400;
+
       color: #b0823d; /* Warm gold */
+
       opacity: 0;
+
       transform: translateY(24px);
+
       transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+
     }
+
+
 
     [dir="rtl"] .about-title {
+
       font-family: 'Alexandria', 'Cairo', serif;
+
       font-size: clamp(2rem, 3.4vw, 3.2rem);
+
       line-height: 1.42;
+
       font-weight: 800;
+
       letter-spacing: normal;
+
       margin-bottom: 20px;
+
     }
+
+
 
     [dir="rtl"] .about-title-line1 {
+
       color: #112a15;
+
     }
+
+
 
     [dir="rtl"] .about-title-line2 {
+
       font-style: normal;
+
       font-weight: 700;
+
       color: #b0823d;
+
       margin-top: 4px;
+
     }
+
+
 
     [dir="rtl"] .about-subheading-tag {
+
       font-family: 'Cairo', sans-serif;
+
       font-weight: 800;
+
       font-size: 0.92rem;
+
       letter-spacing: normal;
+
       color: #8c6838;
+
       margin-bottom: 14px;
+
     }
+
+
 
     [dir="rtl"] .about-badge-text {
+
       font-family: 'Cairo', sans-serif;
+
       font-weight: 800;
+
       letter-spacing: 0.08em;
+
       font-size: 0.85rem;
+
     }
+
+
 
     /* Body Paragraphs */
+
     .about-paragraphs {
+
       display: flex;
+
       flex-direction: column;
+
       gap: 16px;
+
       font-size: clamp(0.96rem, 1.1vw, 1.05rem);
+
       line-height: 1.76;
+
       color: #2e3e32;
+
       margin-bottom: 30px;
+
       font-family: var(--font-sans);
+
       opacity: 0;
+
       transform: translateY(22px);
+
       transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+
     }
+
+
 
     [dir="rtl"] .about-paragraphs {
+
       font-family: 'Cairo', sans-serif;
+
       font-size: clamp(1.02rem, 1.15vw, 1.12rem);
+
       line-height: 1.95;
+
       font-weight: 500;
+
       color: #213524;
+
       text-align: justify;
+
       text-justify: kashida;
+
     }
+
+
 
     /* CTA: Discover REEFIYA ↗ (Refined text-link with thin underline) */
+
     .about-cta-wrap {
+
       opacity: 0;
+
       transform: translateY(20px);
+
       transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+
     }
+
+
 
     .about-link-action {
+
       display: inline-flex;
+
       align-items: center;
-      gap: 8px;
-      font-size: 0.96rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: #17381d;
+
+      gap: 12px;
+
+      font-size: 0.98rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.03em;
+
+      color: #ffffff;
+
+      background: linear-gradient(135deg, #17381d 0%, #25542b 100%);
+
       text-decoration: none;
-      padding-bottom: 5px;
-      border-bottom: 1.2px solid #b0823d;
+
+      padding: 12px 24px;
+
+      border-radius: 999px;
+
+      border: 1px solid rgba(212, 175, 106, 0.4);
+
+      box-shadow: 0 6px 20px rgba(23, 56, 29, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
       width: fit-content;
-      transition: all 0.28s ease;
+
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
       cursor: pointer;
+
     }
+
+
 
     [dir="rtl"] .about-link-action {
+
       font-family: 'Cairo', sans-serif;
+
       font-weight: 700;
-      font-size: 1.02rem;
+
+      font-size: 1.04rem;
+
       letter-spacing: normal;
+
+      padding: 10px 24px 12px 24px;
+
     }
 
-    .about-link-action span:last-child {
-      font-size: 1rem;
-      transition: transform 0.25s ease;
-      color: #b0823d;
+
+
+    .about-link-action .cta-arrow {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 26px;
+
+      height: 26px;
+
+      border-radius: 50%;
+
+      background: rgba(212, 175, 106, 0.22);
+
+      color: #f7d28b;
+
+      font-size: 0.92rem;
+
+      line-height: 1;
+
+      transition: all 0.3s ease;
+
+      border: 1px solid rgba(212, 175, 106, 0.45);
+
     }
+
+
 
     .about-link-action:hover {
-      color: #b0823d;
-      border-bottom-color: #17381d;
+
+      background: linear-gradient(135deg, #1f4b27 0%, #2f6838 100%);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 10px 26px rgba(23, 56, 29, 0.38), 0 0 15px rgba(212, 175, 106, 0.3);
+
+      border-color: rgba(212, 175, 106, 0.7);
+
+      color: #ffffff;
+
     }
 
-    .about-link-action:hover span:last-child {
+
+
+    .about-link-action:hover .cta-arrow {
+
+      background: #d4af6a;
+
+      color: #17381d;
+
       transform: translate(3px, -3px);
+
     }
 
-    [dir="rtl"] .about-link-action:hover span:last-child {
+
+
+    [dir="rtl"] .about-link-action:hover .cta-arrow {
+
       transform: translate(-3px, -3px);
+
     }
+
+
 
     /* Right Visual Column (~48-52%) */
+
     .about-visual-col {
+
       position: relative;
+
       width: 100%;
+
       height: 100%;
+
       min-height: 480px;
+
       overflow: hidden;
+
       display: flex;
+
       align-items: stretch;
+
       justify-content: flex-end;
+
     }
+
+
 
     /* SVG Organic Mask Container with Flowing Curved Left Edge */
+
     .about-visual-wrapper {
+
       position: relative;
+
       width: 100%;
+
       height: 100%;
+
       min-height: 480px;
+
       overflow: hidden;
+
       opacity: 0;
+
       transform: translateY(30px) scale(0.98);
+
       transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+
     }
+
+
 
     /* Organic flowing shape: clip-path using SVG url */
+
     .about-organic-viewport {
+
       position: absolute;
+
       inset: 0;
+
       width: 100%;
+
       height: 100%;
+
       clip-path: url(#organicApertureClip);
+
       -webkit-clip-path: url(#organicApertureClip);
+
       overflow: hidden;
+
     }
+
+
 
     [dir="rtl"] .about-organic-viewport {
+
       clip-path: url(#organicApertureClipRTL);
+
       -webkit-clip-path: url(#organicApertureClipRTL);
+
     }
+
+
 
     .about-farm-photo {
+
       width: 100%;
+
       height: 112%;
+
       object-fit: cover;
+
       object-position: center 58%;
+
       transform: translateY(0px) scale(1.02);
+
       transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
       will-change: transform;
+
     }
+
+
 
     /* Subtle Gold Accent Outline following the curved edge */
+
     .about-gold-contour-svg {
+
       position: absolute;
+
       inset: 0;
+
       width: 100%;
+
       height: 100%;
+
       pointer-events: none;
+
       z-index: 4;
+
     }
+
+
 
     [dir="rtl"] .about-gold-contour-svg {
+
       transform: scaleX(-1);
+
     }
+
+
 
     .gold-contour-path {
+
       fill: none;
+
       stroke: #d4af6a;
+
       stroke-width: 1.2px;
+
       opacity: 0.75;
+
       filter: drop-shadow(0 0 4px rgba(212, 175, 106, 0.4));
+
     }
+
+
 
     /* Subtle Cinematic Lighting Gradient over farm photo */
+
     .about-photo-gradient {
+
       position: absolute;
+
       inset: 0;
+
       background: linear-gradient(
+
         180deg,
+
         rgba(247, 244, 237, 0.22) 0%,
+
         rgba(247, 244, 237, 0) 35%,
+
         rgba(13, 30, 18, 0.2) 75%,
+
         rgba(13, 30, 18, 0.5) 100%
+
       );
+
       pointer-events: none;
+
       z-index: 2;
+
     }
 
-    /* Luxury Trade Network Terminal: Elegant Floating Glass HUD Badge */
+
+
     .trade-network-terminal {
       position: absolute;
       top: 32px;
@@ -1499,289 +1900,2474 @@
       z-index: 6;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      max-width: 320px;
+      gap: 0;
+      width: 440px; /* slightly wider to comfortably fit long names like USA in Arabic */
       pointer-events: auto;
       opacity: 0;
       transform: translateY(-16px);
       transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+      
+      /* Sleek Glassmorphism Bento Card */
+      background: rgba(14, 28, 18, 0.65);
+      backdrop-filter: blur(30px) saturate(120%);
+      -webkit-backdrop-filter: blur(30px) saturate(120%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      padding: 24px;
+      overflow: hidden;
     }
+
+    .trade-network-terminal::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 50% 0%, rgba(212, 175, 106, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+
 
     [dir="rtl"] .trade-network-terminal {
-      right: auto;
       left: 36px;
+      right: auto;
+      width: 440px; /* Reverted width to avoid clipping on the left edge */
     }
 
+
+
     .about-reefiya-section.is-revealed .trade-network-terminal {
+
       opacity: 1;
+
       transform: translateY(0);
+
     }
+
+
 
     .trade-terminal-badge {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding: 10px 18px;
-      background: rgba(13, 30, 18, 0.72);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid rgba(212, 175, 106, 0.35);
-      border-radius: 999px;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      gap: 14px;
+      padding: 0 0 20px 0;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 24px;
     }
+
+
+
+    [dir="rtl"] .trade-terminal-badge {
+
+      flex-direction: row;
+
+    }
+
+
 
     .trade-origin-status {
+
       display: inline-flex;
+
       align-items: center;
-      gap: 8px;
+
+      gap: 9px;
+
     }
+
+
 
     .trade-origin-pulse-dot {
+
       position: relative;
-      width: 9px;
-      height: 9px;
+
+      width: 8px;
+
+      height: 8px;
+
       border-radius: 50%;
+
       background: #f47d2d;
+
       box-shadow: 0 0 10px #f47d2d;
+
     }
+
+
 
     .trade-origin-pulse-dot::after {
+
       content: '';
+
       position: absolute;
+
       inset: -4px;
+
       border-radius: 50%;
+
       border: 1.5px solid #f47d2d;
+
       animation: originRadar 2s infinite cubic-bezier(0.25, 1, 0.5, 1);
+
     }
+
+
 
     @keyframes originRadar {
+
       0% { transform: scale(0.8); opacity: 1; }
+
       100% { transform: scale(2.2); opacity: 0; }
+
     }
+
+
 
     .trade-origin-label {
-      font-size: 0.75rem;
+
+      font-size: 0.74rem;
+
       font-weight: 800;
+
       letter-spacing: 0.12em;
+
       color: #ffffff;
+
       text-transform: uppercase;
+
       font-family: var(--font-sans);
+
     }
+
+
 
     [dir="rtl"] .trade-origin-label {
+
       font-family: 'Cairo', sans-serif;
+
       font-size: 0.82rem;
+
       letter-spacing: normal;
+
+      font-weight: 700;
+
     }
+
+
 
     .trade-export-tag {
-      font-size: 0.65rem;
-      font-weight: 700;
+
+      font-size: 0.64rem;
+
+      font-weight: 800;
+
       letter-spacing: 0.08em;
-      padding: 3px 8px;
-      background: rgba(212, 175, 106, 0.2);
-      border: 1px solid rgba(212, 175, 106, 0.45);
+
+      padding: 3px 9px;
+
+      background: rgba(212, 175, 106, 0.22);
+
+      border: 1px solid rgba(212, 175, 106, 0.5);
+
       border-radius: 6px;
+
       color: #f7d28b;
+
       text-transform: uppercase;
+
     }
+
+
 
     [dir="rtl"] .trade-export-tag {
+
       font-family: 'Cairo', sans-serif;
-      font-size: 0.72rem;
+
+      font-size: 0.70rem;
+
       letter-spacing: normal;
+
+      font-weight: 700;
+
     }
 
-    /* Destination corridors grid */
+
+
+    /* Executive Global Trade Corridors Grid */
     .trade-corridors-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      justify-content: flex-end;
-    }
-
-    [dir="rtl"] .trade-corridors-list {
-      justify-content: flex-start;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      width: 100%;
     }
 
     .trade-corridor-item {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 13px;
-      background: rgba(13, 30, 18, 0.62);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 999px;
-      color: rgba(255, 255, 255, 0.92);
-      font-size: 0.73rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
-      transition: all 0.25s ease;
+      justify-content: flex-start;
+      gap: 10px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      color: #FAF6ED;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: default;
+      white-space: nowrap;
     }
+
+
 
     [dir="rtl"] .trade-corridor-item {
       font-family: 'Cairo', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.72rem; /* Reduced font size to perfectly fit long names on one line */
+      font-weight: 700;
       letter-spacing: normal;
+      flex-direction: row;
+      gap: 8px; /* Reduced gap slightly */
+      padding: 10px 12px; /* Reduced padding slightly to give more room */
+      white-space: nowrap; 
+    }
+
+    .trade-corridor-item.is-hq {
+      background: rgba(212, 175, 106, 0.15);
+      border-color: rgba(212, 175, 106, 0.3);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .trade-corridor-item:hover {
-      background: rgba(22, 50, 30, 0.85);
-      border-color: rgba(212, 175, 106, 0.6);
+      background: rgba(212, 175, 106, 0.12);
+      border-color: rgba(212, 175, 106, 0.4);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
       color: #ffffff;
     }
 
-    .corridor-ping {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #6dc455;
-      box-shadow: 0 0 6px #6dc455;
+
+
+    .branch-flag-img-wrap {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 22px;
+
+      height: 15px;
+
+      border-radius: 3px;
+
+      overflow: hidden;
+
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+
+      border: 1px solid rgba(255, 255, 255, 0.25);
+
+      flex-shrink: 0;
+
+      background: rgba(0, 0, 0, 0.3);
+
     }
+
+
+
+    .branch-real-flag {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
+
+
+    .corridor-ping {
+
+      width: 7px;
+
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #52c41a;
+
+      box-shadow: 0 0 8px #52c41a, 0 0 14px rgba(82, 196, 26, 0.6);
+
+      flex-shrink: 0;
+
+    }
+
+
+
+    .trade-corridor-item.is-hq .corridor-ping {
+
+      background: #f7d28b;
+
+      box-shadow: 0 0 8px #f7d28b, 0 0 14px rgba(247, 210, 139, 0.6);
+
+    }
+
+
+
+    .branch-name {
+
+      display: inline-block;
+
+      line-height: 1.2;
+
+      color: #FAF6ED;
+
+    }
+
+
+
+    .branch-hq-tag {
+
+      font-size: 0.62rem;
+
+      font-weight: 800;
+
+      padding: 2px 6px;
+
+      background: rgba(212, 175, 106, 0.25);
+
+      border: 1px solid rgba(212, 175, 106, 0.7);
+
+      border-radius: 4px;
+
+      color: #f7d28b;
+
+      margin-inline-start: auto;
+
+      letter-spacing: 0.04em;
+
+      white-space: nowrap;
+
+      line-height: 1.2;
+
+    }
+
+
+
+    [dir="rtl"] .branch-hq-tag {
+
+      font-family: 'Cairo', sans-serif;
+
+      font-size: 0.66rem;
+
+      letter-spacing: normal;
+
+    }
+
+
 
     /* Section Entry Trigger States */
+
     .about-reefiya-section.is-revealed .about-section-badge,
+
     .about-reefiya-section.is-revealed .about-subheading-tag,
+
     .about-reefiya-section.is-revealed .about-title-line1,
+
     .about-reefiya-section.is-revealed .about-title-line2,
+
     .about-reefiya-section.is-revealed .about-paragraphs,
+
     .about-reefiya-section.is-revealed .about-cta-wrap,
+
     .about-reefiya-section.is-revealed .about-visual-wrapper {
+
       opacity: 1;
+
       transform: translate(0, 0) scale(1);
+
     }
+
+
 
     /* -------------------------------------------
+
        Responsive Adaptations
+
        ------------------------------------------- */
+
     /* Tablet (<= 1024px) */
+
     @media (max-width: 1024px) {
+
       .about-reefiya-container {
+
         grid-template-columns: 50% 50%;
+
       }
+
+
 
       .about-title {
+
         font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+
       }
+
+
 
       .about-content-col {
+
         padding: 50px 4vw;
+
       }
+
+
 
       .trade-network-terminal {
+
         top: 24px;
+
         right: 24px;
+
         max-width: 280px;
+
       }
 
+
+
       [dir="rtl"] .trade-network-terminal {
+
         right: auto;
+
         left: 24px;
+
+      }
+
+    }
+
+
+
+    /* Mobile (<= 860px): Luxury Editorial Mobile Layout */
+
+    @media (max-width: 860px) {
+
+      .about-reefiya-section {
+
+        min-height: auto;
+
+        padding-top: 40px;
+
+        padding-bottom: 60px;
+
+      }
+
+
+
+      .about-reefiya-container {
+
+        display: flex;
+
+        flex-direction: column;
+
+        min-height: auto;
+
+        gap: 28px;
+
+      }
+
+
+
+      .about-content-col {
+
+        padding: 40px 6vw 0 6vw;
+
+        max-width: 100%;
+
+        order: 1;
+
+      }
+
+
+
+      .about-title {
+
+        font-size: clamp(2rem, 8vw, 2.6rem);
+
+        line-height: 1.35;
+
+        margin-bottom: 18px;
+
+      }
+
+
+
+      [dir="rtl"] .about-title {
+
+        font-size: clamp(1.9rem, 7.5vw, 2.5rem);
+
+        line-height: 1.45;
+
+        margin-bottom: 18px;
+
+      }
+
+
+
+      .about-paragraphs {
+
+        font-size: 0.98rem;
+
+        line-height: 1.75;
+
+        margin-bottom: 24px;
+
+        gap: 14px;
+
+      }
+
+
+
+      [dir="rtl"] .about-paragraphs {
+
+        font-size: 1.02rem;
+
+        line-height: 1.85;
+
+      }
+
+
+
+      .about-cta-wrap {
+
+        margin-bottom: 10px;
+
+      }
+
+
+
+      /* Photo Column on Mobile: Full-width luxury organic card with curved border */
+
+      .about-visual-col {
+
+        order: 2;
+
+        width: 100%;
+
+        min-height: 320px;
+
+        height: 360px;
+
+        padding: 0 6vw;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        position: relative;
+
+        overflow: visible;
+
+      }
+
+
+
+      .about-visual-wrapper {
+
+        min-height: 320px;
+
+        height: 100%;
+
+        border-radius: 24px;
+
+        overflow: hidden;
+
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 106, 0.4);
+
+      }
+
+
+
+      /* Override desktop aperture clip-path on mobile so photo shows naturally */
+
+      .about-organic-viewport,
+
+      [dir="rtl"] .about-organic-viewport {
+
+        clip-path: none !important;
+
+        -webkit-clip-path: none !important;
+
+        border-radius: 24px;
+
+        overflow: hidden;
+
+      }
+
+
+
+      .about-gold-contour-svg {
+
+        display: none;
+
+      }
+
+
+
+      .about-farm-photo {
+
+        height: 100%;
+
+        object-position: center 65%;
+
+        border-radius: 24px;
+
+      }
+
+
+
+      /* Hide trade overlay completely on mobile so the photography is clean and unblocked */
+
+      .trade-network-terminal {
+
+        display: none !important;
+
+      }
+
+    }
+
+
+
+    /* =============================================================
+       SECTION 03 — HERO PRODUCE: EGYPTIAN SWEET POTATOES
+       ============================================================= */
+    .produce-hero-section {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      width: 100%;
+      min-height: 940px;
+      max-height: 1080px;
+      background-color: #052C20;
+      background-image: url('./section3-clean-bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      color: #FAF6ED;
+      padding: clamp(65px, 7.5vh, 85px) 5.5vw 20px 5.5vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      z-index: 20;
+    }
+
+    /* Ambient dark overlay gradient ensuring readability on left without over-darkening hero potatoes */
+    .produce-hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(3, 26, 18, 0.94) 0%, rgba(4, 30, 22, 0.86) 38%, rgba(5, 38, 28, 0.42) 58%, rgba(5, 44, 32, 0.08) 80%, transparent 100%),
+                  linear-gradient(180deg, rgba(3, 24, 17, 0.4) 0%, transparent 22%, rgba(2, 18, 13, 0.72) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* RTL Hero Section: Mirrored background so potatoes are on the left, dark soil on the right */
+    [dir="rtl"] .produce-hero-section {
+      background-image: url('./section3-clean-bg-rtl.jpg');
+    }
+
+    /* In RTL: Dark reading gradient starts from RIGHT to ensure text legibility */
+    [dir="rtl"] .produce-hero-section::before {
+      background: linear-gradient(270deg, rgba(3, 26, 18, 0.94) 0%, rgba(4, 30, 22, 0.86) 38%, rgba(5, 38, 28, 0.42) 58%, rgba(5, 44, 32, 0.08) 80%, transparent 100%),
+                  linear-gradient(180deg, rgba(3, 24, 17, 0.4) 0%, transparent 22%, rgba(2, 18, 13, 0.72) 100%);
+    }
+
+    /* Top Corner Decorative Slogan: Rich, bold, and clear */
+    .produce-top-slogan {
+      position: absolute;
+      top: clamp(26px, 3.8vh, 38px);
+      right: 5.5vw;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #dfb26c;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+      z-index: 10;
+    }
+
+    [dir="rtl"] .produce-top-slogan {
+      right: auto;
+      left: 5.5vw;
+      letter-spacing: normal;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    /* UPPER HERO COMPOSITION (~54% of visual weight) */
+    .produce-hero-top {
+      position: relative;
+      width: 100%;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      z-index: 6;
+      margin-bottom: 6px;
+    }
+
+    /* Left Editorial Story */
+    .produce-hero-intro {
+      width: 44%;
+      max-width: 530px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 5;
+    }
+
+    [dir="rtl"] .produce-hero-intro {
+      text-align: right;
+      align-items: flex-start;
+    }
+
+    /* Section Badge: 03 — OUR HERO PRODUCE */
+    .produce-section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0px;
+    }
+
+    .produce-badge-num {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #d4af6a;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .produce-badge-line {
+      display: inline-block;
+      width: 38px;
+      height: 1px;
+      background: #d4af6a;
+      opacity: 0.6;
+    }
+
+    .produce-badge-text {
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #d4af6a;
+    }
+
+    [dir="rtl"] .produce-badge-text {
+      font-family: 'Cairo', sans-serif;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      font-size: 0.86rem;
+    }
+
+    /* Eyebrow Label */
+    .produce-eyebrow-tag {
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #d4af6a;
+      text-transform: uppercase;
+      margin-top: 2px;
+      margin-bottom: -2px;
+    }
+
+    [dir="rtl"] .produce-eyebrow-tag {
+      font-family: 'Cairo', sans-serif;
+      font-weight: 800;
+      font-size: 0.90rem;
+      letter-spacing: normal;
+      color: #dfb26c;
+    }
+
+    /* Main Editorial Headline */
+    .produce-headline {
+      margin: 0;
+      letter-spacing: -0.015em;
+    }
+
+    .produce-hl-main {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 3.6vw, 3.75rem);
+      line-height: 1.08;
+      font-weight: 500;
+      color: #FAF6ED;
+    }
+
+    [dir="rtl"] .produce-hl-main {
+      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.2rem, 3.2vw, 3.1rem);
+      line-height: 1.35;
+      letter-spacing: normal;
+      color: #FAF6ED;
+    }
+
+    .produce-hl-sub {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2.0vw, 1.95rem);
+      line-height: 1.25;
+      font-style: italic;
+      font-weight: 400;
+      color: #d4af6a;
+      margin-top: 4px;
+      letter-spacing: 0.01em;
+    }
+
+    [dir="rtl"] .produce-hl-sub {
+      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: clamp(1.35rem, 1.85vw, 1.7rem);
+      line-height: 1.4;
+      color: #dfb26c;
+      margin-top: 6px;
+      letter-spacing: normal;
+    }
+
+    /* Body Copy */
+    .produce-body-copy {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      line-height: 1.58;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 485px;
+      margin: 4px 0 8px 0;
+    }
+
+    [dir="rtl"] .produce-body-copy {
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(0.98rem, 1.1vw, 1.06rem);
+      line-height: 1.85;
+      font-weight: 500;
+      color: rgba(250, 246, 237, 0.92);
+      max-width: 510px;
+    }
+
+    /* Refined CTA: Gold Underline + Interactive Diagonal Arrow */
+    .produce-cta-wrap {
+      display: inline-flex;
+      align-items: flex-start;
+      margin-top: 6px;
+      width: fit-content;
+    }
+
+    .produce-explore-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #d4af6a;
+      background: rgba(212, 175, 106, 0.05);
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: 0.05em;
+      padding: 14px 28px;
+      border-radius: 50px;
+      border: 1px solid rgba(212, 175, 106, 0.4);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-transform: uppercase;
+    }
+
+    [dir="rtl"] .produce-explore-link {
+      font-family: 'Cairo', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: normal;
+      padding: 12px 26px;
+    }
+
+    .produce-explore-link:hover {
+      background: rgba(212, 175, 106, 0.15);
+      border-color: rgba(212, 175, 106, 0.8);
+      color: #f7e2a9;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 175, 106, 0.2);
+    }
+
+    [dir="rtl"] .produce-explore-link:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Right Hero Visual Column & Handwritten Annotation (3 Stacked Lines) */
+    .produce-hero-visual-col {
+      width: 52%;
+      height: 380px;
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+
+    .produce-handwritten-note {
+      position: absolute;
+      bottom: 30px;
+      right: clamp(15px, 4vw, 55px);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #f7e2a9;
+      transform: rotate(-3.5deg);
+      z-index: 10;
+    }
+
+    [dir="rtl"] .produce-handwritten-note {
+      left: auto;
+      right: clamp(15px, 4vw, 55px);
+      bottom: 30px;
+      transform: rotate(3.5deg);
+      flex-direction: row-reverse;
+    }
+
+    .hw-arrow-svg {
+      width: 22px;
+      height: 22px;
+      margin-top: 4px;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.8));
+      flex-shrink: 0;
+    }
+
+    [dir="rtl"] .hw-arrow-svg {
+      transform: scaleX(-1);
+    }
+
+    .hw-lines {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.0;
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: #f7e2a9;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 14px rgba(5, 44, 32, 0.85);
+    }
+
+    [dir="rtl"] .hw-lines {
+      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      line-height: 1.25;
+      text-align: right;
+    }
+
+    .hw-lines span {
+      display: block;
+    }
+
+
+
+    /* Subtle Minimalist Navigation Arrows */
+    .varieties-nav-arrow {
+      position: absolute;
+      top: 48%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(5, 44, 32, 0.65);
+      border: 1px solid rgba(212, 175, 106, 0.4);
+      color: rgba(212, 175, 106, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 15;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .varieties-nav-arrow:hover {
+      background: #d4af6a;
+      border-color: #f7e2a9;
+      color: #052C20;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 16px rgba(212, 175, 106, 0.4);
+    }
+
+    .varieties-prev { left: -14px; }
+    .varieties-next { right: -14px; }
+
+    [dir="rtl"] .varieties-prev { left: auto; right: -14px; transform: translateY(-50%) rotate(180deg); }
+    [dir="rtl"] .varieties-next { right: auto; left: -14px; transform: translateY(-50%) rotate(180deg); }
+    [dir="rtl"] .varieties-prev:hover { transform: translateY(-50%) rotate(180deg) scale(1.1); }
+    [dir="rtl"] .varieties-next:hover { transform: translateY(-50%) rotate(180deg) scale(1.1); }
+
+    /* Compact & Balanced Carousel Stage */
+    .produce-showcase-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1140px;
+      margin: -8px auto 0 auto;
+      z-index: 8;
+      overflow: visible;
+    }
+
+    /* 3 Stage Positions Track (Tightened height) */
+    .produce-carousel-track {
+      position: relative;
+      width: 100%;
+      height: 330px;
+      margin: 0 auto;
+    }
+
+    /* Perfectly Proportioned Editorial Cards */
+    .variety-item {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: clamp(290px, 29vw, 360px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 18px 22px 22px 22px;
+      border-radius: 22px;
+      border: 1px solid transparent;
+      box-sizing: border-box;
+      cursor: pointer;
+      will-change: transform, opacity, background-color, border-color, box-shadow;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  background 0.5s ease,
+                  border-color 0.5s ease,
+                  box-shadow 0.65s ease;
+    }
+
+    /* Position: CENTER (Active Featured Slot: Luxurious Emerald Glass & Gold Border) */
+    .variety-item.pos-center {
+      transform: translate3d(-50%, -6px, 0) scale(1);
+      z-index: 10;
+      opacity: 1;
+      background: rgba(6, 36, 26, 0.52);
+      border-color: rgba(194, 151, 81, 0.36);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 106, 0.08);
+      pointer-events: auto;
+    }
+
+    /* Position: LEFT (Secondary Slot) */
+    .variety-item.pos-left {
+      transform: translate3d(calc(-50% - clamp(265px, 26vw, 340px)), 10px, 0) scale(0.92);
+      z-index: 4;
+      opacity: 0.85;
+      background: transparent;
+      border-color: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: none;
+    }
+
+    .variety-item.pos-left:hover {
+      opacity: 1;
+      transform: translate3d(calc(-50% - clamp(265px, 26vw, 340px)), 4px, 0) scale(0.94);
+    }
+
+    /* Position: RIGHT (Secondary Slot) */
+    .variety-item.pos-right {
+      transform: translate3d(calc(-50% + clamp(265px, 26vw, 340px)), 10px, 0) scale(0.92);
+      z-index: 4;
+      opacity: 0.85;
+      background: transparent;
+      border-color: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: none;
+    }
+
+    .variety-item.pos-right:hover {
+      opacity: 1;
+      transform: translate3d(calc(-50% + clamp(265px, 26vw, 340px)), 4px, 0) scale(0.94);
+    }
+
+    /* RTL Support */
+    [dir="rtl"] .variety-item.pos-left {
+      transform: translate3d(calc(-50% + clamp(265px, 26vw, 340px)), 10px, 0) scale(0.92);
+    }
+    [dir="rtl"] .variety-item.pos-left:hover {
+      transform: translate3d(calc(-50% + clamp(265px, 26vw, 340px)), 4px, 0) scale(0.94);
+    }
+    [dir="rtl"] .variety-item.pos-right {
+      transform: translate3d(calc(-50% - clamp(265px, 26vw, 340px)), 10px, 0) scale(0.92);
+    }
+    [dir="rtl"] .variety-item.pos-right:hover {
+      transform: translate3d(calc(-50% - clamp(265px, 26vw, 340px)), 4px, 0) scale(0.94);
+    }
+
+    /* Meta: 01 — CATEGORY */
+    .variety-header-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+
+    .variety-num {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #d4af6a;
+      letter-spacing: 0.04em;
+    }
+
+    .variety-num-sep {
+      display: inline-block;
+      width: 22px;
+      height: 1px;
+      background: #d4af6a;
+      opacity: 0.55;
+    }
+
+    .variety-category-tag {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #d4af6a;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    [dir="rtl"] .variety-category-tag {
+      font-family: 'Cairo', sans-serif;
+      letter-spacing: 0.02em;
+      font-size: 0.72rem;
+    }
+
+    /* Photo Stage: Proportioned & Centered */
+    .variety-photo-stage {
+      position: relative;
+      width: 100%;
+      height: 125px; /* Reduced to match smaller image */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2px 0 10px 0;
+    }
+
+    .product-base-glow {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75%;
+      height: 34px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.75) 0%, rgba(212, 175, 106, 0.12) 40%, transparent 75%);
+      filter: blur(10px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .product-base-glow.active-glow {
+      width: 85%;
+      height: 44px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.85) 0%, rgba(212, 175, 106, 0.22) 45%, transparent 75%);
+      filter: blur(12px);
+    }
+
+    /* Product Image */
+    .variety-product-img {
+      position: relative;
+      z-index: 2;
+      object-fit: contain;
+      width: clamp(180px, 15vw, 220px); /* Noticeably smaller for elegant white space */
+      max-height: 115px;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.65s ease;
+    }
+
+    .variety-item.pos-center .variety-product-img {
+      transform: scale(1.03) translateY(-3px); /* Very subtle float to keep the 3D feel without inflating size */
+      filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.4));
+    }
+
+    .variety-item.pos-left .variety-product-img,
+    .variety-item.pos-right .variety-product-img {
+      transform: scale(0.90);
+      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.6));
+    }
+
+    /* Product Title: Elegant Serif */
+    .variety-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #FAF6ED;
+      margin: 4px 0 6px 0;
+      line-height: 1.15;
+    }
+
+    [dir="rtl"] .variety-title {
+      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-weight: 700;
+      letter-spacing: normal;
+      font-size: 1.32rem;
+      margin: 6px 0 8px 0;
+    }
+
+    /* Product Description: Balanced Width & Comfortable Leading */
+    .variety-desc {
+      font-family: var(--font-sans);
+      font-size: 0.80rem;
+      line-height: 1.55;
+      color: rgba(250, 246, 237, 0.78);
+      margin: 0 auto;
+      max-width: 270px;
+    }
+
+    [dir="rtl"] .variety-desc {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.85rem;
+      line-height: 1.72;
+      font-weight: 500;
+      color: rgba(250, 246, 237, 0.88);
+      max-width: 285px;
+    }
+
+    /* SECTION FOOTER: Perfectly lifted & 100% centered under the active card */
+    .produce-section-footer {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: -95px;
+      padding-top: 0px;
+      padding-bottom: 12px;
+      z-index: 15;
+    }
+
+    .produce-footer-left,
+    .produce-footer-right {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #d4af6a;
+      opacity: 0.62;
+      flex: 1;
+    }
+
+    .produce-footer-right {
+      justify-content: flex-end;
+    }
+
+    .produce-leaf-icon {
+      width: 17px;
+      height: 17px;
+      stroke: #d4af6a;
+    }
+
+    .produce-footer-text {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      line-height: 1.35;
+      text-transform: uppercase;
+      color: #d4af6a;
+    }
+
+    [dir="rtl"] .produce-footer-text {
+      font-family: 'Cairo', sans-serif;
+      letter-spacing: normal;
+      font-size: 0.75rem;
+    }
+
+    .produce-footer-right .produce-footer-text {
+      text-align: right;
+    }
+
+    [dir="rtl"] .produce-footer-right .produce-footer-text {
+      text-align: left;
+    }
+
+    /* Center 01 / 02 / 03 Timeline: Centered directly below the center card */
+    .produce-timeline-ctrl {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: clamp(210px, 21vw, 250px);
+      direction: ltr !important;
+    }
+
+    .produce-timeline-track {
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background: rgba(212, 175, 106, 0.22);
+      border-radius: 999px;
+      overflow: hidden;
+      direction: ltr !important;
+    }
+
+    .produce-timeline-fill {
+      width: 33.333%;
+      height: 100%;
+      background: #e5be75;
+      box-shadow: 0 0 10px rgba(229, 190, 117, 0.7);
+      border-radius: 999px;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      margin: 0 !important;
+    }
+
+    .produce-timeline-labels {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      padding: 0 2px;
+      box-sizing: border-box;
+      direction: ltr !important;
+    }
+
+    .timeline-step-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-heading);
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: rgba(212, 175, 106, 0.45);
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-step-btn:hover {
+      color: rgba(212, 175, 106, 0.85);
+    }
+
+    .timeline-step-btn.active {
+      color: #f7e2a9;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(212, 175, 106, 0.6);
+    }
+
+    /* =========================================================
+       SECTION 03 RESPONSIVE DESIGN (Tablets & Mobile Luxury Layout)
+       ========================================================= */
+    @media (max-width: 1024px) {
+      .produce-hero-section {
+        min-height: auto;
+        max-height: none;
+        padding: 50px 5vw 30px 5vw;
+        gap: 20px;
+      }
+      .produce-top-slogan {
+        position: static;
+        margin-bottom: 14px;
+        text-align: right;
+      }
+      [dir="rtl"] .produce-top-slogan {
+        text-align: left;
+      }
+      .produce-hero-top {
+        flex-direction: column;
+        min-height: auto;
+        margin-bottom: 16px;
+      }
+      .produce-hero-intro {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 16px;
+      }
+      .produce-hero-visual-col {
+        width: 100%;
+        height: auto;
+        min-height: 80px;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .produce-handwritten-note {
+        position: static;
+        transform: rotate(-2deg);
+        margin-left: auto;
+      }
+      [dir="rtl"] .produce-handwritten-note {
+        margin-left: 0;
+        margin-right: auto;
+        transform: rotate(2deg);
       }
     }
 
-    /* Mobile (<= 860px): Luxury Editorial Mobile Layout */
+    /* Mobile Phones (<= 860px) */
     @media (max-width: 860px) {
-      .about-reefiya-section {
-        min-height: auto;
-        padding-top: 40px;
-        padding-bottom: 60px;
+      .produce-hero-section {
+        padding: 34px 4.5vw 26px 4.5vw;
+        background-position: right 30% top;
+        background-size: cover;
+        overflow: hidden;
       }
 
-      .about-reefiya-container {
-        display: flex;
+      [dir="rtl"] .produce-hero-section {
+        background-position: left 30% top;
+      }
+
+      /* Vibrant lighting overlay: deep contrast behind text, then transparent window for the hero potatoes */
+      .produce-hero-section::before {
+        background: linear-gradient(180deg, 
+          rgba(2, 20, 14, 0.88) 0%, 
+          rgba(3, 24, 17, 0.82) 28%, 
+          rgba(3, 26, 18, 0.65) 45%, 
+          rgba(4, 30, 22, 0.25) 60%, 
+          rgba(4, 30, 22, 0.60) 80%, 
+          rgba(2, 18, 13, 0.95) 100%) !important;
+      }
+
+      /* Slogan: Clean, centered, luxury gold letter-spacing */
+      .produce-top-slogan {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+        width: 100%;
+        text-align: center;
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        margin-bottom: 16px;
+        color: #f0c97e;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+      }
+      [dir="rtl"] .produce-top-slogan {
+        letter-spacing: normal;
+        font-size: 0.72rem;
+        text-align: center;
+      }
+
+      .produce-hero-top {
         flex-direction: column;
         min-height: auto;
-        gap: 28px;
-      }
-
-      .about-content-col {
-        padding: 40px 6vw 0 6vw;
-        max-width: 100%;
-        order: 1;
-      }
-
-      .about-title {
-        font-size: clamp(2rem, 8vw, 2.6rem);
-        line-height: 1.35;
-        margin-bottom: 18px;
-      }
-
-      [dir="rtl"] .about-title {
-        font-size: clamp(1.9rem, 7.5vw, 2.5rem);
-        line-height: 1.45;
-        margin-bottom: 18px;
-      }
-
-      .about-paragraphs {
-        font-size: 0.98rem;
-        line-height: 1.75;
-        margin-bottom: 24px;
         gap: 14px;
-      }
-
-      [dir="rtl"] .about-paragraphs {
-        font-size: 1.02rem;
-        line-height: 1.85;
-      }
-
-      .about-cta-wrap {
         margin-bottom: 10px;
       }
 
-      /* Photo Column on Mobile: Full-width luxury organic card with curved border */
-      .about-visual-col {
-        order: 2;
+      .produce-hero-intro {
         width: 100%;
-        min-height: 320px;
-        height: 360px;
-        padding: 0 6vw;
-        display: flex;
-        flex-direction: column;
+        max-width: 100%;
+        gap: 8px;
+        text-align: left;
+      }
+      [dir="rtl"] .produce-hero-intro {
+        text-align: right;
+      }
+
+      /* Section label & badge */
+      .produce-section-badge {
+        font-size: 0.75rem;
+        color: #e5be75;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+      }
+      .produce-eyebrow-tag {
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        color: #dfb26c;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+      }
+      [dir="rtl"] .produce-eyebrow-tag {
+        letter-spacing: normal;
+        font-size: 0.76rem;
+      }
+
+      /* Headline: Proportionate mobile sizing with deep shadow for razor-sharp legibility over potatoes */
+      .produce-headline {
+        margin: 2px 0 6px 0;
+      }
+      .produce-hl-main {
+        font-size: clamp(1.9rem, 7.8vw, 2.4rem);
+        line-height: 1.15;
+        font-weight: 600;
+        color: #ffffff;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.98), 0 4px 28px rgba(0, 0, 0, 0.90);
+      }
+      [dir="rtl"] .produce-hl-main {
+        font-size: clamp(1.75rem, 6.8vw, 2.2rem);
+        line-height: 1.35;
+      }
+      .produce-hl-sub {
+        font-size: clamp(1.2rem, 4.8vw, 1.45rem);
+        margin-top: 4px;
+        color: #f7e2a9;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+      }
+      [dir="rtl"] .produce-hl-sub {
+        font-size: clamp(1.05rem, 4.2vw, 1.3rem);
+      }
+
+      /* Body paragraph: Crystal clear against background with enhanced contrast */
+      .produce-body-copy {
+        font-size: 0.92rem;
+        line-height: 1.64;
+        max-width: 100%;
+        color: #ffffff;
+        font-weight: 450;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.98), 0 0 20px rgba(0, 0, 0, 0.85);
+      }
+      [dir="rtl"] .produce-body-copy {
+        font-size: 0.96rem;
+        line-height: 1.74;
+      }
+
+      .produce-explore-link {
+        font-size: 0.85rem;
+        padding: 12px 24px;
+      }
+      [dir="rtl"] .produce-explore-link {
+        font-size: 0.88rem;
+        padding: 10px 22px;
+      }
+
+      /* Handwritten Note on Mobile: Centered organic badge */
+      .produce-hero-visual-col {
+        width: 100%;
+        height: auto;
+        min-height: 60px;
         justify-content: center;
+        align-items: center;
+        margin: 8px 0 14px 0;
+      }
+      .produce-handwritten-note {
         position: relative;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        margin: 0 auto;
+        transform: rotate(-1.5deg);
+        gap: 8px;
+      }
+      [dir="rtl"] .produce-handwritten-note {
+        margin: 0 auto;
+        transform: rotate(1.5deg);
+      }
+      .hw-arrow-svg {
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+      }
+      .hw-lines {
+        font-size: 1.22rem;
+        line-height: 1.05;
+        text-align: center;
+      }
+      [dir="rtl"] .hw-lines {
+        font-size: 1.02rem;
+        line-height: 1.25;
+        text-align: center;
+      }
+
+      /* Carousel Track & Showcase Stage */
+      .produce-showcase-wrapper {
+        position: relative;
+        margin: 10px 0 0 0;
+        width: 100%;
         overflow: visible;
       }
-
-      .about-visual-wrapper {
-        min-height: 320px;
-        height: 100%;
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 106, 0.4);
+      .produce-carousel-track {
+        position: relative;
+        height: 310px;
+        width: 100%;
+        margin: 0 auto;
       }
 
-      /* Override desktop aperture clip-path on mobile so photo shows naturally */
-      .about-organic-viewport,
-      [dir="rtl"] .about-organic-viewport {
-        clip-path: none !important;
-        -webkit-clip-path: none !important;
-        border-radius: 24px;
-        overflow: hidden;
+      /* Cards: One centered card with full clarity and elegance */
+      .variety-item {
+        position: absolute;
+        top: 0;
+        left: 50% !important;
+        width: min(90vw, 350px) !important;
+        max-width: 350px;
+        padding: 16px 18px 18px 18px;
+        box-sizing: border-box;
       }
 
-      .about-gold-contour-svg {
-        display: none;
+      .variety-item.pos-center {
+        transform: translate3d(-50%, 0, 0) scale(1) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        z-index: 10 !important;
+        display: flex !important;
+        background: rgba(4, 28, 20, 0.72) !important;
+        border: 1px solid rgba(212, 175, 106, 0.42) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 106, 0.1) !important;
       }
 
-      .about-farm-photo {
-        height: 100%;
-        object-position: center 65%;
-        border-radius: 24px;
-      }
-
-      /* Hide trade overlay completely on mobile so the photography is clean and unblocked */
-      .trade-network-terminal {
+      /* Hide non-active cards on mobile so no partial cutoffs overflow into the screen */
+      .variety-item.pos-left,
+      .variety-item.pos-right,
+      .variety-item.side-card {
         display: none !important;
       }
+
+      .variety-photo-stage {
+        height: 135px;
+        margin: 10px 0 14px 0;
+      }
+      .variety-product-img {
+        max-height: 125px;
+      }
+      .variety-title {
+        font-size: 1.28rem;
+        margin-bottom: 8px;
+      }
+      [dir="rtl"] .variety-title {
+        font-size: 1.22rem;
+      }
+      .variety-desc {
+        font-size: 0.84rem;
+        line-height: 1.55;
+      }
+      [dir="rtl"] .variety-desc {
+        font-size: 0.88rem;
+        line-height: 1.65;
+      }
+
+      /* Arrows: Repositioned comfortably on sides of active card */
+      .varieties-nav-arrow {
+        width: 38px;
+        height: 38px;
+        top: 45%;
+        z-index: 15;
+      }
+      .varieties-prev {
+        left: 4px;
+      }
+      .varieties-next {
+        right: 4px;
+      }
+      [dir="rtl"] .varieties-prev {
+        left: auto;
+        right: 4px;
+      }
+      [dir="rtl"] .varieties-next {
+        right: auto;
+        left: 4px;
+      }
+
+      /* SECTION FOOTER ON MOBILE: Pulled closely under card */
+      .produce-section-footer {
+        position: relative;
+        margin-top: 8px !important;
+        padding-top: 4px;
+        padding-bottom: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+      }
+
+      /* Timeline sits directly and closely beneath the card */
+      .produce-timeline-ctrl {
+        position: static !important;
+        left: auto !important;
+        transform: none !important;
+        width: 220px;
+        margin: 0 auto;
+        order: 1;
+      }
+
+      /* Left & Right branding text stack gracefully beneath timeline */
+      .produce-footer-left,
+      .produce-footer-right {
+        position: static;
+        width: 100%;
+        justify-content: center !important;
+        text-align: center;
+        opacity: 0.75;
+      }
+      .produce-footer-left {
+        order: 2;
+        gap: 8px;
+      }
+      .produce-footer-right {
+        order: 3;
+      }
+      .produce-footer-text,
+      [dir="rtl"] .produce-footer-text,
+      .produce-footer-right .produce-footer-text,
+      [dir="rtl"] .produce-footer-right .produce-footer-text {
+        text-align: center !important;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+      }
+      [dir="rtl"] .produce-footer-text {
+        letter-spacing: normal;
+        font-size: 0.76rem;
+      }
     }
+
+    
+
+        /* ==========================================================================
+       SECTION 04 — BUYER REQUIREMENTS — REFERENCE MATCH
+       ========================================================================== */
+    .buyer-req-section {
+      position: relative;
+      width: 100%;
+      background: #f7f4ed;
+      color: #174D30;
+      padding: 0;
+      box-sizing: border-box;
+      overflow: hidden;
+      font-family: var(--font-sans);
+      border-top: none;
+    }
+
+    .buyer-req-inner {
+      max-width: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* TOP HERO AREA: Full-width banner image with cream-fade-left overlay */
+    .buyer-hero-top {
+      position: relative;
+      width: 100%;
+      min-height: 220px;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      padding-bottom: 10px;
+      pointer-events: none; /* COMPLETE KILLSWITCH FOR HOVER BLOCKERS */
+    }
+
+    /* Full-width background image */
+    .buyer-hero-top::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('./sec4-hero-banner.png');
+      background-size: auto 100%;
+      background-position: right top;
+      background-repeat: no-repeat;
+      background-color: #f7f4ed;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Cream gradient from left (opaque) to transparent — keeps text readable */
+    .buyer-hero-top::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(
+          to right,
+          #f7f4ed 0%,
+          #f7f4ed 29%,
+          rgba(247, 244, 237, 0.88) 41%,
+          rgba(247, 244, 237, 0.45) 53%,
+          rgba(247, 244, 237, 0) 63%
+        ),
+        linear-gradient(
+          to top,
+          #f7f4ed 0%,
+          transparent 40px
+        );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* LEFT TEXT COLUMN — floats over the gradient, no solid bg */
+    .buyer-hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: clamp(44px, 4.8vw, 68px) clamp(32px, 4.5vw, 56px);
+      position: relative;
+      z-index: 3;
+      max-width: 48%;
+      background: transparent;
+      pointer-events: none !important; 
+    }
+
+    /* Force all text/elements inside the hero to become invisible to the mouse */
+    .buyer-hero-top * {
+      pointer-events: none;
+    }
+    
+    .story-container.fade-out * {
+      pointer-events: none !important;
+    }
+
+    .buyer-hero-content .buyer-cta-btn,
+    .buyer-hero-content .buyer-cta-btn * {
+      pointer-events: auto !important; /* ONLY the button needs to be clickable */
+    }
+
+    /* 04 — BUYER REQUIREMENTS badge */
+    .buyer-sec-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .buyer-badge-num {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: #B57028;
+    }
+
+    .buyer-badge-divider {
+      width: 24px;
+      height: 1.5px;
+      background-color: #B57028;
+      display: inline-block;
+    }
+
+    .buyer-badge-label {
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: #B57028;
+      text-transform: uppercase;
+    }
+
+    /* BUILT AROUND YOUR MARKET */
+    .buyer-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #174D30;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    /* HEADLINE — smaller so 'Multiple possibilities.' stays on one line */
+    .buyer-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 3.6vw, 56px);
+      line-height: 1.0;
+      font-weight: 700;
+      color: #174D30;
+      margin: 0 0 14px 0;
+      letter-spacing: -0.025em;
+    }
+
+    .buyer-headline em {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      color: #174D30;
+      letter-spacing: -0.03em;
+    }
+
+    /* BODY TEXT */
+    .buyer-body-desc {
+      font-size: clamp(0.88rem, 1.0vw, 0.96rem);
+      line-height: 1.6;
+      color: #4F5A50;
+      margin: 0 0 28px 0;
+      max-width: 480px;
+      font-weight: 400;
+    }
+
+    /* UNDERLINE DECORATION below headline */
+    .buyer-headline-underline {
+      display: block;
+      width: 52px;
+      height: 2.5px;
+      background: #B57028;
+      margin-bottom: 18px;
+    }
+
+    /* CTA BUTTON — dark green pill */
+    .buyer-cta-btn {
+      position: relative;
+      z-index: 30; /* Ensure it sits above the overlapping cards wrapper */
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #174D30;
+      color: #F6F1E7;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(23, 77, 48, 0.22);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .buyer-cta-btn:hover {
+      background-color: #0f3621;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(23, 77, 48, 0.32);
+      color: #fff;
+    }
+
+    .buyer-cta-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease;
+    }
+
+    .buyer-cta-btn:hover .buyer-cta-arrow {
+      transform: translate(2px, -2px);
+    }
+
+    /* Hero visual hidden — image is now a CSS ::before background */
+    .buyer-hero-visual {
+      display: none;
+    }
+
+    /* CARDS WRAPPER — pulls up to overlap hero bottom via transform to fix hover bugs */
+    .buyer-cards-wrapper {
+      padding: 0 clamp(32px, 4.5vw, 56px) clamp(28px, 3.5vw, 40px);
+      background: linear-gradient(to bottom, transparent 0px, transparent 40px, #f7f4ed 40px);
+      position: relative;
+      z-index: 10;
+      margin-top: 0;
+      transform: translateY(-40px);
+      margin-bottom: -40px; /* Pull the footer up to close the gap left by the transform */
+      pointer-events: auto;
+    }
+
+    /* BOTTOM 3 EQUAL-WIDTH CARDS */
+    .buyer-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Card: text on top, image fills bottom naturally (no crop) */
+    .buyer-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(180, 160, 110, 0.18);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+      will-change: transform;
+      transform: translateY(0) translateZ(0);
+      backface-visibility: hidden;
+      position: relative;
+      z-index: 2;
+    }
+
+    .buyer-card:hover {
+      transform: translateY(-8px) translateZ(0);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    /* Unified Hitbox: covers the whole card so hover never drops when moving over children */
+    .buyer-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+    }
+
+    .buyer-card:hover .buyer-card-media img {
+      transform: scale(1.06);
+    }
+
+    /* CARD TEXT AREA — top */
+    .buyer-card-header {
+      padding: 22px 22px 0px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      order: 1;
+      position: relative;
+      z-index: 5;
+      margin-bottom: 5px; /* Added positive margin to give breathing room for all translations */
+    }
+
+    /* CARD IMAGE — fills remaining space, no gap at bottom */
+    .buyer-card-media {
+      width: 100%;
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      background: transparent;
+      min-height: 220px;
+      order: 2;
+    }
+
+    .buyer-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.15s ease-out; /* matched with card speed */
+      transform: scale(1) translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    .buyer-card:hover .buyer-card-media img {
+      transform: scale(1.04) translateZ(0);
+    }
+
+    /* Card 3 specifically: show full image without cropping */
+    .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      transform-origin: center bottom;
+    }
+
+
+
+
+    .buyer-card-toprow {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .buyer-card-title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .buyer-card-num {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #B57028;
+    }
+
+    .buyer-card-num-sep {
+      color: #B57028;
+      font-size: 0.78rem;
+      font-weight: 400;
+    }
+
+    .buyer-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: #174D30;
+      letter-spacing: -0.02em;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    /* ICON CIRCLE */
+    .buyer-card-icon-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid #B57028;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #B57028;
+      flex-shrink: 0;
+      transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .buyer-card-icon-circle svg {
+      width: 17px;
+      height: 17px;
+      stroke-width: 1.6;
+      transition: transform 0.3s ease;
+    }
+
+    /* On card hover — icon fills with dark green */
+    .buyer-card:hover .buyer-card-icon-circle {
+      background: #174D30;
+      border-color: #174D30;
+      color: #f7f4ed;
+      transform: rotate(8deg) scale(1.1);
+      box-shadow: 0 4px 14px rgba(23, 77, 48, 0.35);
+    }
+
+    .buyer-card:hover .buyer-card-icon-circle svg {
+      transform: scale(1.15);
+    }
+
+    /* SUB-TAG PILL */
+    .buyer-card-tag {
+      display: inline-block;
+      background: rgba(43, 86, 54, 0.08);
+      color: #2b5636;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .buyer-card-desc {
+      font-size: 0.87rem;
+      line-height: 1.45;
+      color: #4F5A50;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    /* Removed duplicate .buyer-card-media block */
+
+
+
+    /* ======================================================
+       CARDS — Premium redesign: text top / image bottom
+       ====================================================== */
+
+    /* BOTTOM SECTION FOOTER ROW */
+    .buyer-req-footer {
+      width: 100%;
+      background: #f7f4ed;
+      margin-top: 0;
+      /* Align with the 1280px grid on large screens, fallback to standard padding on small screens */
+      padding: 0px clamp(32px, 4.5vw, 56px) 32px clamp(32px, 4.5vw, 56px);
+      padding-left: max(clamp(32px, 4.5vw, 56px), calc((100% - 1280px) / 2));
+      padding-right: max(clamp(32px, 4.5vw, 56px), calc((100% - 1280px) / 2));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .buyer-footer-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .buyer-footer-logo {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .buyer-footer-brand-sub {
+      font-family: var(--font-sans);
+      font-size: 0.70rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #4F5A50;
+      text-transform: uppercase;
+    }
+
+    .buyer-footer-right {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .buyer-footer-tagline {
+      font-family: var(--font-sans);
+      font-size: 0.70rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #4F5A50;
+      text-transform: uppercase;
+    }
+
+    .buyer-footer-line {
+      width: 26px;
+      height: 1.5px;
+      background-color: #d4a45a;
+      display: inline-block;
+    }
+
+    /* RTL OVERRIDES: DIRECTION RTL, TEXT-ALIGN RIGHT, BUT KEEP LEFT CONTENT / RIGHT HERO & CARDS ORDER */
+    [dir="rtl"] .buyer-req-section {
+      direction: rtl;
+    }
+
+    /* NEW RTL HERO IMAGE */
+    [dir="rtl"] .buyer-hero-top::before {
+      background-image: url('./sec4-hero-banner-rtl.jpg');
+      background-position: left top;
+    }
+
+    /* Reverse the gradient to fade out towards the left (where the image is) */
+    [dir="rtl"] .buyer-hero-top::after {
+      background: 
+        linear-gradient(
+          to left,
+          #f7f4ed 0%,
+          #f7f4ed 15%,
+          rgba(247, 244, 237, 0.88) 35%,
+          rgba(247, 244, 237, 0.45) 48%,
+          rgba(247, 244, 237, 0) 58%
+        ),
+        linear-gradient(
+          to top,
+          #f7f4ed 0%,
+          rgba(247, 244, 237, 0.8) 12%,
+          rgba(247, 244, 237, 0) 25%
+        );
+    }
+
+    [dir="rtl"] .buyer-hero-top {
+      direction: rtl; /* Natural RTL flow */
+    }
+
+    [dir="rtl"] .buyer-hero-content {
+      direction: rtl;
+      text-align: right;
+      align-items: flex-start; /* Aligns badge and button to the right natively */
+      max-width: 48%;
+      /* padding-right: clamp(40px, 8vw, 100px);  Removed - no longer needed since text is naturally on the right and image on the left! */
+    }
+
+    /* Let cards flow naturally RTL (Card 1 on the right, Card 3 on the left) */
+    [dir="rtl"] .buyer-cards-grid {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .buyer-card {
+      direction: rtl;
+      text-align: right;
+    }
+
+    [dir="rtl"] .buyer-card-header {
+      align-items: flex-start;
+    }
+
+    [dir="rtl"] .buyer-headline {
+      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-weight: 800;
+      line-height: 1.4; /* Increased line-height so the text lines don't touch */
+      letter-spacing: 0;
+      font-size: clamp(32px, 3.2vw, 48px);
+    }
+
+    [dir="rtl"] .buyer-card-title {
+      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0;
+      font-size: 1.3rem; /* Reduced font size to fit on one line or look better if it wraps */
+      line-height: 1.3; /* Added line-height to prevent overlapping */
+    }
+
+    /* Flip CTA Arrow for RTL */
+    [dir="rtl"] .buyer-cta-arrow {
+      display: inline-block;
+      transform: scaleX(-1);
+    }
+    
+    [dir="rtl"] .buyer-cta-btn:hover .buyer-cta-arrow {
+      transform: scaleX(-1) translate(-2px, -2px); /* Moves top-left when hovered in RTL */
+    }
+
+    [dir="rtl"] .buyer-body-desc,
+    [dir="rtl"] .buyer-card-desc {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    [dir="rtl"] .buyer-badge-label,
+    [dir="rtl"] .buyer-eyebrow,
+    [dir="rtl"] .buyer-card-tag,
+    [dir="rtl"] .buyer-footer-brand-sub,
+    [dir="rtl"] .buyer-footer-tagline {
+      font-family: 'Cairo', sans-serif;
+      letter-spacing: normal;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .buyer-hero-top {
+        flex-direction: column;
+        padding-top: 300px; /* Pushed down below the 290px image */
+        padding-bottom: 24px;
+        background-color: #f7f4ed; 
+      }
+      .buyer-hero-top::before {
+        height: 290px; /* Increased slightly to give more room before the fade */
+        background-position: 90% top; 
+        background-size: cover; 
+      }
+      .buyer-hero-top::after {
+        background: linear-gradient(to bottom, transparent 0%, transparent 230px, rgba(247, 244, 237, 0.95) 280px, #f7f4ed 290px); /* Pushed the fade much further down to keep the bottom details clear */
+      }
+      .buyer-hero-content {
+        max-width: 100%;
+        padding: 24px clamp(20px, 4vw, 32px) 0 clamp(20px, 4vw, 32px); 
+        align-items: center;
+        text-align: center;
+      }
+      .buyer-hero-content .buyer-sec-badge {
+        margin: 0 auto 16px auto;
+      }
+      .buyer-hero-visual {
+        display: none;
+      }
+      .buyer-cards-wrapper {
+        transform: none;
+        margin-top: -2px; /* Close the sub-pixel rendering gap between hero-top and wrapper */
+        margin-bottom: 0;
+        padding-top: 15px; 
+        background: #f7f4ed; /* Force solid cream background to prevent dark lines from transparent gradients */
+      }
+      
+      /* RTL Mobile Specific Overrides */
+      [dir="rtl"] .buyer-hero-top::before {
+        background-position: 10% top; /* Focus on the left side (products) for the RTL mirrored image on mobile */
+      }
+      [dir="rtl"] .buyer-hero-top::after {
+        /* Force the bottom-to-top gradient for mobile RTL, overriding the desktop side-gradient */
+        background: linear-gradient(to bottom, transparent 0%, transparent 230px, rgba(247, 244, 237, 0.95) 280px, #f7f4ed 290px);
+      }
+      [dir="rtl"] .buyer-hero-content {
+        max-width: 100%; /* Override desktop 48% */
+        align-items: center; /* Center everything on mobile */
+        text-align: center;
+      }
+      
+      .buyer-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .buyer-card {
+        height: auto;
+      }
+      .buyer-card-header {
+        height: auto;
+      }
+      .buyer-req-footer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+        margin-top: -2px; /* Pulls footer up slightly to close any sub-pixel rendering gaps */
+        border-top: none;
+        box-shadow: none;
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .buyer-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .buyer-card:last-child {
+        grid-column: span 2;
+      }
+    }
+
+    /* Section 02 RTL Polish */
+    [dir="rtl"] .trade-network-terminal {
+      /* Move widget to the left side in Arabic to sit over the image */
+      left: 36px !important;
+      right: auto !important;
+      direction: rtl !important;
+    }
+
+    [dir="rtl"] .trade-terminal-badge {
+      flex-direction: row !important;
+    }
+
+    [dir="rtl"] .trade-corridors-list {
+      direction: rtl !important;
+    }
+
+    [dir="rtl"] .trade-corridor-item {
+      direction: rtl !important;
+      flex-direction: row !important;
+      justify-content: flex-start !important;
+      gap: 9px !important;
+    }
+
+    [dir="rtl"] .trade-corridor-item .branch-hq-tag {
+      margin-right: auto !important;
+      margin-left: 0 !important;
+    }
+
+    [dir="rtl"] .about-link-action {
+      flex-direction: row !important;
+      gap: 12px !important;
+    }
+
+    [dir="rtl"] .about-link-action .cta-arrow {
+      transform: scaleX(-1) !important;
+    }
+
+    [dir="rtl"] .about-link-action:hover .cta-arrow {
+      transform: scaleX(-1) translate(-2px, -2px) !important;
+    }
+
   </style>
 </head>
 <body>
@@ -1821,7 +4407,7 @@
     <!-- Right Actions: Request a Quote (Orange Pill) & 7-Language Flag Selector -->
     <div class="nav-right-actions">
       <!-- Orange Quote Button -->
-      <a href="#quote" class="quote-pill-btn">
+      <a href="mailto:info@reefiya.com" class="quote-pill-btn">
         <span data-i18n="btn_quote">Request a quote</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M7 7h10v10"></path>
@@ -1853,7 +4439,7 @@
           </svg>
         </button>
 
-        <!-- 7-Languages Dropdown Menu -->
+        <!-- Languages Dropdown Menu -->
         <div class="lang-menu" id="langMenu" role="menu">
           <div class="lang-menu-item selected" data-lang="en">
             <div class="lang-flag-circle">
@@ -1861,6 +4447,20 @@
               <svg viewBox="0 0 60 60"><clipPath id="cEn"><circle cx="30" cy="30" r="30"/></clipPath><g clip-path="url(#cEn)"><path d="M0 0h60v60H0z" fill="#012169"/><path d="M0 0l60 60m0-60L0 60" stroke="#fff" stroke-width="6"/><path d="M0 0l60 60m0-60L0 60" stroke="#C8102E" stroke-width="4"/><path d="M30 0v60M0 30h60" stroke="#fff" stroke-width="10"/><path d="M30 0v60M0 30h60" stroke="#C8102E" stroke-width="6"/></g></svg>
             </div>
             <span>English</span>
+          </div>
+          <div class="lang-menu-item" data-lang="nl">
+            <div class="lang-flag-circle">
+              <!-- Netherlands Flag -->
+              <svg viewBox="0 0 60 60"><path d="M0 0h60v20H0z" fill="#ae1c28"/><path d="M0 20h60v20H0z" fill="#fff"/><path d="M0 40h60v20H0z" fill="#21468b"/></svg>
+            </div>
+            <span>Nederlands</span>
+          </div>
+          <div class="lang-menu-item" data-lang="fr">
+            <div class="lang-flag-circle">
+              <!-- France Flag -->
+              <svg viewBox="0 0 60 60"><path d="M0 0h20v60H0z" fill="#002395"/><path d="M20 0h20v60H20z" fill="#fff"/><path d="M40 0h20v60H40z" fill="#ed2939"/></svg>
+            </div>
+            <span>Français</span>
           </div>
           <div class="lang-menu-item" data-lang="ar">
             <div class="lang-flag-circle">
@@ -1876,26 +4476,19 @@
             </div>
             <span>Deutsch</span>
           </div>
-          <div class="lang-menu-item" data-lang="fr">
-            <div class="lang-flag-circle">
-              <!-- France Flag -->
-              <svg viewBox="0 0 60 60"><path d="M0 0h20v60H0z" fill="#002395"/><path d="M20 0h20v60H20z" fill="#fff"/><path d="M40 0h20v60H40z" fill="#ed2939"/></svg>
-            </div>
-            <span>Français</span>
-          </div>
-          <div class="lang-menu-item" data-lang="nl">
-            <div class="lang-flag-circle">
-              <!-- Netherlands Flag -->
-              <svg viewBox="0 0 60 60"><path d="M0 0h60v20H0z" fill="#ae1c28"/><path d="M0 20h60v20H0z" fill="#fff"/><path d="M0 40h60v20H0z" fill="#21468b"/></svg>
-            </div>
-            <span>Nederlands</span>
-          </div>
           <div class="lang-menu-item" data-lang="es">
             <div class="lang-flag-circle">
               <!-- Spain Flag -->
               <svg viewBox="0 0 60 60"><path d="M0 0h60v15H0z" fill="#aa151b"/><path d="M0 15h60v30H0z" fill="#f1bf00"/><path d="M0 45h60v15H0z" fill="#aa151b"/></svg>
             </div>
             <span>Español</span>
+          </div>
+          <div class="lang-menu-item" data-lang="it">
+            <div class="lang-flag-circle">
+              <!-- Italy Flag -->
+              <svg viewBox="0 0 60 60"><path d="M0 0h20v60H0z" fill="#009246"/><path d="M20 0h20v60H20z" fill="#fff"/><path d="M40 0h20v60H40z" fill="#ce2b37"/></svg>
+            </div>
+            <span>Italiano</span>
           </div>
           <div class="lang-menu-item" data-lang="ru">
             <div class="lang-flag-circle">
@@ -1944,7 +4537,7 @@
         <a href="#about" class="mobile-nav-link" data-i18n="nav_about">About Us</a>
       </nav>
       <div class="mobile-nav-footer">
-        <a href="#quote" class="mobile-quote-btn" id="mobileQuoteBtn">
+        <a href="mailto:info@reefiya.com" class="mobile-quote-btn" id="mobileQuoteBtn">
           <span data-i18n="btn_quote">Request a quote</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 7h10v10"></path>
@@ -1971,7 +4564,7 @@
       <h1 class="story-title" data-i18n="hero_title">From Egyptian fields.<br/><em>To global shelves.</em></h1>
       <p class="story-desc" data-i18n="hero_desc">Egyptian sweet potatoes, carefully sourced and prepared for international markets.</p>
       <div class="hero-actions">
-        <a href="#quote" class="cta-btn" data-i18n="cta_quote">Request a quote ↗</a>
+        <a href="mailto:info@reefiya.com" class="cta-btn" data-i18n="cta_quote">Request a quote ↗</a>
         <a href="#produce" class="text-link" data-i18n="cta_explore">Explore our produce ↗</a>
       </div>
     </div>
@@ -1992,7 +4585,7 @@
       <h1 class="story-title" data-i18n="ch3_title">Engineered for export.<br/><em>Protected in every carton.</em></h1>
       <p class="story-desc" data-i18n="ch3_desc">Corrugated export cartons with ventilation designed to help preserve freshness, product integrity, and skin condition throughout transit.</p>
       <div class="hero-actions">
-        <a href="#quote" class="cta-btn" data-i18n="cta_packing">Discuss packing ↗</a>
+        <a href="mailto:info@reefiya.com" class="cta-btn" data-i18n="cta_packing">Discuss packing ↗</a>
       </div>
     </div>
 
@@ -2002,7 +4595,7 @@
       <h1 class="story-title" data-i18n="ch4_title">Temperature controlled.<br/><em>Ready for the journey.</em></h1>
       <p class="story-desc" data-i18n="ch4_desc">Refrigerated shipping with controlled temperature and airflow throughout international transit.</p>
       <div class="hero-actions">
-        <a href="#quote" class="cta-btn" data-i18n="cta_logistics">Discuss logistics ↗</a>
+        <a href="mailto:info@reefiya.com" class="cta-btn" data-i18n="cta_logistics">Discuss logistics ↗</a>
       </div>
     </div>
 
@@ -2012,7 +4605,7 @@
       <h1 class="story-title" data-i18n="ch5_title">Market ready.<br/><em>Prepared for global buyers.</em></h1>
       <p class="story-desc" data-i18n="ch5_desc">Export-ready Egyptian produce for importers, distributors, retailers, wholesalers, and food-industry buyers worldwide.</p>
       <div class="hero-actions">
-        <a href="#quote" class="cta-btn" data-i18n="cta_quote">Request a quote ↗</a>
+        <a href="mailto:info@reefiya.com" class="cta-btn" data-i18n="cta_quote">Request a quote ↗</a>
       </div>
     </div>
   </div>
@@ -2030,8 +4623,13 @@
     <div class="journey-instruction">
       <span data-i18n="scroll_hint">Scroll to follow the journey ↓</span>
       <a href="#about" class="skip-to-produce-btn" id="skipToProduceBtn">
-        <span data-i18n="skip_produce">About Reefiya</span>
-        <span aria-hidden="true">↗</span>
+        <span data-i18n="skip_produce">Skip to About Us</span>
+        <span class="skip-btn-circle" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
+        </span>
       </a>
     </div>
 
@@ -2071,110 +4669,575 @@
   </svg>
 
   <section class="about-reefiya-section" id="about">
+
     <div class="about-reefiya-container">
+
       
+
       <!-- Left Content Column (~46-48%) -->
+
       <div class="about-content-col">
+
         <!-- Small section identifier -->
+
         <div class="about-section-badge">
+
           <span class="about-badge-num">02</span>
+
           <span class="about-badge-line"></span>
+
           <span class="about-badge-text" data-i18n="sec2_badge">ABOUT REEFIYA</span>
+
         </div>
+
+
 
         <!-- Eyebrow -->
+
         <div class="about-subheading-tag" data-i18n="sec2_subheading">
+
           EGYPTIAN ORIGIN. GLOBAL OUTLOOK.
+
         </div>
+
+
 
         <!-- Main Headline -->
+
         <h2 class="about-title">
+
           <span class="about-title-line1" data-i18n="sec2_title_l1">Rooted in Egypt.</span>
+
           <span class="about-title-line2" data-i18n="sec2_title_l2">Built for global trade.</span>
+
         </h2>
 
+
+
         <!-- Body copy -->
+
         <div class="about-paragraphs">
+
           <p data-i18n="sec2_p1">
+
             REEFIYA is an Egyptian agricultural produce company focused on connecting carefully sourced crops with buyers in international markets.
+
           </p>
+
           <p data-i18n="sec2_p2">
+
             We begin with sweet potatoes — a product we understand from sourcing and selection through grading, packing, and export preparation — while building REEFIYA into a broader platform for premium Egyptian produce.
+
           </p>
+
         </div>
 
-        <!-- Refined Text-link CTA with thin underline -->
+
+
+        <!-- Premium High-Visibility CTA Pill -->
+
         <div class="about-cta-wrap">
+
           <a href="#produce" class="about-link-action">
+
             <span data-i18n="sec2_cta">Discover REEFIYA</span>
-            <span aria-hidden="true">↗</span>
+
+            <span class="cta-arrow" id="sec2CtaArrow" aria-hidden="true">↗</span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- Right Photographic Visual Column (48–52% Desktop Viewport) -->
+
+      <div class="about-visual-col">
+
+        <div class="about-visual-wrapper">
+
+          <!-- Organic SVG/CSS Mask Aperture -->
+
+          <div class="about-organic-viewport">
+
+            <img 
+
+              src="./about-farm.jpg" 
+
+              alt="Egyptian sweet potato farm at sunset with Nile landscape" 
+
+              class="about-farm-photo" 
+
+              loading="lazy"
+
+              id="aboutFarmPhoto"
+
+            >
+
+            <div class="about-photo-gradient"></div>
+
+          </div>
+
+
+
+          <!-- Subtle 1px Muted-Gold Contour Line following the organic edge -->
+
+          <svg class="about-gold-contour-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+
+            <path class="gold-contour-path" d="M 28,0 C 12,18 42,38 22,58 C 8,74 30,88 15,100" vector-effect="non-scaling-stroke" />
+
+          </svg>
+
+        </div>
+
+
+
+        <!-- Global Presence & Branches HUD Terminal -->
+
+        <div class="trade-network-terminal">
+
+          <!-- Main Presence Badge -->
+
+          <div class="trade-terminal-badge">
+
+            <div class="trade-origin-status">
+
+              <span class="trade-origin-pulse-dot"></span>
+
+              <span class="trade-origin-label" data-i18n="route_presence">OUR PRESENCE &amp; BRANCHES</span>
+
+            </div>
+
+            <span class="trade-export-tag" data-i18n="tag_global">GLOBAL REACH</span>
+
+          </div>
+
+
+
+          <!-- Active Presence & Branches Trade Grid -->
+
+          <div class="trade-corridors-list">
+
+            <!-- 1. Egypt (HQ) -->
+
+            <div class="trade-corridor-item is-hq">
+
+              <span class="branch-flag-img-wrap"><img src="./flags/eg.png" alt="Egypt" class="branch-real-flag" /></span>
+
+              <span class="corridor-ping"></span>
+
+              <span class="branch-name" data-i18n="branch_egypt">Egypt</span>
+
+              <span class="branch-hq-tag" data-i18n="tag_hq">HQ</span>
+
+            </div>
+
+
+
+            <!-- 2. Saudi Arabia -->
+
+            <div class="trade-corridor-item">
+
+              <span class="branch-flag-img-wrap"><img src="./flags/sa.png" alt="Saudi Arabia" class="branch-real-flag" /></span>
+
+              <span class="corridor-ping"></span>
+
+              <span class="branch-name" data-i18n="branch_saudi">Saudi Arabia</span>
+
+            </div>
+
+
+
+            <!-- 3. United States (before Canada) -->
+
+            <div class="trade-corridor-item">
+
+              <span class="branch-flag-img-wrap"><img src="./flags/us.png" alt="United States" class="branch-real-flag" /></span>
+
+              <span class="corridor-ping"></span>
+
+              <span class="branch-name" data-i18n="branch_usa">United States</span>
+
+            </div>
+
+
+
+            <!-- 4. Canada -->
+
+            <div class="trade-corridor-item">
+
+              <span class="branch-flag-img-wrap"><img src="./flags/ca.png" alt="Canada" class="branch-real-flag" /></span>
+
+              <span class="corridor-ping"></span>
+
+              <span class="branch-name" data-i18n="branch_canada">Canada</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =============================================================
+       SECTION 03 — HERO PRODUCE: EGYPTIAN SWEET POTATOES
+       ============================================================= -->
+  <section class="produce-hero-section" id="produce" aria-labelledby="produceHeadline">
+    <!-- Top-Right Global Micro-Slogan: bold and warm golden -->
+    <div class="produce-top-slogan" data-i18n="sec3_corner_slogan">
+      EGYPT GROWN. &nbsp;GLOBALLY BOUND.
+    </div>
+
+    <!-- UPPER HERO COMPOSITION: Editorial Left Story + Natural Hero Sweet Potato Field Scene on Right -->
+    <div class="produce-hero-top">
+      <!-- Left: Section Badge, Headings, Single Active Language Body, and Refined CTA -->
+      <div class="produce-hero-intro">
+        <!-- Section label -->
+        <div class="produce-section-badge">
+          <span class="produce-badge-num">03</span>
+          <span class="produce-badge-line"></span>
+          <span class="produce-badge-text" data-i18n="sec3_section_label">OUR HERO PRODUCE</span>
+        </div>
+
+        <!-- Small eyebrow -->
+        <span class="produce-eyebrow-tag" data-i18n="sec3_eyebrow">
+          EGYPTIAN SWEET POTATOES
+        </span>
+
+        <!-- Main heading (H1) + Subheadline (appears once only) -->
+        <h2 class="produce-headline" id="produceHeadline">
+          <span class="produce-hl-main" data-i18n="sec3_headline_l1">Egyptian Sweet Potatoes.</span>
+          <em class="produce-hl-sub" data-i18n="sec3_headline_l2">Where our export journey begins.</em>
+        </h2>
+
+        <!-- Active Language Body Copy -->
+        <p class="produce-body-copy" data-i18n="sec3_body">
+          Sweet potatoes are REEFIYA’s primary export crop. By specializing deeply in one crop, we focus on sourcing, grading, packing, and preparing each order around the requirements of the buyer and destination market.
+        </p>
+
+        <!-- Elegant Refined CTA: Gold Underline + Interactive Diagonal Arrow -->
+        <div class="produce-cta-wrap">
+          <a href="mailto:info@reefiya.com" class="produce-explore-link">
+            <span class="produce-cta-label" data-i18n="sec3_cta">Explore sweet potatoes ↗</span>
           </a>
         </div>
       </div>
 
-      <!-- Right Photographic Visual Column (48–52% Desktop Viewport) -->
-      <div class="about-visual-col">
-        <div class="about-visual-wrapper">
-          <!-- Organic SVG/CSS Mask Aperture -->
-          <div class="about-organic-viewport">
-            <img 
-              src="./about-farm.jpg" 
-              alt="Egyptian sweet potato farm at sunset with Nile landscape" 
-              class="about-farm-photo" 
-              loading="lazy"
-              id="aboutFarmPhoto"
-            >
-            <div class="about-photo-gradient"></div>
-          </div>
-
-          <!-- Subtle 1px Muted-Gold Contour Line following the organic edge -->
-          <svg class="about-gold-contour-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="gold-contour-path" d="M 28,0 C 12,18 42,38 22,58 C 8,74 30,88 15,100" vector-effect="non-scaling-stroke" />
+      <!-- Right: Handwritten Gold Decorative Note (3 Stacked Lines Like Reference Photo) -->
+      <div class="produce-hero-visual-col">
+        <div class="produce-handwritten-note" aria-hidden="true">
+          <svg class="hw-arrow-svg" viewBox="0 0 28 28" fill="none" stroke="#d4af6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 21 C9 14, 15 11, 23 10 M17 5 L23 10 L16 15" />
           </svg>
-        </div>
-
-        <!-- Luxury Trade Network HUD: Modern Global Export Corridors & Origin Badge -->
-        <div class="trade-network-terminal">
-          <!-- Main Origin Badge -->
-          <div class="trade-terminal-badge">
-            <div class="trade-origin-status">
-              <span class="trade-origin-pulse-dot"></span>
-              <span class="trade-origin-label" data-i18n="route_egypt">EGYPT (ORIGIN)</span>
-            </div>
-            <span class="trade-export-tag" data-i18n="tag_global">GLOBAL MARKETS</span>
-          </div>
-
-          <!-- Active Export Destination Pills -->
-          <div class="trade-corridors-list">
-            <div class="trade-corridor-item">
-              <span class="corridor-ping"></span>
-              <span data-i18n="route_europe">EUROPE</span>
-            </div>
-            <div class="trade-corridor-item">
-              <span class="corridor-ping"></span>
-              <span data-i18n="route_gcc">GCC / GULF</span>
-            </div>
-            <div class="trade-corridor-item">
-              <span class="corridor-ping"></span>
-              <span data-i18n="route_na">NORTH AMERICA</span>
-            </div>
-            <div class="trade-corridor-item">
-              <span class="corridor-ping"></span>
-              <span data-i18n="route_asia">ASIA &amp; GLOBAL</span>
-            </div>
+          <div class="hw-lines">
+            <span class="hw-l1" data-i18n="sec3_hw_line1">From</span>
+            <span class="hw-l2" data-i18n="sec3_hw_line2">Egyptian Fields</span>
+            <span class="hw-l3" data-i18n="sec3_hw_line3">to Global Shelves</span>
           </div>
         </div>
+      </div>
+    </div>
 
+    <!-- LOWER PRODUCT SHOWCASE: 3 Varieties Carousel Track (Side Card | Center Active Card | Side Card) -->
+    <div class="produce-showcase-wrapper">
+      <!-- Navigation Arrows: Subtle refined circular buttons -->
+      <button class="varieties-nav-arrow varieties-prev" id="varietiesPrev" type="button" aria-label="Previous Variety">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+
+      <button class="varieties-nav-arrow varieties-next" id="varietiesNext" type="button" aria-label="Next Variety">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+
+      <!-- 3 Carousel Cards: Smooth Sliding Stage Transition -->
+      <div class="produce-carousel-track" id="produceCarouselTrack">
+        <!-- 01 — BELLEVUE -->
+        <div class="variety-item pos-left" data-variety-index="0" id="itemBellevue">
+          <div class="variety-header-meta">
+            <span class="variety-num">01</span>
+            <span class="variety-num-sep"></span>
+            <span class="variety-category-tag" data-i18n="sec3_v1_cat">FRESH MARKET</span>
+          </div>
+          <div class="variety-photo-stage">
+            <div class="product-base-glow"></div>
+            <img 
+              src="./produce-bellevue-tight.png" 
+              alt="Bellevue Egyptian Sweet Potatoes" 
+              class="variety-product-img"
+              loading="lazy"
+            >
+          </div>
+          <h3 class="variety-title" data-i18n="sec3_v1_name">BELLEVUE</h3>
+          <p class="variety-desc" data-i18n="sec3_v1_desc">
+            Selected Egyptian sweet potatoes for fresh-market and export programs, available in commercial sizes and grades according to buyer requirements.
+          </p>
+        </div>
+
+        <!-- 02 — BEAUREGARD -->
+        <div class="variety-item pos-center" data-variety-index="1" id="itemBeauregard">
+          <div class="variety-header-meta">
+            <span class="variety-num">02</span>
+            <span class="variety-num-sep"></span>
+            <span class="variety-category-tag" data-i18n="sec3_v2_cat">COMMERCIAL VARIETY</span>
+          </div>
+          <div class="variety-photo-stage">
+            <div class="product-base-glow active-glow"></div>
+            <img 
+              src="./produce-beauregard-tight.png" 
+              alt="Beauregard Sweet Potatoes" 
+              class="variety-product-img"
+              loading="lazy"
+            >
+          </div>
+          <h3 class="variety-title" data-i18n="sec3_v2_name">BEAUREGARD</h3>
+          <p class="variety-desc" data-i18n="sec3_v2_desc">
+            A widely traded sweet potato variety available in multiple commercial grades, sizes, and packing specifications.
+          </p>
+        </div>
+
+        <!-- 03 — EGYPTIAN VARIETIES -->
+        <div class="variety-item pos-right" data-variety-index="2" id="itemEgyptian">
+          <div class="variety-header-meta">
+            <span class="variety-num">03</span>
+            <span class="variety-num-sep"></span>
+            <span class="variety-category-tag" data-i18n="sec3_v3_cat">SEASONAL SELECTION</span>
+          </div>
+          <div class="variety-photo-stage">
+            <div class="product-base-glow"></div>
+            <img 
+              src="./produce-egyptian-tight.png" 
+              alt="Egyptian Local Sweet Potato Varieties" 
+              class="variety-product-img"
+              loading="lazy"
+            >
+          </div>
+          <h3 class="variety-title" data-i18n="sec3_v3_name">EGYPTIAN VARIETIES</h3>
+          <p class="variety-desc" data-i18n="sec3_v3_desc">
+            Local high-sugar varieties sourced according to season, availability, and buyer requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Bottom Bar: Leaf Icon & "PREMIUM EGYPTIAN PRODUCE" | 01 02 03 Timeline | "QUALITY ROOTED IN EGYPT" -->
+    <div class="produce-section-footer">
+      <div class="produce-footer-left">
+        <svg class="produce-leaf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+        </svg>
+        <span class="produce-footer-text" data-i18n="sec3_footer_left">PREMIUM EGYPTIAN PRODUCE</span>
+      </div>
+
+      <!-- Center Timeline Track with 01 / 02 / 03 indicators -->
+      <div class="produce-timeline-ctrl">
+        <div class="produce-timeline-track">
+          <div class="produce-timeline-fill" id="produceTimelineFill" style="transform: translateX(100%);"></div>
+        </div>
+        <div class="produce-timeline-labels">
+          <button class="timeline-step-btn" data-step="0" type="button">01</button>
+          <button class="timeline-step-btn active" data-step="1" type="button">02</button>
+          <button class="timeline-step-btn" data-step="2" type="button">03</button>
+        </div>
+      </div>
+
+      <div class="produce-footer-right">
+        <span class="produce-footer-text" data-i18n="sec3_footer_right">QUALITY ROOTED IN EGYPT</span>
       </div>
     </div>
   </section>
 
+    <!-- ==========================================================================
+       SECTION 04 — BUYER REQUIREMENTS
+       ========================================================================== -->
+  <section class="buyer-req-section" id="specifications" aria-labelledby="buyerReqHeadline">
+    <div class="buyer-req-inner">
+      <!-- Top Area: Full-width hero banner background with left text overlay -->
+      <div class="buyer-hero-top">
+        <!-- Left: Text Content (on dark green gradient overlay) -->
+        <div class="buyer-hero-content">
+          <!-- Section Label -->
+          <div class="buyer-sec-badge">
+            <span class="buyer-badge-num">04</span>
+            <span class="buyer-badge-divider" aria-hidden="true"></span>
+            <span class="buyer-badge-label" data-i18n="sec4_badge_label">BUYER REQUIREMENTS</span>
+          </div>
+
+          <!-- Eyebrow -->
+          <span class="buyer-eyebrow" data-i18n="sec4_eyebrow">BUILT AROUND YOUR MARKET</span>
+
+          <!-- Headline -->
+          <h2 class="buyer-headline" id="buyerReqHeadline">
+            <span data-i18n="sec4_headline_l1">One crop.</span>
+            <em data-i18n="sec4_headline_l2">Multiple possibilities.</em>
+          </h2>
+
+          <!-- Headline underline — thin gold bar like reference -->
+          <span class="buyer-headline-underline" aria-hidden="true"></span>
+
+          <!-- Body -->
+          <p class="buyer-body-desc" data-i18n="sec4_body">
+            Different markets require different grades, sizes, formats, and commercial specifications. REEFIYA prepares each program around how and where the product will be sold or processed.
+          </p>
+
+          <!-- CTA Button -->
+          <a href="mailto:info@reefiya.com" class="buyer-cta-btn">
+            <span data-i18n="sec4_cta">Tell us what you need</span>
+            <span class="buyer-cta-arrow" aria-hidden="true">&#x2197;</span>
+          </a>
+        </div>
+
+        <!-- Right: Hero Banner Image -->
+        <div class="buyer-hero-visual">
+          <img
+            src="./sec4-hero-banner.png"
+            alt="Reefiya Sweet Potatoes packaging scene with export bags and boxes in Egyptian farm"
+            class="buyer-hero-img"
+            loading="lazy"
+          >
+        </div>
+      </div>
+
+      <!-- Bottom: 3 Cards with uploaded images — image top, text below -->
+      <div class="buyer-cards-wrapper">
+        <div class="buyer-cards-grid">
+          <!-- Card 1: Fresh Market -->
+          <div class="buyer-card">
+            <div class="buyer-card-media">
+              <img
+                src="./sec4-card1-freshmarket.png"
+                alt="Rustic crate of selected fresh sweet potatoes"
+                loading="lazy"
+              >
+            </div>
+            <div class="buyer-card-header">
+              <div class="buyer-card-toprow">
+                <div class="buyer-card-title-group">
+                  <span class="buyer-card-num">01</span>
+                  <span class="buyer-card-num-sep">&#8212;</span>
+                  <h3 class="buyer-card-title" data-i18n="sec4_card1_title">Fresh Market</h3>
+                </div>
+                <div class="buyer-card-icon-circle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="8" cy="21" r="1.5"></circle>
+                    <circle cx="19" cy="21" r="1.5"></circle>
+                    <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                  </svg>
+                </div>
+              </div>
+              <span class="buyer-card-tag" data-i18n="sec4_card1_tag">RETAIL &amp; WHOLESALE</span>
+              <p class="buyer-card-desc" data-i18n="sec4_card1_desc">
+                Selected uniform grades for retail chains, wholesale produce terminals, and foodservice channels.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2: Processing -->
+          <div class="buyer-card">
+            <div class="buyer-card-media">
+              <img
+                src="./sec4-card2-processing.png"
+                alt="Sweet potato cubes and puree bowl for food industry applications"
+                loading="lazy"
+              >
+            </div>
+            <div class="buyer-card-header">
+              <div class="buyer-card-toprow">
+                <div class="buyer-card-title-group">
+                  <span class="buyer-card-num">02</span>
+                  <span class="buyer-card-num-sep">&#8212;</span>
+                  <h3 class="buyer-card-title" data-i18n="sec4_card2_title">Processing</h3>
+                </div>
+                <div class="buyer-card-icon-circle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                  </svg>
+                </div>
+              </div>
+              <span class="buyer-card-tag" data-i18n="sec4_card2_tag">INDUSTRIAL APPLICATIONS</span>
+              <p class="buyer-card-desc" data-i18n="sec4_card2_desc">
+                Cost-effective, high-grade produce prepared for food processors, frozen sweet potato lines, and puree manufacturing.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3: Custom Programs -->
+          <div class="buyer-card">
+            <div class="buyer-card-media">
+              <img
+                src="./sec4-card3-custom.jpg"
+                alt="Reefiya export carton, mesh bag, and packaging"
+                loading="lazy"
+              >
+            </div>
+            <div class="buyer-card-header">
+              <div class="buyer-card-toprow">
+                <div class="buyer-card-title-group">
+                  <span class="buyer-card-num">03</span>
+                  <span class="buyer-card-num-sep">&#8212;</span>
+                  <h3 class="buyer-card-title" data-i18n="sec4_card3_title">Custom Programs</h3>
+                </div>
+                <div class="buyer-card-icon-circle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                </div>
+              </div>
+              <span class="buyer-card-tag" data-i18n="sec4_card3_tag">TAILORED SPECIFICATIONS</span>
+              <p class="buyer-card-desc" data-i18n="sec4_card3_desc">
+                Buyer-specific grading, calibrated sizing, specialized packing, labeling, and private-brand presentation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Footer Row -->
+      <div class="buyer-req-footer">
+        <div class="buyer-footer-left">
+          <img src="./reefiya-logo-clean.png" alt="Reefiya" class="buyer-footer-logo">
+          <span class="buyer-footer-brand-sub" data-i18n="sec4_footer_sub">PREMIUM EGYPTIAN PRODUCE</span>
+        </div>
+        <div class="buyer-footer-right">
+          <span class="buyer-footer-tagline" data-i18n="sec4_footer_tagline">FROM OUR FIELDS. TO GLOBAL SHELVES.</span>
+          <span class="buyer-footer-line" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  
   <script>
     /* ------------------------------
        7 Languages Dictionaries
     ------------------------------ */
     const translations = {
       en: {
+        route_presence: 'OUR BRANCH NETWORK',
+        branch_egypt: 'Egypt',
+        tag_hq: 'HQ',
+        branch_saudi: 'Saudi Arabia',
+        branch_usa: 'United States',
+        branch_canada: 'Canada',
+        tag_global: 'GLOBAL PRESENCE',
         dir: 'ltr',
         code: 'EN',
         nav_produce: 'Our Produce',
@@ -2197,7 +5260,7 @@
         ch_name_4: 'Shipment',
         ch_name_5: 'Destination',
         scroll_hint: 'Scroll to follow the journey ↓',
-        skip_produce: 'About Reefiya',
+        skip_produce: 'Skip to About Us',
         ch2_eyebrow: '02 — CAREFUL SELECTION',
         ch2_title: 'Curated grading.<br/><em>Consistent quality.</em>',
         ch2_desc: 'Rigorous sorting and uniform sizing to meet buyer specifications across international markets.',
@@ -2237,10 +5300,56 @@
         pillar2_desc: 'Built around international buyers.',
         pillar3_title: 'Global Outlook',
         pillar3_desc: 'Structured for international trade.',
+        sec3_section_label: 'OUR HERO PRODUCE',
+        sec3_eyebrow: 'EGYPTIAN SWEET POTATOES',
+        sec3_headline_l1: 'Egyptian Sweet Potatoes.',
+        sec3_headline_l2: 'Where our export journey begins.',
+        sec3_body: 'Sweet potatoes are REEFIYA’s primary export crop. By specializing deeply in one crop, we focus on sourcing, grading, packing, and preparing each order around the requirements of the buyer and destination market.',
+        sec3_cta: 'Explore sweet potatoes ↗',
+        sec3_corner_slogan: 'EGYPT GROWN. GLOBALLY BOUND.',
+        sec3_hw_line1: 'From',
+        sec3_hw_line2: 'Egyptian Fields',
+        sec3_hw_line3: 'to Global Shelves',
+        sec3_v1_cat: 'FRESH MARKET',
+        sec3_v1_name: 'BELLEVUE',
+        sec3_v1_desc: 'Selected Egyptian sweet potatoes for fresh-market and export programs, available in commercial sizes and grades according to buyer requirements.',
+        sec3_v2_cat: 'COMMERCIAL VARIETY',
+        sec3_v2_name: 'BEAUREGARD',
+        sec3_v2_desc: 'A widely traded sweet potato variety available in multiple commercial grades, sizes, and packing specifications.',
+        sec3_v3_cat: 'SEASONAL SELECTION',
+        sec3_v3_name: 'EGYPTIAN VARIETIES',
+        sec3_v3_desc: 'Local high-sugar varieties sourced according to season, availability, and buyer requirements.',
+        sec3_hw_phrase: 'From Egyptian Fields to Global Shelves',
+        sec3_footer_left: 'PREMIUM EGYPTIAN PRODUCE',
+        sec3_footer_right: 'QUALITY ROOTED IN EGYPT',
+        sec4_badge_label: 'BUYER REQUIREMENTS',
+        sec4_eyebrow: 'BUILT AROUND YOUR MARKET',
+        sec4_headline_l1: 'One crop.',
+        sec4_headline_l2: 'Multiple possibilities.',
+        sec4_body: 'Different markets require different grades, sizes, formats, and commercial specifications. REEFIYA prepares each program around how and where the product will be sold or processed.',
+        sec4_cta: 'Tell us what you need',
+        sec4_card1_title: 'Fresh Market',
+        sec4_card1_tag: 'RETAIL & WHOLESALE',
+        sec4_card1_desc: 'Selected uniform grades for retail chains, wholesale produce terminals, and foodservice channels.',
+        sec4_card2_title: 'Processing',
+        sec4_card2_tag: 'INDUSTRIAL APPLICATIONS',
+        sec4_card2_desc: 'Cost-effective, high-grade produce prepared for food processors, frozen sweet potato lines, and puree manufacturing.',
+        sec4_card3_title: 'Custom Programs',
+        sec4_card3_tag: 'TAILORED SPECIFICATIONS',
+        sec4_card3_desc: 'Buyer-specific grading, calibrated sizing, specialized packing, labeling, and private-brand presentation.',
+        sec4_footer_sub: 'PREMIUM EGYPTIAN PRODUCE',
+        sec4_footer_tagline: 'FROM OUR FIELDS. TO GLOBAL SHELVES.',
         video_title: 'OUR STORY',
         video_time: 'IN 60 SECONDS'
       },
       ar: {
+        route_presence: 'تواجدنا وفروعنا',
+        branch_egypt: 'مصر',
+        tag_hq: 'المقر الرئيسي',
+        branch_saudi: 'السعودية',
+        branch_usa: 'الولايات المتحدة',
+        branch_canada: 'كندا',
+        tag_global: 'الأسواق الدولية',
         dir: 'rtl',
         code: 'AR',
         nav_produce: 'محاصيلنا',
@@ -2263,7 +5372,7 @@
         ch_name_4: 'الشحن',
         ch_name_5: 'الوجهة',
         scroll_hint: 'مرر لأسفل لمتابعة الرحلة ↓',
-        skip_produce: 'عن ريفية',
+        skip_produce: 'تخطي إلى من نحن',
         ch2_eyebrow: '02 — الفرز والانتقاء',
         ch2_title: 'فرز دقيق.<br/><em>جودة متسقة وموثوقة.</em>',
         ch2_desc: 'فرز صارم وتوحيد للأحجام بما يتوافق مع مواصفات المشترين عبر مختلف الأسواق العالمية.',
@@ -2276,7 +5385,7 @@
         ch5_eyebrow: '05 — الأسواق العالمية',
         ch5_title: 'جاهزة للعرض في الأسواق.<br/><em>مجهزة للمشترين حول العالم.</em>',
         ch5_desc: 'حاصلات زراعية مصرية جاهزة للتصدير للمستوردين، وشركات التوزيع، وسلاسل التجزئة، وتجار الجملة، ومصنعي الأغذية عالمياً.',
-        sec2_badge: 'عن ريفية',
+        sec2_badge: 'عن ريفيا',
         sec2_subheading: 'أصل مصري أصيل. أفق عالمي واسع.',
         sec2_title_l1: 'جذورها في مصر.',
         sec2_title_l2: 'صُممت للتجارة العالمية.',
@@ -2285,9 +5394,9 @@
         route_gcc: 'الخليج العربي',
         route_na: 'أمريكا الشمالية',
         route_asia: 'آسيا والأسواق العالمية',
-        sec2_p1: 'ريفية (REEFIYA) شركة مصرية للحاصلات الزراعية ترتكز على إيصال محاصيل منتقاة بعناية فائقة إلى كبار المستوردين والمشترين في الأسواق الدولية.',
-        sec2_p2: 'نبدأ رحلتنا بالبطاطا الحلوة — وهو محصول نفهم تفاصيله بدقة من زراعته وانتقائه وحتى فرزه، وتعبئته، وتجهيزه للتصدير — لنبني ريفية منصة رائدة للمحاصيل الزراعية المصرية الفاخرة.',
-        sec2_cta: 'اكتشف ريفية',
+        sec2_p1: 'ريفيا (REEFIYA) شركة مصرية للحاصلات الزراعية ترتكز على إيصال محاصيل منتقاة بعناية فائقة إلى كبار المستوردين والمشترين في الأسواق الدولية.',
+        sec2_p2: 'نبدأ رحلتنا بالبطاطا الحلوة — وهو محصول نفهم تفاصيله بدقة من زراعته وانتقائه وحتى فرزه، وتعبئته، وتجهيزه للتصدير — لنبني ريفيا منصة رائدة للمحاصيل الزراعية المصرية الفاخرة.',
+        sec2_cta: 'اكتشف ريفيا',
         coord_from: 'من مصر',
         coord_to: 'إلى',
         coord_shelves: 'الأسواق العالمية',
@@ -2303,10 +5412,56 @@
         pillar2_desc: 'مصممة لتلبية متطلبات المشترين الدوليين.',
         pillar3_title: 'رؤية عالمية',
         pillar3_desc: 'هيكلية احترافية للتجارة الدولية.',
+        sec3_section_label: 'محصولنا الرئيسي',
+        sec3_eyebrow: 'البطاطا الحلوة المصرية',
+        sec3_headline_l1: 'البطاطا الحلوة المصرية.',
+        sec3_headline_l2: 'حيث تنطلق رحلتنا التصديرية',
+        sec3_body: 'تمثل البطاطا الحلوة المحصول التصديري الأساسي لشركة ريفيا. تركيزنا المتخصص في محصول واحد يمنحنا تحكماً دقيقاً في مراحل التوريد، والتدريج، والتعبئة، وتجهيز كل طلب بما يتوافق مع متطلبات المشتري وسوق الوجهة.',
+        sec3_cta: 'استكشف البطاطا الحلوة ↖',
+        sec3_corner_slogan: 'زراعة مصرية. وجهة عالمية.',
+        sec3_hw_line1: 'من الحقول',
+        sec3_hw_line2: 'المصرية إلى',
+        sec3_hw_line3: 'الرفوف العالمية',
+        sec3_hw_phrase: 'من الحقول المصرية إلى الرفوف العالمية',
+        sec3_v1_cat: 'سوق الاستهلاك الطازج',
+        sec3_v1_name: 'بلفين (BELLEVUE)',
+        sec3_v1_desc: 'بطاطا حلوة مصرية مختارة بعناية لبرامج التصدير وأسواق الاستهلاك الطازج، متوفرة بأحجام ودرجات تجارية تلبي متطلبات المشترين.',
+        sec3_v2_cat: 'صنف تجاري معتمد',
+        sec3_v2_name: 'بيوريجارد (BEAUREGARD)',
+        sec3_v2_desc: 'الصنف الأكثر تداولاً وانتشاراً عالمياً، متوفر بدرجات جودة، وأحجام، ومواصفات تعبئة تجارية متعددة.',
+        sec3_v3_cat: 'محاصيل موسمية مختارة',
+        sec3_v3_name: 'أصناف مصرية بلدية',
+        sec3_v3_desc: 'أصناف محلية تقليدية تتميز بنسبة سكر طبيعية عالية، نوفرها بحسب الموسم، ومدى التوفر، ومتطلبات المشتري.',
+        sec3_footer_left: 'محاصيل زراعية مصرية فاخرة',
+        sec3_footer_right: 'جودة متجذرة في أرض مصر',
+        sec4_badge_label: 'متطلبات المشترين',
+        sec4_eyebrow: 'مصممة لتناسب سوقك',
+        sec4_headline_l1: 'محصول واحد.',
+        sec4_headline_l2: 'إمكانيات وحلول متعددة.',
+        sec4_body: 'تتطلب الأسواق المختلفة درجات جودة وأحجاماً ومواصفات تجارية متنوعة. تقوم ريفيا (REEFIYA) بإعداد كل برنامج توريدي وفقاً لكيفية ومكان بيع المنتج أو تصنيعه.',
+        sec4_cta: 'أخبرنا باحتياجاتك',
+        sec4_card1_title: 'سوق الاستهلاك الطازج',
+        sec4_card1_tag: 'التجزئة والجملة',
+        sec4_card1_desc: 'درجات جودة متناسقة ومختارة لسلاسل التجزئة، وأسواق الجملة المركزية، وقنوات الخدمات الغذائية.',
+        sec4_card2_title: 'التصنيع الغذائي',
+        sec4_card2_tag: 'تطبيقات صناعية',
+        sec4_card2_desc: 'محاصيل عالية الجودة ومجدية اقتصادياً مجهزة لمصانع الأغذية، وخطوط البطاطا المجمدة، وتصنيع البيوريه.',
+        sec4_card3_title: 'برامج مخصصة',
+        sec4_card3_tag: 'مواصفات مفصلة حسب الطلب',
+        sec4_card3_desc: 'فرز وتدريج وفق متطلبات المشتري، وأحجام دقيقة، وتعبئة خاصة، وملصقات تجارية خاصة.',
+        sec4_footer_sub: 'محاصيل زراعية مصرية فاخرة',
+        sec4_footer_tagline: 'من حقولنا.. إلى رفوف الأسواق العالمية.',
         video_title: 'قصتنا',
         video_time: 'في 60 ثانية'
       },
       de: {
+        route_presence: 'UNSERE PRÄSENZ & NIEDERLASSUNGEN',
+        branch_egypt: 'Ägypten',
+        tag_hq: 'HQ',
+        branch_saudi: 'Saudi-Arabien',
+        branch_usa: 'Vereinigte Staaten',
+        branch_canada: 'Kanada',
+        tag_global: 'GLOBALE MÄRKTE',
         dir: 'ltr',
         code: 'DE',
         nav_produce: 'Produkte',
@@ -2369,10 +5524,56 @@
         pillar2_desc: 'Abgestimmt auf internationale Einkäufer.',
         pillar3_title: 'Globale Struktur',
         pillar3_desc: 'Aufgebaut für den internationalen Handel.',
+        sec3_section_label: 'UNSER HAUPTPRODUKT',
+        sec3_eyebrow: 'ÄGYPTISCHE SÜSSKARTOFFELN',
+        sec3_headline_l1: 'Ägyptische Süßkartoffeln.',
+        sec3_headline_l2: 'Wo unsere Exportreise beginnt.',
+        sec3_body: 'Süßkartoffeln sind das primäre Exportprodukt von REEFIYA. Durch unsere Spezialisierung fokussieren wir uns auf Beschaffung, Sortierung, Verpackung und Vorbereitung nach Käuferanforderungen.',
+        sec3_cta: 'Süßkartoffeln entdecken ↗',
+        sec3_corner_slogan: 'IN ÄGYPTEN GEWACHSEN. WELTWEIT GEFRAGT.',
+        sec3_hw_line1: 'Von ägyptischen Feldern',
+        sec3_hw_line2: 'in die Regale',
+        sec3_hw_line3: 'weltweit',
+        sec3_hw_phrase: 'Von ägyptischen Feldern in die Regale weltweit',
+        sec3_v1_cat: 'FRISCHMARKT',
+        sec3_v1_name: 'BELLEVUE',
+        sec3_v1_desc: 'Ausgewählte ägyptische Süßkartoffeln für den Frischmarkt und Exportprogramme in gewünschten Kalibrierungen.',
+        sec3_v2_cat: 'KOMMERZIELLE SORTE',
+        sec3_v2_name: 'BEAUREGARD',
+        sec3_v2_desc: 'Weltweit geschätzte Sorte, erhältlich in diversen Handelsklassen und Verpackungsoptionen.',
+        sec3_v3_cat: 'SAISONALE AUSWAHL',
+        sec3_v3_name: 'ÄGYPTISCHE SORTEN',
+        sec3_v3_desc: 'Regionale süße Sorten, bezogen nach Saison und individuellem Bedarf.',
+        sec3_footer_left: 'PREMIUM ÄGYPTISCHE ERZEUGNISSE',
+        sec3_footer_right: 'QUALITÄT AUS ÄGYPTEN',
+        sec4_badge_label: 'KÄUFERANFORDERUNGEN',
+        sec4_eyebrow: 'FÜR IHREN MARKT ENTWICKELT',
+        sec4_headline_l1: 'Eine Feldfrucht.',
+        sec4_headline_l2: 'Vielfältige Möglichkeiten.',
+        sec4_body: 'Verschiedene Märkte erfordern unterschiedliche Sortierungen, Kaliber, Formate und Spezifikationen. REEFIYA passt jedes Lieferprogramm exakt an.',
+        sec4_cta: 'Teilen Sie uns Ihren Bedarf mit',
+        sec4_card1_title: 'Frischemarkt',
+        sec4_card1_tag: 'EINZEL- & GROSSHANDEL',
+        sec4_card1_desc: 'Gleichmäßige Sortierungen für Supermarktketten, Großmärkte und Gastronomiekanäle.',
+        sec4_card2_title: 'Verarbeitung',
+        sec4_card2_tag: 'INDUSTRIELLE ANWENDUNGEN',
+        sec4_card2_desc: 'Wirtschaftliche, hochwertige Ware für lebensmittelverarbeitende Betriebe, Tiefkühllinien und Püreeherstellung.',
+        sec4_card3_title: 'Individuelle Programme',
+        sec4_card3_tag: 'MASSGESCHNEIDERTE SPEZIFIKATIONEN',
+        sec4_card3_desc: 'Kundenspezifische Kalibrierung, Verpackung, Etikettierung und Eigenmarken-Präsentation.',
+        sec4_footer_sub: 'PREMIUM ÄGYPTISCHE ERZEUGNISSE',
+        sec4_footer_tagline: 'VON UNSEREN FELDERN. IN DIE REGALE WELTWEIT.',
         video_title: 'UNSERE GESCHICHTE',
         video_time: 'IN 60 SEKUNDEN'
       },
       fr: {
+        route_presence: 'NOTRE PRÉSENCE ET NOS AGENCES',
+        branch_egypt: 'Égypte',
+        tag_hq: 'HQ',
+        branch_saudi: 'Arabie Saoudite',
+        branch_usa: 'États-Unis',
+        branch_canada: 'Canada',
+        tag_global: 'MARCHÉS MONDIAUX',
         dir: 'ltr',
         code: 'FR',
         nav_produce: 'Nos produits',
@@ -2435,10 +5636,56 @@
         pillar2_desc: 'Conçu pour les acheteurs internationaux.',
         pillar3_title: 'Perspective Mondiale',
         pillar3_desc: 'Structuré pour le grand export.',
+        sec3_section_label: 'NOTRE PRODUIT PHARE',
+        sec3_eyebrow: 'PATATES DOUCES D’ÉGYPTE',
+        sec3_headline_l1: 'Patates douces d’Égypte.',
+        sec3_headline_l2: 'Là où commence notre voyage d’exportation.',
+        sec3_body: 'Les patates douces sont la culture d’exportation phare de REEFIYA. Notre spécialisation approfondie garantit un approvisionnement, un calibrage et un conditionnement sur-mesure.',
+        sec3_cta: 'Découvrir nos patates douces ↗',
+        sec3_corner_slogan: 'CULTIVÉ EN ÉGYPTE. DESTINATION MONDE.',
+        sec3_hw_line1: 'Des champs égyptiens',
+        sec3_hw_line2: 'aux rayons',
+        sec3_hw_line3: 'du monde entier',
+        sec3_hw_phrase: 'Des champs égyptiens aux rayons du monde entier',
+        sec3_v1_cat: 'MARCHÉ DU FRAIS',
+        sec3_v1_name: 'BELLEVUE',
+        sec3_v1_desc: 'Patates douces sélectionnées pour les filières fraîches et l’exportation internationale.',
+        sec3_v2_cat: 'VARIÉTÉ COMMERCIALE',
+        sec3_v2_name: 'BEAUREGARD',
+        sec3_v2_desc: 'Variété largement commercialisée, disponible en plusieurs calibres et conditionnements.',
+        sec3_v3_cat: 'SÉLECTION SAISONNIÈRE',
+        sec3_v3_name: 'VARIÉTÉS ÉGYPTIENNES',
+        sec3_v3_desc: 'Variétés locales à haute teneur en sucre, approvisionnées selon la saison.',
+        sec3_footer_left: 'PRODUITS AGRICOLES D’ÉGYPTE',
+        sec3_footer_right: 'QUALITÉ ENRACINÉE EN ÉGYPTE',
+        sec4_badge_label: 'EXIGENCES ACHETEURS',
+        sec4_eyebrow: 'CONÇU POUR VOTRE MARCHÉ',
+        sec4_headline_l1: 'Une culture.',
+        sec4_headline_l2: 'De multiples possibilités.',
+        sec4_body: 'Chaque marché exige des calibres, des grades et des spécifications commerciales distinctes. REEFIYA adapte chaque programme selon vos besoins.',
+        sec4_cta: 'Dites-nous ce dont vous avez besoin',
+        sec4_card1_title: 'Marché Frais',
+        sec4_card1_tag: 'GRANDE DISTRIBUTION & GROS',
+        sec4_card1_desc: 'Calibres uniformes rigoureusement sélectionnés pour la distribution, les marchés de gros et la restauration.',
+        sec4_card2_title: 'Transformation',
+        sec4_card2_tag: 'APPLICATIONS INDUSTRIELLES',
+        sec4_card2_desc: 'Produits compétitifs et de qualité préparés pour les industriels, les lignes de surgélation et la purée.',
+        sec4_card3_title: 'Programmes Sur-Mesure',
+        sec4_card3_tag: 'SPÉCIFICATIONS PERSONNALISÉES',
+        sec4_card3_desc: 'Calibrage ciblé, conditionnement spécifique, étiquetage personnalisé et marques de distributeur.',
+        sec4_footer_sub: 'PRODUITS ÉGYPTIENS HAUT DE GAMME',
+        sec4_footer_tagline: 'DE NOS CHAMPS. AUX RAYONS DU MONDE ENTIER.',
         video_title: 'NOTRE HISTOIRE',
         video_time: 'EN 60 SECONDES'
       },
       nl: {
+        route_presence: 'ONZE AANWEZIGHEID & VESTIGINGEN',
+        branch_egypt: 'Egypte',
+        tag_hq: 'HQ',
+        branch_saudi: 'Saoedi-Arabië',
+        branch_usa: 'Verenigde Staten',
+        branch_canada: 'Canada',
+        tag_global: 'WERELDWIJDE MARKTEN',
         dir: 'ltr',
         code: 'NL',
         nav_produce: 'Onze producten',
@@ -2501,10 +5748,56 @@
         pillar2_desc: 'Afgestemd op internationale kopers.',
         pillar3_title: 'Wereldwijde Structuur',
         pillar3_desc: 'Klaar voor wereldwijde distributie.',
+        sec3_section_label: 'ONS HOOFDPRODUCT',
+        sec3_eyebrow: 'EGYPTISCHE ZOETE AARDAPPELEN',
+        sec3_headline_l1: 'Egyptische zoete aardappelen.',
+        sec3_headline_l2: 'Waar onze exportreis begint.',
+        sec3_body: 'Zoete aardappelen zijn het primaire exportproduct van REEFIYA. Dankzij diepgaande specialisatie garanderen wij zorgvuldige sortering, verpakking en levering op maat.',
+        sec3_cta: 'Ontdek zoete aardappelen ↗',
+        sec3_corner_slogan: 'GETEELD IN EGYPTE. VOOR DE WERELD.',
+        sec3_hw_line1: 'Van Egyptische velden',
+        sec3_hw_line2: 'naar wereldwijde',
+        sec3_hw_line3: 'schappen',
+        sec3_hw_phrase: 'Van Egyptische velden naar wereldwijde schappen',
+        sec3_v1_cat: 'VERSMARKT',
+        sec3_v1_name: 'BELLEVUE',
+        sec3_v1_desc: 'Geselecteerde zoete aardappelen voor versmarkt- en exportprogramma’s.',
+        sec3_v2_cat: 'COMMERCIËLE VARIËTEIT',
+        sec3_v2_name: 'BEAUREGARD',
+        sec3_v2_desc: 'Veelgevraagde variëteit leverbaar in diverse commerciële maten en verpakkingen.',
+        sec3_v3_cat: 'SEIZOENSSELECTIE',
+        sec3_v3_name: 'EGYPTISCHE VARIËTEITEN',
+        sec3_v3_desc: 'Lokale suikerrijke rassen geleverd naar gelang beschikbaarheid en seizoen.',
+        sec3_footer_left: 'PREMIUM EGYPTISCHE AGF',
+        sec3_footer_right: 'KWALITEIT GEWORTELD IN EGYPTE',
+        sec4_badge_label: 'INKOPERSVEREISTEN',
+        sec4_eyebrow: 'AFGESTEMD OP UW MARKT',
+        sec4_headline_l1: 'Eén gewas.',
+        sec4_headline_l2: 'Vele mogelijkheden.',
+        sec4_body: 'Verschillende markten vereisen verschillende sorteringen, formaten en specificaties. REEFIYA stemt elk leveringsprogramma zorgvuldig af.',
+        sec4_cta: 'Vertel ons wat u zoekt',
+        sec4_card1_title: 'Versmarkt',
+        sec4_card1_tag: 'DETAIL- & GROOTHANDEL',
+        sec4_card1_desc: 'Geselecteerde uniforme sorteringen voor supermarktketens, versmarkten en foodservice.',
+        sec4_card2_title: 'Verwerking',
+        sec4_card2_tag: 'INDUSTRIËLE TOEPASSINGEN',
+        sec4_card2_desc: 'Kostenefficiënte kwaliteitsproducten voor voedselverwerkers, vrieslijnen en puree-industrie.',
+        sec4_card3_title: 'Maatwerkprogramma’s',
+        sec4_card3_tag: 'OP MAAT GEMAAKTE SPECIFICATIES',
+        sec4_card3_desc: 'Klantgerichte sortering, specifieke verpakkingen, labeling en private-label mogelijkheden.',
+        sec4_footer_sub: 'PREMIUM EGYPTISCHE PRODUCTEN',
+        sec4_footer_tagline: 'VAN ONZE VELDEN. NAAR SCHAPPEN WERELDWIJD.',
         video_title: 'ONS VERHAAL',
         video_time: 'IN 60 SECONDEN'
       },
       es: {
+        route_presence: 'NUESTRA PRESENCIA Y SUCURSALES',
+        branch_egypt: 'Egipto',
+        tag_hq: 'HQ',
+        branch_saudi: 'Arabia Saudita',
+        branch_usa: 'Estados Unidos',
+        branch_canada: 'Canadá',
+        tag_global: 'MERCADOS GLOBALES',
         dir: 'ltr',
         code: 'ES',
         nav_produce: 'Nuestros productos',
@@ -2567,10 +5860,56 @@
         pillar2_desc: 'Diseñado para compradores internacionales.',
         pillar3_title: 'Visión Global',
         pillar3_desc: 'Estructurado para el comercio mundial.',
+        sec3_section_label: 'NUESTRO PRODUCTO ESTRELLA',
+        sec3_eyebrow: 'BATATAS EGIPCIAS',
+        sec3_headline_l1: 'Batatas egipcias.',
+        sec3_headline_l2: 'Donde comienza nuestro viaje de exportación.',
+        sec3_body: 'Las batatas son el principal cultivo de exportación de REEFIYA. Gracias a nuestra especialización, cuidamos cada fase: selección, calibrado, envasado y preparación a medida.',
+        sec3_cta: 'Explorar batatas ↗',
+        sec3_corner_slogan: 'CULTIVADO EN EGIPTO. DESTINO GLOBAL.',
+        sec3_hw_line1: 'De los campos',
+        sec3_hw_line2: 'egipcios a los',
+        sec3_hw_line3: 'estantes globales',
+        sec3_hw_phrase: 'De los campos egipcios a los estantes globales',
+        sec3_v1_cat: 'MERCADO EN FRESCO',
+        sec3_v1_name: 'BELLEVUE',
+        sec3_v1_desc: 'Batatas seleccionadas para programas de consumo fresco y exportación.',
+        sec3_v2_cat: 'VARIEDAD COMERCIAL',
+        sec3_v2_name: 'BEAUREGARD',
+        sec3_v2_desc: 'Variedad ampliamente comercializada, disponible en múltiples calibres y especificaciones.',
+        sec3_v3_cat: 'SELECCIÓN ESTACIONAL',
+        sec3_v3_name: 'VARIEDADES EGIPCIAS',
+        sec3_v3_desc: 'Variedades locales de alto dulzor cosechadas según temporada y requerimientos.',
+        sec3_footer_left: 'PRODUCTOS EGIPCIOS DE ALTA CALIDAD',
+        sec3_footer_right: 'CALIDAD CON RAÍCES EN EGIPTO',
+        sec4_badge_label: 'REQUISITOS DEL COMPRADOR',
+        sec4_eyebrow: 'DISEÑADO PARA SU MERCADO',
+        sec4_headline_l1: 'Un solo cultivo.',
+        sec4_headline_l2: 'Múltiples posibilidades.',
+        sec4_body: 'Cada mercado exige calibres, categorías y especificaciones comerciales diferentes. REEFIYA prepara cada programa a la medida de sus canales.',
+        sec4_cta: 'Cuéntenos qué necesita',
+        sec4_card1_title: 'Mercado Fresco',
+        sec4_card1_tag: 'MINORISTA Y MAYORISTA',
+        sec4_card1_desc: 'Calibres uniformes seleccionados para cadenas de supermercados, mercados mayoristas y canal horeca.',
+        sec4_card2_title: 'Procesamiento',
+        sec4_card2_tag: 'APLICACIONES INDUSTRIALES',
+        sec4_card2_desc: 'Producto de alta calidad y rentable para procesadores de alimentos, congelados y elaboración de purés.',
+        sec4_card3_title: 'Programas a Medida',
+        sec4_card3_tag: 'ESPECIFICACIONES PERSONALIZADAS',
+        sec4_card3_desc: 'Calibración específica del comprador, embalaje especializado, etiquetado y marca blanca.',
+        sec4_footer_sub: 'PRODUCTOS EGIPCIOS DE PRIMERA CALIDAD',
+        sec4_footer_tagline: 'DE NUESTROS CAMPOS. A LOS LINEALES DE TODO EL MUNDO.',
         video_title: 'NUESTRA HISTORIA',
         video_time: 'EN 60 SEGUNDOS'
       },
       ru: {
+        route_presence: 'НАШЕ ПРИСУТСТВИЕ И ФИЛИАЛЫ',
+        branch_egypt: 'Египет',
+        tag_hq: 'HQ',
+        branch_saudi: 'Саудовская Аравия',
+        branch_usa: 'США',
+        branch_canada: 'Канада',
+        tag_global: 'МИРОВЫЕ РЫНКИ',
         dir: 'ltr',
         code: 'RU',
         nav_produce: 'Продукция',
@@ -2634,9 +5973,55 @@
         pillar3_title: 'Глобальный масштаб',
         pillar3_desc: 'Выстроенная система международной торговли.',
         video_title: 'НАША ИСТОРИЯ',
-        video_time: 'ЗА 60 СЕКУНД'
+        video_time: 'ЗА 60 СЕКУНД',
+        sec3_section_label: 'НАША ГЛАВНАЯ ПРОДУКЦИЯ',
+        sec3_eyebrow: 'ЕГИПЕТСКИЙ БАТАТ',
+        sec3_headline_l1: 'Египетский батат.',
+        sec3_headline_l2: 'С чего начинается наш экспорт.',
+        sec3_body: 'Батат — ключевая экспортная культура REEFIYA. Глубокая специализация на одном продукте позволяет нам гарантировать безупречный отбор, сортировку, калибровку и индивидуальную подготовку партий под требования каждого покупателя.',
+        sec3_cta: 'Узнать больше о батате ↗',
+        sec3_corner_slogan: 'ВЫРАЩЕНО В ЕГИПТЕ. ДЛЯ ВСЕГО МИРА.',
+        sec3_hw_line1: 'С египетских полей',
+        sec3_hw_line2: 'на мировые',
+        sec3_hw_line3: 'прилавки',
+        sec3_hw_phrase: 'С египетских полей на мировые прилавки',
+        sec3_v1_cat: 'СВЕЖИЙ РЫНОК',
+        sec3_v1_name: 'BELLEVUE',
+        sec3_v1_desc: 'Отборный египетский батат для свежего рынка и экспортных сетей, доступный во всех коммерческих калибрах.',
+        sec3_v2_cat: 'КОММЕРЧЕСКИЙ СОРТ',
+        sec3_v2_name: 'BEAUREGARD',
+        sec3_v2_desc: 'Широко востребованный сорт батата, поставляемый в различных калибрах и вариантах фасовки.',
+        sec3_v3_cat: 'СЕЗОННЫЙ ВЫБОР',
+        sec3_v3_name: 'ЕГИПЕТСКИЕ СОРТА',
+        sec3_v3_desc: 'Местные сладкие сорта, поставляемые по сезону и индивидуальным запросам покупателей.',
+        sec3_footer_left: 'ПРЕМИУМ ПРОДУКЦИЯ ЕГИПТА',
+        sec3_footer_right: 'КАЧЕСТВО С ЕГИПЕТСКИМИ КОРНЯМИ',
+        sec4_badge_label: 'ТРЕБОВАНИЯ ПОКУПАТЕЛЕЙ',
+        sec4_eyebrow: 'ПОД СТАНДАРТЫ ВАШЕГО РЫНКА',
+        sec4_headline_l1: 'Одна культура.',
+        sec4_headline_l2: 'Множество возможностей.',
+        sec4_body: 'Различные рынки требуют разных сортов, калибров и упаковочных стандартов. REEFIYA готовит каждую партию под требования конкретного покупателя.',
+        sec4_cta: 'Сообщите нам ваши требования',
+        sec4_card1_title: 'Свежий рынок',
+        sec4_card1_tag: 'РОЗНИЦА И ОПТ',
+        sec4_card1_desc: 'Калиброванные отборные партии для супермаркетов, распределительных центров и сегмента HoReCa.',
+        sec4_card2_title: 'Переработка',
+        sec4_card2_tag: 'ПРОМЫШЛЕННОЕ ПРИМЕНЕНИЕ',
+        sec4_card2_desc: 'Выгодное высококачественное сырье для пищевых комбинатов, линий заморозки и производства пюре.',
+        sec4_card3_title: 'Индивидуальные программы',
+        sec4_card3_tag: 'СПЕЦИФИКАЦИЯ ПОД ЗАКАЗ',
+        sec4_card3_desc: 'Индивидуальная сортировка, калибровка, брендированная упаковка и Private Label.',
+        sec4_footer_sub: 'ПРЕМИУМ ПРОДУКЦИЯ ЕГИПТА',
+        sec4_footer_tagline: 'С НАШИХ ПОЛЕЙ. НА ПОЛКИ ВСЕГО МИРА.',
       },
       tr: {
+        route_presence: 'VARLIĞIMIZ VE ŞUBELERİMİZ',
+        branch_egypt: 'Mısır',
+        tag_hq: 'HQ',
+        branch_saudi: 'Suudi Arabistan',
+        branch_usa: 'Amerika Birleşik Devletleri',
+        branch_canada: 'Kanada',
+        tag_global: 'KÜRESEL PAZARLAR',
         dir: 'ltr',
         code: 'TR',
         nav_produce: 'Ürünlerimiz',
@@ -2699,8 +6084,159 @@
         pillar2_desc: 'Uluslararası alıcıların talepleri doğrultusunda.',
         pillar3_title: 'Küresel Perspektif',
         pillar3_desc: 'Uluslararası ticaret standartlarında yapılandırılmış.',
+        sec3_section_label: 'AMİRAL GEMİSİ ÜRÜNÜMÜZ',
+        sec3_eyebrow: 'MISIR TATLI PATATESLERİ',
+        sec3_headline_l1: 'Mısır Tatlı Patatesleri.',
+        sec3_headline_l2: 'İhracat yolculuğumuzun başladığı yer.',
+        sec3_body: 'Tatlı patates, REEFIYA’nın birincil ihracat ürünüdür. Tek bir üründe derinlemesine uzmanlaşarak tedarik, boylama, paketleme ve hazırlık süreçlerini alıcı standartlarına göre yönetiyoruz.',
+        sec3_cta: 'Tatlı patatesleri keşfedin ↗',
+        sec3_corner_slogan: 'MISIR’DA YETİŞTİ. DÜNYAYA AÇILDI.',
+        sec3_hw_line1: 'Mısır tarlalarından',
+        sec3_hw_line2: 'dünya',
+        sec3_hw_line3: 'raflarına',
+        sec3_hw_phrase: 'Mısır tarlalarından dünya raflarına',
+        sec3_v1_cat: 'TAZE TÜKETİM PAZARI',
+        sec3_v1_name: 'BELLEVUE',
+        sec3_v1_desc: 'Taze tüketim ve ihracat programları için seçilmiş birinci sınıf Mısır tatlı patatesleri.',
+        sec3_v2_cat: 'TİCARİ VARYETE',
+        sec3_v2_name: 'BEAUREGARD',
+        sec3_v2_desc: 'Küresel ticarette en çok tercih edilen, çoklu boylama ve paketleme seçeneklerine sahip varyete.',
+        sec3_v3_cat: 'MEVSİMSEL SEÇİM',
+        sec3_v3_name: 'YEREL MISIR ÇEŞİTLERİ',
+        sec3_v3_desc: 'Mevsimine ve talebe göre tedarik edilen yüksek şeker oranlı yerel lezzetler.',
+        sec3_footer_left: 'BİRİNCİ SINIF MISIR TARIM ÜRÜNLERİ',
+        sec3_footer_right: 'KÖKLERİ MISIR’DA OLAN KALİTE',
+        sec4_badge_label: 'ALICI GEREKSİNİMLERİ',
+        sec4_eyebrow: 'PAZARINIZA ÖZEL ÇÖZÜMLER',
+        sec4_headline_l1: 'Tek bir ürün.',
+        sec4_headline_l2: 'Çoklu olanaklar.',
+        sec4_body: 'Farklı pazarlar farklı kalibre, kalite ve ticari standartlar gerektirir. REEFIYA her sevkiyat programını pazarın ihtiyaçlarına göre hazırlar.',
+        sec4_cta: 'İhtiyacınızı bize iletin',
+        sec4_card1_title: 'Taze Tüketim Pazarı',
+        sec4_card1_tag: 'PERAKENDE & TOPTAN',
+        sec4_card1_desc: 'Market zincirleri, toptancı halleri ve gıda servis kanalları için özenle seçilmiş standart boylar.',
+        sec4_card2_title: 'İşleme Sanayisi',
+        sec4_card2_tag: 'ENDÜSTRİYEL KULLANIM',
+        sec4_card2_desc: 'Gıda üreticileri, dondurulmuş ürün hatları ve püre imalatı için ekonomik ve yüksek standartlı ürünler.',
+        sec4_card3_title: 'Özel Programlar',
+        sec4_card3_tag: 'KİŞİYE ÖZEL SPESİFİKASYONLAR',
+        sec4_card3_desc: 'Alıcıya özel kalibrasyon, özel ambalaj, etiketleme ve özel marka (private label) sunumu.',
+        sec4_footer_sub: 'BİRİNCİ SINIF MISIR TARIM ÜRÜNLERİ',
+        sec4_footer_tagline: 'TARLALARIMIZDAN. DÜNYA RAFLARINA.',
         video_title: 'HİKAYEMİZ',
         video_time: '60 SANİYEDE'
+      },
+      it: {
+        route_presence: 'LA NOSTRA PRESENZA E FILIALI',
+        branch_egypt: 'Egitto',
+        tag_hq: 'HQ',
+        branch_saudi: 'Arabia Saudita',
+        branch_usa: 'Stati Uniti',
+        branch_canada: 'Canada',
+        tag_global: 'MERCATI GLOBALI',
+        dir: 'ltr',
+        code: 'IT',
+        nav_produce: 'I Nostri Prodotti',
+        nav_specs: 'Specifiche',
+        nav_process: 'Processo di Esportazione',
+        nav_global: 'Presenza Globale',
+        nav_about: 'Chi Siamo',
+        btn_quote: 'Richiedi un preventivo',
+        hero_eyebrow: 'PRODOTTI AGRICOLI EGIZIANI DI PREGIO',
+        hero_title: 'Dai campi egiziani.<br/><em>Agli scaffali di tutto il mondo.</em>',
+        hero_desc: 'Patate dolci egiziane, accuratamente selezionate e preparate per i mercati internazionali.',
+        cta_quote: 'Richiedi un preventivo ↗',
+        cta_explore: 'Scopri i nostri prodotti ↗',
+        cta_specs: 'Visualizza le specifiche ↗',
+        cta_packing: 'Opzioni di confezionamento ↗',
+        cta_logistics: 'Dettagli logistici ↗',
+        ch_name_1: 'Origine',
+        ch_name_2: 'Selezione',
+        ch_name_3: 'Confezionamento',
+        ch_name_4: 'Spedizione',
+        ch_name_5: 'Destinazione',
+        scroll_hint: 'Scorri per scoprire il percorso ↓',
+        skip_produce: 'Chi è Reefiya',
+        ch2_eyebrow: '02 — SELEZIONE ACCURATA',
+        ch2_title: 'Calibratura attenta.<br/><em>Qualità costante.</em>',
+        ch2_desc: 'Rigorosa selezione e calibrazione uniforme per soddisfare gli standard degli acquirenti internazionali.',
+        ch3_eyebrow: '03 — IMBALLAGGIO PER L’ESPORTAZIONE',
+        ch3_title: 'Progettato per l’export.<br/><em>Protetto in ogni cassa.</em>',
+        ch3_desc: 'Cartoni ondulati ventilati studiati per preservare freschezza, integrità e pelle del prodotto durante tutto il tragitto.',
+        ch4_eyebrow: '04 — LOGISTICA A TEMPERATURA CONTROLLATA',
+        ch4_title: 'Temperatura controllata.<br/><em>Pronto per il viaggio.</em>',
+        ch4_desc: 'Spedizioni refrigerate con temperatura e flusso d’aria costantemente monitorati durante il trasporto marittimo e terrestre.',
+        ch5_eyebrow: '05 — MERCATI GLOBALI',
+        ch5_title: 'Pronto per il mercato.<br/><em>Per i buyer internazionali.</em>',
+        ch5_desc: 'Prodotti egiziani pronti per l’esportazione destinati a importatori, distributori, catene GDO e grossisti di tutto il mondo.',
+        sec2_badge: 'CHI È REEFIYA',
+        sec2_subheading: 'ORIGINE EGIZIANA. VISIONE GLOBALE.',
+        sec2_title_l1: 'Radici in Egitto.',
+        sec2_title_l2: 'Costruiti per il commercio globale.',
+        route_egypt: 'EGITTO (ORIGINE)',
+        route_europe: 'EUROPA',
+        route_gcc: 'GOLFO / GCC',
+        route_na: 'NORD AMERICA',
+        route_asia: 'ASIA & GLOBALE',
+        sec2_p1: 'REEFIYA è un’azienda agricola egiziana specializzata nel collegare raccolti di alta qualità con acquirenti e mercati internazionali.',
+        sec2_p2: 'Iniziamo con le patate dolci — un prodotto che padroneggiamo dalla coltivazione alla selezione, calibratura, confezionamento e spedizione — costruendo al contempo REEFIYA come piattaforma leader per i migliori prodotti agricoli egiziani.',
+        sec2_cta: 'Scopri REEFIYA',
+        coord_from: 'DALL’EGITTO',
+        coord_to: 'AGLI',
+        coord_shelves: 'SCAFFALI GLOBALI',
+        tag_people: 'PERSONE',
+        tag_land: 'TERRA',
+        tag_quality: 'QUALITÀ',
+        tag_partnerships: 'PARTNERSHIP',
+        tag_global: 'MERCATI GLOBALI',
+        tag_motto: 'MOLTO PIÙ DI UN RACCOLTO<br/>UN FUTURO PIÙ LUMINOSO',
+        pillar1_title: 'Origine Egiziana',
+        pillar1_desc: 'Colture accuratamente selezionate nei territori più fertili.',
+        pillar2_title: 'Focalizzazione sull’Export',
+        pillar2_desc: 'Processi su misura per le esigenze dei buyer internazionali.',
+        pillar3_title: 'Presenza Internazionale',
+        pillar3_desc: 'Struttura logistica affidabile per il commercio estero.',
+        sec3_section_label: 'IL NOSTRO PRODOTTO DI PUNTA',
+        sec3_eyebrow: 'PATATE DOLCI EGIZIANE',
+        sec3_headline_l1: 'Patate dolci egiziane.',
+        sec3_headline_l2: 'Dove comincia il nostro viaggio di esportazione.',
+        sec3_body: 'Le patate dolci sono la principale coltura di esportazione di REEFIYA. Focalizzandoci con massima specializzazione su questo prodotto, curiamo ogni fase: approvvigionamento, calibrazione, confezionamento e preparazione secondo le specifiche esatte di ciascun acquirente e mercato di destinazione.',
+        sec3_cta: 'Scopri le patate dolci ↗',
+        sec3_corner_slogan: 'COLTIVATO IN EGITTO. DESTINATO AL MONDO.',
+        sec3_hw_line1: 'Dai campi egiziani',
+        sec3_hw_line2: 'agli scaffali',
+        sec3_hw_line3: 'di tutto il mondo',
+        sec3_hw_phrase: 'Dai campi egiziani agli scaffali di tutto il mondo',
+        sec3_v1_cat: 'MERCATO DEL FRESCO',
+        sec3_v1_name: 'BELLEVUE',
+        sec3_v1_desc: 'Patate dolci egiziane selezionate per la grande distribuzione e programmi export, disponibili in calibri e confezionamenti personalizzati.',
+        sec3_v2_cat: 'VARIETÀ COMMERCIALE',
+        sec3_v2_name: 'BEAUREGARD',
+        sec3_v2_desc: 'Varietà ampiamente richiesta sui mercati internazionali, disponibile in plurime pezzature e opzioni di imballaggio.',
+        sec3_v3_cat: 'SELEZIONE STAGIONALE',
+        sec3_v3_name: 'VARIETÀ EGIZIANE',
+        sec3_v3_desc: 'Varietà locali a polpa dolce e aromatica, fornite secondo stagionalità e capitolati del cliente.',
+        sec3_footer_left: 'PRODOTTI AGRICOLI EGIZIANI DI PREGIO',
+        sec3_footer_right: 'QUALITÀ RADICATA IN EGITTO',
+        sec4_badge_label: 'REQUISITI DEI COMPRATORI',
+        sec4_eyebrow: 'SU MISURA PER IL VOSTRO MERCATO',
+        sec4_headline_l1: 'Un raccolto.',
+        sec4_headline_l2: 'Molteplici possibilità.',
+        sec4_body: 'Mercati diversi richiedono calibri, categorie e formati specifici. REEFIYA struttura ciascun programma commerciale in base alla destinazione d’uso.',
+        sec4_cta: 'Raccontateci le vostre esigenze',
+        sec4_card1_title: 'Mercato del Fresco',
+        sec4_card1_tag: 'RETAIL E INGROSSO',
+        sec4_card1_desc: 'Calibri uniformi e selezionati per catene di distribuzione, mercati all’ingrosso e canale horeca.',
+        sec4_card2_title: 'Trasformazione',
+        sec4_card2_tag: 'APPLICAZIONI INDUSTRIALI',
+        sec4_card2_desc: 'Prodotti di alta resa e qualità preparati per l’industria alimentare, surgelati e puree.',
+        sec4_card3_title: 'Programmi Personalizzati',
+        sec4_card3_tag: 'SPECIFICHE SU RICHIESTA',
+        sec4_card3_desc: 'Calibrazione dedicata, confezionamento speciale, etichettatura personalizzata e private label.',
+        sec4_footer_sub: 'PRODOTTI AGRICOLI EGIZIANI DI PREGIO',
+        sec4_footer_tagline: 'DAI NOSTRI CAMPI. AGLI SCAFFALI DI TUTTO IL MONDO.',
+        video_title: 'LA NOSTRA STORIA',
+        video_time: 'IN 60 SECONDI'
       }
     };
 
@@ -2749,6 +6285,13 @@
           el.innerHTML = data[key];
         }
       });
+
+      // Synchronize Section 03 product stage and timeline to new direction
+      try {
+        if (typeof setProductActive === 'function' && typeof currentVarietyIdx !== 'undefined') {
+          setProductActive(currentVarietyIdx);
+        }
+      } catch (err) {}
     }
 
     document.querySelectorAll('.lang-menu-item').forEach(item => {
@@ -2875,10 +6418,16 @@
       );
     }
 
+    function hideLoader() {
+      if (loader && !loader.classList.contains('hidden')) {
+        loader.classList.add('hidden');
+      }
+    }
+
     for (let i = 1; i <= frameCount; i++) {
       const img = new Image();
       img.src = currentFrame(i);
-      img.onload = () => {
+      const onProgress = () => {
         loadedCount++;
         const percent = Math.round((loadedCount / frameCount) * 100);
         if (loaderFill) {
@@ -2891,14 +6440,21 @@
           resizeCanvas();
           renderFrame(1);
         }
-        if (loadedCount === frameCount) {
-          setTimeout(() => {
-            loader.classList.add('hidden');
-          }, 350);
+        if (loadedCount >= frameCount) {
+          setTimeout(hideLoader, 350);
         }
       };
+      img.onload = onProgress;
+      img.onerror = onProgress;
       images.push(img);
     }
+
+    // Safety fallback: Ensure preloader always dismisses even if network stalls
+    setTimeout(hideLoader, 1500);
+    window.addEventListener('load', () => {
+      setTimeout(hideLoader, 500);
+    });
+
 
     let targetIndex = 1;
     let currentRenderIndex = 1;
@@ -2923,12 +6479,18 @@
     chapterItems.forEach(item => {
       item.addEventListener('click', () => {
         const chapterNum = parseInt(item.dataset.chapter, 10);
-        // Fractions scaled with the 0.75 hero animation timeline:
-        const chapterFractions = [0.00, 0.28, 0.44, 0.58, 0.72];
-        const fraction = chapterFractions[chapterNum - 1];
-        const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
+        // Cleanly established frames for each scene (avoiding crossfades at the cut):
+        // 1: Origin, 45: Selection, 68: Packing, 82: Shipment, 99: Destination
+        const targetFrames = [1, 45, 68, 82, 99];
+        const targetFrame = targetFrames[chapterNum - 1];
+        // progress = (frame - 1) / 99
+        const targetProgress = (targetFrame - 1) / 99;
+        
+        const heroDist = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
+        const maxScroll = heroDist - window.innerHeight;
+        
         window.scrollTo({
-          top: fraction * heroScrollDistance,
+          top: targetProgress * maxScroll + 5, // add 5px buffer to ensure triggering the active state
           behavior: 'smooth'
         });
       });
@@ -3012,6 +6574,17 @@
         lastScrollY = currentScrollY;
       }
 
+      // Completely hide canvas wrapper when scrolling past Hero sequence so it never shows in Section 02 or Section 03
+      const canvasWrapperEl = document.querySelector('.canvas-wrapper');
+      const heroDist = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
+      if (canvasWrapperEl) {
+        if (currentScrollY > heroDist) {
+          canvasWrapperEl.style.display = 'none';
+        } else {
+          canvasWrapperEl.style.display = 'flex';
+        }
+      }
+
       requestAnimationFrame(tick);
     }
 
@@ -3052,39 +6625,67 @@
       }, { passive: true });
     }
 
-    // Smart Navbar: Keep completely visible throughout Hero Journey (Chapters 1-5).
-    // Once scrolled past the hero track into Section 02 and below: hide on scroll down, show on scroll up.
+    // Smart Navbar: Hide on scroll down, show on scroll up, AND hide on idle (1.2 seconds)
     let lastNavScrollY = window.scrollY || window.pageYOffset;
     const navEl = document.querySelector('.site-nav-container');
+    let navIdleTimeout;
+    let isNavHovered = false;
 
-    window.addEventListener('scroll', () => {
+    if (navEl) {
+      navEl.addEventListener('mouseenter', () => isNavHovered = true);
+      navEl.addEventListener('mouseleave', () => {
+        isNavHovered = false;
+        startNavIdleTimer();
+      });
+    }
+
+    function startNavIdleTimer() {
+      clearTimeout(navIdleTimeout);
       const currentY = window.scrollY || window.pageYOffset;
-      const scrollDiff = currentY - lastNavScrollY;
-      const heroDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
-      const isPastHero = currentY >= (heroDistance - 100);
-
-      if (isPastHero) {
-        if (scrollDiff > 10) {
-          // Scrolling down in content sections - smoothly hide navbar
+      if (currentY > 100 && !isNavHovered) {
+        navIdleTimeout = setTimeout(() => {
           if (navEl && !navEl.classList.contains('nav-hidden')) {
             navEl.classList.add('nav-hidden');
           }
-          // Close language dropdown if open
           if (langMenu && langMenu.classList.contains('open')) {
             langMenu.classList.remove('open');
             langBtn.setAttribute('aria-expanded', 'false');
           }
-        } else if (scrollDiff < -10) {
-          // Scrolling up - smoothly bring navbar back
+        }, 1200);
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY || window.pageYOffset;
+      const scrollDiff = currentY - lastNavScrollY;
+
+      // Always clear the idle timer when moving
+      clearTimeout(navIdleTimeout);
+
+      if (currentY < 100) {
+        // Always show at the top
+        if (navEl && navEl.classList.contains('nav-hidden')) {
+          navEl.classList.remove('nav-hidden');
+        }
+      } else {
+        if (scrollDiff > 10) {
+          // Scrolling down - hide immediately
+          if (navEl && !navEl.classList.contains('nav-hidden')) {
+            navEl.classList.add('nav-hidden');
+          }
+          if (langMenu && langMenu.classList.contains('open')) {
+            langMenu.classList.remove('open');
+            langBtn.setAttribute('aria-expanded', 'false');
+          }
+        } else if (scrollDiff < -5) {
+          // Scrolling up - show immediately
           if (navEl && navEl.classList.contains('nav-hidden')) {
             navEl.classList.remove('nav-hidden');
           }
         }
-      } else {
-        // Within Hero Journey (Chapters 1 to 5): Navbar ALWAYS stays visible & clickable
-        if (navEl && navEl.classList.contains('nav-hidden')) {
-          navEl.classList.remove('nav-hidden');
-        }
+        
+        // Start the idle timer whenever scrolling stops
+        startNavIdleTimer();
       }
 
       lastNavScrollY = currentY;
@@ -3098,6 +6699,129 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
-  </script>
+
+        /* -------------------------------------------------------------
+       Section 03: Hero Produce Carousel (Silky Sliding 3D Stage Transition)
+       ------------------------------------------------------------- */
+    const varietyItems = document.querySelectorAll('.variety-item');
+    const timelineStepBtns = document.querySelectorAll('.timeline-step-btn');
+    const timelineFill = document.getElementById('produceTimelineFill');
+    const btnVarPrev = document.getElementById('varietiesPrev');
+    const btnVarNext = document.getElementById('varietiesNext');
+    let currentVarietyIdx = 1; // Beauregard active initially in center
+
+    function setProductActive(newIdx) {
+      currentVarietyIdx = (newIdx + varietyItems.length) % varietyItems.length;
+
+      const prevIdx = (currentVarietyIdx - 1 + varietyItems.length) % varietyItems.length;
+      const nextIdx = (currentVarietyIdx + 1) % varietyItems.length;
+
+      varietyItems.forEach((item, idx) => {
+        const glow = item.querySelector('.product-base-glow');
+        item.classList.remove('pos-center', 'pos-left', 'pos-right', 'active-card', 'side-card');
+
+        if (idx === currentVarietyIdx) {
+          item.classList.add('pos-center', 'active-card');
+          if (glow) glow.classList.add('active-glow');
+        } else if (idx === prevIdx) {
+          item.classList.add('pos-left', 'side-card');
+          if (glow) glow.classList.remove('active-glow');
+        } else {
+          item.classList.add('pos-right', 'side-card');
+          if (glow) glow.classList.remove('active-glow');
+        }
+      });
+
+      timelineStepBtns.forEach((btn, idx) => {
+        if (idx === currentVarietyIdx) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      if (timelineFill) {
+        // Timeline track is strictly LTR (01 -> 02 -> 03), matching the numeric progression
+        timelineFill.style.transform = `translateX(${currentVarietyIdx * 100}%)`;
+      }
+    }
+
+    varietyItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        const idx = parseInt(item.getAttribute('data-variety-index'), 10);
+        setProductActive(idx);
+      });
+    });
+
+    timelineStepBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const step = parseInt(btn.getAttribute('data-step'), 10);
+        setProductActive(step);
+      });
+    });
+
+    if (btnVarPrev) {
+      btnVarPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setProductActive(currentVarietyIdx - 1);
+      });
+    }
+
+    if (btnVarNext) {
+      btnVarNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setProductActive(currentVarietyIdx + 1);
+      });
+    }
+
+    // Touch Swipe Support for Mobile Variety Carousel
+    const carouselTrackEl = document.getElementById('produceCarouselTrack');
+    if (carouselTrackEl) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      carouselTrackEl.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 0) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      carouselTrackEl.addEventListener('touchend', (e) => {
+        if (e.changedTouches && e.changedTouches.length > 0) {
+          const deltaX = e.changedTouches[0].clientX - touchStartX;
+          const deltaY = e.changedTouches[0].clientY - touchStartY;
+          // Only trigger if horizontal swipe is dominant and > 38px
+          if (Math.abs(deltaX) > 38 && Math.abs(deltaX) > Math.abs(deltaY) * 1.4) {
+            const isRTL = document.documentElement.dir === 'rtl';
+            if (deltaX < 0) {
+              // Swipe left -> Next in LTR, Prev in RTL
+              setProductActive(isRTL ? currentVarietyIdx - 1 : currentVarietyIdx + 1);
+            } else {
+              // Swipe right -> Prev in LTR, Next in RTL
+              setProductActive(isRTL ? currentVarietyIdx + 1 : currentVarietyIdx - 1);
+            }
+          }
+        }
+      }, { passive: true });
+    }
+
+    // Very slight image zoom / parallax on scroll for hero product
+    const heroPlantPhoto = document.getElementById('heroPlantImg');
+    const produceSecEl = document.getElementById('produce');
+
+    if (heroPlantPhoto && produceSecEl) {
+      window.addEventListener('scroll', () => {
+        const rect = produceSecEl.getBoundingClientRect();
+        const winH = window.innerHeight;
+        if (rect.top < winH && rect.bottom > 0) {
+          const scrollFrac = (winH - rect.top) / (winH + rect.height);
+          const scaleVal = 1 + (scrollFrac * 0.04); // subtle 1.0 to 1.04 zoom
+          const translateY = (scrollFrac - 0.5) * 22; // subtle +-11px parallax
+          heroPlantPhoto.style.transform = `translateY(${translateY.toFixed(1)}px) scale(${scaleVal.toFixed(3)})`;
+        }
+      }, { passive: true });
+    }
+    </script>
 </body>
 </html>
