@@ -3976,6 +3976,9 @@
       background: transparent;
       overflow: hidden;
     }
+    .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media img {
+      transform-origin: bottom center; /* Prevents bottom from clipping when scaling up on hover */
+    }
 
     .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media img {
       width: 100%;
@@ -4313,6 +4316,7 @@
         text-align: center;
         gap: 16px;
         margin-top: -2px; /* Pulls footer up slightly to close any sub-pixel rendering gaps */
+        padding-top: 16px; /* Added to prevent overlap clipping the logo */
         border-top: none;
         box-shadow: none;
       }
