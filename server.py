@@ -18,9 +18,7 @@ if sys.stdout.encoding != 'utf-8':
         pass
 
 PORT = 8000
-# Resend API Token (read from environment, or reconstruct fallback)
-_DEFAULT_RESEND = os.environ.get('RESEND_API_TOKEN') or ('re_' + 'LJKziiKr_' + 'C5kQwiUR6WBZdhSbjDC5RrfH')
-RESEND_API_TOKEN = _DEFAULT_RESEND
+RESEND_API_TOKEN = os.environ.get('RESEND_API_TOKEN') or ('re_' + 'LJKziiKr_' + 'C5kQwiUR6WBZdhSbjDC5RrfH')
 REEFIYA_WA_PHONE = '201290099230'
 WHATSAPP_DESK_URL = f'https://wa.me/{REEFIYA_WA_PHONE}'
 
@@ -52,39 +50,39 @@ CUST_EMAIL_I18N = {
         'lang': 'ar',
         'align': 'right',
         'font': "'Cairo', 'Alexandria', 'Segoe UI', Tahoma, sans-serif",
-        'subject': "╪¬╪ú┘â┘è╪» ╪º╪│╪¬┘ä╪º┘à ╪╖┘ä╪¿ ╪╣╪▒╪╢ ╪º┘ä╪ú╪│╪╣╪º╪▒ ╪º┘ä╪¬╪¼╪º╪▒┘è ΓÇö ╪▒┘è┘ü┘è╪º ({ref})",
-        'desk_title': "┘à┘â╪¬╪¿ ╪º┘ä╪¬╪╡╪»┘è╪▒ ╪º┘ä╪¬╪¼╪º╪▒┘è",
-        'ref_label': "╪º┘ä╪▒┘é┘à ╪º┘ä┘à╪▒╪¼╪╣┘è:",
-        'p1': "╪╣╪▓┘è╪▓┘è/╪╣╪▓┘è╪▓╪¬┘è <strong>{name}</strong>╪î<br><br>┘å╪┤┘â╪▒┘â┘à ╪╣┘ä┘ë ╪¬┘ê╪º╪╡┘ä┘â┘à ┘à╪╣ <strong>┘à┘â╪¬╪¿ ╪¬╪╡╪»┘è╪▒ ╪▒┘è┘ü┘è╪º (REEFIYA)</strong>. ╪¬┘à ╪º╪│╪¬┘ä╪º┘à ╪╖┘ä╪¿ ╪╣╪▒┘ê╪╢ ╪º┘ä╪ú╪│╪╣╪º╪▒ (RFQ) ╪º┘ä╪«╪º╪╡ ╪¿┘â┘à ┘ê╪¬╪│╪¼┘è┘ä┘ç ╪¿┘å╪¼╪º╪¡.",
-        'p2': "┘è┘é┘ê┘à ┘ü╪▒┘è┘é ╪º┘ä╪¬╪╡╪»┘è╪▒ ╪º┘ä╪¬╪¼╪º╪▒┘è ╪¡╪º┘ä┘è╪º┘ï ╪¿┘à╪▒╪º╪¼╪╣╪⌐ ┘à┘ê╪º╪╡┘ü╪º╪¬ ╪º┘ä┘à┘å╪¬╪¼╪î ┘ê╪º┘ä┘â┘à┘è╪º╪¬╪î ┘ê╪º┘ä╪¬╪╣╪¿╪ª╪⌐╪î ┘ê┘à╪¬╪╖┘ä╪¿╪º╪¬ ╪º┘ä╪┤╪¡┘å ┘ê╪º┘ä┘ä┘ê╪¼╪│╪¬┘è╪º╪¬. ┘å┘ç╪»┘ü ╪Ñ┘ä┘ë ╪¬┘é╪»┘è┘à ╪▒╪» ╪¬╪¼╪º╪▒┘è ╪ú┘ê┘ä┘è ╪«┘ä╪º┘ä <strong>1ΓÇô2 ┘è┘ê┘à ╪╣┘à┘ä</strong>.",
-        'summary_title': "┘à┘ä╪«╪╡ ╪º┘ä╪º╪│╪¬┘ü╪│╪º╪▒ ╪º┘ä╪¬╪¼╪º╪▒┘è ╪º┘ä┘à╪│╪¼┘ä:",
-        'company': "╪º┘ä╪┤╪▒┘â╪⌐:",
-        'product': "╪º┘ä┘à┘å╪¬╪¼:",
-        'product_val': "╪º┘ä╪¿╪╖╪º╪╖╪º ╪º┘ä╪¡┘ä┘ê╪⌐ ╪º┘ä┘à╪╡╪▒┘è╪⌐ ╪º┘ä┘ü╪º╪«╪▒╪⌐",
-        'varieties': "╪º┘ä╪ú╪╡┘å╪º┘ü ╪º┘ä┘à╪╖┘ä┘ê╪¿╪⌐:",
-        'sizing': "╪º┘ä╪ú╪¡╪¼╪º┘à ┘ê╪º┘ä┘ü╪▒╪▓:",
-        'packaging': "┘å┘ê╪╣ ╪º┘ä╪¬╪╣╪¿╪ª╪⌐:",
-        'order_volume': "╪¡╪¼┘à ╪º┘ä╪╖┘ä╪¿:",
-        'dest_country': "╪»┘ê┘ä╪⌐ ╪º┘ä┘ê╪╡┘ê┘ä:",
-        'dest_port': "┘à┘è┘å╪º╪í ╪º┘ä┘ê╪╡┘ê┘ä:",
-        'incoterm': "╪┤╪▒╪╖ ╪º┘ä╪┤╪¡┘å (Incoterm):",
-        'attachment_callout': "┘à╪▒┘ü┘é ┘å╪│╪«╪⌐ ╪º┘ä┘Ç PDF ╪º┘ä╪▒╪│┘à┘è╪⌐ ┘ä╪╖┘ä╪¿┘â┘à:",
-        'footnote': "┘è╪▒╪¼┘ë ╪º┘ä╪º╪¡╪¬┘ü╪º╪╕ ╪¿╪º┘ä╪▒┘é┘à ╪º┘ä┘à╪▒╪¼╪╣┘è ╪º┘ä┘à┘ê╪╢╪¡ ╪ú╪╣┘ä╪º┘ç ┘ä┘â╪º┘ü╪⌐ ╪º┘ä┘à╪▒╪º╪│┘ä╪º╪¬ ┘ê╪º┘ä┘à╪¬╪º╪¿╪╣╪º╪¬ ╪º┘ä┘à╪│╪¬┘é╪¿┘ä┘è╪⌐.",
-        'cta': "╪º┘ä╪¬┘ê╪º╪╡┘ä ╪º┘ä┘à╪¿╪º╪┤╪▒ ┘à╪╣ ┘à┘â╪¬╪¿ ╪º┘ä╪¬╪╡╪»┘è╪▒",
-        'wa_cta': "┘à╪¡╪º╪»╪½╪⌐ ┘ü┘ê╪▒┘è╪⌐ ╪╣╪¿╪▒ ┘ê╪º╪¬╪│╪º╪¿",
-        'footer_desk': "┘à┘â╪¬╪¿ ╪¬╪╡╪»┘è╪▒ ╪▒┘è┘ü┘è╪º (REEFIYA)",
-        'footer_addr': "144 ╪┤╪º╪▒╪╣ ╪¿┘ê╪▒╪│╪╣┘è╪»╪î ╪º┘ä╪Ñ╪¿╪▒╪º┘ç┘è┘à┘è╪⌐ ╪¿╪¡╪▒┘è╪î ╪º┘ä╪Ñ╪│┘â┘å╪»╪▒┘è╪⌐╪î ┘à╪╡╪▒"
+        'subject': "تأكيد استلام طلب عرض الأسعار التجاري — ريفيا ({ref})",
+        'desk_title': "مكتب التصدير التجاري",
+        'ref_label': "الرقم المرجعي:",
+        'p1': "عزيزي/عزيزتي <strong>{name}</strong>،<br><br>نشكركم على تواصلكم مع <strong>مكتب تصدير ريفيا (REEFIYA)</strong>. تم استلام طلب عروض الأسعار (RFQ) الخاص بكم وتسجيله بنجاح.",
+        'p2': "يقوم فريق التصدير التجاري حالياً بمراجعة مواصفات المنتج، والكميات، والتعبئة، ومتطلبات الشحن واللوجستيات. نهدف إلى تقديم رد تجاري أولي خلال <strong>1–2 يوم عمل</strong>.",
+        'summary_title': "ملخص الاستفسار التجاري المسجل:",
+        'company': "الشركة:",
+        'product': "المنتج:",
+        'product_val': "البطاطا الحلوة المصرية الفاخرة",
+        'varieties': "الأصناف المطلوبة:",
+        'sizing': "الأحجام والفرز:",
+        'packaging': "نوع التعبئة:",
+        'order_volume': "حجم الطلب:",
+        'dest_country': "دولة الوصول:",
+        'dest_port': "ميناء الوصول:",
+        'incoterm': "شرط الشحن (Incoterm):",
+        'attachment_callout': "مرفق نسخة الـ PDF الرسمية لطلبكم:",
+        'footnote': "يرجى الاحتفاظ بالرقم المرجعي الموضح أعلاه لكافة المراسلات والمتابعات المستقبلية.",
+        'cta': "التواصل المباشر مع مكتب التصدير",
+        'wa_cta': "محادثة فورية عبر واتساب",
+        'footer_desk': "مكتب تصدير ريفيا (REEFIYA)",
+        'footer_addr': "144 شارع بورسعيد، الإبراهيمية بحري، الإسكندرية، مصر"
     },
     'en': {
         'dir': 'ltr',
         'lang': 'en',
         'align': 'left',
         'font': "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-        'subject': "Commercial RFQ Acknowledgement ΓÇö REEFIYA ({ref})",
+        'subject': "Commercial RFQ Acknowledgement — REEFIYA ({ref})",
         'desk_title': "Export Desk",
         'ref_label': "RFQ Reference:",
         'p1': "Dear <strong>{name}</strong>,<br><br>Thank you for reaching out to the <strong>REEFIYA Export Desk</strong>. Your Request for Quotation (RFQ) has been successfully received and registered.",
-        'p2': "Our commercial export team is reviewing your product specifications, volume, packaging, and logistics requirements. We aim to provide an initial commercial response within <strong>1ΓÇô2 business days</strong>.",
+        'p2': "Our commercial export team is reviewing your product specifications, volume, packaging, and logistics requirements. We aim to provide an initial commercial response within <strong>1–2 business days</strong>.",
         'summary_title': "RFQ Submission Summary:",
         'company': "Company:",
         'product': "Product:",
@@ -108,39 +106,39 @@ CUST_EMAIL_I18N = {
         'lang': 'fr',
         'align': 'left',
         'font': "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-        'subject': "Accus├⌐ de r├⌐ception RFQ commercial ΓÇö REEFIYA ({ref})",
+        'subject': "Accusé de réception RFQ commercial — REEFIYA ({ref})",
         'desk_title': "Bureau Export",
-        'ref_label': "R├⌐f├⌐rence RFQ :",
-        'p1': "Cher/Ch├¿re <strong>{name}</strong>,<br><br>Merci d'avoir contact├⌐ le <strong>Bureau Export REEFIYA</strong>. Votre demande de devis (RFQ) a ├⌐t├⌐ enregistr├⌐e avec succ├¿s.",
-        'p2': "Notre ├⌐quipe commerciale examine actuellement vos sp├⌐cifications, volumes, emballages et exigences logistiques. Nous vous r├⌐pondrons sous <strong>1 ├á 2 jours ouvr├⌐s</strong>.",
-        'summary_title': "R├⌐sum├⌐ de votre demande RFQ :",
+        'ref_label': "Référence RFQ :",
+        'p1': "Cher/Chère <strong>{name}</strong>,<br><br>Merci d'avoir contacté le <strong>Bureau Export REEFIYA</strong>. Votre demande de devis (RFQ) a été enregistrée avec succès.",
+        'p2': "Notre équipe commerciale examine actuellement vos spécifications, volumes, emballages et exigences logistiques. Nous vous répondrons sous <strong>1 à 2 jours ouvrés</strong>.",
+        'summary_title': "Résumé de votre demande RFQ :",
         'company': "Entreprise :",
         'product': "Produit :",
-        'product_val': "Patates douces ├⌐gyptiennes de qualit├⌐ sup├⌐rieure",
-        'varieties': "Vari├⌐t├⌐s :",
+        'product_val': "Patates douces égyptiennes de qualité supérieure",
+        'varieties': "Variétés :",
         'sizing': "Calibres :",
         'packaging': "Emballage :",
         'order_volume': "Volume de commande :",
         'dest_country': "Pays de destination :",
         'dest_port': "Port de destination :",
         'incoterm': "Incoterm :",
-        'attachment_callout': "Pi├¿ce jointe : Copie officielle de votre RFQ au format PDF :",
-        'footnote': "Veuillez conserver la r├⌐f├⌐rence ci-dessus pour tout ├⌐change ult├⌐rieur.",
+        'attachment_callout': "Pièce jointe : Copie officielle de votre RFQ au format PDF :",
+        'footnote': "Veuillez conserver la référence ci-dessus pour tout échange ultérieur.",
         'cta': "Contacter le bureau export",
         'wa_cta': "Discussion WhatsApp Directe",
         'footer_desk': "REEFIYA Bureau Export",
-        'footer_addr': "144 Port Said St, El Ibrahimaia Bahry, Alexandrie, ├ëgypte"
+        'footer_addr': "144 Port Said St, El Ibrahimaia Bahry, Alexandrie, Égypte"
     },
     'nl': {
         'dir': 'ltr',
         'lang': 'nl',
         'align': 'left',
         'font': "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-        'subject': "Commerci├½le RFQ Ontvangstbevestiging ΓÇö REEFIYA ({ref})",
+        'subject': "Commerciële RFQ Ontvangstbevestiging — REEFIYA ({ref})",
         'desk_title': "Export Desk",
         'ref_label': "RFQ Referentie:",
         'p1': "Beste <strong>{name}</strong>,<br><br>Hartelijk dank voor uw contact met de <strong>REEFIYA Export Desk</strong>. Uw offerteaanvraag (RFQ) is succesvol geregistreerd.",
-        'p2': "Ons commerci├½le exportteam beoordeelt uw productspecificaties, volumes, verpakking en logistieke wensen. We streven naar een reactie binnen <strong>1ΓÇô2 werkdagen</strong>.",
+        'p2': "Ons commerciële exportteam beoordeelt uw productspecificaties, volumes, verpakking en logistieke wensen. We streven naar een reactie binnen <strong>1–2 werkdagen</strong>.",
         'summary_title': "Overzicht van uw RFQ-aanvraag:",
         'company': "Bedrijf:",
         'product': "Product:",
@@ -152,27 +150,27 @@ CUST_EMAIL_I18N = {
         'dest_country': "Land van bestemming:",
         'dest_port': "Bestemmingshaven:",
         'incoterm': "Incoterm:",
-        'attachment_callout': "Bijgevoegd: Offici├½le PDF-kopie van uw aanvraag:",
+        'attachment_callout': "Bijgevoegd: Officiële PDF-kopie van uw aanvraag:",
         'footnote': "Bewaar uw bovenstaande referentienummer voor alle verdere communicatie.",
         'cta': "Contact opnemen met Export Desk",
         'wa_cta': "Direct via WhatsApp",
         'footer_desk': "REEFIYA Export Desk",
-        'footer_addr': "144 Port Said St, El Ibrahimaia Bahry, Alexandri├½, Egypte"
+        'footer_addr': "144 Port Said St, El Ibrahimaia Bahry, Alexandrië, Egypte"
     },
     'de': {
         'dir': 'ltr',
         'lang': 'de',
         'align': 'left',
         'font': "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-        'subject': "Kommerzielle RFQ-Eingangsbest├ñtigung ΓÇö REEFIYA ({ref})",
+        'subject': "Kommerzielle RFQ-Eingangsbestätigung — REEFIYA ({ref})",
         'desk_title': "Export Desk",
         'ref_label': "RFQ-Referenz:",
-        'p1': "Sehr geehrte(r) <strong>{name}</strong>,<br><br>vielen Dank f├╝r Ihre Kontaktaufnahme mit dem <strong>REEFIYA Export Desk</strong>. Ihre Preisanfrage (RFQ) wurde erfolgreich erfasst.",
-        'p2': "Unser Exportteam pr├╝ft Ihre Produktspezifikationen, Mengen, Verpackungen und Logistikanforderungen. Wir melden uns innerhalb von <strong>1ΓÇô2 Werktagen</strong>.",
+        'p1': "Sehr geehrte(r) <strong>{name}</strong>,<br><br>vielen Dank für Ihre Kontaktaufnahme mit dem <strong>REEFIYA Export Desk</strong>. Ihre Preisanfrage (RFQ) wurde erfolgreich erfasst.",
+        'p2': "Unser Exportteam prüft Ihre Produktspezifikationen, Mengen, Verpackungen und Logistikanforderungen. Wir melden uns innerhalb von <strong>1–2 Werktagen</strong>.",
         'summary_title': "Zusammenfassung Ihrer RFQ-Anfrage:",
         'company': "Unternehmen:",
         'product': "Produkt:",
-        'product_val': "Premium ├ägyptische S├╝├ƒkartoffeln",
+        'product_val': "Premium Ägyptische Süßkartoffeln",
         'varieties': "Sorten:",
         'sizing': "Kalibrierung:",
         'packaging': "Verpackung:",
@@ -181,11 +179,11 @@ CUST_EMAIL_I18N = {
         'dest_port': "Zielhafen:",
         'incoterm': "Incoterm:",
         'attachment_callout': "Im Anhang: Offizielles PDF-Dokument Ihrer Anfrage:",
-        'footnote': "Bitte bewahren Sie Ihre RFQ-Referenznummer f├╝r k├╝nftige Korrespondenz auf.",
+        'footnote': "Bitte bewahren Sie Ihre RFQ-Referenznummer für künftige Korrespondenz auf.",
         'cta': "Export Desk kontaktieren",
-        'wa_cta': "Direkt ├╝ber WhatsApp",
+        'wa_cta': "Direkt über WhatsApp",
         'footer_desk': "REEFIYA Export Desk",
-        'footer_addr': "144 Port Said St, El Ibrahimaia Bahry, Alexandria, ├ägypten"
+        'footer_addr': "144 Port Said St, El Ibrahimaia Bahry, Alexandria, Ägypten"
     }
 }
 
@@ -218,26 +216,26 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
 
                 print(f"[Server] Processing RFQ {rfq_ref} for {buyer.get('companyName')} (Lang: {current_lang}, PDF: {bool(pdf_base64)})...")
 
-                company_name = buyer.get('companyName', 'ΓÇö')
-                contact_person = buyer.get('contactPerson', 'ΓÇö')
-                job_title = buyer.get('jobTitle', 'ΓÇö')
-                business_email = buyer.get('businessEmail', 'ΓÇö')
-                business_phone = buyer.get('businessPhone', 'ΓÇö')
-                country_reg = buyer.get('countryOfRegistration', 'ΓÇö')
-                website = buyer.get('website', 'ΓÇö')
+                company_name = buyer.get('companyName', '—')
+                contact_person = buyer.get('contactPerson', '—')
+                job_title = buyer.get('jobTitle', '—')
+                business_email = buyer.get('businessEmail', '—')
+                business_phone = buyer.get('businessPhone', '—')
+                country_reg = buyer.get('countryOfRegistration', '—')
+                website = buyer.get('website', '—')
 
                 # Customer values in their language
-                varieties = produce.get('varieties', 'ΓÇö')
-                sizing = produce.get('sizing', 'ΓÇö')
-                packaging = produce.get('packaging', 'ΓÇö')
-                net_weight = produce.get('netWeight', 'ΓÇö')
-                private_label = produce.get('privateLabel', 'ΓÇö')
+                varieties = produce.get('varieties', '—')
+                sizing = produce.get('sizing', '—')
+                packaging = produce.get('packaging', '—')
+                net_weight = produce.get('netWeight', '—')
+                private_label = produce.get('privateLabel', '—')
 
-                order_volume = shipping.get('orderVolume', 'ΓÇö')
-                dest_country = shipping.get('destinationCountry', 'ΓÇö')
-                dest_port = shipping.get('destinationPort', 'ΓÇö')
-                incoterm = shipping.get('incoterm', 'ΓÇö')
-                shipping_window = shipping.get('shippingWindow', 'ΓÇö')
+                order_volume = shipping.get('orderVolume', '—')
+                dest_country = shipping.get('destinationCountry', '—')
+                dest_port = shipping.get('destinationPort', '—')
+                incoterm = shipping.get('incoterm', '—')
+                shipping_window = shipping.get('shippingWindow', '—')
 
                 # Dedicated clean Arabic values for internal team email
                 ar_varieties = produce_ar.get('varieties') or varieties
@@ -306,7 +304,7 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
 
                 # Prepare one-click WhatsApp URL directly targeting buyer's phone number (TEAM MESSAGE IN ENGLISH)
                 clean_buyer_phone = ''.join(c for c in business_phone if c.isdigit())
-                buyer_salutation = f"Hello {contact_person}," if contact_person and contact_person != 'ΓÇö' else "Hello,"
+                buyer_salutation = f"Hello {contact_person}," if contact_person and contact_person != '—' else "Hello,"
                 team_to_buyer_text = f"{buyer_salutation} this is the REEFIYA Export Desk following up regarding your Request for Quotation #{rfq_ref} ({company_name})."
                 buyer_wa_msg = urllib.parse.quote(team_to_buyer_text)
                 buyer_direct_wa_url = f"https://wa.me/{clean_buyer_phone}?text={buyer_wa_msg}" if len(clean_buyer_phone) >= 8 else WHATSAPP_DESK_URL
@@ -314,11 +312,11 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                 # Customer WhatsApp pre-filled message (When customer clicks WhatsApp button)
                 pdf_file_name = f"REEFIYA_{rfq_ref}.pdf"
                 cust_wa_templates = {
-                    'ar': f"┘à╪▒╪¡╪¿╪º┘ï ┘à┘â╪¬╪¿ ╪¬╪╡╪»┘è╪▒ ╪▒┘è┘ü┘è╪º╪î ┘å╪¬┘ê╪º╪╡┘ä ┘à╪╣┘â┘à ╪¿╪«╪╡┘ê╪╡ ╪╖┘ä╪¿ ╪╣╪▒╪╢ ╪º┘ä╪ú╪│╪╣╪º╪▒ ╪▒┘é┘à {rfq_ref} ({company_name}) ┘ê┘à╪▒┘ü┘é ┘à┘ä┘ü ╪º┘ä╪╖┘ä╪¿ {pdf_file_name}. ┘å┘ê╪» ┘à╪¬╪º╪¿╪╣╪⌐ ╪º┘ä╪¬╪│╪╣┘è╪▒ ┘à╪╣┘â┘à.",
+                    'ar': f"مرحباً مكتب تصدير ريفيا، نتواصل معكم بخصوص طلب عرض الأسعار رقم {rfq_ref} ({company_name}) ومرفق ملف الطلب {pdf_file_name}. نود متابعة التسعير معكم.",
                     'en': f"Hello REEFIYA Export Desk, we are contacting you regarding our RFQ #{rfq_ref} ({company_name}) and order file {pdf_file_name}. We would like to follow up on the quotation.",
                     'fr': f"Bonjour Bureau Export REEFIYA, nous vous contactons concernant notre demande RFQ #{rfq_ref} ({company_name}) et le fichier {pdf_file_name}. Nous souhaitons faire le suivi du devis.",
                     'nl': f"Hallo REEFIYA Export Desk, wij nemen contact met u op over onze RFQ #{rfq_ref} ({company_name}) en het aanvraagbestand {pdf_file_name}. Graag willen wij de offerte opvolgen.",
-                    'de': f"Hallo REEFIYA Export Desk, wir kontaktieren Sie bez├╝glich unserer RFQ #{rfq_ref} ({company_name}) und der Datei {pdf_file_name}. Wir m├╢chten das Angebot gerne nachverfolgen."
+                    'de': f"Hallo REEFIYA Export Desk, wir kontaktieren Sie bezüglich unserer RFQ #{rfq_ref} ({company_name}) und der Datei {pdf_file_name}. Wir möchten das Angebot gerne nachverfolgen."
                 }
                 cust_wa_text = cust_wa_templates.get(current_lang, cust_wa_templates['en'])
                 # Direct link to REEFIYA Official WhatsApp Desk (QF4UWVCASIIAD1) with localized prefilled message
@@ -327,7 +325,7 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                 # =====================================================================
                 # 1. REEFIYA INTERNAL TEAM NOTIFICATION (100% PURE ARABIC LUXURY FORMAT)
                 # =====================================================================
-                team_subject = f"[╪╖┘ä╪¿ ╪╣╪▒╪╢ ╪ú╪│╪╣╪º╪▒ ╪¼╪»┘è╪»] - {company_name} ({rfq_ref})"
+                team_subject = f"[طلب عرض أسعار جديد] - {company_name} ({rfq_ref})"
                 team_html = f"""
                 <!DOCTYPE html>
                 <html lang="ar" dir="rtl">
@@ -374,9 +372,9 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                     <!-- HEADER -->
                     <div class="header-strip">
                       <img src="{logo_src}" alt="REEFIYA" class="logo-img" width="160" height="38" style="height:38px; width:auto; max-width:160px; display:block; margin:0 auto 12px auto; border:0; outline:none; text-decoration:none;" />
-                      <div class="desk-title">┘à┘â╪¬╪¿ ╪º┘ä╪¬╪╡╪»┘è╪▒ ╪º┘ä╪¬╪¼╪º╪▒┘è ΓÇó ╪Ñ╪┤╪╣╪º╪▒ ╪╖┘ä╪¿ ╪╣╪▒╪╢ ╪ú╪│╪╣╪º╪▒ ╪¼╪»┘è╪»</div>
+                      <div class="desk-title">مكتب التصدير التجاري • إشعار طلب عرض أسعار جديد</div>
                       <div class="ref-box" dir="rtl" style="display:inline-block; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:7px 24px; margin-top:4px;">
-                        <span class="ref-label" style="color:#dcedd0; font-size:12px; font-weight:700; margin-left:8px;">╪º┘ä╪▒┘é┘à ╪º┘ä┘à╪▒╪¼╪╣┘è:</span>
+                        <span class="ref-label" style="color:#dcedd0; font-size:12px; font-weight:700; margin-left:8px;">الرقم المرجعي:</span>
                         <span class="ref-val" style="color:#ffffff; font-family:'Consolas', 'Courier New', monospace; font-weight:800; font-size:14px; letter-spacing:0.8px;">{rfq_ref}</span>
                       </div>
                     </div>
@@ -384,53 +382,53 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                     <!-- CONTENT -->
                     <div class="content-area">
                       <p class="intro-p">
-                        ╪¬┘à ╪º╪│╪¬┘ä╪º┘à ╪º╪│╪¬┘ü╪│╪º╪▒ ╪¬╪¼╪º╪▒┘è ┘ê╪╖┘ä╪¿ ╪╣╪▒╪╢ ╪ú╪│╪╣╪º╪▒ ╪¬╪╡╪»┘è╪▒┘è ╪¼╪»┘è╪» ╪╣╪¿╪▒ ╪º┘ä┘à┘ê┘é╪╣ ╪º┘ä╪Ñ┘ä┘â╪¬╪▒┘ê┘å┘è. ┘ü┘è┘à╪º ┘è┘ä┘è ╪º┘ä┘à┘ê╪º╪╡┘ü╪º╪¬ ┘ê╪º┘ä╪¿┘è╪º┘å╪º╪¬ ╪º┘ä┘à╪│╪¼┘ä╪⌐ ┘ä┘ä┘à╪¬╪º╪¿╪╣╪⌐ ┘ê╪º┘ä╪¬╪│╪╣┘è╪▒:
+                        تم استلام استفسار تجاري وطلب عرض أسعار تصديري جديد عبر الموقع الإلكتروني. فيما يلي المواصفات والبيانات المسجلة للمتابعة والتسعير:
                       </p>
 
                       <!-- 01. Buyer & Company -->
-                      <div class="section-head">01. ╪¿┘è╪º┘å╪º╪¬ ╪º┘ä┘à╪┤╪¬╪▒┘è ┘ê╪º┘ä╪┤╪▒┘â╪⌐ ╪º┘ä┘à╪│╪¼┘ä╪⌐</div>
+                      <div class="section-head">01. بيانات المشتري والشركة المسجلة</div>
                       <div class="data-card">
                         <table class="data-table">
-                          <tr><td class="row-label">╪º╪│┘à ╪º┘ä╪┤╪▒┘â╪⌐:</td><td class="row-value">{company_name}</td></tr>
-                          <tr><td class="row-label">╪º┘ä┘à╪│╪ñ┘ê┘ä ┘ä┘ä╪¬┘ê╪º╪╡┘ä:</td><td class="row-value">{contact_person}</td></tr>
-                          <tr><td class="row-label">╪º┘ä┘à╪│┘à┘ë ╪º┘ä┘ê╪╕┘è┘ü┘è:</td><td class="row-value">{job_title}</td></tr>
-                          <tr><td class="row-label">╪º┘ä╪¿╪▒┘è╪» ╪º┘ä╪Ñ┘ä┘â╪¬╪▒┘ê┘å┘è ┘ä┘ä╪╣┘à┘ä:</td><td class="row-value ltr-val" style="color:{COLOR_DEEP_GREEN}; font-weight:700;">{business_email}</td></tr>
-                          <tr><td class="row-label">╪º┘ä┘ç╪º╪¬┘ü / ╪º┘ä┘ê╪º╪¬╪│╪º╪¿:</td><td class="row-value ltr-val">{business_phone}</td></tr>
-                          <tr><td class="row-label">╪»┘ê┘ä╪⌐ ╪º┘ä╪¬╪│╪¼┘è┘ä:</td><td class="row-value">{country_reg}</td></tr>
-                          <tr><td class="row-label">╪º┘ä┘à┘ê┘é╪╣ ╪º┘ä╪Ñ┘ä┘â╪¬╪▒┘ê┘å┘è:</td><td class="row-value ltr-val">{website}</td></tr>
-                          <tr><td class="row-label">┘ä╪║╪⌐ ╪º┘ä┘à╪┤╪¬╪▒┘è ╪╣┘ä┘ë ╪º┘ä┘à┘ê┘é╪╣:</td><td class="row-value">{current_lang.upper()}</td></tr>
+                          <tr><td class="row-label">اسم الشركة:</td><td class="row-value">{company_name}</td></tr>
+                          <tr><td class="row-label">المسؤول للتواصل:</td><td class="row-value">{contact_person}</td></tr>
+                          <tr><td class="row-label">المسمى الوظيفي:</td><td class="row-value">{job_title}</td></tr>
+                          <tr><td class="row-label">البريد الإلكتروني للعمل:</td><td class="row-value ltr-val" style="color:{COLOR_DEEP_GREEN}; font-weight:700;">{business_email}</td></tr>
+                          <tr><td class="row-label">الهاتف / الواتساب:</td><td class="row-value ltr-val">{business_phone}</td></tr>
+                          <tr><td class="row-label">دولة التسجيل:</td><td class="row-value">{country_reg}</td></tr>
+                          <tr><td class="row-label">الموقع الإلكتروني:</td><td class="row-value ltr-val">{website}</td></tr>
+                          <tr><td class="row-label">لغة المشتري على الموقع:</td><td class="row-value">{current_lang.upper()}</td></tr>
                         </table>
                       </div>
 
                       <!-- 02. Product & Packaging -->
-                      <div class="section-head">02. ┘à┘ê╪º╪╡┘ü╪º╪¬ ╪º┘ä┘à┘å╪¬╪¼ ┘ê╪º┘ä╪¬╪╣╪¿╪ª╪⌐ ╪º┘ä┘à╪╖┘ä┘ê╪¿╪⌐</div>
+                      <div class="section-head">02. مواصفات المنتج والتعبئة المطلوبة</div>
                       <div class="data-card">
                         <table class="data-table">
-                          <tr><td class="row-label">╪º┘ä┘à┘å╪¬╪¼:</td><td class="row-value">╪º┘ä╪¿╪╖╪º╪╖╪º ╪º┘ä╪¡┘ä┘ê╪⌐ ╪º┘ä┘à╪╡╪▒┘è╪⌐ ╪º┘ä┘ü╪º╪«╪▒╪⌐</td></tr>
-                          <tr><td class="row-label">╪º┘ä╪ú╪╡┘å╪º┘ü ╪º┘ä┘à╪╖┘ä┘ê╪¿╪⌐:</td><td class="row-value">{ar_varieties}</td></tr>
-                          <tr><td class="row-label">╪º┘ä╪ú╪¡╪¼╪º┘à ┘ê╪º┘ä┘ü╪▒╪▓:</td><td class="row-value">{ar_sizing}</td></tr>
-                          <tr><td class="row-label">┘å┘ê╪╣ ╪º┘ä╪¬╪╣╪¿╪ª╪⌐:</td><td class="row-value">{ar_packaging}</td></tr>
-                          <tr><td class="row-label">╪º┘ä┘ê╪▓┘å ╪º┘ä╪╡╪º┘ü┘è:</td><td class="row-value">{ar_net_weight}</td></tr>
-                          <tr><td class="row-label">╪¬┘ü╪╢┘è┘ä ╪º┘ä╪╣┘ä╪º┘à╪⌐ ╪º┘ä╪«╪º╪╡╪⌐:</td><td class="row-value">{ar_private_label}</td></tr>
+                          <tr><td class="row-label">المنتج:</td><td class="row-value">البطاطا الحلوة المصرية الفاخرة</td></tr>
+                          <tr><td class="row-label">الأصناف المطلوبة:</td><td class="row-value">{ar_varieties}</td></tr>
+                          <tr><td class="row-label">الأحجام والفرز:</td><td class="row-value">{ar_sizing}</td></tr>
+                          <tr><td class="row-label">نوع التعبئة:</td><td class="row-value">{ar_packaging}</td></tr>
+                          <tr><td class="row-label">الوزن الصافي:</td><td class="row-value">{ar_net_weight}</td></tr>
+                          <tr><td class="row-label">تفضيل العلامة الخاصة:</td><td class="row-value">{ar_private_label}</td></tr>
                         </table>
                       </div>
 
                       <!-- 03. Shipping & Logistics -->
-                      <div class="section-head">03. ╪¡╪¼┘à ╪º┘ä╪╖┘ä╪¿ ┘ê╪º┘ä╪┤╪¡┘å ┘ê╪º┘ä┘ä┘ê╪¼╪│╪¬┘è╪º╪¬</div>
+                      <div class="section-head">03. حجم الطلب والشحن واللوجستيات</div>
                       <div class="data-card">
                         <table class="data-table">
-                          <tr><td class="row-label">╪¡╪¼┘à ╪º┘ä╪╖┘ä╪¿ ╪º┘ä╪¬┘é╪»┘è╪▒┘è:</td><td class="row-value">{ar_order_volume}</td></tr>
-                          <tr><td class="row-label">╪»┘ê┘ä╪⌐ ╪º┘ä┘ê╪╡┘ê┘ä:</td><td class="row-value">{ar_dest_country}</td></tr>
-                          <tr><td class="row-label">┘à┘è┘å╪º╪í ╪º┘ä┘ê╪╡┘ê┘ä ╪º┘ä┘à┘ü╪╢┘ä:</td><td class="row-value">{ar_dest_port}</td></tr>
-                          <tr><td class="row-label">╪┤╪▒╪╖ ╪º┘ä╪┤╪¡┘å (Incoterm):</td><td class="row-value ltr-val">{ar_incoterm}</td></tr>
-                          <tr><td class="row-label">┘å╪º┘ü╪░╪⌐ ┘ê╪¬┘ê┘é┘è╪¬ ╪º┘ä╪┤╪¡┘å ╪º┘ä┘à╪│╪¬┘ç╪»┘ü:</td><td class="row-value">{ar_shipping_window}</td></tr>
+                          <tr><td class="row-label">حجم الطلب التقديري:</td><td class="row-value">{ar_order_volume}</td></tr>
+                          <tr><td class="row-label">دولة الوصول:</td><td class="row-value">{ar_dest_country}</td></tr>
+                          <tr><td class="row-label">ميناء الوصول المفضل:</td><td class="row-value">{ar_dest_port}</td></tr>
+                          <tr><td class="row-label">شرط الشحن (Incoterm):</td><td class="row-value ltr-val">{ar_incoterm}</td></tr>
+                          <tr><td class="row-label">نافذة وتوقيت الشحن المستهدف:</td><td class="row-value">{ar_shipping_window}</td></tr>
                         </table>
                       </div>
 
                       <!-- 04. Special Notes -->
-                      <div class="section-head">04. ╪º┘ä┘à┘ä╪º╪¡╪╕╪º╪¬ ┘ê╪º┘ä┘à╪¬╪╖┘ä╪¿╪º╪¬ ╪º┘ä╪«╪º╪╡╪⌐</div>
+                      <div class="section-head">04. الملاحظات والمتطلبات الخاصة</div>
                       <div class="notes-box">
-                        {notes.replace(chr(10), '<br>') if notes else '┘ä╪º ╪¬┘ê╪¼╪» ┘à┘ä╪º╪¡╪╕╪º╪¬ ╪ú┘ê ┘à╪¬╪╖┘ä╪¿╪º╪¬ ╪«╪º╪╡╪⌐ ╪Ñ╪╢╪º┘ü┘è╪⌐ ┘à╪│╪¼┘ä╪⌐.'}
+                        {notes.replace(chr(10), '<br>') if notes else 'لا توجد ملاحظات أو متطلبات خاصة إضافية مسجلة.'}
                       </div>
 
                       <!-- ATTACHMENT CALLOUT -->
@@ -438,9 +436,9 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                         <table style="width:100%; border-collapse:collapse; text-align:center;" dir="rtl" align="center">
                           <tr>
                             <td align="center" style="padding:0; line-height:1.7;">
-                              <span style="font-size:16px; vertical-align:middle;">≡ƒôÄ</span>
+                              <span style="font-size:16px; vertical-align:middle;">📎</span>
                               &nbsp;
-                              <span style="color:#173815; font-size:13px; font-weight:800; vertical-align:middle;">┘à╪▒┘ü┘é ┘å╪│╪«╪⌐ ╪º┘ä┘Ç PDF ╪º┘ä╪▒╪│┘à┘è╪⌐ ╪º┘ä┘à╪╖╪º╪¿┘é╪⌐ ┘ä┘ä╪╖┘ä╪¿:</span>
+                              <span style="color:#173815; font-size:13px; font-weight:800; vertical-align:middle;">مرفق نسخة الـ PDF الرسمية المطابقة للطلب:</span>
                               &nbsp;&nbsp;
                               <span style="color:#0f300d; font-family:'Consolas', 'Courier New', monospace; font-weight:800; font-size:12.5px; direction:ltr; unicode-bidi:embed; display:inline-block; padding:4px 10px; background:#daead7; border:1px solid #b7d6b3; border-radius:6px; letter-spacing:0.4px; vertical-align:middle;">REEFIYA_{rfq_ref}.pdf</span>
                             </td>
@@ -452,10 +450,10 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                       <div class="cta-wrap">
                         <div class="btn-stack">
                           <div class="btn-cell">
-                            <a href="mailto:{business_email}?subject=Re:%20Commercial%20RFQ%20Quotation%20-%20REEFIYA%20({rfq_ref})" class="cta-btn">╪º┘ä╪▒╪» ╪¿╪º┘ä╪¿╪▒┘è╪» ╪º┘ä╪Ñ┘ä┘â╪¬╪▒┘ê┘å┘è</a>
+                            <a href="mailto:{business_email}?subject=Re:%20Commercial%20RFQ%20Quotation%20-%20REEFIYA%20({rfq_ref})" class="cta-btn">الرد بالبريد الإلكتروني</a>
                           </div>
                           <div class="btn-cell">
-                            <a href="{buyer_direct_wa_url}" target="_blank" class="wa-btn">┘à╪¡╪º╪»╪½╪⌐ ┘ê╪º╪¬╪│╪º╪¿ ┘à╪¿╪º╪┤╪▒╪⌐</a>
+                            <a href="{buyer_direct_wa_url}" target="_blank" class="wa-btn">محادثة واتساب مباشرة</a>
                           </div>
                         </div>
                       </div>
@@ -463,10 +461,10 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
 
                     <!-- FOOTER -->
                     <div class="footer-strip">
-                      <div class="footer-brand">┘à┘â╪¬╪¿ ╪¬╪╡╪»┘è╪▒ ╪▒┘è┘ü┘è╪º (REEFIYA Export Desk)</div>
-                      <div>144 ╪┤╪º╪▒╪╣ ╪¿┘ê╪▒╪│╪╣┘è╪»╪î ╪º┘ä╪Ñ╪¿╪▒╪º┘ç┘è┘à┘è╪⌐ ╪¿╪¡╪▒┘è╪î ╪º┘ä╪Ñ╪│┘â┘å╪»╪▒┘è╪⌐╪î ╪¼┘à┘ç┘ê╪▒┘è╪⌐ ┘à╪╡╪▒ ╪º┘ä╪╣╪▒╪¿┘è╪⌐</div>
+                      <div class="footer-brand">مكتب تصدير ريفيا (REEFIYA Export Desk)</div>
+                      <div>144 شارع بورسعيد، الإبراهيمية بحري، الإسكندرية، جمهورية مصر العربية</div>
                       <div style="margin-top: 4px; color:{COLOR_DEEP_GREEN}; font-weight:600; direction:ltr;">
-                        exports@reefiya.com ΓÇó www.reefiya.com
+                        exports@reefiya.com • www.reefiya.com
                       </div>
                     </div>
                   </div>
@@ -482,7 +480,7 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                     'subject': team_subject,
                     'html': team_html
                 }
-                if business_email and '@' in business_email and business_email != 'ΓÇö':
+                if business_email and '@' in business_email and business_email != '—':
                     team_req_data['reply_to'] = business_email
                 if team_attachments:
                     team_req_data['attachments'] = team_attachments
@@ -492,15 +490,15 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                 # =====================================================================
                 # 2. CUSTOMER CONFIRMATION EMAIL (NATIVE LANGUAGE & B2B LUXURY DESIGN)
                 # =====================================================================
-                if business_email and '@' in business_email and business_email != 'ΓÇö':
+                if business_email and '@' in business_email and business_email != '—':
                     i18n = CUST_EMAIL_I18N.get(current_lang, CUST_EMAIL_I18N['en'])
-                    greeting_name = contact_person if contact_person != 'ΓÇö' else company_name
+                    greeting_name = contact_person if contact_person != '—' else company_name
 
                     cust_subject = i18n['subject'].format(ref=rfq_ref)
                     p1_text = i18n['p1'].format(name=greeting_name)
                     p2_text = i18n['p2']
                     is_rtl = i18n['dir'] == 'rtl'
-                    attachment_badge_text = f"{i18n.get('attachment_callout', '≡ƒôÄ Attached PDF')}: REEFIYA_{rfq_ref}.pdf"
+                    attachment_badge_text = f"{i18n.get('attachment_callout', '📎 Attached PDF')}: REEFIYA_{rfq_ref}.pdf"
 
                     # Precompute summary table rows with bulletproof inline styles
                     def make_cust_row(label, val, is_ltr_val=False):
@@ -524,7 +522,7 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                         make_cust_row(i18n['incoterm'], ar_incoterm if is_rtl else incoterm, is_ltr_val=True),
                     ])
 
-                    attachment_box_title = i18n.get('attachment_callout', '┘à╪▒┘ü┘é ┘å╪│╪«╪⌐ ╪º┘ä┘Ç PDF ╪º┘ä╪▒╪│┘à┘è╪⌐ ┘ä╪╖┘ä╪¿┘â┘à:' if is_rtl else 'Attached official RFQ PDF copy:')
+                    attachment_box_title = i18n.get('attachment_callout', 'مرفق نسخة الـ PDF الرسمية لطلبكم:' if is_rtl else 'Attached official RFQ PDF copy:')
                     if not attachment_box_title.rstrip().endswith(':'):
                         attachment_box_title = attachment_box_title.rstrip() + ':'
 
@@ -608,7 +606,7 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                             <table class="cust-attachment-table" dir="{i18n['dir']}" align="center">
                               <tr>
                                 <td align="center" style="padding:0; line-height:1.7;">
-                                  <span style="font-size:16px; vertical-align:middle;">≡ƒôÄ</span>
+                                  <span style="font-size:16px; vertical-align:middle;">📎</span>
                                   &nbsp;
                                   <span class="attachment-text">{attachment_box_title}</span>
                                   &nbsp;&nbsp;
@@ -640,7 +638,7 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                           <div class="footer-brand">{i18n['footer_desk']}</div>
                           <div>{i18n['footer_addr']}</div>
                           <div style="margin-top: 4px; color:{COLOR_DEEP_GREEN}; font-weight:600; direction:ltr;">
-                            exports@reefiya.com ΓÇó www.reefiya.com
+                            exports@reefiya.com • www.reefiya.com
                           </div>
                         </div>
                       </div>
