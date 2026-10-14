@@ -1,4 +1,10 @@
-cloudflared.exe
+﻿cloudflared.exe
 *.pyc
 __pycache__/
 .vscode/
+scratch_chrome_profile/
+scratch_chrome_*/
+scratch_dbg_*/
+scratch_rfq_*/
+scratch_sec*_*/
+scratch/
