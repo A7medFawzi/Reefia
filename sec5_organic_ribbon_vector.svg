@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 600" fill="none" preserveAspectRatio="none">
+  <!-- Layer 1: Sage Organic Leaf / Wave (Background) -->
+  <path d="M70 0 C65 140 160 210 165 340 C170 470 70 530 65 600 L260 600 L260 0 Z" fill="#7E9F6E" fill-opacity="0.95"/>
+  
+  <!-- Layer 2: Deep Luxury Forest Green Wave -->
+  <path d="M125 0 C120 130 220 220 225 340 C230 460 145 520 135 600 L260 600 L260 0 Z" fill="#245133"/>
+  
+  <!-- Layer 3: Pure Cream Ribbon Wavy Flow (Foreground) -->
+  <path d="M150 -10 C140 120 70 230 75 350 C80 470 170 540 165 610" stroke="#FAF7F2" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Subtle inner shadow line for depth on cream ribbon -->
+  <path d="M150 -10 C140 120 70 230 75 350 C80 470 170 540 165 610" stroke="rgba(23, 77, 48, 0.08)" stroke-width="3" fill="none"/>
+</svg>

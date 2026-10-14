@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="evexaGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF"/>
+      <stop offset="100%" stop-color="#0055FF"/>
+    </linearGradient>
+    <linearGradient id="evexaGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0088FF"/>
+      <stop offset="100%" stop-color="#0033CC"/>
+    </linearGradient>
+    <linearGradient id="evexaGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#0088FF"/>
+    </linearGradient>
+  </defs>
+  <!-- Main Diagonal (Top-Left to Bottom-Right) -->
+  <path d="M12 28 L28 12 L88 72 L72 88 Z" fill="url(#evexaGrad1)"/>
+  <!-- Bottom-Left Leg (Chevrons / polygon) -->
+  <path d="M12 72 L38 46 L54 62 L32 84 L12 84 Z" fill="url(#evexaGrad2)"/>
+  <!-- Top-Right Leg -->
+  <path d="M62 38 L88 12 L88 32 L68 52 Z" fill="url(#evexaGrad3)"/>
+</svg>
