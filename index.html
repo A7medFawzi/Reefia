@@ -3122,19 +3122,19 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      color: #d4af6a;
-      background: rgba(212, 175, 106, 0.05);
+      color: #faf6ed;
+      background: linear-gradient(135deg, rgba(16, 54, 34, 0.88) 0%, rgba(8, 32, 20, 0.96) 100%);
       text-decoration: none;
       font-family: var(--font-sans);
       font-size: 0.95rem;
       font-weight: 600;
       font-style: normal;
-      letter-spacing: 0.05em;
-      padding: 14px 28px;
+      letter-spacing: 0.06em;
+      padding: 13px 28px;
       border-radius: 50px;
-      border: 1px solid rgba(212, 175, 106, 0.4);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1.5px solid rgba(212, 175, 106, 0.65);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 18px rgba(212, 175, 106, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       text-transform: uppercase;
     }
 
@@ -3142,17 +3142,17 @@
       font-family: 'Cairo', sans-serif;
       font-style: normal;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       letter-spacing: normal;
-      padding: 12px 26px;
+      padding: 12px 28px;
     }
 
     .produce-explore-link:hover {
-      background: rgba(212, 175, 106, 0.15);
-      border-color: rgba(212, 175, 106, 0.8);
-      color: #f7e2a9;
+      background: linear-gradient(135deg, rgba(23, 77, 48, 0.96) 0%, rgba(12, 44, 28, 0.98) 100%);
+      border-color: #d4af6a;
+      color: #ffffff;
       transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 175, 106, 0.2);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 24px rgba(212, 175, 106, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
 
     [dir="rtl"] .produce-explore-link:hover {
@@ -3341,7 +3341,10 @@
 
     .variety-item.pos-left:hover {
       opacity: 1;
-      transform: translate3d(calc(-50% - clamp(265px, 26vw, 340px)), 4px, 0) scale(0.94);
+      transform: translate3d(calc(-50% - clamp(265px, 26vw, 340px)), 2px, 0) scale(0.95);
+      background: rgba(6, 36, 26, 0.28);
+      border-color: rgba(194, 151, 81, 0.22);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
     }
 
     /* Position: RIGHT (Secondary Slot) */
@@ -3358,7 +3361,10 @@
 
     .variety-item.pos-right:hover {
       opacity: 1;
-      transform: translate3d(calc(-50% + clamp(265px, 26vw, 340px)), 4px, 0) scale(0.94);
+      transform: translate3d(calc(-50% + clamp(265px, 26vw, 340px)), 2px, 0) scale(0.95);
+      background: rgba(6, 36, 26, 0.28);
+      border-color: rgba(194, 151, 81, 0.22);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
     }
 
     /* RTL Support */
@@ -3451,20 +3457,20 @@
       position: relative;
       z-index: 2;
       object-fit: contain;
-      width: clamp(180px, 15vw, 220px); /* Noticeably smaller for elegant white space */
-      max-height: 115px;
+      width: clamp(195px, 16.5vw, 240px); /* Elevated 15% for rich product presence */
+      max-height: 122px;
       transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.65s ease;
     }
 
     .variety-item.pos-center .variety-product-img {
-      transform: scale(1.03) translateY(-3px); /* Very subtle float to keep the 3D feel without inflating size */
-      filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.4));
+      transform: scale(1.06) translateY(-4px); /* Vibrant 3D float */
+      filter: drop-shadow(0 20px 24px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 16px rgba(212, 175, 106, 0.28));
     }
 
     .variety-item.pos-left .variety-product-img,
     .variety-item.pos-right .variety-product-img {
-      transform: scale(0.90);
-      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.6));
+      transform: scale(0.92);
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.65));
     }
 
     /* Product Title: Elegant Serif */
@@ -3490,11 +3496,11 @@
     /* Product Description: Balanced Width & Comfortable Leading */
     .variety-desc {
       font-family: var(--font-sans);
-      font-size: 0.80rem;
-      line-height: 1.55;
-      color: rgba(250, 246, 237, 0.78);
+      font-size: 0.82rem;
+      line-height: 1.58;
+      color: rgba(250, 246, 237, 0.92); /* Higher contrast and clarity */
       margin: 0 auto;
-      max-width: 270px;
+      max-width: 275px;
     }
 
     [dir="rtl"] .variety-desc {
@@ -4182,24 +4188,26 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background-color: #174D30;
-      color: #F6F1E7;
-      padding: 13px 26px;
+      background: linear-gradient(135deg, #174D30 0%, #103b24 100%);
+      color: #faf6ed;
+      padding: 13px 28px;
       border-radius: 999px;
+      border: 1px solid rgba(212, 175, 106, 0.45);
       font-size: 0.88rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
       text-decoration: none;
-      box-shadow: 0 4px 14px rgba(23, 77, 48, 0.22);
-      transition: all 0.25s ease;
+      box-shadow: 0 6px 18px rgba(16, 59, 36, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
     }
 
     .buyer-cta-btn:hover {
-      background-color: #0f3621;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(23, 77, 48, 0.32);
-      color: #fff;
+      background: linear-gradient(135deg, #1e613d 0%, #13442a 100%);
+      border-color: rgba(212, 175, 106, 0.85);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(16, 59, 36, 0.38), 0 0 16px rgba(212, 175, 106, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      color: #ffffff;
     }
 
     .buyer-cta-arrow {
@@ -4245,15 +4253,15 @@
 
     /* Card: text on top, image fills bottom naturally (no crop) */
     .buyer-card {
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(180, 160, 110, 0.18);
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(180, 160, 110, 0.22);
       border-radius: 18px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
-      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
-      will-change: transform;
+      box-shadow: 0 6px 26px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+      will-change: transform, box-shadow;
       transform: translateY(0) translateZ(0);
       backface-visibility: hidden;
       position: relative;
@@ -4261,8 +4269,9 @@
     }
 
     .buyer-card:hover {
-      transform: translateY(-8px) translateZ(0);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.08);
+      transform: translateY(-6px) translateZ(0);
+      border-color: rgba(181, 112, 40, 0.45);
+      box-shadow: 0 20px 42px rgba(18, 48, 28, 0.14), 0 4px 14px rgba(0,0,0,0.06);
     }
 
     /* Unified Hitbox: covers the whole card so hover never drops when moving over children */
@@ -4684,15 +4693,15 @@
         max-height: 250px;
       }
       .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
+        display: block;
         height: 250px;
         min-height: 250px;
         max-height: 250px;
       }
       .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media img {
-        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         object-position: center bottom;
       }
       .buyer-req-footer {
@@ -10759,7 +10768,7 @@
         sec3_v2_desc: 'A widely traded sweet potato variety prepared across commercial grades and packing specifications according to buyer requirements.',
         sec3_v3_cat: 'SEASONAL SELECTION',
         sec3_v3_name: 'EGYPTIAN VARIETIES',
-        sec3_v3_desc: 'Selected local Egyptian sweet potato varieties available according to season, buyer requirements, and commercial suitability.',
+        sec3_v3_desc: 'Traditional local varieties characterized by high natural sweetness, supplied according to season, availability, and buyer requirements.',
         sec3_hw_phrase: 'From Egyptian Fields to Global Shelves',
         sec3_footer_left: 'PREMIUM EGYPTIAN PRODUCE',
         sec3_footer_right: 'QUALITY ROOTED IN EGYPT',
@@ -10996,7 +11005,7 @@
         sec3_v2_desc: 'صنف واسع التداول تجاريًا، ويتم تجهيزه وفق درجات ومواصفات تعبئة تتناسب مع متطلبات المشتري.',
         sec3_v3_cat: 'محاصيل موسمية مختارة',
         sec3_v3_name: 'الأصناف المصرية',
-        sec3_v3_desc: 'أصناف مصرية محلية مختارة من البطاطا الحلوة، متاحة بحسب الموسم، ومتطلبات المشتري، والملاءمة التجارية.',
+        sec3_v3_desc: 'أصناف محلية تقليدية تتميز بنسبة سكر طبيعية عالية، نوفرها بحسب الموسم، ومدى التوفر، ومتطلبات المشتري.',
         sec3_footer_left: 'محاصيل زراعية مصرية فاخرة',
         sec3_footer_right: 'جودة متجذرة في أرض مصر',
 
@@ -11232,7 +11241,7 @@
         sec3_v2_desc: 'Weit verbreitete Handelssorte, aufbereitet in verschiedenen Kalibrierungen und Verpackungen nach Kundenwunsch.',
         sec3_v3_cat: 'SAISONALE AUSWAHL',
         sec3_v3_name: 'ÄGYPTISCHE SORTEN',
-        sec3_v3_desc: 'Lokale geschmacksintensive Sorten je nach Saison und Marktanforderungen.',
+        sec3_v3_desc: 'Traditionelle lokale Sorten mit hohem natürlichem Zuckergehalt, geliefert nach Saison, Verfügbarkeit und Käuferanforderungen.',
         sec3_footer_left: 'PREMIUM ÄGYPTISCHE ERZEUGNISSE',
         sec3_footer_right: 'QUALITÄT AUS ÄGYPTEN',
 
@@ -11468,7 +11477,7 @@
         sec3_v2_desc: 'Variété commerciale majeure, préparée selon les normes de conditionnement de l’acheteur.',
         sec3_v3_cat: 'SÉLECTION SAISONNIÈRE',
         sec3_v3_name: 'VARIÉTÉS ÉGYPTIENNES',
-        sec3_v3_desc: 'Variétés locales à haute teneur en sucre selon la saison et la convenance commerciale.',
+        sec3_v3_desc: 'Variétés locales traditionnelles à haute teneur en sucre naturel, fournies selon la saison, la disponibilité et les exigences de l’acheteur.',
         sec3_footer_left: 'PRODUITS AGRICOLES D’ÉGYPTE',
         sec3_footer_right: 'QUALITÉ ENRACINÉE EN ÉGYPTE',
 
@@ -11704,7 +11713,7 @@
         sec3_v2_desc: 'Een veelgevraagde commerciële variëteit, gesorteerd en verpakt naar de wensen van de importeur.',
         sec3_v3_cat: 'SEIZOENSSELECTIE',
         sec3_v3_name: 'EGYPTISCHE VARIËTEITEN',
-        sec3_v3_desc: 'Lokale zoete aardappelvariëteiten geselecteerd op basis van seizoen, suikergehalte en klantspecificaties.',
+        sec3_v3_desc: 'Traditionele lokale variëteiten gekenmerkt door een hoog natuurlijk suikergehalte, geleverd naar seizoen, beschikbaarheid en kopersspecificaties.',
         sec3_footer_left: 'PREMIUM EGYPTISCHE AGF',
         sec3_footer_right: 'KWALITEIT GEWORTELD IN EGYPTE',
 
@@ -11940,7 +11949,7 @@
         sec3_v2_desc: 'Variedad ampliamente comercializada, preparada en distintos calibres y empaques.',
         sec3_v3_cat: 'SELECCIÓN ESTACIONAL',
         sec3_v3_name: 'VARIEDADES EGIPCIAS',
-        sec3_v3_desc: 'Variedades locales de alto dulzor según temporada y requisitos del comprador.',
+        sec3_v3_desc: 'Variedades locales tradicionales con alto dulzor natural, suministradas según temporada, disponibilidad y requisitos del comprador.',
         sec3_footer_left: 'PRODUCTOS EGIPCIOS DE ALTA CALIDAD',
         sec3_footer_right: 'CALIDAD CON RAÍCES EN EGIPTO',
 
@@ -12178,7 +12187,7 @@
         sec3_v2_desc: 'Востребованный сорт, калиброванный и упакованный под требования заказчика.',
         sec3_v3_cat: 'СЕЗОННЫЙ ВЫБОР',
         sec3_v3_name: 'ЕГИПЕТСКИЕ СОРТА',
-        sec3_v3_desc: 'Местные сладкие сорта в зависимости от сезона и потребностей рынка.',
+        sec3_v3_desc: 'Традиционные местные сорта с высоким естественным содержанием сахара, поставляемые с учетом сезона, доступности и требований покупателя.',
         sec3_footer_left: 'ПРЕМИУМ ПРОДУКЦИЯ ЕГИПТА',
         sec3_footer_right: 'КАЧЕСТВО С ЕГИПЕТСКИМИ КОРНЯМИ',
 
@@ -12412,7 +12421,7 @@
         sec3_v2_desc: 'Geniş ticari hacme sahip, alıcı taleplerine göre boylanmış ve paketlenmiş varyete.',
         sec3_v3_cat: 'MEVSİMSEL SEÇİM',
         sec3_v3_name: 'YEREL MISIR ÇEŞİTLERİ',
-        sec3_v3_desc: 'Mevsimine ve ticari taleplere göre sunulan yüksek şekerli yerel çeşitler.',
+        sec3_v3_desc: 'Yüksek doğal şeker oranıyla öne çıkan geleneksel yerel çeşitler; mevsim, bulunabilirlik ve alıcı taleplerine göre temin edilir.',
         sec3_footer_left: 'BİRİNCİ SINIF MISIR TARIM ÜRÜNLERİ',
         sec3_footer_right: 'KÖKLERİ MISIR’DA OLAN KALİTE',
 
@@ -12648,7 +12657,7 @@
         sec3_v2_desc: 'Varietà ampiamente richiesta, confezionata secondo le specifiche commerciali dell’importatore.',
         sec3_v3_cat: 'SELEZIONE STAGIONALE',
         sec3_v3_name: 'VARIETÀ EGIZIANE',
-        sec3_v3_desc: 'Varietà locali ad alto contenuto zuccherino disponibili in base alla stagione e alle esigenze di mercato.',
+        sec3_v3_desc: 'Varietà locali tradizionali con un elevato contenuto zuccherino naturale, fornite in base alla stagione, disponibilità ed esigenze dell’acquirente.',
         sec3_footer_left: 'PRODOTTI AGRICOLI EGIZIANI DI PREGIO',
         sec3_footer_right: 'QUALITÀ RADICATA IN EGITTO',
 
