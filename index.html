@@ -4694,15 +4694,17 @@
       }
       .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media {
         display: block;
-        height: 250px;
-        min-height: 250px;
-        max-height: 250px;
+        height: auto;
+        min-height: 0;
+        max-height: none;
       }
       .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media img {
         width: 100%;
-        height: 100%;
+        height: auto;
+        aspect-ratio: 1448 / 1086;
         object-fit: cover;
-        object-position: center bottom;
+        object-position: center center;
+        display: block;
       }
       .buyer-req-footer {
         flex-direction: column;
@@ -9136,7 +9138,7 @@
       stroke: #c2954a;
       stroke-width: 1.6;
       stroke-dasharray: 4 6;
-      animation: tradeFlow 15s linear infinite;
+      animation: tradeFlow 7s linear infinite;
     }
     @keyframes tradeFlow {
       to { stroke-dashoffset: -100; }
@@ -9168,7 +9170,13 @@
       border: 2px solid #ffffff;
       border-radius: 50%;
       box-shadow: 0 0 6px rgba(23, 77, 48, 0.35), 0 2px 4px rgba(0,0,0,0.15);
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .map-dot.dot-white.is-active,
+    .map-node.is-active .map-dot.dot-white {
+      transform: scale(1.35);
+      background: #df9e51;
+      box-shadow: 0 0 10px rgba(223, 158, 81, 0.7), 0 2px 6px rgba(0,0,0,0.25);
     }
     .map-dot.dot-egypt {
       position: relative;
@@ -9777,27 +9785,37 @@
         justify-content: center !important;
       }
 
-      /* Mobile background harbor - Rich & Atmospheric */
-      .markets-presence-section {
-        padding-bottom: clamp(160px, 32vw, 240px) !important; /* Leaves full breathing room for harbor scene */
+      /* Mobile background harbor - Harmonious spacing closer to map */
+      .markets-presence-section,
+      [dir="rtl"] .markets-presence-section {
+        padding: 24px 16px clamp(130px, 32vw, 175px) !important;
       }
-      .markets-presence-section::after {
-        opacity: 0.90 !important;
-        height: 220px !important;
-        min-height: 200px !important;
-        max-height: 260px !important;
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 25%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,1) 100%) !important;
-        mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 25%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,1) 100%) !important;
+      .markets-presence-section::after,
+      [dir="rtl"] .markets-presence-section::after {
+        opacity: 0.88 !important;
+        height: 175px !important;
+        min-height: 155px !important;
+        max-height: 195px !important;
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 20%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,1) 100%) !important;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 20%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,1) 100%) !important;
       }
 
-      /* Option 2: Lifted Map Viewport - Floating Naturally with bottom breathing space */
-      .markets-map-col {
+      /* Clean Map Viewport - Perfectly balanced between CTA button and harbor */
+      .markets-map-col,
+      [dir="rtl"] .markets-map-col {
         min-width: 0 !important;
         width: 100% !important;
         overflow: visible !important;
         padding-bottom: 0 !important;
-        margin-top: 1.2rem !important;
+        margin-top: 0.5rem !important;
         margin-bottom: 0.5rem !important;
+      }
+      .markets-cta-wrap,
+      [dir="rtl"] .markets-cta-wrap {
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+        position: relative !important;
+        z-index: 10 !important;
       }
       .map-viewport-wrapper {
         min-width: 0 !important;
@@ -9873,12 +9891,12 @@
       let activeClickedTarget = null;
       
       const regionMap = {
-        'target-eu': { cardId: 'card-eu', mapClass: 'highlight-europe' },
-        'target-gcc': { cardId: 'card-sa', mapClass: 'highlight-gcc', isGcc: true },
-        'pin-eg': { cardId: 'card-eg', mapClass: 'highlight-eg' },
-        'pin-sa': { cardId: 'card-sa', mapClass: 'highlight-sa', isSa: true },
-        'pin-us': { cardId: 'card-us', mapClass: 'highlight-us' },
-        'pin-ca': { cardId: 'card-ca', mapClass: 'highlight-ca' }
+        'target-eu': { cardId: 'card-eu', nodeId: 'node-eu', mapClass: 'highlight-europe' },
+        'target-gcc': { cardId: 'card-sa', nodeId: 'node-sa', mapClass: 'highlight-gcc', isGcc: true },
+        'pin-eg': { cardId: 'card-eg', nodeId: 'node-eg', mapClass: 'highlight-eg' },
+        'pin-sa': { cardId: 'card-sa', nodeId: 'node-sa', mapClass: 'highlight-sa', isSa: true },
+        'pin-us': { cardId: 'card-us', nodeId: 'node-us', mapClass: 'highlight-us' },
+        'pin-ca': { cardId: 'card-ca', nodeId: 'node-ca', mapClass: 'highlight-ca' }
       };
 
       const setCardSaMode = (mode) => {
@@ -9906,6 +9924,7 @@
 
       const clearAllHighlights = () => {
         document.querySelectorAll('.map-card-item').forEach(c => c.classList.remove('is-highlighted'));
+        document.querySelectorAll('.map-node').forEach(n => n.classList.remove('is-active'));
         if (worldMap) {
           worldMap.classList.remove('highlight-all', 'highlight-europe', 'highlight-gcc', 'highlight-sa', 'highlight-eg', 'highlight-us', 'highlight-ca');
         }
@@ -9926,6 +9945,10 @@
             if (conf.cardId) {
               const c = document.getElementById(conf.cardId);
               if (c) c.classList.add('is-highlighted');
+            }
+            if (conf.nodeId) {
+              const n = document.getElementById(conf.nodeId);
+              if (n) n.classList.add('is-active');
             }
             if (worldMap && conf.mapClass) {
               worldMap.classList.add(conf.mapClass);
