@@ -318,9 +318,9 @@
       font-weight: 600;
     }
 
-    /* Scroll Track - Ample scroll space so all 5 chapters & transitions play completely before Section 02 */
+    /* Balanced Cinematic Scroll Track - Smooth & light without fatigue */
     .scroll-container {
-      height: 460vh;
+      height: 340vh;
       position: relative;
     }
 
@@ -546,21 +546,32 @@
       box-shadow: 0 10px 25px rgba(244, 125, 45, 0.45);
     }
 
-    .text-link {
-      color: var(--color-cream);
+    .hero-text-link {
+      color: #ffffff;
       text-decoration: none;
-      font-size: 0.92rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.45);
       padding-bottom: 3px;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      line-height: 1.2;
     }
 
-    .text-link:hover {
-      border-color: #fff;
-      color: #fff;
+    .hero-text-link:hover {
+      color: var(--color-cream);
+      border-color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    [dir="rtl"] .hero-text-link {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 600;
+      padding-bottom: 4px;
     }
 
     /* Journey Bottom Chapters (Exact Reefiya Style) */
@@ -692,15 +703,21 @@
 
     .chapter-item:hover {
       color: #ffffff;
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(244, 125, 45, 0.18);
+      border-color: rgba(244, 125, 45, 0.55);
+      box-shadow: 0 4px 15px rgba(244, 125, 45, 0.22);
+      transform: translateY(-1.5px);
+    }
+
+    .chapter-item:hover b {
+      color: var(--color-orange);
     }
 
     .chapter-item.active {
       color: #ffffff;
-      background: rgba(244, 125, 45, 0.25);
-      border: 1px solid rgba(244, 125, 45, 0.7);
-      box-shadow: 0 4px 15px rgba(244, 125, 45, 0.25);
+      background: rgba(244, 125, 45, 0.28);
+      border: 1px solid rgba(244, 125, 45, 0.85);
+      box-shadow: 0 4px 18px rgba(244, 125, 45, 0.35);
     }
 
     .chapter-item b {
@@ -716,31 +733,51 @@
 
     .skip-to-produce-btn {
       color: #ffffff;
-      background: #101c13;
+      background: linear-gradient(135deg, rgba(20, 38, 24, 0.88), rgba(12, 24, 15, 0.94));
       text-decoration: none;
-      border: 1px solid rgba(181, 112, 40, 0.4);
+      border: 1.5px solid rgba(244, 125, 45, 0.55);
       border-radius: 999px;
-      padding: 6px 6px 6px 20px;
-      transition: all 0.3s ease;
+      padding: 6px 8px 6px 20px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       display: inline-flex;
       align-items: center;
       gap: 12px;
       cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 500;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 16px rgba(244, 125, 45, 0.22);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .skip-to-produce-btn:hover {
-      background: #18281a;
-      border-color: #B57028;
+      background: linear-gradient(135deg, rgba(30, 56, 36, 0.95), rgba(18, 34, 22, 0.98));
+      border-color: var(--color-orange);
       transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 24px rgba(244, 125, 45, 0.45);
+      color: #fff;
+    }
+
+    [dir="rtl"] .skip-to-produce-btn {
+      padding: 6px 18px 6px 8px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 700;
+      flex-direction: row;
+      gap: 12px;
+    }
+
+    [dir="rtl"] .skip-to-produce-btn > span[data-i18n] {
+      display: inline-block;
+      line-height: 1;
+      padding-top: 2px;
     }
 
     @keyframes goldPulse {
-      0% { box-shadow: 0 0 0 0 rgba(181, 112, 40, 0.4); }
-      70% { box-shadow: 0 0 0 8px rgba(181, 112, 40, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(181, 112, 40, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(244, 125, 45, 0.5); }
+      70% { box-shadow: 0 0 0 10px rgba(244, 125, 45, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(244, 125, 45, 0); }
     }
 
     .skip-btn-circle {
@@ -750,9 +787,15 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: rgba(181, 112, 40, 0.2);
-      color: #db9c5b;
+      background: var(--color-orange);
+      color: #101c13;
       animation: goldPulse 2s infinite;
+      transition: transform 0.25s ease;
+    }
+
+    .skip-to-produce-btn:hover .skip-btn-circle {
+      transform: translateY(2px);
+      background: #ff8b3d;
     }
 
     .progress-track {
@@ -941,11 +984,22 @@
     }
 
     [dir="rtl"] .mobile-nav-sheet {
-      right: auto;
-      left: 0;
-      border-left: none;
-      border-right: 1px solid rgba(255, 255, 255, 0.15);
-      transform: translateX(-100%);
+      right: 0;
+      left: auto;
+      border-right: none;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      transform: translateX(100%);
+      text-align: right;
+    }
+
+    [dir="rtl"] .mobile-nav-links {
+      text-align: right;
+      align-items: stretch;
+    }
+
+    [dir="rtl"] .mobile-nav-link {
+      text-align: right;
+      font-family: 'Cairo', sans-serif;
     }
 
     .mobile-nav-drawer.open .mobile-nav-sheet {
@@ -1013,11 +1067,25 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .mobile-nav-brand-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .mobile-nav-logo-img {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+
     .mobile-quote-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       width: 100%;
       height: 48px;
       background: var(--color-orange);
@@ -1027,6 +1095,19 @@
       font-size: 0.95rem;
       text-decoration: none;
       box-shadow: 0 4px 20px rgba(244, 125, 45, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    [dir="rtl"] .mobile-quote-btn {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.96rem;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    [dir="rtl"] .mobile-quote-btn svg {
+      transform: scaleX(-1);
+      display: inline-block;
     }
 
     /* -------------------------------------------
@@ -1286,6 +1367,9 @@
 
       [dir="rtl"] .skip-to-produce-btn {
         padding: 5px 12px 5px 6px;
+        flex-direction: row;
+        gap: 8px;
+        font-family: 'Cairo', sans-serif;
       }
     }
 
@@ -1336,9 +1420,9 @@
         padding: 4px 3px;
       }
 
-      /* Ample scroll track on mobile so all 5 chapters and transitions complete with generous dwell before Section 02 */
+      /* Balanced scroll track on mobile: smooth thumb pacing without fatigue */
       .scroll-container {
-        height: 420vh;
+        height: 310vh;
       }
     }
 
@@ -6946,7 +7030,9 @@
     <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
     <div class="mobile-nav-sheet">
       <div class="mobile-nav-header">
-        <span class="mobile-nav-brand-title">REEFIYA</span>
+        <a href="#" class="mobile-nav-brand-link" aria-label="REEFIYA">
+          <img src="./reefiya-logo-clean.png" alt="Reefiya" class="mobile-nav-logo-img">
+        </a>
         <button class="mobile-nav-close" id="mobileNavClose" type="button" aria-label="Close Menu">✕</button>
       </div>
       <nav class="mobile-nav-links">
@@ -6985,6 +7071,7 @@
       <p class="story-desc" data-i18n="hero_desc">Egyptian sweet potatoes, carefully sourced and prepared for international markets.</p>
       <div class="hero-actions">
         <a href="rfq.html" class="cta-btn hero-primary-cta" data-i18n="cta_quote">Request a quote ↗</a>
+        <a href="#produce" class="hero-text-link" data-i18n="cta_explore">Explore our produce ↗</a>
       </div>
     </div>
 
@@ -12540,7 +12627,7 @@
 
     function getTargetProgress() {
       const scrollTop = window.scrollY || window.pageYOffset;
-      const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
+      const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 3.4);
       const rawRatio = heroScrollDistance > 0 ? scrollTop / heroScrollDistance : 0;
       // Complete all 100 frames smoothly by 75% of the hero scroll track.
       // The remaining 25% provides a dedicated, stable resting zone for Chapter 5 (Destination / Global Markets)
@@ -12549,24 +12636,63 @@
       return Math.min(Math.max(frameProgress, 0), 1);
     }
 
+    function jumpToChapter(chapterNum) {
+      if (chapterNum < 1) chapterNum = 1;
+      if (chapterNum > 5) chapterNum = 5;
+      const targetFrames = [1, 45, 68, 82, 99];
+      const targetFrame = targetFrames[chapterNum - 1];
+      const frameProgress = (targetFrame - 1) / (frameCount - 1);
+      
+      const heroDist = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 3.4);
+      const targetScroll = frameProgress * 0.75 * heroDist;
+      
+      window.scrollTo({
+        top: Math.round(targetScroll) + 2,
+        behavior: 'smooth'
+      });
+    }
+
     // Click on chapter to smoothly jump to that exact scene
     chapterItems.forEach(item => {
       item.addEventListener('click', () => {
         const chapterNum = parseInt(item.dataset.chapter, 10);
-        // Cleanly established frames for each scene (avoiding crossfades at the cut):
-        // 1: Origin, 45: Selection, 68: Packing, 82: Shipment, 99: Destination
-        const targetFrames = [1, 45, 68, 82, 99];
-        const targetFrame = targetFrames[chapterNum - 1];
-        // progress = (frame - 1) / 99
-        const targetProgress = (targetFrame - 1) / 99;
-        
-        const heroDist = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
-        const maxScroll = heroDist - window.innerHeight;
-        
-        window.scrollTo({
-          top: targetProgress * maxScroll + 5, // add 5px buffer to ensure triggering the active state
-          behavior: 'smooth'
-        });
+        jumpToChapter(chapterNum);
+      });
+    });
+
+    // Keyboard Arrow Navigation (Left/Right arrow keys for smooth chapter stepping)
+    window.addEventListener('keydown', (e) => {
+      const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+      if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') return;
+      
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const heroDist = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 3.4);
+      // Only active while user is in the Hero / Journey area
+      if (scrollTop > (heroDist + 100)) return;
+
+      const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+      if (e.key === 'ArrowRight') {
+        const next = isRtl ? (currentActiveChapter - 1) : (currentActiveChapter + 1);
+        jumpToChapter(next);
+      } else if (e.key === 'ArrowLeft') {
+        const prev = isRtl ? (currentActiveChapter + 1) : (currentActiveChapter - 1);
+        jumpToChapter(prev);
+      }
+    });
+
+    // Smooth scroll for Produce exploration links (handles header offset & smooth transition)
+    document.querySelectorAll('a[href="#produce"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetEl = document.getElementById('produce') || document.querySelector('.products-section') || document.getElementById('about');
+        if (targetEl) {
+          const headerOffset = 70;
+          const targetY = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: targetY,
+            behavior: 'smooth'
+          });
+        }
       });
     });
 
@@ -12576,7 +12702,7 @@
 
       // When scrolled past the hero canvas into Section 02, smoothly fade out the journey bar & story overlay
       const scrollTop = window.scrollY || window.pageYOffset;
-      const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
+      const heroScrollDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 3.4);
       const isPastHero = scrollTop >= (heroScrollDistance - 60);
 
       const navContainerEl = document.querySelector('.site-nav-container');
@@ -12651,7 +12777,7 @@
       // Completely hide canvas wrapper and vignette overlay when scrolling past Hero sequence so they never tint Section 02-06
       const canvasWrapperEl = document.querySelector('.canvas-wrapper');
       const vignetteOverlayEl = document.querySelector('.vignette-overlay');
-      const heroDist = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 4.6);
+      const heroDist = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 3.4);
       if (currentScrollY > heroDist) {
         if (canvasWrapperEl) canvasWrapperEl.style.display = 'none';
         if (vignetteOverlayEl) vignetteOverlayEl.style.display = 'none';
