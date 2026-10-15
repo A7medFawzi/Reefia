@@ -13481,7 +13481,18 @@
 
       titleEl.textContent = item.title;
       if (subEl) subEl.textContent = item.sub;
-      if (footerEl) footerEl.textContent = item.footer || (item.footerNote || 'REEFIYA Agriculture & Export Desk — Strictly B2B commercial compliance.');
+      const modalFooters = {
+        ar: 'ريفيا للتجارة والتصدير الزراعي — التزام صارم بالمعايير التجارية الدولية B2B.',
+        en: 'REEFIYA Agriculture & Export Desk — Strictly B2B commercial compliance.',
+        nl: 'REEFIYA Landbouw & Exportdesk — Strikte B2B commerciële naleving.',
+        fr: 'Bureau Export REEFIYA — Conformité commerciale B2B stricte.',
+        de: 'REEFIYA Export-Desk — Strenge B2B-Geschäftsstandards.',
+        es: 'Mesa de Exportación REEFIYA — Cumplimiento comercial B2B estricto.',
+        it: 'Desk Export REEFIYA — Conformità commerciale B2B rigorosa.',
+        ru: 'Отдел Экспорта REEFIYA — Строгое соблюдение стандартов B2B.',
+        tr: 'REEFIYA İhracat Masası — B2B ticari standartlara tam uyum.'
+      };
+      if (footerEl) footerEl.textContent = item.footer || modalFooters[curLang] || modalFooters['en'];
 
       if (type === 'privacy') {
         if (iconEl) {
