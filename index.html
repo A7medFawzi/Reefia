@@ -824,11 +824,13 @@
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.7s ease;
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.75s ease;
+      will-change: opacity, transform;
     }
 
     .loader.hidden {
       opacity: 0;
+      transform: scale(1.04);
       visibility: hidden;
       pointer-events: none;
     }
@@ -838,7 +840,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      animation: loaderAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: loaderAppear 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .loader-logo-wrap {
@@ -848,55 +850,103 @@
       justify-content: center;
       padding: 0;
       background: transparent;
-      border-radius: 0;
-      box-shadow: none;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
+    }
+
+    /* Ambient luxury breathing glow behind the Reefiya logo */
+    .loader-logo-wrap::before {
+      content: '';
+      position: absolute;
+      width: 140px;
+      height: 60px;
+      background: radial-gradient(ellipse at center, rgba(244, 125, 45, 0.28) 0%, rgba(30, 85, 48, 0.15) 50%, transparent 75%);
+      filter: blur(14px);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: loaderGlowPulse 2.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes loaderGlowPulse {
+      0% { opacity: 0.45; transform: scale(0.9); }
+      100% { opacity: 0.95; transform: scale(1.22); }
     }
 
     .loader-logo-img {
-      height: 52px; /* Made slightly larger since it has no background padding */
+      height: 54px;
       width: auto;
       object-fit: contain;
       display: block;
-      /* Invert the green logo to white and add a subtle drop shadow */
-      filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+      filter: brightness(0) invert(1) drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+      position: relative;
+      z-index: 2;
     }
 
     .loader-progress-track {
-      width: 220px;
+      width: 240px;
       height: 3px;
       background: rgba(255, 255, 255, 0.12);
       border-radius: 999px;
       overflow: hidden;
       position: relative;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
     }
 
     .loader-fill {
       width: 0%;
       height: 100%;
-      background: linear-gradient(90deg, var(--color-orange) 0%, #ffaa60 100%);
+      background: linear-gradient(90deg, var(--color-orange) 0%, #ffb066 100%);
       border-radius: 999px;
       transition: width 0.12s ease;
-      box-shadow: 0 0 12px rgba(244, 125, 45, 0.8);
+      box-shadow: 0 0 14px rgba(244, 125, 45, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Shimmering light streak passing through progress bar */
+    .loader-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+      animation: loaderShimmer 1.4s ease-in-out infinite;
+    }
+
+    @keyframes loaderShimmer {
+      0% { left: -100%; }
+      100% { left: 200%; }
     }
 
     .loader-meta {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      width: 220px;
-      margin-top: 12px;
-      font-size: 0.76rem;
+      justify-content: center;
+      gap: 10px;
+      width: 240px;
+      margin-top: 14px;
+      font-size: 0.74rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255, 254, 242, 0.6);
+      color: rgba(255, 254, 242, 0.65);
       font-family: var(--font-sans);
+    }
+
+    [dir="rtl"] .loader-meta {
+      font-family: 'Cairo', sans-serif;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+    }
+
+    .loader-divider {
+      color: rgba(244, 125, 45, 0.6);
+      font-weight: 300;
     }
 
     .loader-pct {
       color: var(--color-orange);
-      font-weight: 600;
+      font-weight: 700;
       font-variant-numeric: tabular-nums;
     }
 
@@ -1232,6 +1282,28 @@
         max-width: 100%;
       }
 
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: nowrap;
+        width: 100%;
+      }
+
+      .cta-btn {
+        padding: 9px 15px;
+        font-size: 0.84rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .hero-text-link {
+        font-size: 0.86rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding-bottom: 2px;
+      }
+
       /* Journey Bottom Mobile Adaptation: Clean, horizontally scrollable pills with no overlapping in any language */
       .journey-bottom {
         bottom: 14px;
@@ -1401,13 +1473,26 @@
         line-height: 1.68;
       }
 
-      .cta-btn {
-        padding: 10px 20px;
-        font-size: 0.84rem;
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: nowrap;
+        width: 100%;
       }
 
-      .hero-actions {
-        gap: 10px;
+      .cta-btn {
+        padding: 9px 15px;
+        font-size: 0.82rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .hero-text-link {
+        font-size: 0.85rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding-bottom: 2px;
       }
 
       /* Compact chapters for small screens: show number and name smoothly */
@@ -6872,6 +6957,21 @@
 
 
 
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('reefiya_lang');
+        var lang = saved || ((navigator.language || '').toLowerCase().startsWith('ar') ? 'ar' : 'en');
+        if (lang === 'ar') {
+          document.documentElement.dir = 'rtl';
+          document.documentElement.lang = 'ar';
+          window.__preloaderText = 'جاري تحميل الرحلة';
+        } else {
+          window.__preloaderText = 'Loading Journey';
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 
@@ -6885,9 +6985,16 @@
         <div class="loader-fill" id="loaderFill"></div>
       </div>
       <div class="loader-meta">
-        <span>Loading Journey</span>
+        <span class="loader-text" id="loaderText" data-i18n="loader_journey">Loading Journey</span>
+        <span class="loader-divider">•</span>
         <span class="loader-pct" id="loaderPct">0%</span>
       </div>
+      <script>
+        if (window.__preloaderText) {
+          var lt = document.getElementById('loaderText');
+          if (lt) lt.textContent = window.__preloaderText;
+        }
+      </script>
     </div>
   </div>
 
@@ -10350,6 +10457,7 @@
         nav_specs: 'Specifications',
         nav_process: 'Export Journey',
         nav_global: 'Markets',
+        loader_journey: 'Loading Journey',
         nav_about: 'Why REEFIYA',
         btn_quote: 'Request a quote',
         hero_eyebrow: '01 — SOURCING',
@@ -10585,6 +10693,7 @@
         nav_specs: 'المواصفات',
         nav_process: 'رحلة التصدير',
         nav_global: 'الأسواق',
+        loader_journey: 'جاري تحميل الرحلة',
         nav_about: 'لماذا ريفية',
         btn_quote: 'طلب عرض سعر',
         hero_eyebrow: '01 — التوريد',
@@ -10819,6 +10928,7 @@
         nav_specs: 'Spezifikationen',
         nav_process: 'Exportprozess',
         nav_global: 'Märkte',
+        loader_journey: 'Reise wird geladen',
         nav_about: 'Über REEFIYA',
         btn_quote: 'Angebot anfordern',
         hero_eyebrow: '01 — BESCHAFFUNG',
@@ -11053,6 +11163,7 @@
         nav_specs: 'Spécifications',
         nav_process: 'Processus d’export',
         nav_global: 'Marchés',
+        loader_journey: 'Chargement du voyage',
         nav_about: 'Pourquoi REEFIYA',
         btn_quote: 'Demander un devis',
         hero_eyebrow: '01 — APPROVISIONNEMENT',
@@ -11287,6 +11398,7 @@
         nav_specs: 'Specificaties',
         nav_process: 'Exportproces',
         nav_global: 'Markten',
+        loader_journey: 'Reis laden',
         nav_about: 'Over REEFIYA',
         btn_quote: 'Offerte aanvragen',
         hero_eyebrow: '01 — INKOOP & TEELT',
@@ -11521,6 +11633,7 @@
         nav_specs: 'Especificaciones',
         nav_process: 'Proceso de exportación',
         nav_global: 'Mercados',
+        loader_journey: 'Cargando viaje',
         nav_about: 'Sobre REEFIYA',
         btn_quote: 'Solicitar cotización',
         hero_eyebrow: '01 — ORIGEN Y CULTIVO',
@@ -11755,6 +11868,7 @@
         nav_specs: 'Спецификации',
         nav_process: 'Процесс экспорта',
         nav_global: 'Рынки',
+        loader_journey: 'Загрузка путешествия',
         nav_about: 'О REEFIYA',
         btn_quote: 'Запросить расчет',
         hero_eyebrow: '01 — ПОСТАВКА',
@@ -11989,6 +12103,7 @@
         nav_specs: 'Özellikler',
         nav_process: 'İhracat Süreci',
         nav_global: 'Pazarlar',
+        loader_journey: 'Yolculuk yükleniyor',
         nav_about: 'REEFIYA Hakkında',
         btn_quote: 'Teklif İsteyin',
         hero_eyebrow: '01 — TEDARİK',
@@ -12223,6 +12338,7 @@
         nav_specs: 'Specifiche',
         nav_process: 'Percorso di export',
         nav_global: 'Mercati',
+        loader_journey: 'Caricamento viaggio',
         nav_about: 'Chi Siamo',
         btn_quote: 'Richiedi un preventivo',
         hero_eyebrow: '01 — APPROVVIGIONAMENTO',
@@ -12454,6 +12570,7 @@
         }
       } catch (err) {}
     }
+    window.setLanguage = setLanguage;
 
     document.querySelectorAll('.lang-menu-item').forEach(item => {
       item.addEventListener('click', (e) => {
