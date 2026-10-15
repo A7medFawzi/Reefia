@@ -4925,29 +4925,51 @@
       position: absolute;
       top: clamp(24px, 3.5vw, 42px);
       right: clamp(40px, 5.5vw, 85px);
-      background: rgba(252, 249, 240, 0.94);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border-radius: 20px;
       padding: 14px 22px;
       display: flex;
       align-items: center;
       gap: 14px;
-      box-shadow: 0 12px 35px rgba(11, 26, 16, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(23, 77, 48, 0.14);
+      box-shadow: 0 16px 38px rgba(23, 77, 48, 0.09), 0 2px 8px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(181, 137, 61, 0.28);
       z-index: 4;
       pointer-events: auto;
+      transition: all 0.35s ease;
+    }
+
+    .approach-slogan-card:hover {
+      background: rgba(255, 255, 255, 0.92);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 45px rgba(23, 77, 48, 0.14);
+      border-color: rgba(23, 77, 48, 0.35);
     }
 
     .approach-slogan-icon {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: #eef4ee;
+      background: #edf5ee;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      box-shadow: 0 0 0 0 rgba(23, 77, 48, 0.25);
+      animation: sloganLeafPulse 2.8s infinite ease-in-out;
+      border: 1px solid rgba(23, 77, 48, 0.12);
+    }
+
+    @keyframes sloganLeafPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(23, 77, 48, 0.22);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 6px rgba(23, 77, 48, 0);
+      }
     }
 
     .approach-slogan-content {
@@ -4975,7 +4997,7 @@
       display: inline-block;
       width: 24px;
       height: 2px;
-      background: #e65100;
+      background: linear-gradient(90deg, #e65100 0%, #b5893d 100%);
       margin-top: 5px;
       border-radius: 2px;
     }
@@ -5107,6 +5129,7 @@
       align-items: center;
       gap: 1.35rem;
       flex-wrap: wrap;
+      margin-bottom: 0.5rem;
     }
 
     .approach-primary-btn {
@@ -5130,7 +5153,7 @@
     .approach-primary-btn:hover {
       background: #0f3621;
       transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(23, 77, 48, 0.38);
+      box-shadow: 0 14px 32px rgba(23, 77, 48, 0.38), 0 0 20px rgba(23, 77, 48, 0.25);
       color: #ffffff !important;
     }
 
@@ -5138,56 +5161,205 @@
       font-size: 1.1rem;
       line-height: 1;
       display: inline-block;
-      transition: transform 0.2s ease;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .approach-primary-btn:hover .approach-btn-arrow {
-      transform: translate(2px, -2px);
+      transform: translate(3px, -3px);
     }
 
+    /* Video Trigger Button */
     .approach-video-btn {
-      background: transparent;
-      border: none;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(23, 77, 48, 0.16);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 1.15rem 0.5rem 0.55rem;
+      border-radius: 40px;
       font-family: var(--font-sans);
       font-weight: 700;
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       color: #174D30;
-      transition: all 0.25s ease;
+      transition: all 0.3s ease;
       position: relative;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 4px 14px rgba(11, 26, 16, 0.04);
     }
 
     .approach-play-icon {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      border: 1.8px solid #174D30;
+      background: #174D30;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #174D30;
+      color: #ffffff;
       transition: all 0.3s ease;
-      background: rgba(23, 77, 48, 0.05);
       position: relative;
+      flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(23, 77, 48, 0.24);
     }
 
     .approach-play-icon svg {
       margin-left: 2px;
+      fill: #ffffff;
+      stroke: none;
+    }
+
+    .approach-video-btn:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(23, 77, 48, 0.12);
+      border-color: rgba(23, 77, 48, 0.3);
     }
 
     .approach-video-btn:hover .approach-play-icon {
-      background: #174D30;
-      color: #ffffff;
-      transform: scale(1.08);
-      box-shadow: 0 0 0 6px rgba(23, 77, 48, 0.12), 0 6px 16px rgba(23, 77, 48, 0.25);
+      transform: scale(1.1);
+      box-shadow: 0 0 0 4px rgba(23, 77, 48, 0.15), 0 4px 14px rgba(23, 77, 48, 0.3);
     }
 
     .approach-video-btn:hover .approach-video-text {
       color: #0b2214;
+    }
+
+    /* Commercial Proof Bar (Trust Stats) */
+    .approach-stats-bar {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid rgba(23, 77, 48, 0.12);
+      width: 100%;
+      max-width: 660px;
+    }
+
+    .stat-pill {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      white-space: nowrap;
+    }
+
+    .stat-pill-top {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .stat-digit {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #c47d2b;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .stat-unit {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #174D30;
+      letter-spacing: 0.04em;
+    }
+
+    .stat-pill-label {
+      font-family: var(--font-sans);
+      font-size: 0.73rem;
+      font-weight: 500;
+      color: #617567;
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      margin-top: 2px;
+    }
+
+    .stat-pill-divider {
+      width: 1px;
+      height: 38px;
+      background: rgba(23, 77, 48, 0.14);
+      flex-shrink: 0;
+    }
+
+    /* Video Lightbox Modal */
+    .approach-video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(9, 24, 15, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+
+    .approach-video-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .approach-video-dialog {
+      background: #0d1e13;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 820px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    }
+
+    .approach-video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+    }
+
+    .approach-video-close {
+      background: transparent;
+      border: none;
+      color: #a0b2a5;
+      font-size: 1.6rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s ease;
+      padding: 0 4px;
+    }
+
+    .approach-video-close:hover {
+      color: #ffffff;
+    }
+
+    .approach-video-frame {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      background: #000;
+    }
+
+    .approach-video-frame video,
+    .approach-video-frame iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     /* =========================================
@@ -5198,7 +5370,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(16px, 1.8vw, 24px);
       position: relative;
-      z-index: 5;
+      z-index: 2;
     }
 
     .approach-pillar-card {
@@ -5206,88 +5378,190 @@
       border-radius: 20px;
       border: 1px solid rgba(23, 77, 48, 0.10);
       box-shadow: 0 8px 24px rgba(11, 26, 16, 0.04), 0 2px 5px rgba(0,0,0,0.02);
-      padding: 14px 14px 14px 18px;
+      padding: 14px;
       display: flex;
+      flex-direction: column;
       gap: 14px;
-      align-items: stretch;
-      min-height: 220px;
+      min-height: auto;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .approach-pillar-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(23, 77, 48, 0.11), 0 4px 10px rgba(0,0,0,0.03);
-      border-color: rgba(23, 77, 48, 0.26);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 45px rgba(23, 77, 48, 0.12), 0 4px 12px rgba(0,0,0,0.03);
+      border-color: rgba(23, 77, 48, 0.28);
     }
 
-    .pillar-text-side {
-      flex: 1.35;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-width: 0;
-      padding: 2px 0;
+    /* Full-width Landscape Media at Top of Card */
+    .pillar-media-side {
+      width: 100%;
+      height: 195px;
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      flex-shrink: 0;
+      order: 1;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      background-color: #f0ebe0;
     }
 
-    .pillar-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 0.45rem;
+    .pillar-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .pillar-num {
+    .approach-pillar-card:hover .pillar-photo {
+      transform: scale(1.06);
+    }
+
+    /* Elegant Glass Stage Badge on Image */
+    .pillar-stage-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 3;
+      background: rgba(11, 36, 21, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 20px;
+      padding: 4px 11px;
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      color: #92a496;
-      letter-spacing: 0.02em;
+      color: #FFFFFF;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.35s ease;
+      pointer-events: none;
+    }
+    .approach-pillar-card:hover .pillar-stage-badge {
+      background: #174D30;
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(23, 77, 48, 0.35);
+    }
+    [dir="rtl"] .pillar-stage-badge {
+      left: auto;
+      right: 10px;
+      letter-spacing: normal;
+      font-family: 'Cairo', var(--font-heading);
+      font-size: 0.72rem;
     }
 
-    .pillar-badge-icon {
-      width: 30px;
-      height: 30px;
+    /* Continuous Flow Journey Rail (Connects cleanly between cards behind milestone nodes) */
+    .approach-pillars-grid::before {
+      display: none;
+    }
+
+    /* Interactive Pipeline Milestone Nodes with directional pulse */
+    .approach-pillar-card:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -15px;
+      top: 110px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      background: #edf4ee;
+      background: #FFFFFF;
+      border: 1.5px solid rgba(23, 77, 48, 0.20);
+      color: #174D30;
+      font-size: 0.85rem;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(11, 26, 16, 0.10);
+      pointer-events: none;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      color: #174D30;
-      box-shadow: 0 0 0 0 rgba(23, 77, 48, 0);
     }
 
-    .pillar-badge-icon svg {
-      transition: all 0.35s ease;
-      stroke: #174D30;
-    }
-
-    .approach-pillar-card:hover .pillar-badge-icon {
+    /* Hover Chain: Hovering a card activates the pipeline node */
+    .approach-pillar-card:not(:last-child):hover::after {
       background: #174D30;
-      color: #ffffff;
-      transform: scale(1.08);
-      box-shadow: 0 0 0 4px rgba(23, 77, 48, 0.12), 0 4px 12px rgba(23, 77, 48, 0.22);
+      color: #FFFFFF;
+      border-color: #174D30;
+      transform: scale(1.18);
+      box-shadow: 0 0 0 5px rgba(23, 77, 48, 0.14), 0 6px 18px rgba(23, 77, 48, 0.30);
     }
 
-    .approach-pillar-card:hover .pillar-badge-icon svg {
-      stroke: #ffffff;
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+    /* RTL adaptations for Continuous Flow Rail */
+    [dir="rtl"] .approach-pillars-grid::before {
+      background: linear-gradient(-90deg, rgba(23, 77, 48, 0.15), rgba(196, 125, 43, 0.45), rgba(23, 77, 48, 0.15));
+    }
+    [dir="rtl"] .approach-pillar-card:not(:last-child)::after {
+      right: auto;
+      left: -15px;
+      transform: scaleX(-1);
+    }
+    [dir="rtl"] .approach-pillar-card:not(:last-child):hover::after {
+      transform: scaleX(-1) scale(1.18);
     }
 
+    /* Content Area below Image */
+    .pillar-text-side {
+      width: 100%;
+      order: 2;
+      display: flex;
+      flex-direction: column;
+      padding: 2px 4px 6px;
+      min-width: 0;
+    }
+
+    /* Hide separate header with floating icon to keep the card quiet and modern */
+    .pillar-header {
+      display: none !important;
+    }
+
+    /* Clean Card Title with Integrated Number */
     .pillar-title {
       font-family: var(--font-heading);
-      font-size: clamp(1.15rem, 1.25vw, 1.35rem);
+      font-size: clamp(1.15rem, 1.25vw, 1.32rem);
       font-weight: 700;
       color: #0b2415;
-      line-height: 1.24;
-      margin: 0 0 0.3rem 0;
+      line-height: 1.25;
+      margin: 0 0 0.35rem 0;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pillar-title::before {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 1.2vw, 1.28rem);
+      font-weight: 800;
+      color: #174D30;
+      flex-shrink: 0;
+    }
+
+    .approach-pillar-card:nth-child(1) .pillar-title::before {
+      content: "01";
+    }
+    .approach-pillar-card:nth-child(2) .pillar-title::before {
+      content: "02";
+    }
+    .approach-pillar-card:nth-child(3) .pillar-title::before {
+      content: "03";
+    }
+
+    .pillar-title br {
+      display: none !important;
     }
 
     .pillar-tagline {
       font-family: var(--font-sans);
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 800;
       color: #e65100;
       margin-bottom: 0.45rem;
@@ -5296,57 +5570,54 @@
 
     .pillar-desc {
       font-family: var(--font-sans);
-      font-size: 0.80rem;
-      line-height: 1.54;
+      font-size: 0.82rem;
+      line-height: 1.58;
       color: #506456;
-      margin: 0 0 0.75rem 0;
-      flex-grow: 1;
+      margin: 0;
     }
 
+    /* Hide floating arrow button on desktop card */
     .pillar-arrow-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(23, 77, 48, 0.22);
+      display: none !important;
+    }
+
+    /* Glass Tag on Image Corner */
+    .pillar-glass-tag {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(11, 26, 16, 0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 3px 9px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      color: #174D30;
-      font-size: 1.05rem;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-      background: #faf8f5;
-    }
-
-    .approach-pillar-card:hover .pillar-arrow-btn {
-      background: #174D30;
+      gap: 5px;
       color: #ffffff;
-      border-color: #174D30;
-      transform: scale(1.08);
-      box-shadow: 0 0 0 4px rgba(23, 77, 48, 0.12), 0 4px 12px rgba(23, 77, 48, 0.22);
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+      pointer-events: none;
+      transition: all 0.3s ease;
     }
 
-    /* Exact Rounded Shape from Reference */
-    .pillar-media-side {
-      flex: 1.0;
-      position: relative;
-      border-radius: 14px;
-      overflow: hidden;
-      min-height: 180px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      background-color: #f0ebe0;
+    .pillar-glass-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px #4ade80;
     }
 
-    .pillar-photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .approach-pillar-card:hover .pillar-photo {
-      transform: scale(1.05);
+    .approach-pillar-card:hover .pillar-glass-tag {
+      background: rgba(23, 77, 48, 0.88);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
     }
 
     /* -------------------------------------------
@@ -5459,6 +5730,33 @@
       transform: scaleX(-1);
     }
 
+    [dir="rtl"] .approach-pillar-card:hover .pillar-arrow-btn span {
+      transform: scaleX(-1) translateX(4px);
+    }
+
+    [dir="rtl"] .pillar-glass-tag {
+      left: auto;
+      right: 8px;
+    }
+
+    [dir="rtl"] .stat-pill-label {
+      font-family: 'Cairo', var(--font-sans);
+      letter-spacing: normal;
+    }
+
+    [dir="rtl"] .stat-digit {
+      font-family: 'Cairo', var(--font-heading);
+    }
+
+    [dir="rtl"] .stat-unit {
+      font-family: 'Cairo', var(--font-heading);
+      letter-spacing: normal;
+    }
+
+    [dir="rtl"] .approach-video-btn {
+      padding: 0.5rem 0.55rem 0.5rem 1.15rem;
+    }
+
     /* -------------------------------------------
        Responsive Adjustments
        ------------------------------------------- */
@@ -5481,19 +5779,16 @@
 
     @media (max-width: 768px) {
       .approach-section {
-        padding: 44px 18px 56px;
+        padding: 40px 16px 52px;
       }
 
-      /* Hero backdrop & gentle opacity so text is crystal clear */
+      /* Clean Editorial Hero: text sits on pristine warm canvas, no messy overlays */
       .approach-hero-backdrop {
-        height: 380px;
-        opacity: 0.28;
+        display: none !important;
       }
-      .approach-backdrop-fade {
-        background: linear-gradient(to bottom, rgba(250, 247, 242, 0.4) 0%, #FAF7F2 90%);
-      }
-      .approach-backdrop-bottom-fade {
-        height: 60%;
+      .approach-hero-header {
+        max-width: 100%;
+        margin-bottom: 2rem;
       }
 
       /* Slogan card: hide on mobile screens to prevent header clutter */
@@ -5501,91 +5796,236 @@
         display: none !important;
       }
 
-      /* Headline & text sizing */
+      /* Headline & text sizing with crisp typography */
       .approach-hl-main,
       .approach-hl-sub {
-        font-size: clamp(1.75rem, 5.5vw, 2.2rem);
-        line-height: 1.25;
+        font-size: clamp(1.7rem, 6.2vw, 2.15rem);
+        line-height: 1.22;
+        letter-spacing: -0.015em;
       }
       .approach-desc {
         font-size: 0.92rem;
-        line-height: 1.58;
-        margin-bottom: 1.1rem;
+        line-height: 1.62;
+        margin-bottom: 1.25rem;
+        color: #3b5042;
       }
 
+      /* Action Buttons in Mobile: clean inline row side-by-side matching Arabic layout */
       .approach-actions-row {
-        gap: 0.85rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.55rem;
+        align-items: center;
+        width: 100%;
       }
       .approach-primary-btn {
-        padding: 0.78rem 1.6rem;
-        font-size: 0.88rem;
+        flex: 1.1 1 0;
+        min-width: 0;
+        padding: 0.72rem 0.65rem;
+        font-size: clamp(0.78rem, 2.7vw, 0.88rem);
+        justify-content: center;
+        white-space: nowrap;
+        gap: 0.35rem;
       }
-      .approach-video-btn {
-        font-size: 0.88rem;
-        padding: 0.4rem 0.5rem;
+      .approach-primary-btn span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-
-      /* Bento Cards: Elegant, compact horizontal row matching original layout */
-      .approach-pillars-grid {
-        gap: 14px;
-      }
-      .approach-pillar-card {
-        flex-direction: row;
-        align-items: stretch;
-        padding: 14px;
-        min-height: 185px;
-        gap: 12px;
-        border-radius: 16px;
-      }
-      [dir="rtl"] .approach-pillar-card {
-        flex-direction: row;
-        padding: 14px;
-      }
-      .pillar-text-side {
-        flex: 1.35;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .pillar-header {
-        margin-bottom: 0.25rem;
-        gap: 8px;
-      }
-      .pillar-num {
-        font-size: 1.1rem;
-      }
-      .pillar-badge-icon {
-        width: 26px;
-        height: 26px;
-      }
-      .pillar-badge-icon svg {
-        width: 15px;
-        height: 15px;
-      }
-      .pillar-title {
-        font-size: 1.02rem;
-        line-height: 1.24;
-        margin-bottom: 0.2rem;
-      }
-      .pillar-tagline {
-        font-size: 0.72rem;
-        margin-bottom: 0.35rem;
-      }
-      .pillar-desc {
-        font-size: 0.76rem;
-        line-height: 1.48;
-        margin-bottom: 0.45rem;
-      }
-      .pillar-arrow-btn {
-        width: 30px;
-        height: 30px;
+      .approach-btn-arrow {
+        flex-shrink: 0;
         font-size: 0.95rem;
       }
+      .approach-video-btn {
+        flex: 1 1 0;
+        min-width: 0;
+        font-size: clamp(0.76rem, 2.6vw, 0.86rem);
+        padding: 0.38rem 0.55rem 0.38rem 0.45rem;
+        justify-content: center;
+        white-space: nowrap;
+        gap: 0.4rem;
+      }
+      .approach-play-icon {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+      }
+      .approach-play-icon svg {
+        width: 12px;
+        height: 12px;
+      }
+      .approach-video-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      [dir="rtl"] .approach-video-btn {
+        padding: 0.38rem 0.45rem 0.38rem 0.55rem;
+      }
+
+      /* Commercial Proof Bar: 3 side-by-side stats fitting comfortably on all phone screens */
+      .approach-stats-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 4px;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 1.35rem;
+        padding-top: 1.15rem;
+        box-sizing: border-box;
+      }
+      .stat-pill {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 0 4px;
+        text-align: start;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .stat-pill-top {
+        display: flex;
+        align-items: baseline;
+        gap: 3px;
+        flex-wrap: wrap;
+        line-height: 1.1;
+      }
+      .stat-digit {
+        font-size: clamp(1.15rem, 3.6vw, 1.38rem);
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .stat-unit {
+        font-size: clamp(0.58rem, 1.7vw, 0.70rem);
+        letter-spacing: 0.01em;
+        line-height: 1.15;
+        white-space: normal;
+        word-break: normal;
+      }
+      .stat-pill-label {
+        font-size: clamp(0.62rem, 1.8vw, 0.70rem);
+        line-height: 1.25;
+        margin-top: 4px;
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .stat-pill-divider {
+        height: 38px;
+        flex-shrink: 0;
+        opacity: 0.6;
+        align-self: center;
+      }
+
+      /* Bento Cards: Vertical Stack Card (Generous 205px image, clean compact text without clutter) */
+      .approach-pillars-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .approach-pillar-card {
+        flex-direction: column;
+        padding: 12px;
+        border-radius: 20px;
+        min-height: auto;
+        gap: 0;
+        box-shadow: 0 6px 20px rgba(11, 26, 16, 0.05);
+      }
+      [dir="rtl"] .approach-pillar-card {
+        flex-direction: column;
+        padding: 12px;
+      }
+
+      /* Image at the Top of Card: 205px tall, uncropped view */
       .pillar-media-side {
-        flex: 1.05;
-        min-height: 165px;
-        border-radius: 12px;
+        width: 100%;
+        height: 205px;
+        min-height: 205px;
+        flex: none;
+        order: 1;
+        border-radius: 14px;
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+      .pillar-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      /* Content directly below Image */
+      .pillar-text-side {
+        width: 100%;
+        order: 2;
+        flex: none;
+        padding: 2px 4px 4px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      /* Header container: hide separate header on mobile since number is inline with title */
+      .pillar-header {
+        display: none !important;
+      }
+
+      /* Title with inline number (01, 02, 03) locked into a single line */
+      .pillar-title {
+        font-size: clamp(0.92rem, 3.8vw, 1.12rem);
+        line-height: 1.2;
+        margin-bottom: 0.35rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .pillar-title::before {
+        font-family: var(--font-heading);
+        font-size: clamp(0.92rem, 3.8vw, 1.12rem);
+        font-weight: 800;
+        color: #174D30;
+        margin-right: 0.45rem;
+      }
+      [dir="rtl"] .pillar-title::before {
+        margin-right: 0;
+        margin-left: 0.45rem;
+      }
+      .approach-pillar-card:nth-child(1) .pillar-title::before {
+        content: "01";
+      }
+      .approach-pillar-card:nth-child(2) .pillar-title::before {
+        content: "02";
+      }
+      .approach-pillar-card:nth-child(3) .pillar-title::before {
+        content: "03";
+      }
+
+      .pillar-title br {
+        display: none !important;
+      }
+
+      .pillar-tagline {
+        font-size: 0.80rem;
+        margin-bottom: 0.45rem;
+      }
+      .pillar-desc {
+        font-size: 0.82rem;
+        line-height: 1.55;
+        margin-bottom: 0.25rem;
+        color: #506456;
+      }
+
+      /* Remove arrow button and flow connector on mobile */
+      .pillar-arrow-btn {
+        display: none !important;
+      }
+      .approach-pillar-card:not(:last-child)::after {
+        display: none !important;
       }
     }
 
@@ -10064,21 +10504,6 @@
       <div class="approach-ribbon-wrap">
         <img src="./sec5_organic_ribbon_vector.svg" alt="" class="approach-ribbon-img" />
       </div>
-
-      <!-- Floating Slogan Card (Positioned organically above/within the scene) -->
-      <div class="approach-slogan-card">
-        <span class="approach-slogan-icon">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#174D30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
-            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-          </svg>
-        </span>
-        <div class="approach-slogan-content">
-          <span class="approach-slogan-l1" data-i18n="sec5_tag_l1">From Egyptian Fields.</span>
-          <span class="approach-slogan-l2" data-i18n="sec5_tag_l2">To Global Shelves.</span>
-          <span class="approach-slogan-bar"></span>
-        </div>
-      </div>
     </div>
 
     <!-- Main Container -->
@@ -10118,26 +10543,66 @@
             <span data-i18n="sec5_cta_work">Work With REEFIYA</span>
             <span class="approach-btn-arrow">&#x2197;</span>
           </a>
+          <button type="button" class="approach-video-btn" id="openSec5VideoBtn">
+            <span class="approach-play-icon">
+              <svg viewBox="0 0 24 24" width="14" height="14">
+                <polygon points="6 3 20 12 6 21 6 3"></polygon>
+              </svg>
+            </span>
+            <span class="approach-video-text" data-i18n="sec5_cta_video">Watch Our Process</span>
+          </button>
+        </div>
+
+        <!-- Commercial Proof Bar (Trust Stats) -->
+        <div class="approach-stats-bar">
+          <div class="stat-pill">
+            <div class="stat-pill-top">
+              <span class="stat-digit" data-i18n="sec5_num1">4</span>
+              <span class="stat-unit" data-i18n="sec5_unit1">COUNTRIES</span>
+            </div>
+            <span class="stat-pill-label" data-i18n="sec5_stat_countries">Global Business Presence</span>
+          </div>
+          <div class="stat-pill-divider"></div>
+          <div class="stat-pill">
+            <div class="stat-pill-top">
+              <span class="stat-digit" data-i18n="sec5_num2">1–2</span>
+              <span class="stat-unit" data-i18n="sec5_unit2">BUSINESS DAYS</span>
+            </div>
+            <span class="stat-pill-label" data-i18n="sec5_stat_response">Initial RFQ Response</span>
+          </div>
+          <div class="stat-pill-divider"></div>
+          <div class="stat-pill">
+            <div class="stat-pill-top">
+              <span class="stat-digit" data-i18n="sec5_num3">15+</span>
+              <span class="stat-unit" data-i18n="sec5_unit3">MARKETS</span>
+            </div>
+            <span class="stat-pill-label" data-i18n="sec5_stat_markets">Export Market Reach</span>
+          </div>
         </div>
       </div>
 
       <!-- Bottom Row: 3 Bento Columns matching Reference Shapes (01 / 02 / 03) -->
       <div class="approach-pillars-grid">
 
-        <!-- Card 01: Buyer-Led Specifications -->
+        <!-- Card 01: BUYER-LED SPECS -->
         <div class="approach-pillar-card">
           <div class="pillar-text-side">
             <div class="pillar-header">
               <span class="pillar-num">01</span>
               <span class="pillar-badge-icon">
+                <!-- Expressive Caliper / Specification Measuring Tool Icon -->
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#174D30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 10a6 6 0 0 0-6-6H3v2a6 6 0 0 0 6 6h3"/>
-                  <path d="M12 14a6 6 0 0 1 6-6h3v2a6 6 0 0 1-6 6h-3"/>
-                  <path d="M12 22V2"/>
+                  <path d="M4 3h16v4H4z"/>
+                  <path d="M7 7v4"/>
+                  <path d="M11 7v2"/>
+                  <path d="M15 7v4"/>
+                  <path d="M17 11v10"/>
+                  <path d="M7 15v6"/>
+                  <path d="M7 15h10"/>
                 </svg>
               </span>
             </div>
-            <h3 class="pillar-title" data-i18n="sec5_c1_title">Buyer-Led<br>Specifications</h3>
+            <h3 class="pillar-title" data-i18n="sec5_c1_title">BUYER-LED <br>SPECS</h3>
             <div class="pillar-tagline" data-i18n="sec5_c1_sub">Built around your market.</div>
             <p class="pillar-desc" data-i18n="sec5_c1_desc">
               Programs shaped around the buyer's destination market, distribution channel, and agreed commercial requirements.
@@ -10147,6 +10612,7 @@
             </div>
           </div>
           <div class="pillar-media-side">
+            <span class="pillar-stage-badge" data-i18n="sec5_stage1">STAGE 01 &bull; SPECS</span>
             <img 
               src="./sec5_card1_caliper_potato.jpg" 
               alt="Inspection with Caliper" 
@@ -10156,19 +10622,21 @@
           </div>
         </div>
 
-        <!-- Card 02: Execution Discipline -->
+        <!-- Card 02: CONFIRMED COMMITMENTS -->
         <div class="approach-pillar-card">
           <div class="pillar-text-side">
             <div class="pillar-header">
               <span class="pillar-num">02</span>
               <span class="pillar-badge-icon">
+                <!-- Verified Commercial Contract & Stamp / Handshake Commitment Icon -->
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#174D30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <path d="m9 15 2 2 4-4"/>
                 </svg>
               </span>
             </div>
-            <h3 class="pillar-title" data-i18n="sec5_c2_title">Execution<br>Discipline</h3>
+            <h3 class="pillar-title" data-i18n="sec5_c2_title">CONFIRMED <br>COMMITMENTS</h3>
             <div class="pillar-tagline" data-i18n="sec5_c2_sub">Commit to what can be delivered.</div>
             <p class="pillar-desc" data-i18n="sec5_c2_desc">
               Realistic commercial commitments built around confirmed specifications, availability, and operational readiness.
@@ -10178,6 +10646,7 @@
             </div>
           </div>
           <div class="pillar-media-side">
+            <span class="pillar-stage-badge" data-i18n="sec5_stage2">STAGE 02 &bull; PACK</span>
             <img 
               src="./sec5_card2_forklift_boxes.jpg" 
               alt="Cold Storage and Forklift Logistics" 
@@ -10187,21 +10656,22 @@
           </div>
         </div>
 
-        <!-- Card 03: Transparent Coordination -->
+        <!-- Card 03: COORDINATED DISPATCH -->
         <div class="approach-pillar-card">
           <div class="pillar-text-side">
             <div class="pillar-header">
               <span class="pillar-num">03</span>
               <span class="pillar-badge-icon">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#174D30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m11 17 2 2a1 1 0 0 0 1.4 0l4.3-4.3a1 1 0 0 0 0-1.4l-3-3a1 1 0 0 0-1.4 0l-1.3 1.3"/>
-                  <path d="m14 14-3-3a1 1 0 0 0-1.4 0l-4.3 4.3a1 1 0 0 0 0 1.4l2 2a1 1 0 0 0 1.4 0l1.3-1.3"/>
-                  <path d="M18 10h3v4h-3"/>
-                  <path d="M6 10H3v4h3"/>
+                  <!-- Global shipping / cargo dispatch icon: ship hull + cargo containers + speed waves -->
+                  <path d="M2 20a4 4 0 0 0 4 0 4 4 0 0 1 4 0 4 4 0 0 0 4 0 4 4 0 0 1 4 0 4 4 0 0 0 4 0"/>
+                  <path d="M3.5 16.5 5 9h14l1.5 7.5a1 1 0 0 1-.98 1.2H4.48a1 1 0 0 1-.98-1.2Z"/>
+                  <path d="M7 9V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v4"/>
+                  <line x1="12" y1="4" x2="12" y2="9"/>
                 </svg>
               </span>
             </div>
-            <h3 class="pillar-title" data-i18n="sec5_c3_title">Transparent<br>Coordination</h3>
+            <h3 class="pillar-title" data-i18n="sec5_c3_title">COORDINATED <br>DISPATCH</h3>
             <div class="pillar-tagline" data-i18n="sec5_c3_sub">Clear from inquiry to dispatch.</div>
             <p class="pillar-desc" data-i18n="sec5_c3_desc">
               Direct communication across product availability, packing schedules, documentation, and shipment coordination.
@@ -10211,6 +10681,7 @@
             </div>
           </div>
           <div class="pillar-media-side">
+            <span class="pillar-stage-badge" data-i18n="sec5_stage3">STAGE 03 &bull; SHIP</span>
             <img 
               src="./sec5_card3_port_ship_clipboard.jpg" 
               alt="Port Shipment Inspection and Dispatch" 
@@ -10223,6 +10694,27 @@
       </div>
 
     </div>
+
+    <!-- Video Lightbox Modal Dialog -->
+    <div class="approach-video-modal" id="sec5VideoModal" aria-hidden="true">
+      <div class="approach-video-dialog">
+        <div class="approach-video-header">
+          <span data-i18n="sec5_video_title">REEFIYA Operations — Harvest, Sorting & Cold Storage</span>
+          <button type="button" class="approach-video-close" id="closeSec5VideoBtn" aria-label="Close video">&times;</button>
+        </div>
+        <div class="approach-video-frame">
+          <iframe 
+            id="sec5VideoIframe" 
+            src="" 
+            data-src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&enablejsapi=1" 
+            title="REEFIYA Operations Preview" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- ==========================================
@@ -10690,17 +11182,40 @@
         sec5_hl1: 'Disciplined execution.',
         sec5_hl2: 'Clear commercial communication.',
         sec5_desc: 'International produce trade requires more than competitive pricing. It requires clear specifications, realistic commitments, and coordinated execution throughout the commercial process.',
+        sec5_stat_num_countries: '4 COUNTRIES',
+        sec5_stat_num_response: '1–2 BUSINESS DAYS',
+        sec5_stat_num_markets: '15+ MARKETS',
+        sec5_num1: '4',
+        sec5_unit1: 'COUNTRIES',
+        sec5_num2: '1–2',
+        sec5_unit2: 'BUSINESS DAYS',
+        sec5_num3: '15+',
+        sec5_unit3: 'MARKETS',
+        sec5_stat_countries: 'Global Business Presence',
+        sec5_stat_response: 'Initial RFQ Response',
+        sec5_stat_markets: 'Export Market Reach',
         sec5_cta_work: 'Work With REEFIYA',
+        sec5_cta_video: 'Watch Our Process',
+        sec5_stat_dispatch: 'On-Time Dispatch',
+        sec5_stat_grade: 'Export Grade',
+        sec5_stat_tolerance: 'Spec Deviation',
+        sec5_tag_qc: 'Calibration & Brix',
+        sec5_tag_cold: 'Cold Chain Protocol',
+        sec5_tag_vessel: 'Vessel Logistics',
+        sec5_video_title: 'REEFIYA Operations — Harvest, Sorting & Cold Storage',
         sec5_cta_approach: 'See Our Approach',
         sec5_tag_l1: 'From Egyptian Fields.',
         sec5_tag_l2: 'To Global Shelves.',
-        sec5_c1_title: 'Buyer-Led<br>Specifications',
+        sec5_stage1: 'STAGE 01 • SPECS',
+        sec5_stage2: 'STAGE 02 • PACK',
+        sec5_stage3: 'STAGE 03 • SHIP',
+        sec5_c1_title: 'BUYER-LED SPECS',
         sec5_c1_sub: 'Built around your market.',
         sec5_c1_desc: 'Programs shaped around the buyer\'s destination market, distribution channel, and agreed commercial requirements.',
-        sec5_c2_title: 'Execution<br>Discipline',
+        sec5_c2_title: 'CONFIRMED COMMITMENTS',
         sec5_c2_sub: 'Commit to what can be delivered.',
         sec5_c2_desc: 'Realistic commercial commitments built around confirmed specifications, availability, and operational readiness.',
-        sec5_c3_title: 'Transparent<br>Coordination',
+        sec5_c3_title: 'COORDINATED DISPATCH',
         sec5_c3_sub: 'Clear from inquiry to dispatch.',
         sec5_c3_desc: 'Direct communication across product availability, packing schedules, documentation, and shipment coordination.',
         route_presence: 'OUR BRANCH NETWORK',
@@ -10926,17 +11441,40 @@
         sec5_hl1: 'تنفيذ منضبط ودقيق.',
         sec5_hl2: 'وتواصل تجاري واضح وشفاف.',
         sec5_desc: 'تتطلب تجارة الحاصلات الزراعية الدولية ما هو أكثر من مجرد الأسعار التنافسية؛ فهي تقوم على دقة المواصفات، والالتزامات الواقعية، والتنفيذ المنسق عبر كامل مراحل العملية التصديرية.',
+        sec5_stat_num_countries: '4 دول',
+        sec5_stat_num_response: '1–2 يوم عمل',
+        sec5_stat_num_markets: '15+ سوقاً دولياً',
+        sec5_num1: '4',
+        sec5_unit1: 'دول تجارية',
+        sec5_num2: '1–2',
+        sec5_unit2: 'أيام عمل',
+        sec5_num3: '15+',
+        sec5_unit3: 'سوقاً عالمياً',
+        sec5_stat_countries: 'تواجد تجاري عالمي',
+        sec5_stat_response: 'استجابة أولية لطلبات السعر',
+        sec5_stat_markets: 'نطاق الأسواق التصديرية',
         sec5_cta_work: 'اعمل مع ريفيا',
+        sec5_cta_video: 'شاهد خطوات العمل',
+        sec5_stat_dispatch: 'دقة مواعيد الشحن',
+        sec5_stat_grade: 'مطابقة للتصدير',
+        sec5_stat_tolerance: 'انحراف المواصفة',
+        sec5_tag_qc: 'معايرة الحجم ونسبة البركس',
+        sec5_tag_cold: 'بروتوكول سلسلة التبريد',
+        sec5_tag_vessel: 'اللوجستيات والشحن البحري',
+        sec5_video_title: 'عمليات ريفيا — الحصاد، الفرز، وسلسلة التبريد',
         sec5_cta_approach: 'شاهد نهجنا',
         sec5_tag_l1: 'من الحقول المصرية.',
         sec5_tag_l2: 'إلى رفوف العالم.',
+        sec5_stage1: 'المرحلة 01 • المواصفات',
+        sec5_stage2: 'المرحلة 02 • التعبئة',
+        sec5_stage3: 'المرحلة 03 • الشحن',
         sec5_c1_title: 'مواصفات يقودها المشتري',
         sec5_c1_sub: 'مصممة خصيصاً لسوقك.',
         sec5_c1_desc: 'برامج تصديرية تتشكل وفق طبيعة سوق الوجهة، وقناة التوزيع، والمواصفات التجارية المتفق عليها مع المشتري.',
-        sec5_c2_title: 'انضباط التنفيذ',
+        sec5_c2_title: 'التزامات مؤكدة وموثوقة',
         sec5_c2_sub: 'نلتزم بما يمكن تسليمه بدقة.',
         sec5_c2_desc: 'التزامات تجارية واقعية مبنية على تأكيد المواصفات، وتوافر الكميات، والجاهزية التشغيلية التامة.',
-        sec5_c3_title: 'تنسيق شفاف',
+        sec5_c3_title: 'تنسيق وشحن منضبط',
         sec5_c3_sub: 'وضوح تام من الاستفسار حتى الشحن.',
         sec5_c3_desc: 'تواصل مباشر ومستمر يغطي توفر المحصول، وجداول التعبئة، والتوثيق، وتنسيق إجراءات الشحن.',
         route_presence: 'تواجدنا وفروعنا',
@@ -11162,17 +11700,40 @@
         sec5_hl1: 'Disziplinierte Ausführung.',
         sec5_hl2: 'Klare kommerzielle Kommunikation.',
         sec5_desc: 'Der internationale Agrarhandel erfordert mehr als wettbewerbsfähige Preise. Er erfordert klare Spezifikationen, realistische Verpflichtungen und koordinierte Abläufe.',
+        sec5_stat_num_countries: '4 LÄNDER',
+        sec5_stat_num_response: '1–2 WERKSTAGE',
+        sec5_stat_num_markets: '15+ MÄRKTE',
+        sec5_num1: '4',
+        sec5_unit1: 'LÄNDER',
+        sec5_num2: '1–2',
+        sec5_unit2: 'WERKTAGE',
+        sec5_num3: '15+',
+        sec5_unit3: 'MÄRKTE',
+        sec5_stat_countries: 'Globale Geschäftspräsenz',
+        sec5_stat_response: 'Erste RFQ-Rückmeldung',
+        sec5_stat_markets: 'Export-Marktreichweite',
         sec5_cta_work: 'Zusammenarbeit starten',
+        sec5_cta_video: 'Unseren Prozess ansehen',
+        sec5_stat_dispatch: 'Pünktlicher Versand',
+        sec5_stat_grade: 'Exportqualität',
+        sec5_stat_tolerance: 'Spezifikationsabweichung',
+        sec5_tag_qc: 'Kalibrierung & Brix',
+        sec5_tag_cold: 'Kühlketten-Protokoll',
+        sec5_tag_vessel: 'Schiffslogistik',
+        sec5_video_title: 'REEFIYA Betrieb — Ernte, Sortierung & Kühllagerung',
         sec5_cta_approach: 'Unser Ansatz',
         sec5_tag_l1: 'Von ägyptischen Feldern.',
         sec5_tag_l2: 'In globale Regale.',
-        sec5_c1_title: 'Käuferorientierte<br>Spezifikationen',
+        sec5_stage1: 'PHASE 01 • SPEZIFIKATION',
+        sec5_stage2: 'PHASE 02 • VERPACKUNG',
+        sec5_stage3: 'PHASE 03 • VERSAND',
+        sec5_c1_title: 'BUYER-LED SPECS',
         sec5_c1_sub: 'Abgestimmt auf Ihren Markt.',
         sec5_c1_desc: 'Programme, die nach Zielmarkt, Vertriebsweg und Spezifikationen des Käufers gestaltet sind.',
-        sec5_c2_title: 'Zuverlässige<br>Disziplin',
+        sec5_c2_title: 'CONFIRMED COMMITMENTS',
         sec5_c2_sub: 'Verbindlich liefern was vereinbart ist.',
         sec5_c2_desc: 'Realistische Zusagen auf Basis bestätigter Spezifikationen und betrieblicher Bereitschaft.',
-        sec5_c3_title: 'Transparente<br>Koordination',
+        sec5_c3_title: 'COORDINATED DISPATCH',
         sec5_c3_sub: 'Klarheit von Anfrage bis Versand.',
         sec5_c3_desc: 'Direkte Kommunikation zu Verfügbarkeit, Verpackungsplänen, Dokumenten und Logistik.',
         route_presence: 'UNSERE PRÄSENZ & NIEDERLASSUNGEN',
@@ -11398,17 +11959,40 @@
         sec5_hl1: 'Exécution rigoureuse.',
         sec5_hl2: 'Communication commerciale claire.',
         sec5_desc: 'Le commerce international de produits agricoles exige plus que des prix compétitifs : des spécifications claires, des engagements réalistes et une exécution coordonnée.',
+        sec5_stat_num_countries: '4 PAYS',
+        sec5_stat_num_response: '1–2 JOURS OUVRABLES',
+        sec5_stat_num_markets: '15+ MARCHÉS',
+        sec5_num1: '4',
+        sec5_unit1: 'PAYS',
+        sec5_num2: '1–2',
+        sec5_unit2: 'JOURS OUVRABLES',
+        sec5_num3: '15+',
+        sec5_unit3: 'MARCHÉS',
+        sec5_stat_countries: 'Présence commerciale mondiale',
+        sec5_stat_response: 'Réponse initiale aux devis',
+        sec5_stat_markets: "Marchés d'exportation",
         sec5_cta_work: 'Collaborer avec REEFIYA',
+        sec5_cta_video: 'Découvrir nos étapes',
+        sec5_stat_dispatch: 'Expédition ponctuelle',
+        sec5_stat_grade: 'Qualité Export',
+        sec5_stat_tolerance: 'Écart de spécification',
+        sec5_tag_qc: 'Calibrage & Degré Brix',
+        sec5_tag_cold: 'Protocole Chaîne du Froid',
+        sec5_tag_vessel: 'Logistique Maritime',
+        sec5_video_title: 'Opérations REEFIYA — Récolte, Tri & Stockage frigorifique',
         sec5_cta_approach: 'Découvrir notre approche',
         sec5_tag_l1: 'Des champs égyptiens.',
         sec5_tag_l2: 'Aux rayons du monde.',
-        sec5_c1_title: 'Spécifications<br>sur mesure',
+        sec5_stage1: 'ÉTAPE 01 • CAHIER DES CHARGES',
+        sec5_stage2: 'ÉTAPE 02 • CONDITIONNEMENT',
+        sec5_stage3: 'ÉTAPE 03 • EXPÉDITION',
+        sec5_c1_title: 'BUYER-LED SPECS',
         sec5_c1_sub: 'Adapté à votre marché.',
         sec5_c1_desc: 'Des programmes conçus selon le marché de destination, le canal de distribution et vos critères.',
-        sec5_c2_title: 'Rigueur<br>opérationnelle',
+        sec5_c2_title: 'CONFIRMED COMMITMENTS',
         sec5_c2_sub: 'Respect strict des engagements.',
         sec5_c2_desc: 'Engagements commerciaux fondés sur des spécifications confirmées et la disponibilité opérationnelle.',
-        sec5_c3_title: 'Coordination<br>transparente',
+        sec5_c3_title: 'COORDINATED DISPATCH',
         sec5_c3_sub: 'Clarté de la demande à l’expédition.',
         sec5_c3_desc: 'Communication directe sur les disponibilités, le calendrier d’emballage et les documents de transport.',
         route_presence: 'NOTRE PRÉSENCE ET NOS AGENCES',
@@ -11634,17 +12218,40 @@
         sec5_hl1: 'Gedisciplineerde uitvoering.',
         sec5_hl2: 'Heldere commerciële communicatie.',
         sec5_desc: 'Internationale AGF-handel vereist duidelijke specificaties, realistische toezeggingen en gecoördineerde uitvoering.',
+        sec5_stat_num_countries: '4 LANDEN',
+        sec5_stat_num_response: '1–2 WERKDAGEN',
+        sec5_stat_num_markets: '15+ MARKTEN',
+        sec5_num1: '4',
+        sec5_unit1: 'LANDEN',
+        sec5_num2: '1–2',
+        sec5_unit2: 'WERKDAGEN',
+        sec5_num3: '15+',
+        sec5_unit3: 'MARKTEN',
+        sec5_stat_countries: 'Wereldwijde aanwezigheid',
+        sec5_stat_response: 'Eerste RFQ-reactie',
+        sec5_stat_markets: 'Exportmarktbereik',
         sec5_cta_work: 'Werk met REEFIYA',
+        sec5_cta_video: 'Bekijk onze werkwijze',
+        sec5_stat_dispatch: 'Tijdige verzending',
+        sec5_stat_grade: 'Exportkwaliteit',
+        sec5_stat_tolerance: 'Specificatie-afwijking',
+        sec5_tag_qc: 'Kalibratie & Brix',
+        sec5_tag_cold: 'Koelketen-protocol',
+        sec5_tag_vessel: 'Zeevrachtlogistiek',
+        sec5_video_title: 'REEFIYA Operaties — Oogst, Sortering & Koelopslag',
         sec5_cta_approach: 'Bekijk onze aanpak',
         sec5_tag_l1: 'Van Egyptische velden.',
         sec5_tag_l2: 'Naar wereldwijde schappen.',
-        sec5_c1_title: 'Klantgerichte<br>Specificaties',
+        sec5_stage1: 'FASE 01 • SPECIFICATIES',
+        sec5_stage2: 'FASE 02 • VERPAKKING',
+        sec5_stage3: 'FASE 03 • VERZENDING',
+        sec5_c1_title: 'BUYER-LED SPECS',
         sec5_c1_sub: 'Afgestemd op uw markt.',
         sec5_c1_desc: 'Exportprogramma’s afgestemd op bestemmingsmarkt, distributiekanaal en productspecificaties.',
-        sec5_c2_title: 'Operationele<br>Discipline',
+        sec5_c2_title: 'CONFIRMED COMMITMENTS',
         sec5_c2_sub: 'Leveren wat is afgesproken.',
         sec5_c2_desc: 'Realistische afspraken gebaseerd op bevestigde productspecificaties en beschikbaarheid.',
-        sec5_c3_title: 'Transparante<br>Coördinatie',
+        sec5_c3_title: 'COORDINATED DISPATCH',
         sec5_c3_sub: 'Duidelijk van aanvraag tot verzending.',
         sec5_c3_desc: 'Directe afstemming over planning, verpakking, exportdocumenten en logistiek.',
         route_presence: 'ONZE AANWEZIGHEID & VESTIGINGEN',
@@ -11870,17 +12477,40 @@
         sec5_hl1: 'Ejecución disciplinada.',
         sec5_hl2: 'Comunicación comercial clara.',
         sec5_desc: 'El comercio internacional de productos agrícolas requiere especificaciones claras, compromisos realistas y ejecución coordinada.',
+        sec5_stat_num_countries: '4 PAÍSES',
+        sec5_stat_num_response: '1–2 DÍAS HÁBILES',
+        sec5_stat_num_markets: '15+ MERCADOS',
+        sec5_num1: '4',
+        sec5_unit1: 'PAÍSES',
+        sec5_num2: '1–2',
+        sec5_unit2: 'DÍAS HÁBILES',
+        sec5_num3: '15+',
+        sec5_unit3: 'MERCADOS',
+        sec5_stat_countries: 'Presencia comercial global',
+        sec5_stat_response: 'Respuesta inicial a RFQ',
+        sec5_stat_markets: 'Alcance de exportación',
         sec5_cta_work: 'Trabajar con REEFIYA',
+        sec5_cta_video: 'Ver nuestro proceso',
+        sec5_stat_dispatch: 'Despacho puntual',
+        sec5_stat_grade: 'Calidad de exportación',
+        sec5_stat_tolerance: 'Desviación de especificación',
+        sec5_tag_qc: 'Calibración & Brix',
+        sec5_tag_cold: 'Protocolo de cadena de frío',
+        sec5_tag_vessel: 'Logística marítima',
+        sec5_video_title: 'Operaciones REEFIYA — Cosecha, Selección & Almacenamiento en frío',
         sec5_cta_approach: 'Ver nuestro enfoque',
         sec5_tag_l1: 'De los campos egipcios.',
         sec5_tag_l2: 'A las tiendas del mundo.',
-        sec5_c1_title: 'Especificaciones<br>a medida',
+        sec5_stage1: 'ETAPA 01 • ESPECIFICACIONES',
+        sec5_stage2: 'ETAPA 02 • EMPAQUE',
+        sec5_stage3: 'ETAPA 03 • EMBARQUE',
+        sec5_c1_title: 'BUYER-LED SPECS',
         sec5_c1_sub: 'Adaptadas a su mercado.',
         sec5_c1_desc: 'Programas diseñados según el mercado de destino, canal de distribución y requisitos comerciales.',
-        sec5_c2_title: 'Disciplina en<br>la ejecución',
+        sec5_c2_title: 'CONFIRMED COMMITMENTS',
         sec5_c2_sub: 'Cumplir lo acordado.',
         sec5_c2_desc: 'Compromisos comerciales realistas basados en especificaciones confirmadas y capacidad logística.',
-        sec5_c3_title: 'Coordinación<br>transparente',
+        sec5_c3_title: 'COORDINATED DISPATCH',
         sec5_c3_sub: 'Claridad desde la consulta al despacho.',
         sec5_c3_desc: 'Comunicación directa en disponibilidad, cronogramas de envasado, documentación y logística.',
         route_presence: 'NUESTRA PRESENCIA Y SUCURSALES',
@@ -12106,17 +12736,40 @@
         sec5_hl1: 'Четкое исполнение.',
         sec5_hl2: 'Прозрачные коммуникации.',
         sec5_desc: 'Международная торговля сельхозпродукцией требует четких спецификаций, реалистичных обязательств и слаженного исполнения процессов.',
+        sec5_stat_num_countries: '4 СТРАНЫ',
+        sec5_stat_num_response: '1–2 РАБОЧИХ ДНЯ',
+        sec5_stat_num_markets: '15+ РЫНКОВ',
+        sec5_num1: '4',
+        sec5_unit1: 'СТРАНЫ',
+        sec5_num2: '1–2',
+        sec5_unit2: 'РАБОЧИХ ДНЯ',
+        sec5_num3: '15+',
+        sec5_unit3: 'РЫНКОВ',
+        sec5_stat_countries: 'Международное присутствие',
+        sec5_stat_response: 'Первичный ответ на RFQ',
+        sec5_stat_markets: 'Охват экспортных рынков',
         sec5_cta_work: 'Сотрудничать с REEFIYA',
+        sec5_cta_video: 'Наш процесс работы',
+        sec5_stat_dispatch: 'Своевременная отправка',
+        sec5_stat_grade: 'Экспортный сорт',
+        sec5_stat_tolerance: 'Отклонение стандарта',
+        sec5_tag_qc: 'Калибровка и Брикс',
+        sec5_tag_cold: 'Холодовая цепь',
+        sec5_tag_vessel: 'Морская логистика',
+        sec5_video_title: 'Операции REEFIYA — Сбор, сортировка и охлаждение',
         sec5_cta_approach: 'Наш подход',
         sec5_tag_l1: 'С египетских полей.',
         sec5_tag_l2: 'На мировые прилавки.',
-        sec5_c1_title: 'Спецификации<br>клиента',
+        sec5_stage1: 'ЭТАП 01 • СПЕЦИФИКАЦИЯ',
+        sec5_stage2: 'ЭТАП 02 • УПАКОВКА',
+        sec5_stage3: 'ЭТАП 03 • ОТГРУЗКА',
+        sec5_c1_title: 'BUYER-LED SPECS',
         sec5_c1_sub: 'Под требования вашего рынка.',
         sec5_c1_desc: 'Программы поставок с учетом целевого рынка, канала сбыта и согласованных стандартов.',
-        sec5_c2_title: 'Дисциплина<br>исполнения',
+        sec5_c2_title: 'CONFIRMED COMMITMENTS',
         sec5_c2_sub: 'Гарантируем то, что можем поставить.',
         sec5_c2_desc: 'Реалистичные обязательства на основе подтвержденных объемов и операционной готовности.',
-        sec5_c3_title: 'Прозрачная<br>координация',
+        sec5_c3_title: 'COORDINATED DISPATCH',
         sec5_c3_sub: 'Понятно от запроса до отгрузки.',
         sec5_c3_desc: 'Прямое взаимодействие по наличию продукции, упаковке, документам и отгрузке.',
         route_presence: 'НАШЕ ПРИСУТСТВИЕ И ФИЛИАЛЫ',
@@ -12342,17 +12995,40 @@
         sec5_hl1: 'Disiplinli uygulama.',
         sec5_hl2: 'Açık ticari iletişim.',
         sec5_desc: 'Uluslararası tarım ticareti net standartlar, gerçekçi taahhütler ve koordineli bir operasyon gerektirir.',
+        sec5_stat_num_countries: '4 ÜLKE',
+        sec5_stat_num_response: '1–2 İŞ GÜNÜ',
+        sec5_stat_num_markets: '15+ PAZAR',
+        sec5_num1: '4',
+        sec5_unit1: 'ÜLKE',
+        sec5_num2: '1–2',
+        sec5_unit2: 'İŞ GÜNÜ',
+        sec5_num3: '15+',
+        sec5_unit3: 'PAZAR',
+        sec5_stat_countries: 'Küresel Ticari Varlık',
+        sec5_stat_response: 'İlk RFQ Yanıtı',
+        sec5_stat_markets: 'İhracat Pazarı Erişimi',
         sec5_cta_work: 'REEFIYA ile Çalışın',
+        sec5_cta_video: 'Sürecimizi İzleyin',
+        sec5_stat_dispatch: 'Zamanında Sevkiyat',
+        sec5_stat_grade: 'İhracat Kalitesi',
+        sec5_stat_tolerance: 'Spesifikasyon Sapması',
+        sec5_tag_qc: 'Kalibrasyon & Brix',
+        sec5_tag_cold: 'Soğuk Zincir Protokolü',
+        sec5_tag_vessel: 'Gemi Lojistiği',
+        sec5_video_title: 'REEFIYA Operasyonları — Hasat, Ayıklama ve Soğuk Hava Deposu',
         sec5_cta_approach: 'Yaklaşımımızı Görün',
         sec5_tag_l1: 'Mısır tarlalarından.',
         sec5_tag_l2: 'Küresel raflara.',
-        sec5_c1_title: 'Alıcı Odaklı<br>Standartlar',
+        sec5_stage1: 'AŞAMA 01 • ŞARTNAME',
+        sec5_stage2: 'AŞAMA 02 • PAKETLEME',
+        sec5_stage3: 'AŞAMA 03 • SEVKİYAT',
+        sec5_c1_title: 'BUYER-LED SPECS',
         sec5_c1_sub: 'Pazarınıza özel çözümler.',
         sec5_c1_desc: 'Hedef pazar, dağıtım kanalı ve ticari kriterlere göre şekillendirilen ihracat programları.',
-        sec5_c2_title: 'Operasyonel<br>Disiplin',
+        sec5_c2_title: 'CONFIRMED COMMITMENTS',
         sec5_c2_sub: 'Taahhüt ettiğimizi teslim ederiz.',
         sec5_c2_desc: 'Doğrulanmış standartlar ve operasyonel hazırlığa dayalı gerçekçi ticari taahhütler.',
-        sec5_c3_title: 'Şeffaf<br>Koordinasyon',
+        sec5_c3_title: 'COORDINATED DISPATCH',
         sec5_c3_sub: 'Talepten sevkiyata tam şeffaflık.',
         sec5_c3_desc: 'Ürün temini, paketleme takvimi, resmi evraklar ve lojistikte doğrudan iletişim.',
         route_presence: 'VARLIĞIMIZ VE ŞUBELERİMİZ',
@@ -12578,17 +13254,40 @@
         sec5_hl1: 'Esecuzione rigorosa.',
         sec5_hl2: 'Comunicazione commerciale chiara.',
         sec5_desc: 'Il commercio ortofrutticolo internazionale richiede specifiche chiare, impegni realistici ed esecuzione coordinata.',
+        sec5_stat_num_countries: '4 PAESI',
+        sec5_stat_num_response: '1–2 GIORNI LAVORATIVI',
+        sec5_stat_num_markets: '15+ MERCATI',
+        sec5_num1: '4',
+        sec5_unit1: 'PAESI',
+        sec5_num2: '1–2',
+        sec5_unit2: 'GIORNI LAVORATIVI',
+        sec5_num3: '15+',
+        sec5_unit3: 'MERCATI',
+        sec5_stat_countries: 'Presenza commerciale globale',
+        sec5_stat_response: 'Risposta iniziale a RFQ',
+        sec5_stat_markets: 'Copertura mercati esteri',
         sec5_cta_work: 'Collabora con REEFIYA',
+        sec5_cta_video: 'Guarda il nostro processo',
+        sec5_stat_dispatch: 'Spedizione puntuale',
+        sec5_stat_grade: 'Grado esportazione',
+        sec5_stat_tolerance: 'Deviazione specifica',
+        sec5_tag_qc: 'Calibrazione & Brix',
+        sec5_tag_cold: 'Protocollo catena del freddo',
+        sec5_tag_vessel: 'Logistica navale',
+        sec5_video_title: 'Operazioni REEFIYA — Raccolta, Selezione & Conservazione a freddo',
         sec5_cta_approach: 'Il nostro approccio',
         sec5_tag_l1: 'Dai campi egiziani.',
         sec5_tag_l2: 'Agli scaffali globali.',
-        sec5_c1_title: 'Specifiche su misura<br>per il compratore',
+        sec5_stage1: 'FASE 01 • SPECIFICHE',
+        sec5_stage2: 'FASE 02 • CONFEZIONAMENTO',
+        sec5_stage3: 'FASE 03 • SPEDIZIONE',
+        sec5_c1_title: 'BUYER-LED SPECS',
         sec5_c1_sub: 'Costruite attorno al vostro mercato.',
         sec5_c1_desc: 'Programmi modellati sulle esigenze del mercato di destinazione e sui canali distributivi.',
-        sec5_c2_title: 'Disciplina<br>operativa',
+        sec5_c2_title: 'CONFIRMED COMMITMENTS',
         sec5_c2_sub: 'Impegno su ciò che può essere consegnato.',
         sec5_c2_desc: 'Accordi realistici basati su specifiche confermate e disponibilità operativa.',
-        sec5_c3_title: 'Coordinamento<br>trasparente',
+        sec5_c3_title: 'COORDINATED DISPATCH',
         sec5_c3_sub: 'Chiarezza dalla richiesta alla spedizione.',
         sec5_c3_desc: 'Comunicazione diretta su disponibilità, calendario d’imballaggio, documenti e spedizioni.',
         route_presence: 'LA NOSTRA PRESENZA E FILIALI',
@@ -13573,9 +14272,42 @@
     window.openLegalModal = openLegalModal;
     window.closeLegalModal = closeLegalModal;
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLegalModal();
-    });
+    /* Section 05 Video Modal Logic */
+    (function initSec5VideoModal() {
+      const openBtn = document.getElementById('openSec5VideoBtn');
+      const closeBtn = document.getElementById('closeSec5VideoBtn');
+      const modal = document.getElementById('sec5VideoModal');
+      const iframe = document.getElementById('sec5VideoIframe');
+
+      if (!openBtn || !modal || !iframe) return;
+
+      openBtn.addEventListener('click', () => {
+        const src = iframe.getAttribute('data-src');
+        if (src) iframe.src = src;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      });
+
+      function closeVideo() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        iframe.src = '';
+        document.body.style.overflow = '';
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeVideo);
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeVideo();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeVideo();
+        }
+      });
+    })();
 
 </script>
 </body>
