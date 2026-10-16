@@ -39,56 +39,98 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Corporation",
-    "name": "شركة ريفيا (Reefiya LLC)",
-    "alternateName": ["ريفيا", "Reefiya", "شركة ريفيا للتصدير الزراعي"],
-    "url": "https://reefiya.com/ar/",
-    "logo": "https://reefiya.com/apple-touch-icon.png",
-    "image": "https://reefiya.com/og-image-ar.jpg",
-    "description": "شركة ريفيا (ذ.م.م) — مورد زراعي ومصدر رائد للحاصلات الزراعية والبطاطا الحلوة المصرية عالية الجودة للأسواق العالمية.",
-    "knowsAbout": [
-      "مورد بطاطا حلوة",
-      "تصدير حاصلات زراعية مصرية",
-      "بطاطا حلوة بوريجارد",
-      "بطاطا حلوة بيلفيو",
-      "تصدير بطاطا حلوة إلى أوروبا والخليج",
-      "سلاسل الشحن المبرد والتتبع"
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "EG",
-      "addressRegion": "مصر"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "محاصيل البطاطا الحلوة التصديرية",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Product",
-            "name": "بطاطا حلوة صنف بوريجارد (Beauregard)",
-            "description": "بطاطا لحمية برتقالية عالية السكريات، مصنفة وفق المعايير والكراتين الأوروبية."
-          }
+    "@graph": [
+      {
+        "@type": "Corporation",
+        "@id": "https://reefiya.com/#organization",
+        "name": "شركة ريفيا (Reefiya LLC)",
+        "alternateName": [
+          "ريفيا",
+          "Reefiya",
+          "شركة ريفيا للتصدير الزراعي",
+          "Reefiya Produce"
+        ],
+        "url": "https://reefiya.com/ar/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://reefiya.com/apple-touch-icon.png",
+          "caption": "شعار شركة ريفيا"
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Product",
-            "name": "بطاطا حلوة صنف بيلفيو (Bellevue)",
-            "description": "قشرة ناعمة، تدريج حجمي منتظم، وفترة صلاحية تخزينية ممتازة للشحن البحري."
-          }
+        "image": "https://reefiya.com/og-image-ar.jpg",
+        "description": "شركة ريفيا (ذ.م.م) — كبرى الشركات المصرية المتخصصة في زراعة وفرز وعلاج وتصدير البطاطا الحلوة المصرية الفاخرة للأسواق الأوروبية والبريطانية والخليجية وفق شهادات GLOBALG.A.P. و ISO 22000.",
+        "email": "exports@reefiya.com",
+        "telephone": "+201290099230",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "144 شارع بورسعيد، الإبراهيمية بحري",
+          "addressLocality": "الإسكندرية",
+          "addressCountry": "EG"
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Product",
-            "name": "البطاطا الحلوة المصرية البلدية الأصيلة",
-            "description": "صنف مصري أصيل يزرع في أخصب أراضي الدلتا بمحتوى غذائي عالي وطعم مميز."
-          }
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "الاتحاد الأوروبي" },
+          { "@type": "Country", "name": "هولندا" },
+          { "@type": "Country", "name": "المملكة المتحدة" },
+          { "@type": "Country", "name": "ألمانيا" },
+          { "@type": "Country", "name": "فرنسا" },
+          { "@type": "Country", "name": "إسبانيا" },
+          { "@type": "Country", "name": "إيطاليا" },
+          { "@type": "Country", "name": "المملكة العربية السعودية" },
+          { "@type": "Country", "name": "الإمارات العربية المتحدة" },
+          { "@type": "Country", "name": "الكويت" },
+          { "@type": "Country", "name": "قطر" },
+          { "@type": "Country", "name": "البحرين" },
+          { "@type": "Country", "name": "سلطنة عمان" }
+        ],
+        "knowsAbout": [
+          "مورد بطاطا حلوة",
+          "تصدير حاصلات زراعية مصرية",
+          "تصدير بطاطا حلوة مصرية",
+          "بطاطا حلوة بوريجارد",
+          "بطاطا حلوة بيلفيو",
+          "تصدير بطاطا حلوة إلى أوروبا والخليج",
+          "سلاسل الشحن المبرد والتتبع",
+          "شهادات جلوبال جاب الزراعية GLOBALG.A.P.",
+          "شهادات سلامة الغذاء ISO 22000",
+          "الحجر الزراعي المصري"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "محاصيل البطاطا الحلوة التصديرية",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "بطاطا حلوة مصرية صنف بوريجارد (Beauregard)",
+                "category": "حاصلات زراعية طازجة",
+                "description": "بطاطا لحمية برتقالية عالية السكريات، مفروزة ومصنفة وفق المعايير والكراتين الأوروبية (أحجام S, M, L1, L2, XL).",
+                "brand": { "@type": "Brand", "name": "REEFIYA" }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "بطاطا حلوة مصرية صنف بيلفيو (Bellevue)",
+                "category": "حاصلات زراعية طازجة",
+                "description": "قشرة ناعمة نحاسية منتظمة، تدريج حجمي قياسي متناسق، وفترة صلاحية ممتازة مخصصة لسلاسل السوبرماركت الأوروبية.",
+                "brand": { "@type": "Brand", "name": "REEFIYA" }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "البطاطا الحلوة المصرية البلدية الأصيلة (موسمية)",
+                "category": "حاصلات زراعية طازجة",
+                "description": "صنف مصري أصيل يزرع في أخصب أراضي دلتا النيل بمحتوى غذائي ومادة جافة عالية ونكهة قوية لأسواق الجملة والأسواق الإقليمية.",
+                "brand": { "@type": "Brand", "name": "REEFIYA" }
+              }
+            }
+          ]
         }
-      ]
-    }
+      }
+    ]
   }
   </script>
 

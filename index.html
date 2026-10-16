@@ -38,57 +38,102 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Corporation",
-    "name": "Reefiya LLC",
-    "alternateName": ["Reefiya", "شركة ريفيا", "ريفيا للتصدير الزراعي"],
-    "url": "https://reefiya.com/",
-    "logo": "https://reefiya.com/apple-touch-icon.png",
-    "image": "https://reefiya.com/og-image.jpg",
-    "description": "Reefiya LLC is a premier Egyptian agricultural producer, wholesale produce supplier, and international exporter specializing in premium sweet potatoes.",
-    "knowsAbout": [
-      "Sweet Potato Supplier",
-      "Produce Supplier",
-      "Food Supplier",
-      "Egyptian Sweet Potatoes Export",
-      "Beauregard Sweet Potatoes",
-      "Bellevue Sweet Potatoes",
-      "Cold Chain Reefer Logistics"
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "EG",
-      "addressRegion": "Egypt"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Egyptian Agricultural Export Produce",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Product",
-            "name": "Beauregard Sweet Potatoes",
-            "description": "High-brix orange flesh export sweet potatoes, calibrated for EU standards."
-          }
+    "@graph": [
+      {
+        "@type": "Corporation",
+        "@id": "https://reefiya.com/#organization",
+        "name": "Reefiya LLC",
+        "alternateName": [
+          "Reefiya",
+          "ريفيا",
+          "شركة ريفيا للتصدير الزراعي",
+          "Reefiya Produce",
+          "Reefiya Agricultural Export"
+        ],
+        "url": "https://reefiya.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://reefiya.com/apple-touch-icon.png",
+          "caption": "Reefiya LLC Logo"
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Product",
-            "name": "Bellevue Sweet Potatoes",
-            "description": "Smooth skin, consistent grading, and optimal transit shelf-life."
-          }
+        "image": "https://reefiya.com/og-image.jpg",
+        "description": "Reefiya LLC is an Egyptian commercial grower, wholesale produce supplier, and international exporter specializing in premium cured sweet potatoes (Beauregard, Bellevue, Egyptian local varieties) certified under GLOBALG.A.P. and ISO 22000 standards.",
+        "email": "exports@reefiya.com",
+        "telephone": "+201290099230",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "144 Port Said St, El Ibrahimaia Bahry",
+          "addressLocality": "Alexandria",
+          "addressCountry": "EG"
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Product",
-            "name": "Egyptian Traditional Sweet Potatoes",
-            "description": "High dry-matter traditional sweet potatoes grown in fertile Nile delta soil."
-          }
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "European Union" },
+          { "@type": "Country", "name": "Netherlands" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "Germany" },
+          { "@type": "Country", "name": "France" },
+          { "@type": "Country", "name": "Spain" },
+          { "@type": "Country", "name": "Italy" },
+          { "@type": "Country", "name": "Saudi Arabia" },
+          { "@type": "Country", "name": "United Arab Emirates" },
+          { "@type": "Country", "name": "Kuwait" },
+          { "@type": "Country", "name": "Qatar" },
+          { "@type": "Country", "name": "Bahrain" },
+          { "@type": "Country", "name": "Oman" }
+        ],
+        "knowsAbout": [
+          "Sweet Potato Supplier",
+          "Sweet Potato Exporter Egypt",
+          "Egyptian Sweet Potatoes Wholesale",
+          "Beauregard Sweet Potatoes",
+          "Bellevue Sweet Potatoes",
+          "Commercial Agricultural Export",
+          "Produce Supplier Europe",
+          "Fresh Vegetable Exporter Egypt",
+          "Cold Chain Reefer Logistics",
+          "Post-Harvest Sweet Potato Curing",
+          "GLOBALG.A.P. Certified Agriculture",
+          "ISO 22000 Food Safety Protocols",
+          "Agricultural Quarantine Egypt"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Egyptian Commercial Export Produce",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Beauregard Egyptian Sweet Potatoes",
+                "category": "Fresh Produce / Root Vegetables",
+                "description": "Premium commercial export-grade sweet potatoes with vibrant copper-red skin, high-brix orange flesh, calibrated into S, M, L1, L2, XL grades according to European market standards.",
+                "brand": { "@type": "Brand", "name": "REEFIYA" }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Bellevue Egyptian Sweet Potatoes",
+                "category": "Fresh Produce / Root Vegetables",
+                "description": "Uniform smooth skin, consistent cylindrical grading, superior shelf-life retention, specially cultivated for fresh supermarket retail programs across Western Europe.",
+                "brand": { "@type": "Brand", "name": "REEFIYA" }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Seasonal Egyptian Local Sweet Potatoes",
+                "category": "Fresh Produce / Root Vegetables",
+                "description": "High dry-matter traditional local Egyptian varieties grown in rich Nile delta soil, providing robust texture and traditional sweetness for regional and wholesale markets.",
+                "brand": { "@type": "Brand", "name": "REEFIYA" }
+              }
+            }
+          ]
         }
-      ]
-    }
+      }
+    ]
   }
   </script>
 

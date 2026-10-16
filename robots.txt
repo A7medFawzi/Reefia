@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
+# Sitemaps & AI Knowledge
 Sitemap: https://reefiya.com/sitemap.xml
+# LLM & AI Engine Context
+# https://reefiya.com/llms.txt
