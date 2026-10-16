@@ -13835,6 +13835,20 @@
         const chosenLang = item.getAttribute('data-lang');
         localStorage.setItem('reefiya_lang', chosenLang);
         setLanguage(chosenLang);
+
+        // Dynamically update URL in address bar without reloading
+        try {
+          const currentOrigin = window.location.origin;
+          const currentHash = window.location.hash || '';
+          if (chosenLang === 'ar') {
+            window.history.replaceState({ lang: 'ar' }, '', currentOrigin + '/ar' + currentHash);
+          } else if (chosenLang === 'en') {
+            window.history.replaceState({ lang: 'en' }, '', currentOrigin + '/' + currentHash);
+          } else {
+            window.history.replaceState({ lang: chosenLang }, '', currentOrigin + '/?lang=' + chosenLang + currentHash);
+          }
+        } catch (navErr) {}
+
         langMenu.classList.remove('open');
         langBtn.setAttribute('aria-expanded', 'false');
       });
