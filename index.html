@@ -2965,7 +2965,7 @@
     /* Left Editorial Story */
     .produce-hero-intro {
       width: 44%;
-      max-width: 530px;
+      max-width: 560px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -6031,17 +6031,17 @@
 
 
     /* =============================================================
-       SECTION 06 — COMMERCIAL INQUIRIES & EXPORT DESK (FINAL SHOWCASE)
+       SECTION 06 — COMMERCIAL INQUIRIES & EXPORT DESK (COMPACT LUXURY CARD)
        ============================================================= */
     .sec6-inquiries-section {
       position: relative;
       isolation: isolate;
       background-color: #FAF7F2;
       overflow: hidden;
-      min-height: 820px;
+      min-height: 720px;
       display: flex;
       align-items: center;
-      padding: clamp(60px, 7vw, 100px) clamp(24px, 4vw, 64px);
+      padding: clamp(48px, 5vw, 75px) clamp(24px, 4.5vw, 64px);
       z-index: 25;
     }
 
@@ -6057,7 +6057,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: right center;
+      object-position: 98% 88%;
       display: block;
     }
 
@@ -6066,31 +6066,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: left center;
+      object-position: 2% 88%;
     }
 
-    /* Seamless Warm Frosted Sunset Wash matching Reference */
+    /* Pure natural sunset without fog or heavy wash */
     .sec6-editorial-wash {
-      display: block;
-      position: absolute;
-      inset: 0;
-      /* Warm transparent-to-golden gradient allowing sunset to peek through softly */
-      background: linear-gradient(to right,
-        rgba(252, 248, 241, 0.72) 0%,
-        rgba(252, 248, 241, 0.65) 28%,
-        rgba(255, 238, 214, 0.48) 40%,
-        rgba(255, 224, 185, 0.28) 47%,
-        rgba(255, 210, 160, 0.08) 52%,
-        transparent 55%
-      );
-      /* Heavy gaussian frosted blur that softens the harbor & sunset behind text */
-      backdrop-filter: blur(28px) saturate(140%);
-      -webkit-backdrop-filter: blur(28px) saturate(140%);
-      /* Soft feathered mask so the blur fades seamlessly into the sharp image */
-      -webkit-mask-image: linear-gradient(to right, #000 0%, #000 34%, rgba(0,0,0,0.6) 44%, rgba(0,0,0,0) 54%);
-      mask-image: linear-gradient(to right, #000 0%, #000 34%, rgba(0,0,0,0.6) 44%, rgba(0,0,0,0) 54%);
-      pointer-events: none;
-      z-index: 2;
+      display: none;
     }
 
     /* Top & Bottom Smooth Transitions */
@@ -6099,7 +6080,7 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 60px;
+      height: 50px;
       background: linear-gradient(to bottom, #FAF7F2 0%, rgba(250, 247, 242, 0) 100%);
       z-index: 2;
       pointer-events: none;
@@ -6110,13 +6091,12 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 60px;
-      background: linear-gradient(to top, rgba(250, 247, 242, 0.4) 0%, rgba(250, 247, 242, 0) 100%);
+      height: 20px;
+      background: linear-gradient(to top, rgba(250, 247, 242, 0.15) 0%, rgba(250, 247, 242, 0) 100%);
       z-index: 2;
       pointer-events: none;
     }
 
-    /* Organic Foliage Leaf Accents matching Reference */
     .sec6-leaf-flourish-tl,
     .sec6-leaf-flourish-br {
       display: none;
@@ -6125,48 +6105,52 @@
     /* Main Container */
     .sec6-container {
       width: 100%;
-      max-width: 1420px;
+      max-width: 1380px;
       margin: 0 auto;
       position: relative;
       z-index: 3;
     }
 
-    /* Editorial Left Column (Frameless & Natural, content sits seamlessly on the frosted layer) */
+    /* Unified Ultra-Luxury Crystal Glass Card */
     .sec6-editorial-column {
-      max-width: 580px;
+      max-width: clamp(560px, 42vw, 620px);
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       position: relative;
-      background: transparent;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border: none;
-      border-radius: 0;
-      padding: 0;
-      box-shadow: none;
+      background: rgba(255, 252, 246, 0.65);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      border-radius: 24px;
+      padding: clamp(26px, 3.2vw, 36px) clamp(24px, 3.2vw, 36px);
+      box-shadow: 
+        0 20px 50px rgba(11, 36, 21, 0.09),
+        0 4px 16px rgba(0, 0, 0, 0.04),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset;
     }
 
     /* Section Badge (06 — COMMERCIAL INQUIRIES) */
     .sec6-badge-row {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 0.55rem;
+      gap: 10px;
+      margin-bottom: 0.35rem;
     }
 
     .sec6-badge-number {
       font-family: var(--font-heading);
-      font-size: 1.35rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #b5893d;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       line-height: 1;
     }
 
     .sec6-badge-divider {
       display: inline-block;
-      width: 32px;
+      width: 26px;
       height: 1.5px;
       background: #b5893d;
       opacity: 0.6;
@@ -6174,9 +6158,9 @@
 
     .sec6-badge-tag {
       font-family: var(--font-sans);
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.15em;
       color: #174D30;
       text-transform: uppercase;
       line-height: 1;
@@ -6186,12 +6170,12 @@
     .sec6-eyebrow-line {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 0.75rem;
+      gap: 8px;
+      margin-bottom: 0.55rem;
     }
 
     .sec6-eyebrow-accent {
-      width: 24px;
+      width: 20px;
       height: 2px;
       background: #e65100;
       border-radius: 2px;
@@ -6199,165 +6183,130 @@
 
     .sec6-eyebrow-text {
       font-family: var(--font-sans);
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 800;
       color: #e65100;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
     }
 
-    /* Main Title with Fresh Leaves Vector Icon */
+    /* Main Headline: 3 Elegant Distinct Lines */
     .sec6-headline-wrap {
       position: relative;
-      margin-bottom: 1.15rem;
+      margin-bottom: 0.85rem;
     }
 
     .sec6-main-headline {
       font-family: var(--font-heading);
-      font-size: clamp(2.4rem, 3.4vw, 3.5rem);
+      font-size: clamp(1.85rem, 2.35vw, 2.45rem);
       font-weight: 700;
       color: #0b2415;
-      line-height: 1.14;
+      line-height: 1.16;
       letter-spacing: -0.015em;
       margin: 0;
+    }
+
+    .sec6-main-headline .hl-line {
+      display: block;
     }
 
     .sec6-headline-leaves {
       display: inline-block;
       vertical-align: middle;
-      margin-left: 10px;
-      width: 42px;
-      height: 38px;
+      margin-left: 8px;
+      width: 34px;
+      height: 30px;
     }
 
     /* Description */
     .sec6-body-desc {
       font-family: var(--font-sans);
-      font-size: 1.02rem;
-      line-height: 1.65;
+      font-size: 0.95rem;
+      line-height: 1.60;
       font-weight: 500;
-      color: #1e3325;
-      max-width: 530px;
-      margin: 0 0 1.85rem 0;
-      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+      color: #1e3626;
+      margin: 0 0 1.25rem 0;
     }
 
-    /* Trust Pillars / Badges Row (3 Frameless Items with Subtle Vertical Dividers matching Reference) */
-    .sec6-trust-row {
+    /* Streamlined Minimalist Trust Strip: Balanced & Overflow-Free */
+    .sec6-trust-strip {
       display: flex;
-      align-items: stretch;
-      gap: 0;
-      width: 100%;
-      max-width: 530px;
-      margin-bottom: 2.2rem;
-    }
-
-    .sec6-trust-card {
-      background: transparent;
-      border: none;
-      border-radius: 16px;
-      padding: 8px 14px;
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      text-align: center;
-      gap: 10px;
-      flex: 1;
-      position: relative;
-      box-shadow: none;
-      cursor: pointer;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      justify-content: space-between;
+      gap: 6px;
+      width: 100%;
+      margin-bottom: 1.45rem;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(23, 77, 48, 0.10);
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      box-sizing: border-box;
     }
 
-    .sec6-trust-card:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 8px;
-      bottom: 8px;
-      width: 1px;
-      background: rgba(23, 77, 48, 0.16);
-      transition: opacity 0.3s ease;
+    .sec6-trust-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1 1 0;
+      min-width: 0;
     }
 
-    /* Glowing illuminated card state on hover */
-    .sec6-trust-card:hover {
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      transform: translateY(-4px);
-      box-shadow: 
-        0 12px 28px rgba(255, 175, 75, 0.22),
-        0 4px 16px rgba(23, 77, 48, 0.12),
-        0 0 0 1px rgba(255, 255, 255, 0.65) inset;
-    }
-
-    .sec6-trust-card:hover::after {
-      opacity: 0.3;
-    }
-
-    .sec6-trust-icon-box {
-      width: 42px;
-      height: 42px;
+    .sec6-pill-icon {
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      background: rgba(23, 77, 48, 0.08);
+      background: rgba(23, 77, 48, 0.10);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #174D30;
-      border: 1px solid rgba(23, 77, 48, 0.14);
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      margin: 0 auto;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      flex-shrink: 0;
     }
 
-    /* Radiant illuminated glow on the icon button on hover */
-    .sec6-trust-card:hover .sec6-trust-icon-box {
-      background: #174D30;
-      color: #ffffff;
-      border-color: #174D30;
-      transform: scale(1.12);
-      box-shadow: 
-        0 0 20px rgba(23, 77, 48, 0.45),
-        0 0 35px rgba(255, 180, 80, 0.40);
-    }
-
-    .sec6-trust-card:hover .sec6-trust-icon-box svg {
-      stroke: #ffffff;
-      transform: scale(1.05);
-    }
-
-    .sec6-trust-text-group {
+    .sec6-pill-text {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      width: 100%;
-      transition: transform 0.3s ease;
+      line-height: 1.2;
+      min-width: 0;
+      overflow: hidden;
     }
 
-    .sec6-trust-title {
+    .sec6-pill-text strong {
       font-family: var(--font-heading);
-      font-size: 0.88rem;
+      font-size: 0.69rem;
       font-weight: 700;
       color: #0b2415;
-      line-height: 1.25;
-      margin-bottom: 3px;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
-    .sec6-trust-sub {
+    .sec6-pill-text small {
       font-family: var(--font-sans);
-      font-size: 0.72rem;
+      font-size: 0.60rem;
       color: #556c5e;
-      line-height: 1.35;
+      font-weight: 600;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
-    /* Actions Row (Export Quote Button + Direct WhatsApp Button) */
+    .sec6-pill-divider {
+      width: 1px;
+      height: 22px;
+      background: rgba(23, 77, 48, 0.12);
+      flex-shrink: 0;
+    }
+
+    /* Actions Row (Side-by-Side CTAs: Export Quote Button + Direct WhatsApp Button) */
     .sec6-actions-row {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       flex-wrap: wrap;
+      width: 100%;
     }
 
     .sec6-primary-btn {
@@ -6365,31 +6314,55 @@
       color: #ffffff !important;
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 0.92rem 2.15rem;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.82rem 1.05rem;
       border-radius: 40px;
       text-decoration: none;
       font-family: var(--font-sans);
       font-weight: 700;
-      font-size: 0.94rem;
-      letter-spacing: 0.02em;
-      border: 1.5px solid rgba(255, 255, 255, 0.35);
-      box-shadow: 0 8px 24px rgba(23, 77, 48, 0.28), 0 2px 6px rgba(0, 0, 0, 0.06);
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
+      border: 1px solid rgba(255, 255, 255, 0.40);
+      box-shadow: 0 8px 22px rgba(23, 77, 48, 0.26);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .sec6-primary-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .sec6-primary-btn:hover::before {
+      left: 140%;
     }
 
     .sec6-primary-btn:hover {
-      background: #0f3621;
+      background: #0d3b23;
       transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(23, 77, 48, 0.38);
+      box-shadow: 0 12px 28px rgba(23, 77, 48, 0.36);
       color: #ffffff !important;
     }
 
     .sec6-btn-arrow {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       line-height: 1;
       display: inline-block;
       transition: transform 0.25s ease;
+      flex-shrink: 0;
     }
 
     .sec6-primary-btn:hover .sec6-btn-arrow {
@@ -6398,22 +6371,24 @@
 
     /* WhatsApp Export Desk Button */
     .sec6-whatsapp-btn {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.92);
       color: #174D30 !important;
       display: inline-flex;
       align-items: center;
-      gap: 0.65rem;
-      padding: 0.90rem 1.85rem;
+      justify-content: center;
+      gap: 0.40rem;
+      padding: 0.82rem 1.05rem;
       border-radius: 40px;
       text-decoration: none;
       font-family: var(--font-sans);
       font-weight: 700;
-      font-size: 0.92rem;
-      border: 1.5px solid rgba(23, 77, 48, 0.24);
-      box-shadow: 0 4px 16px rgba(11, 26, 16, 0.05);
+      font-size: 0.82rem;
+      border: 1.5px solid rgba(23, 77, 48, 0.22);
+      box-shadow: 0 2px 10px rgba(11, 26, 16, 0.04);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 0;
     }
 
     .sec6-whatsapp-btn:hover {
@@ -6421,12 +6396,12 @@
       border-color: #25D366;
       color: #128C7E !important;
       transform: translateY(-2px);
-      box-shadow: 0 10px 26px rgba(37, 211, 102, 0.20);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.18);
     }
 
     .sec6-whatsapp-icon {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -6438,17 +6413,7 @@
        RTL (Arabic) Layout Specifications
        ------------------------------------------- */
     [dir="rtl"] .sec6-editorial-wash {
-      display: block;
-      background: linear-gradient(to left,
-        rgba(252, 248, 241, 0.72) 0%,
-        rgba(252, 248, 241, 0.65) 28%,
-        rgba(255, 238, 214, 0.48) 40%,
-        rgba(255, 224, 185, 0.28) 47%,
-        rgba(255, 210, 160, 0.08) 52%,
-        transparent 55%
-      );
-      -webkit-mask-image: linear-gradient(to left, #000 0%, #000 34%, rgba(0,0,0,0.6) 44%, rgba(0,0,0,0) 54%);
-      mask-image: linear-gradient(to left, #000 0%, #000 34%, rgba(0,0,0,0.6) 44%, rgba(0,0,0,0) 54%);
+      display: none;
     }
 
     [dir="rtl"] .sec6-bg-image {
@@ -6460,7 +6425,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: left center;
+      object-position: 2% 88%;
     }
 
     [dir="rtl"] .sec6-editorial-column {
@@ -6473,7 +6438,7 @@
     [dir="rtl"] .sec6-badge-tag {
       font-family: 'Cairo', sans-serif;
       letter-spacing: 0.08em;
-      font-size: 0.82rem;
+      font-size: 0.76rem;
       font-weight: 800;
       color: #174D30;
     }
@@ -6481,59 +6446,64 @@
     [dir="rtl"] .sec6-eyebrow-text {
       font-family: 'Cairo', sans-serif;
       letter-spacing: 0.06em;
-      font-size: 0.84rem;
+      font-size: 0.78rem;
       font-weight: 800;
       color: #e65100;
     }
 
     [dir="rtl"] .sec6-main-headline {
       font-family: 'Alexandria', 'Cairo', sans-serif;
-      font-size: clamp(2.3rem, 3.2vw, 3.3rem);
+      font-size: clamp(1.45rem, 1.8vw, 1.95rem);
       font-weight: 800;
       color: #0b2415;
-      line-height: 1.24;
-      letter-spacing: -0.02em;
+      line-height: 1.30;
+      letter-spacing: -0.015em;
+    }
+
+    [dir="rtl"] .sec6-main-headline [data-i18n="sec6_hl1"] {
+      white-space: normal;
+      display: inline;
+    }
+
+    [dir="rtl"] .sec6-main-headline [data-i18n="sec6_hl2"] {
+      white-space: normal;
+      display: inline;
     }
 
     [dir="rtl"] .sec6-headline-leaves {
       margin-left: 0;
-      margin-right: 12px;
+      margin-right: 8px;
       transform: scaleX(-1);
     }
 
     [dir="rtl"] .sec6-body-desc {
       font-family: 'Cairo', var(--font-sans);
-      font-size: 1.02rem;
-      line-height: 1.70;
+      font-size: 0.95rem;
+      line-height: 1.65;
       font-weight: 600;
-      color: #1e3325;
+      color: #1e3626;
       text-shadow: none;
-      max-width: 530px;
     }
 
-    [dir="rtl"] .sec6-trust-card {
-      align-items: center;
-      text-align: center;
-      padding: 6px 14px;
+    [dir="rtl"] .sec6-trust-strip {
+      flex-direction: row;
     }
 
-    [dir="rtl"] .sec6-trust-card:not(:last-child)::after {
-      right: auto;
-      left: 0;
-      background: rgba(23, 77, 48, 0.16);
+    @media (max-width: 768px) {
+      [dir="rtl"] .sec6-trust-strip {
+        flex-direction: column !important;
+      }
     }
 
-    [dir="rtl"] .sec6-trust-title {
+    [dir="rtl"] .sec6-pill-text strong {
       font-family: 'Alexandria', 'Cairo', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.74rem;
       font-weight: 700;
-      color: #0b2415;
     }
 
-    [dir="rtl"] .sec6-trust-sub {
+    [dir="rtl"] .sec6-pill-text small {
       font-family: 'Cairo', sans-serif;
-      font-size: 0.74rem;
-      color: #556c5e;
+      font-size: 0.64rem;
       font-weight: 600;
     }
 
@@ -6557,36 +6527,18 @@
        ------------------------------------------- */
     @media (max-width: 1024px) {
       .sec6-inquiries-section {
-        min-height: 760px;
-        padding: 60px 28px;
-      }
-      .sec6-editorial-wash {
-        background: linear-gradient(to right, 
-          #FAF7F2 0%, 
-          rgba(250, 247, 242, 0.98) 40%, 
-          rgba(250, 247, 242, 0.75) 60%, 
-          rgba(250, 247, 242, 0.20) 80%, 
-          transparent 100%
-        );
-      }
-      [dir="rtl"] .sec6-editorial-wash {
-        background: linear-gradient(to left, 
-          #FAF7F2 0%, 
-          rgba(250, 247, 242, 0.98) 40%, 
-          rgba(250, 247, 242, 0.75) 60%, 
-          rgba(250, 247, 242, 0.20) 80%, 
-          transparent 100%
-        );
+        min-height: 560px;
+        padding: 40px 24px;
       }
       .sec6-editorial-column {
-        max-width: 520px;
+        max-width: 480px;
       }
     }
 
     @media (max-width: 768px) {
       .sec6-inquiries-section {
         min-height: auto;
-        padding: 55px 20px 65px;
+        padding: 45px 16px 55px;
         background-color: #FAF7F2;
       }
       .sec6-bg-image {
@@ -6597,156 +6549,120 @@
         object-position: 30% center;
         opacity: 0.95;
       }
-      .sec6-editorial-wash {
-        display: block;
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom,
-          rgba(252, 248, 241, 0.88) 0%,
-          rgba(252, 248, 241, 0.75) 40%,
-          rgba(253, 245, 233, 0.40) 70%,
-          rgba(255, 238, 215, 0.15) 100%
-        );
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        -webkit-mask-image: none;
-        mask-image: none;
-        z-index: 2;
-        pointer-events: none;
-      }
-      [dir="rtl"] .sec6-editorial-wash {
-        display: block;
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom,
-          rgba(252, 248, 241, 0.88) 0%,
-          rgba(252, 248, 241, 0.75) 40%,
-          rgba(253, 245, 233, 0.40) 70%,
-          rgba(255, 238, 215, 0.15) 100%
-        );
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        -webkit-mask-image: none;
-        mask-image: none;
-        z-index: 2;
-        pointer-events: none;
-      }
       .sec6-editorial-column {
         max-width: 100%;
         position: relative;
         z-index: 3;
-        background: transparent;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        border: none;
-        border-radius: 0;
-        padding: 0;
-        box-shadow: none;
+        background: rgba(253, 251, 247, 0.88);
+        backdrop-filter: blur(18px) saturate(140%);
+        -webkit-backdrop-filter: blur(18px) saturate(140%);
+        border: 1.2px solid rgba(255, 255, 255, 0.85);
+        border-radius: 20px;
+        padding: 24px 18px 24px;
+        box-shadow: 0 14px 40px rgba(11, 36, 21, 0.09);
       }
       .sec6-badge-row {
-        margin-bottom: 0.45rem;
+        margin-bottom: 0.30rem;
       }
       .sec6-eyebrow-line {
-        margin-bottom: 0.65rem;
+        margin-bottom: 0.45rem;
       }
       .sec6-main-headline {
-        font-size: clamp(2.1rem, 7.5vw, 2.6rem);
+        font-size: clamp(1.75rem, 6.2vw, 2.25rem);
         color: #0b2415;
         line-height: 1.18;
         letter-spacing: -0.015em;
-        margin-bottom: 0.9rem;
+        margin-bottom: 0.7rem;
       }
       [dir="rtl"] .sec6-main-headline {
-        font-size: clamp(2.0rem, 7.2vw, 2.5rem);
+        font-size: clamp(1.70rem, 6.0vw, 2.15rem);
         line-height: 1.25;
       }
       .sec6-body-desc {
-        color: #1a3324;
+        color: #243d2c;
         font-weight: 500;
-        font-size: 0.98rem;
-        line-height: 1.65;
-        margin-bottom: 1.8rem;
+        font-size: 0.90rem;
+        line-height: 1.55;
+        margin-bottom: 1.1rem;
       }
       [dir="rtl"] .sec6-body-desc {
-        color: #1a3324;
+        color: #243d2c;
         font-weight: 600;
-        font-size: 1.0rem;
-        line-height: 1.7;
+        font-size: 0.90rem;
+        line-height: 1.60;
       }
-      .sec6-trust-row {
-        display: flex;
-        flex-direction: row;
+      .sec6-trust-strip {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         align-items: stretch;
-        gap: 8px;
+        gap: 6px;
         width: 100%;
-        max-width: 100%;
-        margin-bottom: 2rem;
+        margin-bottom: 1.25rem;
+        padding: 8px 6px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(23, 77, 48, 0.12);
+        border-radius: 14px;
       }
-      .sec6-trust-card {
-        flex: 1;
+      .sec6-trust-pill {
+        display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 6px;
-        padding: 8px 4px;
-        border-radius: 0;
-        background: transparent;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        border: none;
-        box-shadow: none;
-        position: relative;
+        gap: 4px;
+        width: 100%;
+        padding: 4px 2px;
       }
-      .sec6-trust-card:hover {
-        background: transparent;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        transform: none;
-        box-shadow: none;
+      .sec6-pill-icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: rgba(23, 77, 48, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: #174D30;
       }
-      .sec6-trust-card:hover .sec6-trust-icon-box {
-        background: #174D30;
-        color: #ffffff;
-        transform: scale(1.05);
+      .sec6-pill-icon svg {
+        width: 12px;
+        height: 12px;
       }
-      .sec6-trust-card:not(:last-child)::after {
-        display: block;
-        content: '';
-        position: absolute;
-        right: -4px;
-        top: 20%;
-        height: 60%;
-        width: 1px;
-        background: rgba(23, 77, 48, 0.15);
+      .sec6-pill-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+        width: 100%;
       }
-      [dir="rtl"] .sec6-trust-card:not(:last-child)::after {
-        right: auto;
-        left: -4px;
-      }
-      .sec6-trust-icon-box {
-        width: 36px;
-        height: 36px;
-        background: rgba(255, 255, 255, 0.65);
-        border: 1px solid rgba(23, 77, 48, 0.08);
-      }
-      .sec6-trust-title {
-        font-size: 0.82rem;
+      .sec6-pill-text strong {
+        font-size: 0.64rem;
+        font-weight: 700;
         line-height: 1.25;
         color: #0b2415;
-        font-weight: 700;
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+        white-space: normal;
+        text-overflow: clip;
+        overflow: visible;
+        word-break: normal;
+        overflow-wrap: break-word;
+        hyphens: auto;
       }
-      .sec6-trust-sub {
-        font-size: 0.72rem;
-        line-height: 1.35;
-        color: #274032;
-        font-weight: 500;
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+      .sec6-pill-text small {
+        font-size: 0.56rem;
+        color: #556c5e;
+        line-height: 1.2;
+        white-space: normal;
+        text-overflow: clip;
+        overflow: visible;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+      .sec6-pill-divider {
+        display: none;
       }
       .sec6-actions-row {
         flex-direction: column;
         width: 100%;
-        gap: 12px;
+        gap: 9px;
         align-items: stretch;
       }
       .sec6-primary-btn,
@@ -6754,8 +6670,9 @@
         justify-content: center;
         width: 100%;
         text-align: center;
-        padding: 15px 22px;
-        font-size: 0.96rem;
+        padding: 12px 20px;
+        font-size: 0.92rem;
+        border-radius: 36px;
       }
       .sec6-leaf-flourish-tl,
       .sec6-leaf-flourish-br {
@@ -10727,13 +10644,11 @@
         src="./sec6_harbor_clean_notext.jpg" 
         alt="Reefiya Export Desk - Cargo Ships and Sweet Potato Pallets at Harbor" 
         class="sec6-bg-image"
-        loading="lazy"
       />
       <img 
         src="./sec6_harbor_clean_notext_rtl.jpg" 
         alt="Reefiya Export Desk - Cargo Ships and Sweet Potato Pallets at Harbor" 
         class="sec6-bg-image-rtl"
-        loading="lazy"
       />
       <div class="sec6-editorial-wash"></div>
       <div class="sec6-top-fade"></div>
@@ -10769,8 +10684,9 @@
         <!-- Headline -->
         <div class="sec6-headline-wrap">
           <h2 class="sec6-main-headline" id="sec6Headline">
-            <span data-i18n="sec6_hl1">Let’s Bring Egyptian Produce</span><br>
-            <span data-i18n="sec6_hl2">to Your Market.</span>
+            <span class="hl-line"><span data-i18n="sec6_hl1">Let’s Bring</span></span>
+            <span class="hl-line"><span data-i18n="sec6_hl_produce">Egyptian Produce</span></span>
+            <span class="hl-line"><span data-i18n="sec6_hl2">to Your Market.</span></span>
           </h2>
         </div>
 
@@ -10779,55 +10695,51 @@
           Tell us what your market needs. Our commercial export desk will help you build a tailored export program based on your specifications, volume, packaging preferences, and destination requirements.
         </p>
 
-        <!-- Trust Badges Row (3 Values) -->
-        <div class="sec6-trust-row">
-          
-          <!-- Badge 1: Tailored Quotations -->
-          <div class="sec6-trust-card">
-            <div class="sec6-trust-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Trust Highlights: Minimalist Trade Desk Badges -->
+        <div class="sec6-trust-strip">
+          <div class="sec6-trust-pill">
+            <span class="sec6-pill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
-            </div>
-            <div class="sec6-trust-text-group">
-              <span class="sec6-trust-title" data-i18n="sec6_badge1_title">Tailored Quotations</span>
-              <span class="sec6-trust-sub" data-i18n="sec6_badge1_sub">Based on Your Requirements</span>
+            </span>
+            <div class="sec6-pill-text">
+              <strong data-i18n="sec6_badge1_title">Tailored Quotes</strong>
+              <small data-i18n="sec6_badge1_sub">To Your Specs</small>
             </div>
           </div>
 
-          <!-- Badge 2: Global Export Experience -->
-          <div class="sec6-trust-card">
-            <div class="sec6-trust-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="sec6-pill-divider" aria-hidden="true"></div>
+
+          <div class="sec6-trust-pill">
+            <span class="sec6-pill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="2" y1="12" x2="22" y2="12"></line>
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
               </svg>
-            </div>
-            <div class="sec6-trust-text-group">
-              <span class="sec6-trust-title" data-i18n="sec6_badge2_title">Global Export</span>
-              <span class="sec6-trust-sub" data-i18n="sec6_badge2_sub">Experience</span>
+            </span>
+            <div class="sec6-pill-text">
+              <strong data-i18n="sec6_badge2_title">Global Export</strong>
+              <small data-i18n="sec6_badge2_sub">Worldwide Reach</small>
             </div>
           </div>
 
-          <!-- Badge 3: Response Within 1-2 Days -->
-          <div class="sec6-trust-card">
-            <div class="sec6-trust-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="sec6-pill-divider" aria-hidden="true"></div>
+
+          <div class="sec6-trust-pill">
+            <span class="sec6-pill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
-            </div>
-            <div class="sec6-trust-text-group">
-              <span class="sec6-trust-title" data-i18n="sec6_badge3_title">Response Within</span>
-              <span class="sec6-trust-sub" data-i18n="sec6_badge3_sub">1–2 Business Days</span>
+            </span>
+            <div class="sec6-pill-text">
+              <strong data-i18n="sec6_badge3_title">Direct Response</strong>
+              <small data-i18n="sec6_badge3_sub">1–2 Business Days</small>
             </div>
           </div>
-
         </div>
 
         <!-- Action Buttons: Dual CTAs -->
@@ -11166,14 +11078,15 @@
         sec6_badge_num: '06',
         sec6_badge_title: 'COMMERCIAL INQUIRIES',
         sec6_eyebrow: 'START YOUR EXPORT PROGRAM',
-        sec6_hl1: 'Let’s Bring Egyptian Produce',
+        sec6_hl1: 'Let’s Bring',
+        sec6_hl_produce: 'Egyptian Produce',
         sec6_hl2: 'to Your Market.',
         sec6_desc: 'Tell us what your market needs. Our commercial export desk will help you build a tailored export program based on your specifications, volume, packaging preferences, and destination requirements.',
-        sec6_badge1_title: 'Tailored Quotations',
-        sec6_badge1_sub: 'Based on Your Requirements',
+        sec6_badge1_title: 'Tailored Quotes',
+        sec6_badge1_sub: 'To Your Specs',
         sec6_badge2_title: 'Global Export',
-        sec6_badge2_sub: 'Experience',
-        sec6_badge3_title: 'Response Within',
+        sec6_badge2_sub: 'Worldwide Delivery',
+        sec6_badge3_title: 'Direct Response',
         sec6_badge3_sub: '1–2 Business Days',
         sec6_cta_quote: 'Request Your Export Quote',
         sec6_cta_whatsapp: 'Talk to Export Desk',
@@ -11425,11 +11338,12 @@
         sec6_badge_num: '06',
         sec6_badge_title: 'الاستفسارات التجارية',
         sec6_eyebrow: 'ابدأ برنامجك التصديري',
-        sec6_hl1: 'لننقل المحاصيل المصرية الفاخرة',
+        sec6_hl1: 'لننقل المحاصيل',
+        sec6_hl_produce: 'المصرية الفاخرة',
         sec6_hl2: 'إلى أسواقكم العالمية.',
         sec6_desc: 'أخبرنا باحتياجات سوقك ومواصفاتك. سيعمل مكتب التصدير التجاري لدينا على تصميم برنامج توريد متكامل مخصص لاحتياجاتك، وحجم شحناتك، وتفضيلات التعبئة، ومتطلبات وجهتك التجارية.',
-        sec6_badge1_title: 'عروض أسعار مخصصة',
-        sec6_badge1_sub: 'حسب مواصفاتك الدقيقة',
+        sec6_badge1_title: 'عروض مخصصة',
+        sec6_badge1_sub: 'حسب مواصفاتك',
         sec6_badge2_title: 'خبرة تصدير دولية',
         sec6_badge2_sub: 'تغطي الأسواق العالمية',
         sec6_badge3_title: 'استجابة سريعة',
@@ -11684,17 +11598,18 @@
         sec6_badge_num: '06',
         sec6_badge_title: 'KOMMERZIELLE ANFRAGEN',
         sec6_eyebrow: 'STARTEN SIE IHR EXPORTPROGRAMM',
-        sec6_hl1: 'Bringen wir ägyptische Spitzenprodukte',
+        sec6_hl1: 'Bringen wir',
+        sec6_hl_produce: 'ägyptische Spitzenprodukte',
         sec6_hl2: 'in Ihren Markt.',
         sec6_desc: 'Teilen Sie uns Ihre Marktanforderungen mit. Unser Export-Desk entwickelt ein maßgeschneidertes Lieferprogramm basierend auf Ihren Spezifikationen, Mengen, Verpackungswünschen und Zielvorgaben.',
         sec6_badge1_title: 'Maßgeschneiderte Angebote',
-        sec6_badge1_sub: 'Exakt nach Ihren Vorgaben',
-        sec6_badge2_title: 'Weltweite Exporterfahrung',
-        sec6_badge2_sub: 'Für internationale Märkte',
-        sec6_badge3_title: 'Schnelle Rückmeldung',
-        sec6_badge3_sub: 'Innerhalb von 1–2 Werktagen',
+        sec6_badge1_sub: 'Nach Ihren Vorgaben',
+        sec6_badge2_title: 'Exporterfahrung',
+        sec6_badge2_sub: 'Weltweite Lieferung',
+        sec6_badge3_title: 'Schnelle Antwort',
+        sec6_badge3_sub: 'Binnen 1–2 Werktagen',
         sec6_cta_quote: 'Exportangebot anfordern',
-        sec6_cta_whatsapp: 'Mit Export-Desk sprechen',
+        sec6_cta_whatsapp: 'Export-Desk kontaktieren',
         nav_contact: 'Kontakt',
         sec5_eyebrow: 'UNSER ANSATZ',
         sec5_hl1: 'Disziplinierte Ausführung.',
@@ -11943,16 +11858,17 @@
         sec6_badge_num: '06',
         sec6_badge_title: 'DEMANDES COMMERCIALES',
         sec6_eyebrow: 'DÉMARREZ VOTRE PROGRAMME D’EXPORTATION',
-        sec6_hl1: 'Apportons les produits égyptiens d’exception',
+        sec6_hl1: 'Apportons les produits',
+        sec6_hl_produce: 'égyptiens d’exception',
         sec6_hl2: 'sur votre marché.',
         sec6_desc: 'Faites-nous part des exigences de votre marché. Notre bureau commercial d\'exportation vous aidera à élaborer un programme sur mesure selon vos spécifications, volumes, emballages et exigences de destination.',
         sec6_badge1_title: 'Devis sur mesure',
-        sec6_badge1_sub: 'Selon vos exigences précises',
-        sec6_badge2_title: 'Expérience export globale',
-        sec6_badge2_sub: 'Vers les marchés mondiaux',
+        sec6_badge1_sub: 'Selon vos exigences',
+        sec6_badge2_title: 'Export mondial',
+        sec6_badge2_sub: 'Marchés internationaux',
         sec6_badge3_title: 'Réponse rapide',
         sec6_badge3_sub: 'Sous 1 à 2 jours ouvrés',
-        sec6_cta_quote: 'Demander votre devis export',
+        sec6_cta_quote: 'Demander un devis export',
         sec6_cta_whatsapp: 'Contacter le bureau export',
         nav_contact: 'Contact',
         sec5_eyebrow: 'NOTRE APPROCHE',
@@ -12202,17 +12118,18 @@
         sec6_badge_num: '06',
         sec6_badge_title: 'COMMERCIËLE AANVRAGEN',
         sec6_eyebrow: 'START UW EXPORTPROGRAMMA',
-        sec6_hl1: 'Laten we Egyptische kwaliteitsproducten',
+        sec6_hl1: 'Laten we',
+        sec6_hl_produce: 'Egyptische kwaliteitsproducten',
         sec6_hl2: 'naar uw markt brengen.',
         sec6_desc: 'Laat ons weten wat uw markt vraagt. Onze commerciële exportdesk stelt een op maat gemaakt exportprogramma samen op basis van uw specificaties, volumes, verpakkingswensen en bestemmingsvereisten.',
         sec6_badge1_title: 'Offerte op maat',
         sec6_badge1_sub: 'Afgestemd op uw eisen',
-        sec6_badge2_title: 'Wereldwijde exportervaring',
-        sec6_badge2_sub: 'Voor internationale markten',
+        sec6_badge2_title: 'Exportervaring',
+        sec6_badge2_sub: 'Internationale markten',
         sec6_badge3_title: 'Snelle reactie',
         sec6_badge3_sub: 'Binnen 1–2 werkdagen',
-        sec6_cta_quote: 'Vraag uw exportofferte aan',
-        sec6_cta_whatsapp: 'Spreek met de exportdesk',
+        sec6_cta_quote: 'Exportofferte aanvragen',
+        sec6_cta_whatsapp: 'Contact opnemen via WhatsApp',
         nav_contact: 'Contact',
         sec5_eyebrow: 'ONZE AANPAK',
         sec5_hl1: 'Gedisciplineerde uitvoering.',
@@ -12461,17 +12378,18 @@
         sec6_badge_num: '06',
         sec6_badge_title: 'CONSULTAS COMERCIALES',
         sec6_eyebrow: 'INICIE SU PROGRAMA DE EXPORTACIÓN',
-        sec6_hl1: 'Llevemos los productos selectos de Egipto',
+        sec6_hl1: 'Llevemos los productos',
+        sec6_hl_produce: 'selectos de Egipto',
         sec6_hl2: 'a su mercado.',
         sec6_desc: 'Indíquenos las necesidades de su mercado. Nuestro departamento comercial de exportación le ayudará a estructurar un programa a medida según sus especificaciones, volumen, embalaje y destino.',
         sec6_badge1_title: 'Cotizaciones a medida',
         sec6_badge1_sub: 'Según sus requerimientos',
         sec6_badge2_title: 'Experiencia global',
-        sec6_badge2_sub: 'En exportación internacional',
+        sec6_badge2_sub: 'Exportación directa',
         sec6_badge3_title: 'Respuesta rápida',
         sec6_badge3_sub: 'En 1–2 días hábiles',
-        sec6_cta_quote: 'Solicitar cotización de exportación',
-        sec6_cta_whatsapp: 'Hablar con el departamento de exportación',
+        sec6_cta_quote: 'Solicitar cotización',
+        sec6_cta_whatsapp: 'Contactar equipo export',
         nav_contact: 'Contacto',
         sec5_eyebrow: 'NUESTRO ENFOQUE',
         sec5_hl1: 'Ejecución disciplinada.',
@@ -12720,17 +12638,18 @@
         sec6_badge_num: '06',
         sec6_badge_title: 'КОММЕРЧЕСКИЕ ЗАПРОСЫ',
         sec6_eyebrow: 'ЗАПУСТИТЕ ВАШУ ПРОГРАММУ ЭКСПОРТА',
-        sec6_hl1: 'Поставим отборную продукцию Египта',
+        sec6_hl1: 'Поставим',
+        sec6_hl_produce: 'отборную продукцию Египта',
         sec6_hl2: 'на ваш рынок.',
         sec6_desc: 'Сообщите нам требования вашего рынка. Наш экспортный отдел сформирует индивидуальную программу поставок с учетом ваших калибров, объемов, фасовки и логистических требований.',
-        sec6_badge1_title: 'Индивидуальный расчет цен',
-        sec6_badge1_sub: 'Под ваши спецификации',
+        sec6_badge1_title: 'Расчет цен под заказ',
+        sec6_badge1_sub: 'По спецификации',
         sec6_badge2_title: 'Международный опыт',
-        sec6_badge2_sub: 'Прямые экспортные поставки',
+        sec6_badge2_sub: 'Прямые поставки',
         sec6_badge3_title: 'Быстрый ответ',
-        sec6_badge3_sub: 'В течение 1–2 рабочих дней',
-        sec6_cta_quote: 'Запросить расчет стоимости',
-        sec6_cta_whatsapp: 'Связаться с отделом экспорта',
+        sec6_badge3_sub: 'В течение 1–2 дней',
+        sec6_cta_quote: 'Запросить расчет',
+        sec6_cta_whatsapp: 'Отдел экспорта в WhatsApp',
         nav_contact: 'Контакты',
         sec5_eyebrow: 'НАШ ПОДХОД',
         sec5_hl1: 'Четкое исполнение.',
@@ -12979,12 +12898,13 @@
         sec6_badge_num: '06',
         sec6_badge_title: 'TİCARİ TALEPLER',
         sec6_eyebrow: 'İHRACAT PROGRAMINIZI BAŞLATIN',
-        sec6_hl1: 'Seçkin Mısır Tarım Ürünlerini',
+        sec6_hl1: 'Seçkin',
+        sec6_hl_produce: 'Mısır Tarım Ürünlerini',
         sec6_hl2: 'Pazarınıza Taşıyalım.',
         sec6_desc: 'Pazarınızın ihtiyaçlarını bize bildirin. Ticari ihracat birimimiz, belirlediğiniz standartlar, hacim, ambalaj tercihleri ve varış gereksinimlerine göre size özel bir program oluştursun.',
-        sec6_badge1_title: 'Özel Fiyat Teklifleri',
+        sec6_badge1_title: 'Özel Teklifler',
         sec6_badge1_sub: 'Kriterlerinize tam uyumlu',
-        sec6_badge2_title: 'Küresel İhracat Tecrübesi',
+        sec6_badge2_title: 'Küresel İhracat',
         sec6_badge2_sub: 'Uluslararası pazarlara',
         sec6_badge3_title: 'Hızlı Yanıt',
         sec6_badge3_sub: '1–2 iş günü içerisinde',
@@ -13238,17 +13158,18 @@
         sec6_badge_num: '06',
         sec6_badge_title: 'RICHIESTE COMMERCIALI',
         sec6_eyebrow: 'AVVIA IL TUO PROGRAMMA DI EXPORT',
-        sec6_hl1: 'Portiamo le eccellenze agricole egiziane',
+        sec6_hl1: 'Portiamo le eccellenze',
+        sec6_hl_produce: 'agricole egiziane',
         sec6_hl2: 'sul vostro mercato.',
         sec6_desc: 'Comunicateci le esigenze del vostro mercato. Il nostro desk export commerciale strutturerà un programma su misura in base a specifiche, volumi, imballaggi e requisiti di destinazione.',
         sec6_badge1_title: 'Quotazioni su misura',
-        sec6_badge1_sub: 'Basate sulle vostre richieste',
-        sec6_badge2_title: 'Esperienza export globale',
-        sec6_badge2_sub: 'Sui mercati internazionali',
+        sec6_badge1_sub: 'Su specifiche richieste',
+        sec6_badge2_title: 'Export globale',
+        sec6_badge2_sub: 'Mercati internazionali',
         sec6_badge3_title: 'Risposta rapida',
-        sec6_badge3_sub: 'Entro 1–2 giorni lavorativi',
-        sec6_cta_quote: 'Richiedi una quotazione export',
-        sec6_cta_whatsapp: 'Parla con il desk export',
+        sec6_badge3_sub: 'Entro 1–2 giorni',
+        sec6_cta_quote: 'Richiedi quotazione',
+        sec6_cta_whatsapp: 'Contatta il desk export',
         nav_contact: 'Contatti',
         sec5_eyebrow: 'IL NOSTRO APPROCCIO',
         sec5_hl1: 'Esecuzione rigorosa.',
