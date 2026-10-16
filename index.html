@@ -7355,62 +7355,178 @@
     }
 
     @media (max-width: 768px) {
+      /* 2-Column Grid for Explore Links on Mobile to save vertical space */
+      .footer-col-explore .footer-links-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 16px;
+      }
+      .footer-col-explore .footer-link-item a {
+        max-width: 100%;
+        font-size: 0.86rem;
+      }
+
+      /* Compact Footprint Cards */
+      .footer-footprint-card {
+        padding: 8px 11px;
+        gap: 10px;
+      }
+
+      /* Trust & Documentation Section: Perfect Center Stage Alignment */
       .footer-trust-documentation-bar {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 24px;
+        padding-top: 26px;
+        width: 100%;
       }
+
       .footer-trust-group {
         width: 100%;
-        justify-content: flex-start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
         gap: 14px;
+        margin: 0 auto;
       }
       .footer-trust-group > .footer-bar-divider {
         display: none;
       }
+      .footer-trust-heading {
+        font-size: 0.70rem;
+        letter-spacing: 0.16em;
+        text-align: center;
+        width: 100%;
+        display: block;
+      }
+
+      /* Quality Badges: Centered symmetrical row */
+      .footer-trust-badges-inline {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: nowrap;
+        margin: 0 auto;
+      }
+      .footer-trust-cert-icon {
+        height: 28px !important;
+        max-width: 110px !important;
+      }
+      .footer-bar-divider {
+        height: 20px !important;
+        opacity: 0.35;
+        margin: 0 2px;
+      }
+
+      /* Social & Developer Group: True Center */
       .footer-social-developer-group {
         width: 100%;
-        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 16px;
+        justify-content: center;
+        text-align: center;
+        gap: 20px;
+        margin: 0 auto;
       }
       .footer-social-developer-group > .footer-bar-divider {
         display: none;
+      }
+      .footer-social-inline {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 11px;
+        margin: 0 auto;
+      }
+      .footer-social-heading {
+        font-size: 0.70rem;
+        letter-spacing: 0.14em;
+        text-align: center;
+        width: 100%;
+        display: block;
+      }
+      .footer-social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 14px;
+        margin: 0 auto;
+      }
+
+      /* Developer Credit: Centered Block */
+      .footer-developer-credit {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 5px 12px;
+      }
+      .footer-dev-text {
+        align-items: flex-start;
+        text-align: left;
+      }
+      [dir="rtl"] .footer-dev-text {
+        align-items: flex-start;
+        text-align: right;
+      }
+
+      /* Bottom Legal Bar */
+      .footer-bottom-bar {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 14px;
+        padding-top: 20px;
+        margin: 0 auto;
+      }
+      .footer-copy-text,
+      [dir="rtl"] .footer-copy-text {
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+        margin: 0 auto !important;
+      }
+      .footer-bottom-meta,
+      [dir="rtl"] .footer-bottom-meta {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        gap: 8px 14px !important;
+        text-align: center !important;
+        margin: 0 auto !important;
       }
     }
 
     @media (max-width: 600px) {
       .site-luxury-footer {
-        padding: 60px 20px 26px;
+        padding: 50px 18px 24px;
       }
       .footer-columns-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 28px;
       }
       .footer-trust-badges-inline {
-        gap: 12px;
-        flex-wrap: wrap;
+        gap: 10px;
       }
       .footer-trust-cert-icon {
-        height: 28px !important;
-        max-width: 170px !important;
-      }
-      .footer-bar-divider {
-        height: 22px !important;
-      }
-      .footer-social-developer-group {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-      }
-      .footer-bottom-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-      .footer-bottom-meta {
-        flex-wrap: wrap;
+        height: 25px !important;
+        max-width: 95px !important;
       }
     }
 
@@ -7790,6 +7906,7 @@
         <a href="#journey" class="mobile-nav-link" data-i18n="nav_process">Export Process</a>
         <a href="#markets" class="mobile-nav-link" data-i18n="nav_global">Markets</a>
         <a href="#about" class="mobile-nav-link" data-i18n="nav_about">About Us</a>
+        <a href="#contact" class="mobile-nav-link" data-i18n="nav_contact">Contact</a>
       </nav>
       <div class="mobile-nav-footer">
         <a href="rfq.html" class="mobile-quote-btn" id="mobileQuoteBtn">
@@ -14323,6 +14440,186 @@
       });
     })();
 
+    /* ==========================================================================
+       REEFIYA LUXURY CUSTOM DUAL-DOT CURSOR SYSTEM
+       Non-destructive, hardware-accelerated, desktop-ready
+       ========================================================================== */
+    (function initLuxuryCursor() {
+      // Create elements dynamically if not already present
+      let cursorDot = document.getElementById('luxury-cursor-dot');
+      let cursorRing = document.getElementById('luxury-cursor-ring');
+
+      if (!cursorDot) {
+        cursorDot = document.createElement('div');
+        cursorDot.id = 'luxury-cursor-dot';
+        cursorDot.className = 'luxury-cursor-dot';
+        document.body.appendChild(cursorDot);
+      }
+      if (!cursorRing) {
+        cursorRing = document.createElement('div');
+        cursorRing.id = 'luxury-cursor-ring';
+        cursorRing.className = 'luxury-cursor-ring';
+        document.body.appendChild(cursorRing);
+      }
+
+      let mouseX = -100, mouseY = -100;
+      let ringX = -100, ringY = -100;
+      let isVisible = false;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (!isVisible) {
+          isVisible = true;
+          cursorDot.style.opacity = '1';
+          cursorRing.style.opacity = '1';
+          ringX = mouseX;
+          ringY = mouseY;
+        }
+
+        // Direct instantaneous dot position
+        cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+      }, { passive: true });
+
+      document.addEventListener('mouseleave', () => {
+        isVisible = false;
+        cursorDot.style.opacity = '0';
+        cursorRing.style.opacity = '0';
+      });
+
+      document.addEventListener('mouseenter', () => {
+        isVisible = true;
+        cursorDot.style.opacity = '1';
+        cursorRing.style.opacity = '1';
+      });
+
+      window.addEventListener('mousedown', () => {
+        cursorRing.classList.add('cursor-clicked');
+      });
+
+      window.addEventListener('mouseup', () => {
+        cursorRing.classList.remove('cursor-clicked');
+      });
+
+      const interactiveSelector = 'a, button, input, select, textarea, [role="button"], .tab-btn, .lang-btn, .filter-chip, .chapter-tag, .product-card, .market-hub, .cert-badge';
+
+      document.addEventListener('mouseover', (e) => {
+        const target = e.target.closest(interactiveSelector);
+        if (target) {
+          cursorRing.classList.add('cursor-active-hover');
+          cursorDot.classList.add('dot-active-hover');
+        }
+      });
+
+      document.addEventListener('mouseout', (e) => {
+        const target = e.target.closest(interactiveSelector);
+        if (target) {
+          cursorRing.classList.remove('cursor-active-hover');
+          cursorDot.classList.remove('dot-active-hover');
+        }
+      });
+
+      // Lerp loop for ultra-smooth fluid outer ring
+      const lerp = (start, end, factor) => start + (end - start) * factor;
+
+      function renderLoop() {
+        if (isVisible) {
+          ringX = lerp(ringX, mouseX, 0.18);
+          ringY = lerp(ringY, mouseY, 0.18);
+          cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+        }
+        requestAnimationFrame(renderLoop);
+      }
+      requestAnimationFrame(renderLoop);
+    })();
+
 </script>
+
+  <style>
+    /* Hide Default System Cursor on Desktop so only Luxury Cursor shows */
+    @media (min-width: 769px) {
+      *, *::before, *::after {
+        cursor: none !important;
+      }
+    }
+
+    /* Luxury Custom Cursor Styles - Ultra Clear on Dark & Light Backgrounds */
+    .luxury-cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      margin-top: -5px;
+      margin-left: -5px;
+      background: #f47d2d;
+      border: 1.5px solid #ffffff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2147483647;
+      opacity: 0;
+      box-shadow: 0 0 10px rgba(244, 125, 45, 1), 0 0 3px rgba(0, 0, 0, 0.9);
+      transition: opacity 0.2s ease, width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, margin 0.25s ease;
+      will-change: transform;
+    }
+
+    .luxury-cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      margin-top: -20px;
+      margin-left: -20px;
+      border: 2px solid #6dc455;
+      background: radial-gradient(circle, rgba(109, 196, 85, 0.15) 0%, rgba(244, 125, 45, 0.08) 60%, transparent 80%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2147483646;
+      opacity: 0;
+      box-shadow: 0 0 14px rgba(109, 196, 85, 0.6), 0 0 2px rgba(0, 0, 0, 0.8), inset 0 0 8px rgba(244, 125, 45, 0.2);
+      transition: opacity 0.2s ease, width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), margin 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform;
+    }
+
+    /* Hover Interaction over Clickable Elements */
+    .luxury-cursor-ring.cursor-active-hover {
+      width: 62px;
+      height: 62px;
+      margin-top: -31px;
+      margin-left: -31px;
+      border-color: #f47d2d;
+      background: radial-gradient(circle, rgba(244, 125, 45, 0.25) 0%, rgba(109, 196, 85, 0.12) 60%, transparent 85%);
+      box-shadow: 0 0 26px rgba(244, 125, 45, 0.8), 0 0 3px rgba(0, 0, 0, 0.7), inset 0 0 16px rgba(244, 125, 45, 0.3);
+    }
+
+    .luxury-cursor-dot.dot-active-hover {
+      width: 13px;
+      height: 13px;
+      margin-top: -6.5px;
+      margin-left: -6.5px;
+      background: #ffffff;
+      border-color: #f47d2d;
+      box-shadow: 0 0 15px #ffffff, 0 0 20px #f47d2d;
+    }
+
+    /* Active Click Interaction */
+    .luxury-cursor-ring.cursor-clicked {
+      width: 28px;
+      height: 28px;
+      margin-top: -14px;
+      margin-left: -14px;
+      border-color: #6dc455;
+      background: rgba(109, 196, 85, 0.45);
+    }
+
+    @media (max-width: 768px) {
+      .luxury-cursor-dot,
+      .luxury-cursor-ring {
+        display: none !important;
+      }
+    }
+  </style>
 </body>
 </html>
