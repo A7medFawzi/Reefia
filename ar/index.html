@@ -13720,6 +13720,13 @@
           setProductActive(currentVarietyIdx);
         }
       } catch (err) {}
+
+      // Synchronize Minimal Section Rail labels to active language
+      try {
+        if (typeof updateRailLabels === 'function') {
+          updateRailLabels(langKey);
+        }
+      } catch (err) {}
     }
     window.setLanguage = setLanguage;
 
@@ -14544,12 +14551,24 @@
       document.body.appendChild(rail);
 
       const navSections = [
-        { id: 'produce', num: '02', label: 'Our Produce' },
-        { id: 'specifications', num: '03', label: 'Specifications' },
-        { id: 'markets', num: '04', label: 'Global Markets' },
-        { id: 'about', num: '05', label: 'Why Reefiya' },
-        { id: 'contact', num: '06', label: 'Contact Desk' }
+        { id: 'produce', num: '02', key: 'produce' },
+        { id: 'specifications', num: '03', key: 'specs' },
+        { id: 'markets', num: '04', key: 'markets' },
+        { id: 'about', num: '05', key: 'about' },
+        { id: 'contact', num: '06', key: 'contact' }
       ];
+
+      const railLabels = {
+        en: { produce: 'Our Produce', specs: 'Specifications', markets: 'Global Markets', about: 'Why Reefiya', contact: 'Contact Desk' },
+        ar: { produce: 'محاصيلنا', specs: 'المواصفات والتعبئة', markets: 'الأسواق العالمية', about: 'عن ريفيا', contact: 'تواصل معنا' },
+        nl: { produce: 'Onze Producten', specs: 'Specificaties', markets: 'Wereldmarkten', about: 'Waarom Reefiya', contact: 'Contact Desk' },
+        de: { produce: 'Produkte', specs: 'Spezifikationen', markets: 'Globale Märkte', about: 'Über Reefiya', contact: 'Kontakt' },
+        fr: { produce: 'Nos Produits', specs: 'Spécifications', markets: 'Marchés Mondiaux', about: 'Pourquoi Reefiya', contact: 'Contact' },
+        es: { produce: 'Nuestros Productos', specs: 'Especificaciones', markets: 'Mercados Globales', about: 'Sobre Reefiya', contact: 'Contacto' },
+        it: { produce: 'I Nostri Prodotti', specs: 'Specifiche', markets: 'Mercati Globali', about: 'Perché Reefiya', contact: 'Contatti' },
+        ru: { produce: 'Продукция', specs: 'Спецификации', markets: 'Мировые рынки', about: 'О компании', contact: 'Контакты' },
+        tr: { produce: 'Ürünlerimiz', specs: 'Özellikler', markets: 'Küresel Pazarlar', about: 'Neden Reefiya', contact: 'İletişim' }
+      };
 
       const pointsContainer = document.getElementById('railPointsList');
       const fillLine = document.getElementById('railFillLine');
@@ -14559,12 +14578,13 @@
         point.type = 'button';
         point.className = 'rail-point-item';
         point.setAttribute('data-target', sec.id);
-        point.setAttribute('aria-label', sec.label);
+        point.setAttribute('data-rail-key', sec.key);
+        point.setAttribute('aria-label', sec.key);
         point.innerHTML = `
           <span class="rail-dot-core"></span>
           <span class="rail-point-tooltip">
             <span class="rail-tip-num">${sec.num}</span>
-            <span class="rail-tip-name">${sec.label}</span>
+            <span class="rail-tip-name"></span>
           </span>
         `;
         point.addEventListener('click', (e) => {
@@ -14576,6 +14596,20 @@
         });
         pointsContainer.appendChild(point);
       });
+
+      function updateRailLabels(lang) {
+        const currentLang = lang || document.documentElement.getAttribute('lang') || 'en';
+        const labels = railLabels[currentLang] || railLabels['en'];
+        document.querySelectorAll('.rail-point-item').forEach(btn => {
+          const key = btn.getAttribute('data-rail-key');
+          const tipName = btn.querySelector('.rail-tip-name');
+          if (key && labels[key]) {
+            if (tipName) tipName.textContent = labels[key];
+            btn.setAttribute('aria-label', labels[key]);
+          }
+        });
+      }
+      window.updateRailLabels = updateRailLabels;
 
       // Update active point and fill on scroll
       function updateRailState() {
@@ -14605,6 +14639,7 @@
       }
 
       window.addEventListener('scroll', updateRailState, { passive: true });
+      updateRailLabels();
       updateRailState();
     })();
 
