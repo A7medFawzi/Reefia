@@ -13733,10 +13733,17 @@
       });
     });
 
-    // Auto-restore saved language preference if previously selected
-    const savedLang = localStorage.getItem('reefiya_lang');
-    if (savedLang && translations[savedLang]) {
-      setLanguage(savedLang);
+    // Check URL query param first (e.g., ?lang=ar or ?lang=en) or fallback to saved preference
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    if (urlLang && translations[urlLang]) {
+      setLanguage(urlLang);
+      localStorage.setItem('reefiya_lang', urlLang);
+    } else {
+      const savedLang = localStorage.getItem('reefiya_lang');
+      if (savedLang && translations[savedLang]) {
+        setLanguage(savedLang);
+      }
     }
 
     /* ------------------------------
