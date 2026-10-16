@@ -1204,21 +1204,50 @@
        Comprehensive Responsive Media Queries
     ------------------------------------------- */
 
-    /* Tablets & Small Laptops (<= 1024px) */
-    @media (max-width: 1024px) {
+    /* Medium Laptops & Large Tablets in Landscape (1181px - 1420px) */
+    @media (min-width: 1181px) and (max-width: 1420px) {
       .site-nav-container {
-        padding: 18px 4vw;
+        padding: 16px 2.5vw;
       }
       .nav-pill-group {
-        gap: 2px;
-        padding: 3px 5px;
+        gap: 1px;
+        padding: 3px 4px;
       }
       .nav-pill-item {
+        padding: 0 10px;
+        font-size: 0.78rem;
+      }
+      .nav-right-actions {
+        gap: 8px;
+      }
+      .quote-pill-btn {
         padding: 0 14px;
-        font-size: 0.82rem;
+        font-size: 0.8rem;
+        gap: 6px;
+      }
+      .lang-pill-btn {
+        padding: 0 9px;
+        font-size: 0.78rem;
+        gap: 6px;
+      }
+    }
+
+    /* Tablets (iPad Pro portrait, iPad Air, Nest Hub, <= 1180px) */
+    @media (max-width: 1180px) {
+      .nav-pill-group {
+        display: none !important;
+      }
+      .mobile-nav-toggle {
+        display: flex;
+      }
+      .site-nav-container {
+        padding: 16px 4vw;
+      }
+      .quote-pill-btn {
+        display: none !important;
       }
       .story-container {
-        padding: 80px 5vw 100px 5vw;
+        padding: 80px 4vw 100px 4vw;
       }
       .story-card {
         max-width: 580px;
@@ -14540,7 +14569,7 @@
        Featherlight, transparent, non-intrusive section progress & quick jump
        ========================================================================== */
     (function initMinimalSectionRail() {
-      if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 1024) return;
+      if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 1180) return;
 
       const rail = document.createElement('nav');
       rail.id = 'minimal-section-rail';
@@ -14845,7 +14874,7 @@
       background: rgba(109, 196, 85, 0.45);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px), (pointer: coarse) {
       .luxury-cursor-dot,
       .luxury-cursor-ring {
         display: none !important;
@@ -14995,7 +15024,7 @@
       transform: translateY(-50%) translateX(0);
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1180px) {
       .minimal-section-rail {
         display: none !important;
       }
