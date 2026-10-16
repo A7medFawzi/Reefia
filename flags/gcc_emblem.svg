@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Deep Green Outer Circle -->
+  <circle cx="50" cy="50" r="48" fill="#0d2818" stroke="#d4af6a" stroke-width="2"/>
+  <!-- Inner Golden Ring -->
+  <circle cx="50" cy="50" r="41" fill="none" stroke="#d4af6a" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <!-- Central Emblem / Globe & Laurel motif -->
+  <circle cx="50" cy="50" r="32" fill="#143e24" />
+  <!-- Stylized GCC Map / Emblem in Gold -->
+  <g fill="#d4af6a">
+    <!-- Stylized Gulf map outline / Emblem shield -->
+    <path d="M42 34 Q50 30 58 34 Q62 46 50 62 Q38 46 42 34 Z" fill="#d4af6a" opacity="0.9"/>
+    <!-- 6 member stars / dots -->
+    <circle cx="50" cy="24" r="2.2"/>
+    <circle cx="68" cy="36" r="2.2"/>
+    <circle cx="70" cy="56" r="2.2"/>
+    <circle cx="50" cy="74" r="2.2"/>
+    <circle cx="30" cy="56" r="2.2"/>
+    <circle cx="32" cy="36" r="2.2"/>
+  </g>
+  <!-- GCC Text in clean typography -->
+  <text x="50" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#ffffff" text-anchor="middle" letter-spacing="1">GCC</text>
+</svg>
