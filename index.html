@@ -6088,11 +6088,17 @@
 
     .sec6-bottom-fade {
       position: absolute;
-      bottom: 0;
+      bottom: -1px;
       left: 0;
       right: 0;
-      height: 20px;
-      background: linear-gradient(to top, rgba(250, 247, 242, 0.15) 0%, rgba(250, 247, 242, 0) 100%);
+      height: 220px;
+      background: linear-gradient(to bottom, 
+        rgba(4, 20, 10, 0) 0%, 
+        rgba(4, 20, 10, 0.08) 25%, 
+        rgba(4, 20, 10, 0.35) 50%, 
+        rgba(4, 20, 10, 0.72) 75%, 
+        rgba(4, 20, 10, 0.96) 92%, 
+        #04140a 100%);
       z-index: 2;
       pointer-events: none;
     }
@@ -6538,8 +6544,11 @@
     @media (max-width: 768px) {
       .sec6-inquiries-section {
         min-height: auto;
-        padding: 45px 16px 55px;
-        background-color: #FAF7F2;
+        padding: 45px 16px 75px;
+        background-color: #04140a;
+      }
+      .sec6-bottom-fade {
+        height: 180px;
       }
       .sec6-bg-image {
         object-position: 70% center;
@@ -6687,12 +6696,12 @@
       position: relative;
       background: #04140a;
       color: #e5ece7;
-      padding: clamp(70px, 7vw, 105px) clamp(24px, 5.5vw, 80px) 32px;
+      padding: clamp(48px, 4.8vw, 68px) clamp(24px, 5.5vw, 80px) 22px;
       overflow: hidden;
       font-family: var(--font-sans);
       box-sizing: border-box;
       z-index: 10;
-      margin-top: -30px;
+      margin-top: 0;
     }
 
     /* Ambient Warm Vignette & Subtle Radial Shimmer */
@@ -6701,6 +6710,7 @@
       position: absolute;
       inset: 0;
       background: 
+        linear-gradient(to bottom, #04140a 0%, rgba(4, 20, 10, 0) 60px),
         radial-gradient(circle at 12% 25%, rgba(23, 77, 48, 0.40) 0%, transparent 60%),
         radial-gradient(circle at 88% 75%, rgba(212, 175, 106, 0.07) 0%, transparent 55%),
         linear-gradient(to bottom, #04140a 0%, #020b05 100%);
@@ -6710,21 +6720,7 @@
 
     /* Top Organic Smooth Curvature Integration */
     .footer-top-curve {
-      position: absolute;
-      top: -1px;
-      left: 0;
-      right: 0;
-      height: 60px;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-      transform: translateY(-98%);
-    }
-
-    .footer-top-curve svg {
-      width: 100%;
-      height: 100%;
-      display: block;
+      display: none;
     }
 
     .footer-inner-container {
@@ -6734,7 +6730,7 @@
       z-index: 2;
       display: flex;
       flex-direction: column;
-      gap: clamp(40px, 4vw, 55px);
+      gap: clamp(28px, 2.8vw, 38px);
     }
 
     /* Top Grid: 4 Dedicated Editorial Columns Matching Reference */
@@ -6841,6 +6837,7 @@
       color: #c98d42;
       opacity: 0.85;
       transition: transform 0.22s ease, opacity 0.22s ease;
+      display: inline-block;
     }
 
     .footer-link-item a:hover {
@@ -6854,6 +6851,18 @@
       color: #dfad5e;
     }
 
+    [dir="rtl"] .footer-link-arrow {
+      transform: rotate(270deg);
+    }
+
+    [dir="rtl"] .footer-link-item a:hover {
+      transform: translateX(-4px);
+    }
+
+    [dir="rtl"] .footer-link-item a:hover .footer-link-arrow {
+      transform: rotate(270deg) translate(-2px, 2px);
+    }
+
     /* Column 3: Global Footprint Pill Cards */
     .footer-footprint-list {
       display: flex;
@@ -6864,13 +6873,11 @@
     .footer-footprint-card {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 10px 14px;
-      border-radius: 12px;
+      gap: 12px;
+      padding: 9px 12px;
+      border-radius: 9px;
       background: rgba(14, 43, 27, 0.45);
       border: 1px solid rgba(46, 125, 50, 0.25);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       transition: all 0.25s ease;
     }
 
@@ -6893,22 +6900,30 @@
     .footer-footprint-info {
       display: flex;
       flex-direction: column;
-      gap: 1px;
+      gap: 2px;
+      flex: 1;
+      min-width: 0;
     }
 
     .footer-footprint-country {
-      font-size: 0.80rem;
+      font-size: 0.75rem;
       font-weight: 700;
       color: #ffffff;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .footer-footprint-role {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       color: #8da695;
-      line-height: 1.25;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* Column 4: Commercial Desk Rows */
@@ -6951,6 +6966,12 @@
       font-size: 0.86rem;
       flex-shrink: 0;
       opacity: 0.8;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    [dir="rtl"] .footer-desk-arrow {
+      transform: scaleX(-1);
     }
 
     .footer-desk-link {
@@ -7002,6 +7023,7 @@
       font-size: 0.82rem;
       color: #85d69e;
       transition: transform 0.25s ease;
+      display: inline-block;
     }
 
     .footer-whatsapp-pill-btn:hover {
@@ -7017,6 +7039,15 @@
 
     .footer-whatsapp-pill-btn:hover .footer-btn-arrow {
       transform: translate(2px, -2px);
+      color: #ffffff;
+    }
+
+    [dir="rtl"] .footer-whatsapp-pill-btn .footer-btn-arrow {
+      transform: rotate(270deg);
+    }
+
+    [dir="rtl"] .footer-whatsapp-pill-btn:hover .footer-btn-arrow {
+      transform: rotate(270deg) translate(-2px, 2px);
       color: #ffffff;
     }
 
@@ -7047,73 +7078,85 @@
     /* Trust & Documentation Strip + Socials Bar */
     .footer-trust-documentation-bar {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 28px;
+      padding-top: 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
+      flex-wrap: nowrap;
+      gap: 20px 24px;
     }
 
     .footer-trust-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .footer-trust-heading {
+      font-size: 0.70rem;
+      font-weight: 700;
+      color: #6d8876;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .footer-bar-divider {
+      display: inline-block;
+      width: 1px;
+      height: 32px;
+      background: rgba(212, 175, 106, 0.3);
+      flex-shrink: 0;
+    }
+
+    .footer-trust-badges-inline {
       display: flex;
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
     }
 
-    .footer-trust-heading {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #6d8876;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .footer-trust-badges-inline {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
     .footer-trust-badge-item {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #b5cebd;
-      letter-spacing: 0.04em;
     }
 
     .footer-trust-cert-icon {
-      height: 22px;
+      height: 38px;
       width: auto;
+      max-width: 260px;
       object-fit: contain;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+      filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .footer-trust-cert-icon:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
     }
 
     /* Social Group + Evexa Credit */
     .footer-social-developer-group {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 22px;
       flex-wrap: wrap;
     }
 
     .footer-social-inline {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .footer-social-heading {
-      font-size: 0.72rem;
+      font-size: 0.70rem;
       font-weight: 700;
       color: #6d8876;
       letter-spacing: 0.14em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .footer-social-icons {
@@ -7123,15 +7166,15 @@
     }
 
     .footer-social-circle {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(212, 175, 106, 0.25);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: #c5d8cc;
+      color: #d1e2d6;
       text-decoration: none;
       transition: all 0.22s ease;
     }
@@ -7141,31 +7184,45 @@
       border-color: #c98d42;
       color: #ffffff;
       transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
-    /* Developed by EVEXA Credit Pill */
+    /* Developed by EVEXA Credit */
     .footer-developer-credit {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
-      padding: 4px 10px;
+      padding: 4px 8px;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
       transition: all 0.25s ease;
     }
 
     .footer-developer-credit:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: rgba(0, 163, 255, 0.35);
+      opacity: 0.9;
       transform: translateY(-1px);
+    }
+
+    .footer-evexa-logo-wrap {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .footer-evexa-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 5px rgba(0, 163, 255, 0.45));
     }
 
     .footer-dev-text {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: flex-start;
       line-height: 1.15;
     }
 
@@ -7182,26 +7239,11 @@
       letter-spacing: 0.05em;
     }
 
-    .footer-evexa-logo-wrap {
-      width: 22px;
-      height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .footer-evexa-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 0 4px rgba(0, 163, 255, 0.4));
-    }
-
     /* Bottom Copyright & Legal Links */
     .footer-bottom-bar {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 4px;
+      margin-top: -16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -7213,6 +7255,17 @@
       font-size: 0.78rem;
       color: #6d8876;
       margin: 0;
+    }
+
+    [dir="rtl"] .footer-copy-text {
+      direction: rtl;
+      unicode-bidi: isolate;
+      text-align: right;
+    }
+
+    [dir="rtl"] .footer-status-indicator {
+      flex-direction: row;
+      justify-content: flex-start;
     }
 
     .footer-bottom-meta {
@@ -7276,7 +7329,7 @@
     }
 
     [dir="rtl"] .footer-link-arrow {
-      transform: rotate(90deg);
+      transform: rotate(270deg);
     }
 
     [dir="rtl"] .footer-desk-arrow {
@@ -7305,11 +7358,25 @@
       .footer-trust-documentation-bar {
         flex-direction: column;
         align-items: flex-start;
-        gap: 22px;
+        gap: 20px;
+      }
+      .footer-trust-group {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 14px;
+      }
+      .footer-trust-group > .footer-bar-divider {
+        display: none;
       }
       .footer-social-developer-group {
         width: 100%;
         justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .footer-social-developer-group > .footer-bar-divider {
+        display: none;
       }
     }
 
@@ -7321,10 +7388,21 @@
         grid-template-columns: 1fr;
         gap: 32px;
       }
+      .footer-trust-badges-inline {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .footer-trust-cert-icon {
+        height: 28px !important;
+        max-width: 170px !important;
+      }
+      .footer-bar-divider {
+        height: 22px !important;
+      }
       .footer-social-developer-group {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
+        gap: 18px;
       }
       .footer-bottom-bar {
         flex-direction: column;
@@ -10831,7 +10909,7 @@
             </li>
             <li class="footer-link-item">
               <a href="#about">
-                <span data-i18n="footer_nav_why">Why REEFIYA</span>
+                <span data-i18n="footer_nav_why">Why Reefiya</span>
                 <span class="footer-link-arrow">↗</span>
               </a>
             </li>
@@ -10844,24 +10922,24 @@
           </ul>
         </div>
 
-        <!-- Column 3: Global Footprint -->
+        <!-- Column 3: Global Presence -->
         <div class="footer-col footer-col-footprint">
-          <h4 class="footer-col-title" data-i18n="footer_col_footprint">GLOBAL FOOTPRINT</h4>
+          <h4 class="footer-col-title" data-i18n="footer_col_footprint">GLOBAL PRESENCE</h4>
           <div class="footer-footprint-list">
             
             <div class="footer-footprint-card">
               <img src="flags/eg.png" alt="Egypt" class="footer-footprint-flag">
               <div class="footer-footprint-info">
-                <span class="footer-footprint-country" data-i18n="footer_hub_eg_title">EGYPT</span>
-                <span class="footer-footprint-role" data-i18n="footer_hub_eg_role">Operations Hub</span>
+                <span class="footer-footprint-country" data-i18n="footer_hub_eg_title">ALEXANDRIA HEADQUARTERS</span>
+                <span class="footer-footprint-role" data-i18n="footer_hub_eg_role">Export Operations • Egypt</span>
               </div>
             </div>
 
             <div class="footer-footprint-card">
               <img src="flags/sa.png" alt="Saudi Arabia" class="footer-footprint-flag">
               <div class="footer-footprint-info">
-                <span class="footer-footprint-country" data-i18n="footer_hub_sa_title">SAUDI ARABIA</span>
-                <span class="footer-footprint-role" data-i18n="footer_hub_sa_role">Regional Trade Desk</span>
+                <span class="footer-footprint-country" data-i18n="footer_hub_sa_title">RIYADH REGIONAL DESK</span>
+                <span class="footer-footprint-role" data-i18n="footer_hub_sa_role">Regional Trade & Commercial Relations</span>
               </div>
             </div>
 
@@ -10869,7 +10947,7 @@
               <img src="flags/us.png" alt="United States" class="footer-footprint-flag">
               <div class="footer-footprint-info">
                 <span class="footer-footprint-country" data-i18n="footer_hub_us_title">UNITED STATES</span>
-                <span class="footer-footprint-role" data-i18n="footer_hub_us_role">Registered LLC</span>
+                <span class="footer-footprint-role" data-i18n="footer_hub_us_role">Registered U.S. Company • LLC</span>
               </div>
             </div>
 
@@ -10877,7 +10955,7 @@
               <img src="flags/ca.png" alt="Canada" class="footer-footprint-flag">
               <div class="footer-footprint-info">
                 <span class="footer-footprint-country" data-i18n="footer_hub_ca_title">CANADA</span>
-                <span class="footer-footprint-role" data-i18n="footer_hub_ca_role">Federal Corporation</span>
+                <span class="footer-footprint-role" data-i18n="footer_hub_ca_role">Federally Incorporated Company</span>
               </div>
             </div>
 
@@ -10937,18 +11015,18 @@
         <!-- Left: Quality & Certifications -->
         <div class="footer-trust-group">
           <span class="footer-trust-heading" data-i18n="footer_trust_heading">QUALITY & DOCUMENTATION</span>
+          <span class="footer-bar-divider" aria-hidden="true"></span>
           <div class="footer-trust-badges-inline">
-            <div class="footer-trust-badge-item">
-              <img src="cert_globalgap.svg" alt="GlobalG.A.P." class="footer-trust-cert-icon">
-              <span>GLOBALG.A.P.</span>
+            <div class="footer-trust-badge-item" title="GLOBALG.A.P. Certified">
+              <img src="cert_globalgap_official.png" alt="GLOBALG.A.P." class="footer-trust-cert-icon" style="height: 38px;">
             </div>
-            <div class="footer-trust-badge-item">
-              <img src="cert_iso.svg" alt="ISO 22000" class="footer-trust-cert-icon">
-              <span>ISO 22000</span>
+            <span class="footer-bar-divider" aria-hidden="true" style="height: 28px; opacity: 0.7;"></span>
+            <div class="footer-trust-badge-item" title="ISO 22000 Certified">
+              <img src="cert_iso_official.png" alt="ISO 22000" class="footer-trust-cert-icon" style="height: 38px;">
             </div>
-            <div class="footer-trust-badge-item">
-              <img src="egypt_eagle.svg" alt="Egyptian Plant Quarantine" class="footer-trust-cert-icon">
-              <span data-i18n="footer_cert_quarantine">Egyptian Plant Quarantine</span>
+            <span class="footer-bar-divider" aria-hidden="true" style="height: 28px; opacity: 0.7;"></span>
+            <div class="footer-trust-badge-item" title="Egyptian Plant Quarantine Approved">
+              <img src="cert_quarantine_official.png" alt="Egyptian Plant Quarantine" class="footer-trust-cert-icon" style="height: 42px;">
             </div>
           </div>
         </div>
@@ -10958,30 +11036,32 @@
           <div class="footer-social-inline">
             <span class="footer-social-heading" data-i18n="footer_social_heading">FOLLOW REEFIYA</span>
             <div class="footer-social-icons">
-              <a href="#" class="footer-social-circle" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/company/reefiyaexports" class="footer-social-circle" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               </a>
-              <a href="#" class="footer-social-circle" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/reefiyaexports/" class="footer-social-circle" aria-label="Instagram" target="_blank" rel="noopener noreferrer" title="Instagram">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
-              <a href="#" class="footer-social-circle" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/reefiyaexports/" class="footer-social-circle" aria-label="Facebook" target="_blank" rel="noopener noreferrer" title="Facebook">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.688 5H18V0h-3.808C10.596 0 9 1.582 9 4.615V8z"/></svg>
               </a>
-              <a href="#" class="footer-social-circle" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.youtube.com/channel/UCv8HagBDsDFXM-QRxC3Y5kA" class="footer-social-circle" aria-label="YouTube" target="_blank" rel="noopener noreferrer" title="YouTube">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               </a>
             </div>
           </div>
 
+          <span class="footer-bar-divider" aria-hidden="true"></span>
+
           <!-- Developed by EVEXA Link & Logo -->
           <a href="https://www.evexa.tech/en" target="_blank" rel="noopener noreferrer" class="footer-developer-credit" title="Developed by EVEXA SOLUTIONS">
+            <div class="footer-evexa-logo-wrap">
+              <img src="evexa_logo_pure.png" alt="EVEXA Solutions" class="footer-evexa-img">
+            </div>
             <span class="footer-dev-text">
               <span class="footer-dev-label" data-i18n="footer_dev_label">Developed by</span>
               <span class="footer-dev-company">EVEXA SOLUTIONS</span>
             </span>
-            <div class="footer-evexa-logo-wrap">
-              <img src="./evexa_mark.svg" alt="EVEXA" class="footer-evexa-img">
-            </div>
           </a>
         </div>
 
@@ -10990,7 +11070,7 @@
       <!-- Bottom Bar: Copyright & Legal Policies -->
       <div class="footer-bottom-bar">
         <p class="footer-copy-text" data-i18n="footer_copyright">
-          &copy; 2026 REEFIYA. All rights reserved.
+          &copy; 2026 REEFIYA Agricultural Export. All Rights Reserved.
         </p>
         <div class="footer-bottom-meta">
           <a href="javascript:void(0)" onclick="openLegalModal('privacy')" class="footer-meta-link" data-i18n="footer_link_privacy">Privacy Policy</a>
@@ -11051,17 +11131,17 @@
         footer_nav_specs: 'Specifications',
         footer_nav_journey: 'Export Journey',
         footer_nav_markets: 'Markets',
-        footer_nav_why: 'Why REEFIYA',
+        footer_nav_why: 'Why Reefiya',
         footer_nav_contact: 'Contact',
-        footer_col_footprint: 'GLOBAL FOOTPRINT',
-        footer_hub_eg_title: 'EGYPT',
-        footer_hub_eg_role: 'Operations Hub',
-        footer_hub_sa_title: 'SAUDI ARABIA',
-        footer_hub_sa_role: 'Regional Trade Desk',
+        footer_col_footprint: 'GLOBAL PRESENCE',
+        footer_hub_eg_title: 'ALEXANDRIA HEADQUARTERS',
+        footer_hub_eg_role: 'Export Operations • Egypt',
+        footer_hub_sa_title: 'RIYADH REGIONAL DESK',
+        footer_hub_sa_role: 'Regional Trade & Commercial Relations',
         footer_hub_us_title: 'UNITED STATES',
-        footer_hub_us_role: 'Registered LLC',
+        footer_hub_us_role: 'Registered U.S. Company • LLC',
         footer_hub_ca_title: 'CANADA',
-        footer_hub_ca_role: 'Federal Corporation',
+        footer_hub_ca_role: 'Federally Incorporated Company',
         footer_col_desk: 'COMMERCIAL DESK',
         footer_desk_address: '144 Port Said St, El Ibrahimaia Bahry, Alexandria, Egypt',
         footer_btn_whatsapp: 'Talk to Export Desk',
@@ -11070,7 +11150,7 @@
         footer_cert_quarantine: 'Egyptian Plant Quarantine',
         footer_dev_label: 'Developed by',
         footer_social_heading: 'FOLLOW REEFIYA',
-        footer_copyright: '© 2026 REEFIYA. All rights reserved.',
+        footer_copyright: '© 2026 REEFIYA Agricultural Export. All Rights Reserved.',
         footer_link_privacy: 'Privacy Policy',
         footer_link_terms: 'Terms & Conditions',
         footer_link_sitemap: 'Sitemap',
@@ -11287,18 +11367,18 @@
         footer_nav_about: 'Our Export Discipline',
         footer_nav_quote: 'Request Direct Quotation',
         footer_col_hubs: 'Commercial Hubs',
-        footer_hub_eg_title: 'Alexandria HQ & Port',
-        footer_hub_eg_sub: 'Operations & Export Packhouse',
-        footer_hub_sa_title: 'Riyadh Regional Desk',
-        footer_hub_sa_sub: 'GCC Commercial Coordination',
-        footer_hub_us_title: 'North America LLC',
-        footer_hub_us_sub: 'USA Importer & Clearance Support',
-        footer_hub_ca_title: 'Canada Office',
-        footer_hub_ca_sub: 'Canadian Distribution Support',
+        footer_hub_eg_title: 'ALEXANDRIA HEADQUARTERS',
+        footer_hub_eg_role: 'Export Operations • Egypt',
+        footer_hub_sa_title: 'RIYADH REGIONAL DESK',
+        footer_hub_sa_role: 'Regional Trade & Commercial Relations',
+        footer_hub_us_title: 'UNITED STATES',
+        footer_hub_us_role: 'Registered U.S. Company • LLC',
+        footer_hub_ca_title: 'CANADA',
+        footer_hub_ca_role: 'Federally Incorporated Company',
         footer_col_desk: 'Commercial Desk',
         footer_btn_whatsapp: 'WhatsApp Direct Desk',
         footer_response_badge: 'Commercial Desk Active | Rapid Response',
-        footer_copyright: '© 2026 REEFIYA Agricultural Export. All Rights Reserved. Alexandria, Egypt.',
+        footer_copyright: '© 2026 REEFIYA Agricultural Export. All Rights Reserved.',
         footer_link_terms: 'Commercial Terms',
         footer_link_privacy: 'Export Policy',
         footer_back_top: 'Back to Top',
@@ -11314,25 +11394,25 @@
         footer_nav_why: 'لماذا ريفيا',
         footer_nav_contact: 'تواصل معنا',
         footer_col_footprint: 'التواجد الدولي',
-        footer_hub_eg_title: 'مصر',
-        footer_hub_eg_role: 'مركز العمليات والتصدير',
-        footer_hub_sa_title: 'المملكة العربية السعودية',
-        footer_hub_sa_role: 'مكتب التجارة الإقليمي',
+        footer_hub_eg_title: 'المقر الرئيسي بالإسكندرية',
+        footer_hub_eg_role: 'عمليات التصدير • مصر',
+        footer_hub_sa_title: 'مكتب الرياض الإقليمي',
+        footer_hub_sa_role: 'العلاقات التجارية والإقليمية',
         footer_hub_us_title: 'الولايات المتحدة',
-        footer_hub_us_role: 'شركة مسجلة (LLC)',
+        footer_hub_us_role: 'شركة مسجلة في الولايات المتحدة • LLC',
         footer_hub_ca_title: 'كندا',
-        footer_hub_ca_role: 'شركة فيدرالية مسجلة',
+        footer_hub_ca_role: 'شركة فيدرالية مسجلة كندية',
         footer_col_desk: 'مكتب التصدير التجاري',
         footer_desk_address: '١٤٤ شارع بورسعيد، الإبراهيمية بحري، الإسكندرية، مصر',
-        footer_btn_whatsapp: 'تواصل مع مكتب التصدير',
-        footer_status_text: 'الرد التجاري خلال <strong>١-٢ يوم عمل</strong>',
+        footer_btn_whatsapp: 'محادثة مباشرة عبر واتساب',
+        footer_status_text: 'الرد التجاري خلال <strong>1-2 يوم عمل</strong>',
         footer_trust_heading: 'الجودة والاعتماد الزراعي',
         footer_cert_quarantine: 'الحجر الزراعي المصري',
         footer_dev_label: 'تطوير وتصميم',
         footer_social_heading: 'تابع ريفيا',
-        footer_copyright: '© 2026 ريفيا. جميع الحقوق محفوظة.',
-        footer_link_privacy: 'سياسة الخصوصية',
-        footer_link_terms: 'الشروط والأحكام',
+        footer_copyright: '© 2026 ريفيا للحاصلات الزراعية والتصدير. جميع الحقوق محفوظة.',
+        footer_link_privacy: 'سياسة التصدير',
+        footer_link_terms: 'الشروط التجارية',
         footer_link_sitemap: 'خريطة الموقع',
         sec5_badge: 'لماذا ريفيا',
         sec6_badge_num: '06',
@@ -11548,17 +11628,17 @@
         footer_nav_quote: 'طلب عرض تسعير مباشر',
         footer_col_hubs: 'المراكز التجارية',
         footer_hub_eg_title: 'المقر الرئيسي بالإسكندرية',
-        footer_hub_eg_sub: 'العمليات ومحطة الفرز والتعبئة',
+        footer_hub_eg_role: 'عمليات التصدير • مصر',
         footer_hub_sa_title: 'مكتب الرياض الإقليمي',
-        footer_hub_sa_sub: 'التنسيق التجاري لدول الخليج',
-        footer_hub_us_title: 'مكتب أمريكا الشمالية (LLC)',
-        footer_hub_us_sub: 'الاستيراد والتخليص في الولايات المتحدة',
-        footer_hub_ca_title: 'مكتب كندا',
-        footer_hub_ca_sub: 'دعم التوزيع والتوريد الكندي',
+        footer_hub_sa_role: 'العلاقات التجارية والإقليمية',
+        footer_hub_us_title: 'الولايات المتحدة',
+        footer_hub_us_role: 'شركة مسجلة في الولايات المتحدة • LLC',
+        footer_hub_ca_title: 'كندا',
+        footer_hub_ca_role: 'شركة فيدرالية مسجلة كندية',
         footer_col_desk: 'مكتب التصدير التجاري',
         footer_btn_whatsapp: 'محادثة مباشرة عبر واتساب',
         footer_response_badge: 'المكتب التجاري متاح | استجابة سريعة',
-        footer_copyright: '© 2026 ريفيا للحاصلات الزراعية والتصدير. جميع الحقوق محفوظة. الإسكندرية، مصر.',
+        footer_copyright: '© 2026 ريفيا للحاصلات الزراعية والتصدير. جميع الحقوق محفوظة.',
         footer_link_terms: 'الشروط التجارية',
         footer_link_privacy: 'سياسة التصدير',
         footer_back_top: 'إلى الأعلى',
@@ -11818,7 +11898,7 @@
         footer_col_desk: 'Handelsdesk',
         footer_btn_whatsapp: 'WhatsApp Direktdesk',
         footer_response_badge: 'Handelsdesk Aktiv | Schnelle Antwort',
-        footer_copyright: '© 2026 REEFIYA Agrarexport. Alle Rechte vorbehalten. Alexandria, Ägypten.',
+        footer_copyright: '© 2026 REEFIYA Agricultural Export. All Rights Reserved.',
         footer_link_terms: 'Handelsbedingungen',
         footer_link_privacy: 'Exportrichtlinie',
         footer_back_top: 'Nach oben',
@@ -12078,7 +12158,7 @@
         footer_col_desk: 'Bureau Commercial',
         footer_btn_whatsapp: 'WhatsApp Direct Desk',
         footer_response_badge: 'Bureau Commercial Actif | Réponse Rapide',
-        footer_copyright: '© 2026 REEFIYA Export Agricole. Tous droits réservés. Alexandrie, Égypte.',
+        footer_copyright: '© 2026 REEFIYA Agricultural Export. All Rights Reserved.',
         footer_link_terms: 'Conditions Commerciales',
         footer_link_privacy: 'Politique Export',
         footer_back_top: 'Haut de page',
@@ -12338,7 +12418,7 @@
         footer_col_desk: 'Commerciële Desk',
         footer_btn_whatsapp: 'WhatsApp Direct Desk',
         footer_response_badge: 'Commerciële Desk Actief | Snelle Reactie',
-        footer_copyright: '© 2026 REEFIYA Landbouwexport. Alle rechten voorbehouden. Alexandrië, Egypte.',
+        footer_copyright: '© 2026 REEFIYA Agricultural Export. All Rights Reserved.',
         footer_link_terms: 'Commerciële Voorwaarden',
         footer_link_privacy: 'Exportbeleid',
         footer_back_top: 'Naar Boven',
@@ -12598,7 +12678,7 @@
         footer_col_desk: 'Mesa Comercial',
         footer_btn_whatsapp: 'Mesa Directa de WhatsApp',
         footer_response_badge: 'Mesa Comercial Activa | Respuesta Rápida',
-        footer_copyright: '© 2026 REEFIYA Exportación Agrícola. Todos los derechos reservados. Alejandría, Egipto.',
+        footer_copyright: '© 2026 REEFIYA Agricultural Export. All Rights Reserved.',
         footer_link_terms: 'Términos Comerciales',
         footer_link_privacy: 'Política de Exportación',
         footer_back_top: 'Volver Arriba',
@@ -12858,7 +12938,7 @@
         footer_col_desk: 'Коммерческий отдел',
         footer_btn_whatsapp: 'Прямая связь через WhatsApp',
         footer_response_badge: 'Отдел активен | Быстрый ответ',
-        footer_copyright: '© 2026 REEFIYA Экспорт сельхозпродукции. Все права защищены. Александрия, Египет.',
+        footer_copyright: '© 2026 REEFIYA Agricultural Export. All Rights Reserved.',
         footer_link_terms: 'Коммерческие условия',
         footer_link_privacy: 'Экспортная политика',
         footer_back_top: 'Наверх',
@@ -13118,7 +13198,7 @@
         footer_col_desk: 'Ticari Masa',
         footer_btn_whatsapp: 'Doğrudan WhatsApp Hattı',
         footer_response_badge: 'Ticari Masa Aktif | Hızlı Yanıt',
-        footer_copyright: '© 2026 REEFIYA Tarım İhracatı. Tüm Hakları Saklıdır. İskenderiye, Mısır.',
+        footer_copyright: '© 2026 REEFIYA Agricultural Export. All Rights Reserved.',
         footer_link_terms: 'Ticari Şartlar',
         footer_link_privacy: 'İhracat Politikası',
         footer_back_top: 'Başa Dön',
@@ -13378,7 +13458,7 @@
         footer_col_desk: 'Desk Commerciale',
         footer_btn_whatsapp: 'Desk Diretto WhatsApp',
         footer_response_badge: 'Desk Commerciale Attivo | Risposta Rapida',
-        footer_copyright: '© 2026 REEFIYA Esportazione Agricola. Tutti i diritti riservati. Alessandria, Egitto.',
+        footer_copyright: '© 2026 REEFIYA Agricultural Export. All Rights Reserved.',
         footer_link_terms: 'Termini Commerciali',
         footer_link_privacy: 'Politica di Esportazione',
         footer_back_top: 'Torna su'
@@ -13424,10 +13504,15 @@
       }
 
       // Update all translated strings
+      const curYear = new Date().getFullYear();
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (data[key]) {
-          el.innerHTML = data[key];
+          let val = data[key];
+          if (key === 'footer_copyright') {
+            val = val.replace(/\b20\d\d\b/, curYear);
+          }
+          el.innerHTML = val;
         }
       });
 
@@ -14227,6 +14312,14 @@
         if (e.key === 'Escape' && modal.classList.contains('active')) {
           closeVideo();
         }
+      });
+    })();
+
+    // Ensure copyright year is always dynamic on initial page load
+    (function initDynamicCopyrightYear() {
+      const curYear = new Date().getFullYear();
+      document.querySelectorAll('.footer-copy-text').forEach(el => {
+        el.innerHTML = el.innerHTML.replace(/\b20\d\d\b/, curYear);
       });
     })();
 
