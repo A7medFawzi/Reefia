@@ -14637,6 +14637,30 @@
       window.addEventListener('scroll', updateRailState, { passive: true });
       updateRailLabels();
       updateRailState();
+
+      // Gracefully show rail only after preloader is dismissed
+      function revealRailWhenReady() {
+        const loader = document.getElementById('loader');
+        if (!loader || loader.classList.contains('hidden') || getComputedStyle(loader).display === 'none') {
+          rail.classList.add('is-visible');
+        } else {
+          const observer = new MutationObserver(() => {
+            if (loader.classList.contains('hidden')) {
+              setTimeout(() => rail.classList.add('is-visible'), 400);
+              observer.disconnect();
+            }
+          });
+          observer.observe(loader, { attributes: true, attributeFilter: ['class'] });
+          // Fallback reveal after 2s
+          setTimeout(() => rail.classList.add('is-visible'), 2000);
+        }
+      }
+      if (document.readyState === 'complete') {
+        revealRailWhenReady();
+      } else {
+        window.addEventListener('load', revealRailWhenReady);
+        setTimeout(revealRailWhenReady, 1200);
+      }
     })();
 
     /* ==========================================================================
@@ -14836,6 +14860,17 @@
       padding: 10px 4px;
       pointer-events: auto;
       user-select: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+    }
+
+    /* Reveal only after preloader is dismissed */
+    .loader.hidden ~ .minimal-section-rail,
+    body.is-loaded .minimal-section-rail,
+    .minimal-section-rail.is-visible {
+      opacity: 1;
+      visibility: visible;
     }
 
     [dir="rtl"] .minimal-section-rail {
