@@ -16,8 +16,8 @@
   <!-- Open Graph / WhatsApp / Facebook / LinkedIn -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://reefiya.com/rfq.html">
-  <meta property="og:title" content="Commercial RFQ | REEFIYA Wholesale Sweet Potatoes Export">
-  <meta property="og:description" content="Calculate and configure export quotes for premium Egyptian sweet potatoes with real-time CIF/FOB specifications and packaging customization.">
+  <meta property="og:title" content="طلب عرض أسعار تصديري (RFQ) | Commercial Export Quotation — REEFIYA">
+  <meta property="og:description" content="Commercial export quote configurator for premium Egyptian sweet potatoes (Beauregard, Bellevue). احسب وخصص مواصفات تصدير البطاطا الحلوة المصرية مع إصدار فوري لملف التعاقد PDF.">
   <meta property="og:image" content="https://reefiya.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://reefiya.com/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -28,8 +28,8 @@
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Commercial RFQ | REEFIYA Wholesale Sweet Potatoes Export">
-  <meta name="twitter:description" content="Calculate and configure export quotes for premium Egyptian sweet potatoes with real-time CIF/FOB specifications and packaging customization.">
+  <meta name="twitter:title" content="طلب عرض أسعار تصديري (RFQ) | Commercial Export Quotation — REEFIYA">
+  <meta name="twitter:description" content="Commercial export quote configurator for premium Egyptian sweet potatoes (Beauregard, Bellevue). احسب وخصص مواصفات تصدير البطاطا الحلوة المصرية مع إصدار فوري لملف التعاقد PDF.">
   <meta name="twitter:image" content="https://reefiya.com/og-image.jpg">
 
   <!-- Structured Data: B2B Commercial RFQ & Produce Quote Service (JSON-LD) -->
@@ -8198,6 +8198,18 @@
           const chosenLang = item.getAttribute('data-lang');
           localStorage.setItem('reefiya_lang', chosenLang);
           applyLang(chosenLang);
+
+          // Seamless address bar URL synchronization
+          try {
+            const currentOrigin = window.location.origin;
+            const currentHash = window.location.hash || '';
+            if (chosenLang === 'ar') {
+              window.history.replaceState({ lang: 'ar' }, '', currentOrigin + '/ar/rfq' + currentHash);
+            } else {
+              window.history.replaceState({ lang: chosenLang }, '', currentOrigin + '/rfq' + currentHash);
+            }
+          } catch (navErr) {}
+
           langMenu.classList.remove('open');
           langBtn.setAttribute('aria-expanded', 'false');
         });
