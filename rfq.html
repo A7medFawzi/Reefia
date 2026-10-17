@@ -17,20 +17,21 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://reefiya.com/rfq.html">
   <meta property="og:title" content="طلب عرض أسعار تصديري (RFQ) | Commercial Export Quotation — REEFIYA">
-  <meta property="og:description" content="Commercial export quote configurator for premium Egyptian sweet potatoes (Beauregard, Bellevue). احسب وخصص مواصفات تصدير البطاطا الحلوة المصرية مع إصدار فوري لملف التعاقد PDF.">
-  <meta property="og:image" content="https://reefiya.com/og-image.jpg">
-  <meta property="og:image:secure_url" content="https://reefiya.com/og-image.jpg">
+  <meta property="og:description" content="تخصيص وحساب مواصفات تصدير البطاطا الحلوة المصرية (بوريغارد، بيلفيو) — شحن بحري مبرد، فرز وتعبئة وفق المواصفات القياسية مع إصدار فوري لملف التعاقد PDF.">
+  <meta property="og:image" content="https://reefiya.com/og-image-ar.jpg">
+  <meta property="og:image:secure_url" content="https://reefiya.com/og-image-ar.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:locale:alternate" content="en_US">
   <meta property="og:site_name" content="Reefiya">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="طلب عرض أسعار تصديري (RFQ) | Commercial Export Quotation — REEFIYA">
-  <meta name="twitter:description" content="Commercial export quote configurator for premium Egyptian sweet potatoes (Beauregard, Bellevue). احسب وخصص مواصفات تصدير البطاطا الحلوة المصرية مع إصدار فوري لملف التعاقد PDF.">
-  <meta name="twitter:image" content="https://reefiya.com/og-image.jpg">
+  <meta name="twitter:description" content="تخصيص وحساب مواصفات تصدير البطاطا الحلوة المصرية — شحن بحري مبرد، فرز وتعبئة وتصدير للأسواق العالمية مع ملف تعاقد PDF فوري.">
+  <meta name="twitter:image" content="https://reefiya.com/og-image-ar.jpg">
 
   <!-- Structured Data: B2B Commercial RFQ & Produce Quote Service (JSON-LD) -->
   <script type="application/ld+json">
@@ -8219,11 +8220,17 @@
     // Auto-sync language from Home page (reads reefiya_lang from localStorage)
     (function initLang() {
       const saved = localStorage.getItem('reefiya_lang');
-      if (saved && langDict[saved]) {
-        applyLang(saved);
-      } else {
-        applyLang('en');
-      }
+      const targetLang = (saved && langDict[saved]) ? saved : 'en';
+      applyLang(targetLang);
+
+      // If user came with Arabic active, reflect /ar/rfq cleanly in address bar
+      try {
+        const currentOrigin = window.location.origin;
+        const currentHash = window.location.hash || '';
+        if (targetLang === 'ar') {
+          window.history.replaceState({ lang: 'ar' }, '', currentOrigin + '/ar/rfq' + currentHash);
+        }
+      } catch (e) {}
     })();
   </script>
 
