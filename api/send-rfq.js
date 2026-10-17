@@ -8,7 +8,7 @@
 
 const RESEND_API_TOKEN = process.env.RESEND_API_TOKEN || ('re_' + 'LJKziiKr_' + 'C5kQwiUR6WBZdhSbjDC5RrfH');
 const REEFIYA_WA_PHONE = '201290099230';
-const WHITE_LOGO_URL = 'https://raw.githubusercontent.com/A7medFawzi/Reefia/main/reefiya-logo-white.png';
+const WHITE_LOGO_URL = 'https://www.reefiya.com/reefiya-logo-white.png';
 
 const COLOR_DEEP_GREEN = '#1e481c';
 const COLOR_CREAM_BG   = '#f7f5ed';
@@ -238,9 +238,19 @@ export default async function handler(req, res) {
     const arIncoterm = shippingAr.incoterm || incoterm;
     const arShippingWindow = shippingAr.shippingWindow || shippingWindow;
 
-    // Clean phone for WhatsApp direct link
+    // Clean phone for WhatsApp direct link with tailored prefilled message
     const cleanDigits = (businessPhone || '').replace(/\D/g, '');
-    const buyerDirectWaUrl = cleanDigits ? `https://wa.me/${cleanDigits}` : `https://wa.me/${REEFIYA_WA_PHONE}`;
+    let teamToBuyerWaMsg = '';
+    if (currentLang === 'ar') {
+      const clientName = (contactPerson && contactPerson !== '—') ? contactPerson : companyName;
+      teamToBuyerWaMsg = `مرحباً ${clientName}، معك مكتب تصدير ريفيا (REEFIYA Export Desk) بخصوص طلب عرض الأسعار المسجل برقم مرجعي: ${rfqRef} لتصدير البطاطا الحلوة المصرية (${arOrderVolume}). نسعد بالتواصل معكم للبدء في مراجعة تفاصيل الشحن والأسعار.`;
+    } else {
+      const clientName = (contactPerson && contactPerson !== '—') ? contactPerson : companyName;
+      teamToBuyerWaMsg = `Hello ${clientName}, this is the REEFIYA Commercial Export Desk reaching out regarding your Sweet Potatoes export RFQ (${rfqRef}) to ${destCountry}. We are reviewing your requirements and pleased to assist with your order.`;
+    }
+    const buyerDirectWaUrl = cleanDigits 
+      ? `https://wa.me/${cleanDigits}?text=${encodeURIComponent(teamToBuyerWaMsg)}` 
+      : `https://wa.me/${REEFIYA_WA_PHONE}?text=${encodeURIComponent(`Inquiry regarding RFQ ${rfqRef} for ${companyName}`)}`;
     const customerWaUrl = `https://wa.me/${REEFIYA_WA_PHONE}?text=${encodeURIComponent(`Hello REEFIYA Export Desk, inquiring about RFQ ${rfqRef}`)}`;
 
     // Build PDF attachment if provided
@@ -296,7 +306,7 @@ export default async function handler(req, res) {
 <body>
   <div class="email-wrapper">
     <div class="header-strip">
-      <img src="${WHITE_LOGO_URL}" alt="REEFIYA" class="logo-img" width="160" height="38" />
+      <img src="${WHITE_LOGO_URL}" alt="REEFIYA" class="logo-img" width="160" height="38" style="display:block; margin:0 auto 12px auto; height:38px; width:auto; max-width:160px; border:0; outline:none; text-decoration:none;" />
       <div class="desk-title">مكتب التصدير التجاري • إشعار طلب عرض أسعار جديد</div>
       <div class="ref-box" dir="rtl">
         <span class="ref-label">الرقم المرجعي:</span>
@@ -456,7 +466,7 @@ export default async function handler(req, res) {
 <body>
   <div class="email-wrapper">
     <div class="header-strip">
-      <img src="${WHITE_LOGO_URL}" alt="REEFIYA" class="logo-img" width="160" height="38" />
+      <img src="${WHITE_LOGO_URL}" alt="REEFIYA" class="logo-img" width="160" height="38" style="display:block; margin:0 auto 12px auto; height:38px; width:auto; max-width:160px; border:0; outline:none; text-decoration:none;" />
       <div class="desk-title">${i18n.desk_title}</div>
       <div class="ref-box" dir="${i18n.dir}">
         <span class="ref-label">${i18n.ref_label}</span>
