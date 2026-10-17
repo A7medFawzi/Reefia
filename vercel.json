@@ -11,6 +11,11 @@
       "source": "/ar/index.html",
       "destination": "/ar",
       "permanent": true
+    },
+    {
+      "source": "/ar/rfq.html",
+      "destination": "/ar/rfq",
+      "permanent": true
     }
   ]
 }
