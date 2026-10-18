@@ -351,10 +351,10 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                     .email-wrapper {{ max-width: 580px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid {COLOR_CARD_BORDER}; box-shadow: 0 10px 30px rgba(23,44,26,0.06); }}
                     .header-strip {{ background: linear-gradient(135deg, {COLOR_DEEP_GREEN} 0%, #173815 100%); padding: 34px 36px 30px 36px; text-align: center; border-bottom: 3.5px solid {COLOR_ORANGE}; }}
                     .logo-img {{ height: 38px; width: auto; max-width: 160px; display: block; margin: 0 auto 12px auto; }}
-                    .desk-title {{ color: #faf7ed; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin: 0 0 14px 0; text-transform: uppercase; opacity: 0.95; }}
-                    .ref-box {{ display: inline-block; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.26); border-radius: 999px; padding: 6px 22px; margin-top: 4px; }}
-                    .ref-label {{ color: #e4edd8; font-size: 11px; font-weight: 600; margin-left: 8px; }}
-                    .ref-val {{ color: #ffffff; font-family: 'Consolas', 'Courier New', monospace; font-weight: 800; font-size: 13.5px; letter-spacing: 0.8px; }}
+                    .desk-title {{ color: #f4d38c !important; font-size: 11px; font-weight: 700; letter-spacing: 2.2px; margin: 0 0 14px 0; text-transform: uppercase; }}
+                    .ref-box {{ display: inline-block; background-color: #fbf7ee !important; border: 1.5px solid #d4af37 !important; border-radius: 999px; padding: 6px 20px; margin-top: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }}
+                    .ref-label {{ color: #5a461b !important; font-size: 11px; font-weight: 700; margin-left: 8px; }}
+                    .ref-val {{ color: #142e13 !important; font-family: 'Consolas', 'Courier New', monospace; font-weight: 800; font-size: 13.5px; letter-spacing: 0.8px; }}
                     .content-area {{ padding: 34px 36px; background-color: #ffffff; }}
                     .intro-p {{ font-size: 14.5px; line-height: 1.75; color: #2c3a2e; margin: 0 0 24px 0; }}
                     .section-head {{ font-size: 12.5px; font-weight: 800; color: {COLOR_DEEP_GREEN}; letter-spacing: 0.5px; margin: 24px 0 10px 0; padding-bottom: 6px; border-bottom: 1.5px solid #edf1eb; }}
@@ -385,10 +385,10 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                     <!-- HEADER -->
                     <div class="header-strip">
                       <img src="{logo_src}" alt="REEFIYA" class="logo-img" width="160" height="38" style="height:38px; width:auto; max-width:160px; display:block; margin:0 auto 12px auto; border:0; outline:none; text-decoration:none;" />
-                      <div class="desk-title">مكتب التصدير التجاري • إشعار طلب عرض أسعار جديد</div>
-                      <div class="ref-box" dir="rtl" style="display:inline-block; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:7px 24px; margin-top:4px;">
-                        <span class="ref-label" style="color:#dcedd0; font-size:12px; font-weight:700; margin-left:8px;">الرقم المرجعي:</span>
-                        <span class="ref-val" style="color:#ffffff; font-family:'Consolas', 'Courier New', monospace; font-weight:800; font-size:14px; letter-spacing:0.8px;">{rfq_ref}</span>
+                      <div class="desk-title" style="color:#f4d38c !important; font-size:11px; font-weight:700; letter-spacing:2.2px; margin:0 0 14px 0; text-transform:uppercase;">مكتب التصدير التجاري • إشعار طلب عرض أسعار جديد</div>
+                      <div class="ref-box" dir="rtl" style="display:inline-block; background-color:#fbf7ee !important; border:1.5px solid #d4af37 !important; border-radius:999px; padding:7px 22px; margin-top:4px; box-shadow:0 2px 8px rgba(0,0,0,0.18);">
+                        <span class="ref-label" style="color:#5a461b !important; font-size:11.5px; font-weight:700; margin-left:8px;">الرقم المرجعي:</span>
+                        <span class="ref-val" style="color:#142e13 !important; font-family:'Consolas', 'Courier New', monospace; font-weight:800; font-size:14px; letter-spacing:0.8px;">{rfq_ref}</span>
                       </div>
                     </div>
 
@@ -550,10 +550,10 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                         .email-wrapper {{ max-width: 580px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid {COLOR_CARD_BORDER}; box-shadow: 0 10px 30px rgba(23,44,26,0.06); }}
                         .header-strip {{ background: linear-gradient(135deg, {COLOR_DEEP_GREEN} 0%, #173815 100%); padding: 34px 36px 30px 36px; text-align: center; border-bottom: 3.5px solid {COLOR_ORANGE}; }}
                         .logo-img {{ height: 38px; width: auto; max-width: 160px; display: block; margin: 0 auto 12px auto; }}
-                        .desk-title {{ color: #faf7ed; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin: 0 0 14px 0; text-transform: uppercase; opacity: 0.95; }}
-                        .ref-box {{ display: inline-block; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.26); border-radius: 999px; padding: 6px 22px; margin-top: 4px; }}
-                        .ref-label {{ color: #e4edd8; font-size: 11px; font-weight: 600; {'margin-left' if is_rtl else 'margin-right'}: 8px; }}
-                        .ref-val {{ color: #ffffff; font-family: 'Consolas', 'Courier New', monospace; font-weight: 800; font-size: 13.5px; letter-spacing: 0.8px; }}
+                        .desk-title {{ color: #f4d38c !important; font-size: 11px; font-weight: 700; letter-spacing: 2.2px; margin: 0 0 14px 0; text-transform: uppercase; }}
+                        .ref-box {{ display: inline-block; background-color: #fbf7ee !important; border: 1.5px solid #d4af37 !important; border-radius: 999px; padding: 6px 20px; margin-top: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }}
+                        .ref-label {{ color: #5a461b !important; font-size: 11px; font-weight: 700; {'margin-left' if is_rtl else 'margin-right'}: 8px; }}
+                        .ref-val {{ color: #142e13 !important; font-family: 'Consolas', 'Courier New', monospace; font-weight: 800; font-size: 13.5px; letter-spacing: 0.8px; }}
                         .content-area {{ padding: 34px 36px; background-color: #ffffff; direction: {i18n['dir']}; text-align: {i18n['align']}; }}
                         .lead-p {{ font-size: 14.5px; line-height: 1.75; color: #2c3a2e; margin: 0 0 16px 0; direction: {i18n['dir']}; text-align: {i18n['align']}; }}
                         .summary-card {{ background: {COLOR_CREAM_CARD}; border: 1px solid {COLOR_CARD_BORDER}; border-radius: 12px; padding: 8px 18px; margin: 24px 0; }}
@@ -585,13 +585,13 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                         <!-- HEADER WITH PURE WHITE REEFIYA LOGO -->
                         <div class="header-strip">
                           <img src="{logo_src}" alt="REEFIYA" class="logo-img" width="160" height="38" style="height:38px; width:auto; max-width:160px; display:block; margin:0 auto 12px auto; border:0; outline:none; text-decoration:none;" />
-                          <div class="desk-title">{i18n['desk_title']}</div>
-                          {f'''<div class="ref-box" dir="rtl" style="display:inline-block; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:7px 24px; margin-top:4px;">
-                            <span class="ref-label" style="color:#dcedd0; font-size:12px; font-weight:700; margin-left:8px;">{i18n['ref_label']}</span>
-                            <span class="ref-val" style="color:#ffffff; font-family:'Consolas', 'Courier New', monospace; font-weight:800; font-size:14px; letter-spacing:0.8px;">{rfq_ref}</span>
-                          </div>''' if is_rtl else f'''<div class="ref-box" dir="ltr" style="display:inline-block; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:7px 24px; margin-top:4px;">
-                            <span class="ref-label" style="color:#dcedd0; font-size:12px; font-weight:700; margin-right:8px;">{i18n['ref_label']}</span>
-                            <span class="ref-val" style="color:#ffffff; font-family:'Consolas', 'Courier New', monospace; font-weight:800; font-size:14px; letter-spacing:0.8px;">{rfq_ref}</span>
+                          <div class="desk-title" style="color:#f4d38c !important; font-size:11px; font-weight:700; letter-spacing:2.2px; margin:0 0 14px 0; text-transform:uppercase;">{i18n['desk_title']}</div>
+                          {f'''<div class="ref-box" dir="rtl" style="display:inline-block; background-color:#fbf7ee !important; border:1.5px solid #d4af37 !important; border-radius:999px; padding:7px 22px; margin-top:4px; box-shadow:0 2px 8px rgba(0,0,0,0.18);">
+                            <span class="ref-label" style="color:#5a461b !important; font-size:11.5px; font-weight:700; margin-left:8px;">{i18n['ref_label']}</span>
+                            <span class="ref-val" style="color:#142e13 !important; font-family:'Consolas', 'Courier New', monospace; font-weight:800; font-size:14px; letter-spacing:0.8px;">{rfq_ref}</span>
+                          </div>''' if is_rtl else f'''<div class="ref-box" dir="ltr" style="display:inline-block; background-color:#fbf7ee !important; border:1.5px solid #d4af37 !important; border-radius:999px; padding:7px 22px; margin-top:4px; box-shadow:0 2px 8px rgba(0,0,0,0.18);">
+                            <span class="ref-label" style="color:#5a461b !important; font-size:11.5px; font-weight:700; margin-right:8px;">{i18n['ref_label']}</span>
+                            <span class="ref-val" style="color:#142e13 !important; font-family:'Consolas', 'Courier New', monospace; font-weight:800; font-size:14px; letter-spacing:0.8px;">{rfq_ref}</span>
                           </div>'''}
                         </div>
 
