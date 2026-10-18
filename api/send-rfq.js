@@ -365,13 +365,18 @@ export default async function handler(req, res) {
       : `https://wa.me/${REEFIYA_WA_PHONE}?text=${encodeURIComponent(`Inquiry regarding RFQ ${rfqRef} for ${companyName}`)}`;
     const customerWaUrl = `https://wa.me/${REEFIYA_WA_PHONE}?text=${encodeURIComponent(`Hello REEFIYA Export Desk, inquiring about RFQ ${rfqRef}`)}`;
 
-    // Build PDF attachment if provided
+    // Build PDF attachment if provided (ensuring pure Base64 without data:application/pdf... prefix)
     const attachments = [];
-    if (pdfBase64) {
-      attachments.push({
-        filename: `REEFIYA_${rfqRef}.pdf`,
-        content: pdfBase64
-      });
+    if (pdfBase64 && typeof pdfBase64 === 'string') {
+      const cleanBase64 = pdfBase64.includes('base64,') 
+        ? pdfBase64.split('base64,').pop().trim() 
+        : pdfBase64.trim();
+      if (cleanBase64.length > 50) {
+        attachments.push({
+          filename: `REEFIYA_${rfqRef}.pdf`,
+          content: cleanBase64
+        });
+      }
     }
 
     // =========================================================================

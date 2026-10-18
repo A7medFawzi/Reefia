@@ -198,6 +198,18 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(200)
         self.end_headers()
 
+    def do_GET(self):
+        # Support clean URLs locally just like Vercel
+        parsed = urllib.parse.urlparse(self.path)
+        path = parsed.path
+        if path == '/ar/rfq' or path == '/ar/rfq/':
+            self.path = '/ar/rfq.html' + ('?' + parsed.query if parsed.query else '')
+        elif path == '/rfq' or path == '/rfq/':
+            self.path = '/rfq.html' + ('?' + parsed.query if parsed.query else '')
+        elif path == '/ar' or path == '/ar/':
+            self.path = '/ar/index.html' + ('?' + parsed.query if parsed.query else '')
+        return super().do_GET()
+
     def do_POST(self):
         if self.path == '/api/send-rfq':
             content_length = int(self.headers.get('Content-Length', 0))
@@ -293,14 +305,15 @@ class RFQServerHandler(http.server.SimpleHTTPRequestHandler):
                 team_attachments = list(base_attachments)
                 cust_attachments = list(base_attachments)
 
-                if pdf_base64:
-                    clean_b64 = pdf_base64.split('base64,')[-1]
-                    pdf_item = {
-                        'filename': f'REEFIYA_{rfq_ref}.pdf',
-                        'content': clean_b64
-                    }
-                    team_attachments.append(pdf_item)
-                    cust_attachments.append(pdf_item)
+                if pdf_base64 and isinstance(pdf_base64, str):
+                    clean_b64 = pdf_base64.split('base64,')[-1].strip()
+                    if len(clean_b64) > 50:
+                        pdf_item = {
+                            'filename': f'REEFIYA_{rfq_ref}.pdf',
+                            'content': clean_b64
+                        }
+                        team_attachments.append(pdf_item)
+                        cust_attachments.append(pdf_item)
 
                 # Prepare one-click WhatsApp URL directly targeting buyer's phone number (TEAM MESSAGE IN ENGLISH)
                 clean_buyer_phone = ''.join(c for c in business_phone if c.isdigit())

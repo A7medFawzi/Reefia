@@ -59,6 +59,12 @@
             "@type": "Corporation",
             "name": "شركة ريفيا للتصدير الزراعي (Reefiya LLC)",
             "url": "https://reefiya.com/ar/",
+            "sameAs": [
+              "https://www.linkedin.com/company/reefiyaexports",
+              "https://www.instagram.com/reefiyaexports/",
+              "https://www.facebook.com/reefiyaexports/",
+              "https://www.youtube.com/channel/UCv8HagBDsDFXM-QRxC3Y5kA"
+            ],
             "telephone": "+201290099230",
             "email": "exports@reefiya.com"
           },
@@ -6059,69 +6065,118 @@
       return { container, refNumber, isArabic };
     }
 
-    function downloadRfqPdf() {
-      const built = buildRfqPdfContainer();
-      if (!built || !built.container) return;
-      const { container, refNumber, isArabic } = built;
+    /* ==========================================================================
+       UNIFIED COMMERCIAL RFQ PDF GENERATOR (100% IDENTICAL FOR DOWNLOAD & EMAIL)
+       ========================================================================== */
+    function generateRfqPdfDocument(refNumberOverride) {
+      return new Promise((resolve, reject) => {
+        try {
+          const built = buildRfqPdfContainer(refNumberOverride);
+          if (!built || !built.container) {
+            return reject(new Error('Could not build PDF container'));
+          }
+          const { container, refNumber, isArabic } = built;
 
-      document.body.appendChild(container);
+          document.body.appendChild(container);
 
-      // Save user current scroll position to avoid html2canvas offset bug
-      const prevScrollX = window.pageXOffset || document.documentElement.scrollLeft || 0;
-      const prevScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-      window.scrollTo(0, 0);
+          // Save user current scroll position to avoid html2canvas offset bug
+          const prevScrollX = window.pageXOffset || document.documentElement.scrollLeft || 0;
+          const prevScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+          window.scrollTo(0, 0);
 
-      const proceedWithRender = () => {
-        if (typeof window.html2canvas !== 'undefined' && typeof html2pdf !== 'undefined') {
-          window.html2canvas(container, {
-            scale: 2,
-            useCORS: true,
-            logging: false,
-            scrollX: 0,
-            scrollY: 0
-          }).then(canvas => {
-            const imgData = canvas.toDataURL('image/jpeg', 0.98);
-            if (container.parentNode) document.body.removeChild(container);
-            window.scrollTo(prevScrollX, prevScrollY);
+          const proceedWithRender = () => {
+            if (typeof window.html2canvas !== 'undefined' && typeof html2pdf !== 'undefined') {
+              window.html2canvas(container, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                scrollX: 0,
+                scrollY: 0
+              }).then(canvas => {
+                const imgData = canvas.toDataURL('image/jpeg', 0.98);
+                if (container.parentNode) document.body.removeChild(container);
+                window.scrollTo(prevScrollX, prevScrollY);
 
-            const dummy = document.createElement('div');
-            document.body.appendChild(dummy);
-            const w = html2pdf().from(dummy).set({
-              margin: 0,
-              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            }).toPdf();
+                const dummy = document.createElement('div');
+                document.body.appendChild(dummy);
+                const w = html2pdf().from(dummy).set({
+                  margin: 0,
+                  jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                }).toPdf();
 
-            w.get('pdf').then(pdf => {
-              if (dummy.parentNode) document.body.removeChild(dummy);
-              const pageWidth = 210;
-              const margin = 8;
-              const usableWidth = pageWidth - (margin * 2);
-              const imgHeight = (canvas.height * usableWidth) / canvas.width;
+                w.get('pdf').then(pdf => {
+                  if (dummy.parentNode) document.body.removeChild(dummy);
+                  const pageWidth = 210;
+                  const margin = 8;
+                  const usableWidth = pageWidth - (margin * 2);
+                  const imgHeight = (canvas.height * usableWidth) / canvas.width;
 
-              pdf.addImage(imgData, 'JPEG', margin, margin, usableWidth, imgHeight);
-              pdf.save(`REEFIYA_${refNumber}.pdf`);
-              displayToastAlert(isArabic ? 'تم تحميل ملف الـ PDF بنجاح!' : 'RFQ PDF downloaded successfully!', true);
+                  pdf.addImage(imgData, 'JPEG', margin, margin, usableWidth, imgHeight);
+                  const fullDataUri = pdf.output('datauristring');
+                  const pureBase64 = fullDataUri.includes('base64,') ? fullDataUri.split('base64,').pop().trim() : fullDataUri.trim();
+
+                  const result = {
+                    pdf,
+                    refNumber,
+                    isArabic,
+                    filename: `REEFIYA_${refNumber}.pdf`,
+                    dataUri: fullDataUri,
+                    base64: pureBase64
+                  };
+                  window._cachedGeneratedPdf = result;
+                  resolve(result);
+                }).catch(err => {
+                  if (dummy.parentNode) document.body.removeChild(dummy);
+                  if (container.parentNode) document.body.removeChild(container);
+                  window.scrollTo(prevScrollX, prevScrollY);
+                  reject(err);
+                });
+              }).catch(err => {
+                if (container.parentNode) document.body.removeChild(container);
+                window.scrollTo(prevScrollX, prevScrollY);
+                reject(err);
+              });
+            } else {
+              if (container.parentNode) document.body.removeChild(container);
+              window.scrollTo(prevScrollX, prevScrollY);
+              reject(new Error('html2canvas or html2pdf not available'));
+            }
+          };
+
+          if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => {
+              setTimeout(proceedWithRender, 150);
             });
-          }).catch(err => {
-            console.error('PDF generation error:', err);
-            if (container.parentNode) document.body.removeChild(container);
-            window.scrollTo(prevScrollX, prevScrollY);
-            window.print();
-          });
-        } else {
-          if (container.parentNode) document.body.removeChild(container);
-          window.scrollTo(prevScrollX, prevScrollY);
-          window.print();
+          } else {
+            setTimeout(proceedWithRender, 200);
+          }
+        } catch (e) {
+          reject(e);
         }
-      };
+      });
+    }
+    window.generateRfqPdfDocument = generateRfqPdfDocument;
 
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => {
-          setTimeout(proceedWithRender, 150);
-        });
-      } else {
-        setTimeout(proceedWithRender, 200);
+    function downloadRfqPdf() {
+      if (window._cachedGeneratedPdf && window._cachedGeneratedPdf.pdf) {
+        const cached = window._cachedGeneratedPdf;
+        cached.pdf.save(cached.filename || 'REEFIYA_RFQ.pdf');
+        const isAr = (typeof currentLang !== 'undefined' && currentLang === 'ar') || cached.isArabic;
+        if (typeof displayToastAlert === 'function') {
+          displayToastAlert(isAr ? 'تم تحميل ملف الـ PDF بنجاح!' : 'RFQ PDF downloaded successfully!', true);
+        }
+        return;
       }
+
+      generateRfqPdfDocument().then(res => {
+        res.pdf.save(res.filename);
+        if (typeof displayToastAlert === 'function') {
+          displayToastAlert(res.isArabic ? 'تم تحميل ملف الـ PDF بنجاح!' : 'RFQ PDF downloaded successfully!', true);
+        }
+      }).catch(err => {
+        console.error('PDF generation error:', err);
+        window.print();
+      });
     }
     window.downloadRfqPdf = downloadRfqPdf;
 
@@ -6323,71 +6378,16 @@
           });
         };
 
-        // Render IDENTICAL high-fidelity PDF container using the shared builder
+        // Render IDENTICAL high-fidelity PDF using unified document generator
         if (typeof window.html2canvas !== 'undefined' && typeof html2pdf !== 'undefined') {
-          try {
-            const built = buildRfqPdfContainer(rfqRef);
-            if (!built || !built.container) {
-              dispatchToServer(payload);
-              return;
-            }
-            const container = built.container;
-            container.style.position = 'fixed';
-            container.style.top = '-99999px';
-            container.style.left = '0';
-            container.style.zIndex = '-9999';
-
-            document.body.appendChild(container);
-
-            const renderPromise = () => {
-              window.html2canvas(container, {
-                scale: 2,
-                useCORS: true,
-                logging: false,
-                scrollX: 0,
-                scrollY: 0
-              }).then(canvas => {
-                const imgData = canvas.toDataURL('image/jpeg', 0.98);
-                if (container.parentNode) document.body.removeChild(container);
-
-                const dummy = document.createElement('div');
-                document.body.appendChild(dummy);
-                const w = html2pdf().from(dummy).set({
-                  margin: 0,
-                  jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                }).toPdf();
-
-                w.get('pdf').then(pdf => {
-                  if (dummy.parentNode) document.body.removeChild(dummy);
-                  const pageWidth = 210;
-                  const margin = 8;
-                  const usableWidth = pageWidth - (margin * 2);
-                  const imgHeight = (canvas.height * usableWidth) / canvas.width;
-
-                  pdf.addImage(imgData, 'JPEG', margin, margin, usableWidth, imgHeight);
-                  const pdfDataUri = pdf.output('datauristring');
-                  payload.pdfBase64 = pdfDataUri;
-                  dispatchToServer(payload);
-                }).catch(err => {
-                  console.error('PDF data generation error:', err);
-                  dispatchToServer(payload);
-                });
-              }).catch(err => {
-                if (container.parentNode) document.body.removeChild(container);
-                console.error('HTML2Canvas silent error:', err);
-                dispatchToServer(payload);
-              });
-            };
-
-            if (document.fonts && document.fonts.ready) {
-              document.fonts.ready.then(() => { setTimeout(renderPromise, 150); });
-            } else {
-              setTimeout(renderPromise, 200);
-            }
-            return;
-          } catch (e) {
-            console.error('Error initiating identical silent PDF render:', e);
-          }
+          generateRfqPdfDocument(rfqRef).then(res => {
+            payload.pdfBase64 = res.base64; // Guaranteed clean pure Base64
+            dispatchToServer(payload);
+          }).catch(err => {
+            console.error('[RFQ Dispatcher] Silent PDF render error, sending RFQ payload without attachment:', err);
+            dispatchToServer(payload);
+          });
+          return;
         }
 
         // Fallback dispatch if html2pdf is not ready
