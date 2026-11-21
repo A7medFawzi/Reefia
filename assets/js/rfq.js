@@ -2527,7 +2527,9 @@
 
         // Render IDENTICAL high-fidelity PDF using unified document generator
         if (typeof window.html2canvas !== 'undefined' && typeof html2pdf !== 'undefined') {
-          generateRfqPdfDocument(rfqRef).then(res => {
+          // Never let a slow or stuck PDF render block the RFQ itself: give up on the attachment after 15 s.
+          const pdfTimeout = new Promise((_, reject) => setTimeout(() => reject(new Error('PDF render timed out')), 15000));
+          Promise.race([generateRfqPdfDocument(rfqRef), pdfTimeout]).then(res => {
             payload.pdfBase64 = res.base64; // Guaranteed clean pure Base64
             dispatchToServer(payload);
           }).catch(err => {

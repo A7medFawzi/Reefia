@@ -359,6 +359,7 @@ export default async function handler(req, res) {
 
   // Browsers always send Origin on cross-site POSTs; reject foreign origins.
   if (origin && !originAllowed) {
+    console.warn('[send-rfq] Rejected: origin not allowed', origin);
     return res.status(403).json({ success: false, error: 'Forbidden origin' });
   }
 
@@ -369,6 +370,7 @@ export default async function handler(req, res) {
 
   const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown').split(',')[0].trim();
   if (isRateLimited(ip)) {
+    console.warn('[send-rfq] Rejected: rate limited', ip);
     return res.status(429).json({ success: false, error: 'Too many requests. Please try again later.' });
   }
 
@@ -377,6 +379,7 @@ export default async function handler(req, res) {
 
     // Honeypot: real users never fill this hidden field. Pretend success for bots.
     if (payload.hp_field) {
+      console.warn('[send-rfq] Dropped: honeypot field was filled');
       return res.status(200).json({ success: true });
     }
 
@@ -411,6 +414,7 @@ export default async function handler(req, res) {
     const website = safe(buyer.website, 200);
 
     if (companyNameRaw === '—' && !hasValidEmail) {
+      console.warn('[send-rfq] Rejected: missing buyer details');
       return res.status(400).json({ success: false, error: 'Missing buyer details' });
     }
 
@@ -730,6 +734,7 @@ export default async function handler(req, res) {
       customerResult = await sendViaResend(custEmailPayload);
     }
 
+    console.log('[send-rfq] Sent', rfqRef, { team: teamResult?.id, customer: customerResult?.id || null, pdf: attachments.length > 0 });
     return res.status(200).json({
       success: true,
       rfqReference: rfqRef,
