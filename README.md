@@ -1,0 +1,43 @@
+# Reefiya — reefiya.com
+
+Static bilingual (EN / AR) marketing site plus an RFQ form, deployed on Vercel.
+
+## Structure
+
+| Path | Purpose |
+|---|---|
+| `index.html`, `ar/index.html` | Home page (English / Arabic). Arabic text is pre-rendered in the HTML. |
+| `rfq.html`, `ar/rfq.html` | Multi-step Request-for-Quotation form |
+| `assets/css/home.css`, `assets/js/home-*.js` | Shared styles and scripts for both home pages |
+| `assets/css/rfq.css`, `assets/js/rfq.js` | Shared styles and scripts for both RFQ pages |
+| `frames/lg/*.jpg`, `frames/sm/*.webp` | Hero scroll-animation frames (desktop / mobile set) |
+| `api/send-rfq.js` | Vercel serverless function that emails RFQs through Resend |
+| `scripts/`, `server.py` | Local tooling only (excluded from deploys by `.vercelignore`) |
+
+When you edit page content, change **both** the English and Arabic HTML files. Styles
+and scripts live once in `assets/`.
+
+## Required environment variables (Vercel → Project → Settings → Environment Variables)
+
+| Name | Value |
+|---|---|
+| `RESEND_API_TOKEN` | Resend API key with permission to send from `reefiya.com` |
+| `RFQ_EXTRA_ORIGINS` | *(optional)* comma-separated extra origins allowed to call `/api/send-rfq` |
+
+Never commit API keys: this repository is public.
+
+## RFQ API protections
+
+- Only `https://reefiya.com`, `https://www.reefiya.com` (and Vercel preview URLs outside production) may call it from a browser
+- Per-IP rate limit (5 requests / 10 minutes per instance) and a hidden honeypot field
+- All user input is HTML-escaped and length-limited before it goes into emails
+- Attachments must be real PDFs under ~3 MB
+- If delivery fails, the form retries once and then shows the buyer WhatsApp / email contacts
+
+## Local preview
+
+```bash
+python3 -m http.server 8080
+```
+
+Then open http://localhost:8080/index.html. Use `vercel dev` to test the API and clean URLs.
