@@ -1,0 +1,8 @@
+# Local development / tooling files — never deploy these publicly
+server.py
+paths.py
+generate_mask.py
+reefiya_logo_white_b64.txt
+scripts/
+*.md
+!llms.txt

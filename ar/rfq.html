@@ -3647,6 +3647,7 @@
                 </span>
                 <span class="label-required" id="reqCompanyNameStar">* Required</span>
               </div>
+              <input type="text" id="inputHpField" name="hp_field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;">
               <input type="text" id="inputCompanyName" class="custom-text-field" placeholder="Enter your registered company name" oninput="updateLiveSummary()">
             </div>
 
@@ -6399,6 +6400,7 @@
             shippingWindow: arShippingWindow
           },
           additionalNotes: getVal('inputAdditionalRequirements', ''),
+          hp_field: (document.getElementById('inputHpField') || {}).value || '',
           pdfBase64: ''
         };
 

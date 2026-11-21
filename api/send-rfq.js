@@ -6,7 +6,56 @@
  * 3. Attaches identical high-res PDF to both emails via Resend API.
  */
 
-const RESEND_API_TOKEN = process.env.RESEND_API_TOKEN || ('re_' + 'LJKziiKr_' + 'C5kQwiUR6WBZdhSbjDC5RrfH');
+// The Resend API key MUST come from the environment (Vercel → Settings → Environment Variables).
+// Never hard-code it here: this repository is public.
+const RESEND_API_TOKEN = process.env.RESEND_API_TOKEN;
+
+// Origins allowed to call this endpoint from a browser.
+const ALLOWED_ORIGINS = new Set([
+  'https://reefiya.com',
+  'https://www.reefiya.com',
+  ...(process.env.RFQ_EXTRA_ORIGINS || '').split(',').map(o => o.trim()).filter(Boolean)
+]);
+
+const SUPPORTED_LANGS = new Set(['ar', 'en', 'fr', 'de', 'es', 'it', 'nl', 'ru', 'tr', 'zh']);
+const MAX_PDF_BASE64_CHARS = 4 * 1024 * 1024; // Vercel caps request bodies at ~4.5 MB
+const EMAIL_RE = /^[^\s@<>"'(),;:]+@[^\s@<>"'(),;:]+\.[a-z]{2,}$/i;
+const RFQ_REF_RE = /^RFQ-[A-Z0-9-]{3,40}$/;
+
+// Best-effort in-memory rate limit (per serverless instance).
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_MAX = 5;
+const rateBuckets = new Map();
+function isRateLimited(ip) {
+  const now = Date.now();
+  const hits = (rateBuckets.get(ip) || []).filter(t => now - t < RATE_WINDOW_MS);
+  hits.push(now);
+  rateBuckets.set(ip, hits);
+  if (rateBuckets.size > 5000) rateBuckets.clear();
+  return hits.length > RATE_MAX;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// Coerce untrusted input to a trimmed, length-limited plain string.
+function plain(value, max = 200, fallback = '—') {
+  if (value === undefined || value === null) return fallback;
+  let str = typeof value === 'string' ? value : String(value);
+  str = str.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').trim();
+  if (!str) return fallback;
+  return str.length > max ? str.slice(0, max) + '…' : str;
+}
+// Single-line, HTML-escaped version for use inside email HTML.
+function safe(value, max = 200, fallback = '—') {
+  return escapeHtml(plain(value, max, fallback).replace(/[\r\n]+/g, ' '));
+}
 const REEFIYA_WA_PHONE = '201290099230';
 const WHITE_LOGO_URL = 'https://www.reefiya.com/reefiya-logo-white.png';
 
@@ -291,79 +340,120 @@ async function sendViaResend(data) {
 }
 
 export default async function handler(req, res) {
-  // CORS & method check
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  const origin = req.headers.origin || '';
+  const originAllowed = ALLOWED_ORIGINS.has(origin) || (process.env.VERCEL_ENV !== 'production' && /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin));
+  if (originAllowed) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+    return res.status(originAllowed ? 204 : 403).end();
   }
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
+  // Browsers always send Origin on cross-site POSTs; reject foreign origins.
+  if (origin && !originAllowed) {
+    return res.status(403).json({ success: false, error: 'Forbidden origin' });
+  }
+
+  if (!RESEND_API_TOKEN) {
+    console.error('[API /api/send-rfq] RESEND_API_TOKEN is not configured');
+    return res.status(503).json({ success: false, error: 'Email service not configured' });
+  }
+
+  const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown').split(',')[0].trim();
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ success: false, error: 'Too many requests. Please try again later.' });
+  }
+
   try {
-    const payload = req.body || {};
-    const rfqRef = payload.rfqReference || 'RFQ-NEW';
+    const payload = (req.body && typeof req.body === 'object') ? req.body : {};
+
+    // Honeypot: real users never fill this hidden field. Pretend success for bots.
+    if (payload.hp_field) {
+      return res.status(200).json({ success: true });
+    }
+
+    const rawRef = plain(payload.rfqReference, 60, '').toUpperCase();
+    const rfqRef = RFQ_REF_RE.test(rawRef) ? rawRef : `RFQ-${Date.now().toString(36).toUpperCase()}`;
     const buyer = payload.buyer || {};
     const produce = payload.produce || {};
     const shipping = payload.shipping || {};
     const produceAr = payload.produceAr || {};
     const shippingAr = payload.shippingAr || {};
-    const notes = payload.additionalNotes || '';
-    const currentLang = payload.selectedLanguage || 'en';
-    const pdfBase64 = payload.pdfBase64 || '';
+    const notesRaw = plain(payload.additionalNotes, 3000, '');
+    const notes = escapeHtml(notesRaw);
+    const langRaw = plain(payload.selectedLanguage, 5, 'en').toLowerCase();
+    const currentLang = SUPPORTED_LANGS.has(langRaw) ? langRaw : 'en';
+    const pdfBase64 = typeof payload.pdfBase64 === 'string' ? payload.pdfBase64 : '';
 
-    const companyName = buyer.companyName || '—';
-    const contactPerson = buyer.contactPerson || '—';
-    const jobTitle = buyer.jobTitle || '—';
-    const businessEmail = buyer.businessEmail || '—';
-    const businessPhone = buyer.businessPhone || '—';
-    const countryReg = buyer.countryOfRegistration || '—';
-    const website = buyer.website || '—';
+    const emailRaw = plain(buyer.businessEmail, 254, '');
+    const hasValidEmail = EMAIL_RE.test(emailRaw);
+
+    // Plain-text values (for subjects / WhatsApp text) and HTML-escaped values (for email bodies)
+    const companyNameRaw = plain(buyer.companyName, 150);
+    const contactPersonRaw = plain(buyer.contactPerson, 120);
+    const destCountryRaw = plain(shipping.destinationCountry, 100);
+    const countryRegRaw = plain(buyer.countryOfRegistration, 100);
+
+    const companyName = escapeHtml(companyNameRaw);
+    const contactPerson = escapeHtml(contactPersonRaw);
+    const jobTitle = safe(buyer.jobTitle, 120);
+    const businessEmail = hasValidEmail ? escapeHtml(emailRaw) : '—';
+    const businessPhone = safe(buyer.businessPhone, 40);
+    const countryReg = escapeHtml(countryRegRaw);
+    const website = safe(buyer.website, 200);
+
+    if (companyNameRaw === '—' && !hasValidEmail) {
+      return res.status(400).json({ success: false, error: 'Missing buyer details' });
+    }
 
     // Buyer language values
-    const varieties = produce.varieties || '—';
-    const sizing = produce.sizing || '—';
-    const packaging = produce.packaging || '—';
-    const netWeight = produce.netWeight || '—';
-    const privateLabel = produce.privateLabel || '—';
+    const varieties = safe(produce.varieties);
+    const sizing = safe(produce.sizing);
+    const packaging = safe(produce.packaging);
+    const netWeight = safe(produce.netWeight);
+    const privateLabel = safe(produce.privateLabel);
 
-    const orderVolume = shipping.orderVolume || '—';
-    const destCountry = shipping.destinationCountry || '—';
-    const destPort = shipping.destinationPort || '—';
-    const incoterm = shipping.incoterm || '—';
-    const shippingWindow = shipping.shippingWindow || '—';
+    const orderVolume = safe(shipping.orderVolume);
+    const destCountry = escapeHtml(destCountryRaw);
+    const destPort = safe(shipping.destinationPort);
+    const incoterm = safe(shipping.incoterm);
+    const shippingWindow = safe(shipping.shippingWindow);
 
     // Dedicated Arabic values for internal team
-    const arVarieties = produceAr.varieties || varieties;
-    const arSizing = produceAr.sizing || sizing;
-    const arPackaging = produceAr.packaging || packaging;
-    const arNetWeight = produceAr.netWeight || netWeight;
-    const arPrivateLabel = produceAr.privateLabel || privateLabel;
+    const arVarieties = produceAr.varieties ? safe(produceAr.varieties) : varieties;
+    const arSizing = produceAr.sizing ? safe(produceAr.sizing) : sizing;
+    const arPackaging = produceAr.packaging ? safe(produceAr.packaging) : packaging;
+    const arNetWeight = produceAr.netWeight ? safe(produceAr.netWeight) : netWeight;
+    const arPrivateLabel = produceAr.privateLabel ? safe(produceAr.privateLabel) : privateLabel;
 
-    const arOrderVolume = shippingAr.orderVolume || orderVolume;
-    const arDestCountry = shippingAr.destinationCountry || destCountry;
-    const arDestPort = shippingAr.destinationPort || destPort;
-    const arIncoterm = shippingAr.incoterm || incoterm;
-    const arShippingWindow = shippingAr.shippingWindow || shippingWindow;
+    const arOrderVolumeRaw = plain(shippingAr.orderVolume || shipping.orderVolume);
+    const arOrderVolume = escapeHtml(arOrderVolumeRaw);
+    const arDestCountry = shippingAr.destinationCountry ? safe(shippingAr.destinationCountry) : destCountry;
+    const arDestPort = shippingAr.destinationPort ? safe(shippingAr.destinationPort) : destPort;
+    const arIncoterm = shippingAr.incoterm ? safe(shippingAr.incoterm) : incoterm;
+    const arShippingWindow = shippingAr.shippingWindow ? safe(shippingAr.shippingWindow) : shippingWindow;
 
     // Clean phone for WhatsApp direct link with tailored prefilled message
-    const cleanDigits = (businessPhone || '').replace(/\D/g, '');
+    const cleanDigits = plain(buyer.businessPhone, 40, '').replace(/\D/g, '').slice(0, 15);
+    const clientNameRaw = contactPersonRaw !== '—' ? contactPersonRaw : companyNameRaw;
     let teamToBuyerWaMsg = '';
     if (currentLang === 'ar') {
-      const clientName = (contactPerson && contactPerson !== '—') ? contactPerson : companyName;
-      teamToBuyerWaMsg = `مرحباً ${clientName}، معك مكتب تصدير ريفيا (REEFIYA Export Desk) بخصوص طلب عرض الأسعار المسجل برقم مرجعي: ${rfqRef} لتصدير البطاطا الحلوة المصرية (${arOrderVolume}). نسعد بالتواصل معكم للبدء في مراجعة تفاصيل الشحن والأسعار.`;
+      teamToBuyerWaMsg = `مرحباً ${clientNameRaw}، معك مكتب تصدير ريفيا (REEFIYA Export Desk) بخصوص طلب عرض الأسعار المسجل برقم مرجعي: ${rfqRef} لتصدير البطاطا الحلوة المصرية (${arOrderVolumeRaw}). نسعد بالتواصل معكم للبدء في مراجعة تفاصيل الشحن والأسعار.`;
     } else {
-      const clientName = (contactPerson && contactPerson !== '—') ? contactPerson : companyName;
-      teamToBuyerWaMsg = `Hello ${clientName}, this is the REEFIYA Commercial Export Desk reaching out regarding your Sweet Potatoes export RFQ (${rfqRef}) to ${destCountry}. We are reviewing your requirements and pleased to assist with your order.`;
+      teamToBuyerWaMsg = `Hello ${clientNameRaw}, this is the REEFIYA Commercial Export Desk reaching out regarding your Sweet Potatoes export RFQ (${rfqRef}) to ${destCountryRaw}. We are reviewing your requirements and pleased to assist with your order.`;
     }
-    const buyerDirectWaUrl = cleanDigits 
-      ? `https://wa.me/${cleanDigits}?text=${encodeURIComponent(teamToBuyerWaMsg)}` 
-      : `https://wa.me/${REEFIYA_WA_PHONE}?text=${encodeURIComponent(`Inquiry regarding RFQ ${rfqRef} for ${companyName}`)}`;
-    const customerWaUrl = `https://wa.me/${REEFIYA_WA_PHONE}?text=${encodeURIComponent(`Hello REEFIYA Export Desk, inquiring about RFQ ${rfqRef}`)}`;
+    const buyerDirectWaUrl = escapeHtml(cleanDigits.length >= 8
+      ? `https://wa.me/${cleanDigits}?text=${encodeURIComponent(teamToBuyerWaMsg)}`
+      : `https://wa.me/${REEFIYA_WA_PHONE}?text=${encodeURIComponent(`Inquiry regarding RFQ ${rfqRef} for ${companyNameRaw}`)}`);
+    const customerWaUrl = escapeHtml(`https://wa.me/${REEFIYA_WA_PHONE}?text=${encodeURIComponent(`Hello REEFIYA Export Desk, inquiring about RFQ ${rfqRef}`)}`);
 
     // Build PDF attachment if provided (ensuring pure Base64 without data:application/pdf... prefix)
     const attachments = [];
@@ -371,7 +461,8 @@ export default async function handler(req, res) {
       const cleanBase64 = pdfBase64.includes('base64,') 
         ? pdfBase64.split('base64,').pop().trim() 
         : pdfBase64.trim();
-      if (cleanBase64.length > 50) {
+      // Only accept a genuine PDF ("%PDF" → "JVBER" in Base64) of reasonable size.
+      if (cleanBase64.length > 50 && cleanBase64.length <= MAX_PDF_BASE64_CHARS && cleanBase64.startsWith('JVBER') && /^[A-Za-z0-9+/=\s]+$/.test(cleanBase64)) {
         attachments.push({
           filename: `REEFIYA_${rfqRef}.pdf`,
           content: cleanBase64
@@ -382,13 +473,13 @@ export default async function handler(req, res) {
     // =========================================================================
     // 1. REEFIYA INTERNAL TEAM NOTIFICATION (ARABIC)
     // =========================================================================
-    const teamSubject = `[طلب تصدير جديد] ${companyName} (${countryReg}) — ${rfqRef}`;
+    const teamSubject = `[طلب تصدير جديد] ${companyNameRaw} (${countryRegRaw}) — ${rfqRef}`.replace(/[\r\n]+/g, ' ');
     const teamHtml = `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${teamSubject}</title>
+  <title>${escapeHtml(teamSubject)}</title>
   <style>
     body { margin: 0; padding: 28px 12px; background-color: ${COLOR_CREAM_BG}; font-family: 'Cairo', 'Alexandria', 'Segoe UI', Tahoma, sans-serif; color: ${COLOR_TEXT_MAIN}; direction: rtl; text-align: right; -webkit-font-smoothing: antialiased; }
     .email-wrapper { max-width: 580px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid ${COLOR_CARD_BORDER}; box-shadow: 0 10px 30px rgba(23,44,26,0.06); }
@@ -478,7 +569,7 @@ export default async function handler(req, res) {
       <div class="cta-wrap">
         <div class="btn-stack">
           <div class="btn-cell">
-            <a href="mailto:${businessEmail}?subject=Re:%20Commercial%20RFQ%20Quotation%20-%20REEFIYA%20(${rfqRef})" class="cta-btn">الرد بالبريد الإلكتروني</a>
+            <a href="mailto:${encodeURIComponent(emailRaw)}?subject=Re:%20Commercial%20RFQ%20Quotation%20-%20REEFIYA%20(${rfqRef})" class="cta-btn">الرد بالبريد الإلكتروني</a>
           </div>
           <div class="btn-cell">
             <a href="${buyerDirectWaUrl}" target="_blank" class="wa-btn">محادثة واتساب مباشرة</a>
@@ -503,8 +594,8 @@ export default async function handler(req, res) {
       subject: teamSubject,
       html: teamHtml
     };
-    if (businessEmail && businessEmail !== '—' && businessEmail.includes('@')) {
-      teamEmailPayload.reply_to = businessEmail;
+    if (hasValidEmail) {
+      teamEmailPayload.reply_to = emailRaw;
     }
     if (attachments.length > 0) {
       teamEmailPayload.attachments = attachments;
@@ -516,7 +607,7 @@ export default async function handler(req, res) {
     // 2. CUSTOMER CONFIRMATION EMAIL (BUYER LANGUAGE)
     // =========================================================================
     let customerResult = null;
-    if (businessEmail && businessEmail !== '—' && businessEmail.includes('@')) {
+    if (hasValidEmail) {
       const i18n = CUST_EMAIL_I18N[currentLang] || CUST_EMAIL_I18N['en'];
       const isRtl = i18n.dir === 'rtl';
       const greetingName = (contactPerson && contactPerson !== '—') ? contactPerson : companyName;
@@ -552,7 +643,7 @@ export default async function handler(req, res) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${custSubject}</title>
+  <title>${escapeHtml(custSubject)}</title>
   <style>
     body { margin: 0; padding: 28px 12px; background-color: ${COLOR_CREAM_BG}; font-family: ${i18n.font}; color: ${COLOR_TEXT_MAIN}; direction: ${i18n.dir}; text-align: ${i18n.align}; -webkit-font-smoothing: antialiased; }
     .email-wrapper { max-width: 580px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid ${COLOR_CARD_BORDER}; box-shadow: 0 10px 30px rgba(23,44,26,0.06); }
@@ -627,7 +718,7 @@ export default async function handler(req, res) {
 
       const custEmailPayload = {
         from: 'REEFIYA Export Desk <rfq@reefiya.com>',
-        to: [businessEmail],
+        to: [emailRaw],
         subject: custSubject,
         html: custHtml,
         reply_to: 'exports@reefiya.com'
@@ -648,6 +739,6 @@ export default async function handler(req, res) {
 
   } catch (err) {
     console.error('[API /api/send-rfq Error]', err);
-    return res.status(500).json({ success: false, error: err.message });
+    return res.status(500).json({ success: false, error: 'Failed to send RFQ. Please contact exports@reefiya.com.' });
   }
 }
