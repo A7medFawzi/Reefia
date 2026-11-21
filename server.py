@@ -18,7 +18,8 @@ if sys.stdout.encoding != 'utf-8':
         pass
 
 PORT = 8000
-RESEND_API_TOKEN = os.environ.get('RESEND_API_TOKEN') or ('re_' + 'LJKziiKr_' + 'C5kQwiUR6WBZdhSbjDC5RrfH')
+# Set RESEND_API_TOKEN in your shell before running locally. Never commit the key.
+RESEND_API_TOKEN = os.environ.get('RESEND_API_TOKEN', '')
 REEFIYA_WA_PHONE = '201290099230'
 WHATSAPP_DESK_URL = f'https://wa.me/{REEFIYA_WA_PHONE}'
 
