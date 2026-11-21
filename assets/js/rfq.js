@@ -1370,8 +1370,8 @@
         };
 
         const arVarMap = {
-          'Beauregard': 'بوريغارد (Beauregard)',
-          'Bellevue': 'بيليفيو (Bellevue)',
+          'Beauregard': 'بوريجارد (Beauregard)',
+          'Bellevue': 'بيلفيو (Bellevue)',
           'Other Egyptian Varieties (Seasonal)': 'أصناف مصرية أخرى (موسمية)'
         };
         const arVarieties = Array.from(document.querySelectorAll('.chk-variety:checked')).map(el => {
@@ -1771,9 +1771,9 @@
         lockedStatus: 'منتج محدد',
         lblVariety: 'الأصناف المفضلة',
         reqVariety: '* إجباري (اختر صنفاً أو أكثر)',
-        vNameBellevue: 'بيليفيو (Bellevue)',
+        vNameBellevue: 'بيلفيو (Bellevue)',
         vDescBellevue: 'صنف مخصص للأسواق الطازجة (Fresh Market Variety)',
-        vNameBeau: 'بوريغارد (Beauregard)',
+        vNameBeau: 'بوريجارد (Beauregard)',
         vDescBeau: 'الصنف التصديري التجاري القياسي (Commercial Export Variety)',
         vNameEgy: 'أصناف مصرية أخرى (موسمية)',
         vDescEgy: 'متوفر حسب الموسم والإنتاج الزراعي',
