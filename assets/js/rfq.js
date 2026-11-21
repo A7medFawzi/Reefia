@@ -41,7 +41,7 @@
       if (vEl) {
         if (selectedVarieties.length === 0) {
           vEl.textContent = emptyPlaceholder;
-          vEl.style.color = '#a09886';
+          vEl.style.color = '#736b5b';
         } else {
           vEl.textContent = selectedVarieties.join(currentLang === 'ar' ? '، ' : ', ');
           vEl.style.color = '#172c1a';
@@ -60,7 +60,7 @@
       if (sEl) {
         if (selectedSizing.length === 0) {
           sEl.textContent = emptyPlaceholder;
-          sEl.style.color = '#a09886';
+          sEl.style.color = '#736b5b';
         } else {
           sEl.textContent = selectedSizing.join(currentLang === 'ar' ? '، ' : ', ');
           sEl.style.color = '#172c1a';
@@ -83,7 +83,7 @@
       if (pEl) {
         if (selectedPkg.length === 0) {
           pEl.textContent = emptyPlaceholder;
-          pEl.style.color = '#a09886';
+          pEl.style.color = '#736b5b';
         } else {
           pEl.textContent = selectedPkg.join(currentLang === 'ar' ? '، ' : ', ');
           pEl.style.color = '#172c1a';
@@ -105,7 +105,7 @@
           wEl.style.color = '#172c1a';
         } else {
           wEl.textContent = emptyPlaceholder;
-          wEl.style.color = '#a09886';
+          wEl.style.color = '#736b5b';
         }
       }
 
@@ -122,7 +122,7 @@
           plEl.style.color = '#172c1a';
         } else {
           plEl.textContent = emptyPlaceholder;
-          plEl.style.color = '#a09886';
+          plEl.style.color = '#736b5b';
         }
       }
 
@@ -134,7 +134,7 @@
         const val = volSelect.value;
         if (!val) {
           sumVolEl.textContent = notSpecPlaceholder;
-          sumVolEl.style.color = '#a09886';
+          sumVolEl.style.color = '#736b5b';
         } else {
           let displayVol = val;
           if (val === 'Trial Order') {
@@ -180,7 +180,7 @@
         const cVal = hiddenCountry.value;
         if (!cVal) {
           sumCountryEl.textContent = notSpecPlaceholder;
-          sumCountryEl.style.color = '#a09886';
+          sumCountryEl.style.color = '#736b5b';
         } else if (cVal === 'Other') {
           const customCountry = document.getElementById('inputOtherCountry') ? document.getElementById('inputOtherCountry').value.trim() : '';
           sumCountryEl.textContent = customCountry ? customCountry : (currentLang === 'ar' ? 'دولة أخرى' : 'Other Country');
@@ -205,7 +205,7 @@
           sumPortEl.style.color = '#172c1a';
         } else {
           sumPortEl.textContent = notSpecPlaceholder;
-          sumPortEl.style.color = '#a09886';
+          sumPortEl.style.color = '#736b5b';
         }
       }
 
@@ -216,7 +216,7 @@
         const iVal = incoSelect.value;
         if (!iVal) {
           sumIncoEl.textContent = notSpecPlaceholder;
-          sumIncoEl.style.color = '#a09886';
+          sumIncoEl.style.color = '#736b5b';
         } else {
           if (iVal.startsWith('Not Sure')) {
             sumIncoEl.textContent = currentLang === 'ar' ? 'طلب استشارة شحن' : (d.optIncoNotSure || 'Advice Requested');
@@ -234,7 +234,7 @@
         const wVal = winSelect.value;
         if (!wVal) {
           sumWinEl.textContent = notSpecPlaceholder;
-          sumWinEl.style.color = '#a09886';
+          sumWinEl.style.color = '#736b5b';
         } else if (wVal === 'Within 30 Days') {
           sumWinEl.textContent = d.optShipWin30 || (currentLang === 'ar' ? 'خلال 30 يوماً' : 'Within 30 Days');
           sumWinEl.style.color = '#172c1a';
@@ -263,7 +263,7 @@
           sumCompEl.style.color = '#172c1a';
         } else {
           sumCompEl.textContent = notSpecPlaceholder;
-          sumCompEl.style.color = '#a09886';
+          sumCompEl.style.color = '#736b5b';
         }
       }
 
@@ -279,7 +279,7 @@
           sumContactEl.style.color = '#172c1a';
         } else {
           sumContactEl.textContent = notSpecPlaceholder;
-          sumContactEl.style.color = '#a09886';
+          sumContactEl.style.color = '#736b5b';
         }
       }
 
@@ -293,7 +293,7 @@
           sumEmailEl.style.color = '#172c1a';
         } else {
           sumEmailEl.textContent = notSpecPlaceholder;
-          sumEmailEl.style.color = '#a09886';
+          sumEmailEl.style.color = '#736b5b';
         }
       }
 
