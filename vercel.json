@@ -1,32 +1,92 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/ar/index.html", "destination": "/ar", "permanent": true },
-    { "source": "/rfq.html", "destination": "/rfq", "permanent": true },
-    { "source": "/ar/rfq.html", "destination": "/ar/rfq", "permanent": true }
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/index.html",
+      "destination": "/ar",
+      "permanent": true
+    },
+    {
+      "source": "/rfq.html",
+      "destination": "/rfq",
+      "permanent": true
+    },
+    {
+      "source": "/ar/rfq.html",
+      "destination": "/ar/rfq",
+      "permanent": true
+    },
+    {
+      "source": "/Reefiya(.*)Catalogue(.*).pdf",
+      "destination": "/downloads/reefiya-export-catalogue-2026.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/catalogue",
+      "destination": "/downloads/reefiya-export-catalogue-2026.pdf",
+      "permanent": false
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
       ]
     },
     {
       "source": "/(.*)\\.(jpg|jpeg|png|webp|avif|svg|ico|woff2|mp4|webm)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=86400"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/downloads/(.*)\\.pdf",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"Reefiya-Export-Catalogue-2026.pdf\""
+        }
       ]
     }
   ]
