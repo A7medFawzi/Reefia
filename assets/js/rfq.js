@@ -2470,16 +2470,58 @@
           pdfBase64: ''
         };
 
+        // Shown only if the RFQ could not be delivered, so the lead is never silently lost.
+        const showDeliveryFallback = () => {
+          if (document.getElementById('rfqDeliveryFallback')) return;
+          const isAr = currentLang === 'ar';
+          const waText = encodeURIComponent(`Hello REEFIYA Export Desk, I submitted RFQ ${rfqRef} on your website but it may not have been delivered.`);
+          const mailSubject = encodeURIComponent(`RFQ ${rfqRef}`);
+          const box = document.createElement('div');
+          box.id = 'rfqDeliveryFallback';
+          box.setAttribute('role', 'alert');
+          box.dir = isAr ? 'rtl' : 'ltr';
+          box.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:100000;max-width:min(560px,calc(100vw - 32px));background:#fff8ef;color:#3d2a12;border:1.5px solid #e86e1e;border-radius:14px;padding:16px 18px;box-shadow:0 12px 40px rgba(0,0,0,.18);font:600 14px/1.6 inherit;';
+          const msg = document.createElement('div');
+          msg.textContent = isAr
+            ? `تعذّر إرسال طلبكم (${rfqRef}) تلقائياً. برجاء التواصل معنا مباشرة حتى لا يضيع طلبكم:`
+            : `We couldn't deliver your RFQ (${rfqRef}) automatically. Please contact us directly so it isn't lost:`;
+          const links = document.createElement('div');
+          links.style.cssText = 'display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;';
+          const mk = (href, label, bg) => {
+            const a = document.createElement('a');
+            a.href = href; a.target = '_blank'; a.rel = 'noopener';
+            a.textContent = label;
+            a.style.cssText = `background:${bg};color:#fff;text-decoration:none;padding:8px 16px;border-radius:999px;font-weight:700;`;
+            return a;
+          };
+          links.appendChild(mk(`https://wa.me/201290099230?text=${waText}`, isAr ? 'واتساب' : 'WhatsApp', '#128c7e'));
+          links.appendChild(mk(`mailto:exports@reefiya.com?subject=${mailSubject}`, 'exports@reefiya.com', '#1e481c'));
+          const close = document.createElement('button');
+          close.type = 'button'; close.textContent = '×'; close.setAttribute('aria-label', 'Close');
+          close.style.cssText = 'position:absolute;top:6px;' + (isAr ? 'left' : 'right') + ':10px;background:none;border:0;font-size:20px;cursor:pointer;color:inherit;';
+          close.onclick = () => box.remove();
+          box.append(close, msg, links);
+          document.body.appendChild(box);
+        };
+
+        const postRfq = (body) => fetch('/api/send-rfq', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        }).then(r => r.json().catch(() => ({})).then(data => {
+          if (!r.ok || !data.success) throw Object.assign(new Error(data.error || `HTTP ${r.status}`), { status: r.status });
+          return data;
+        }));
+
         const dispatchToServer = (finalPayload) => {
-          console.log('[RFQ Dispatcher] Dispatching to /api/send-rfq:', rfqRef);
-          fetch('/api/send-rfq', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(finalPayload)
-          }).then(r => r.json()).then(data => {
-            console.log('[RFQ Dispatcher] Email notification sent successfully:', data);
+          postRfq(finalPayload).catch(err => {
+            console.warn('[RFQ Dispatcher] First attempt failed, retrying without PDF:', err);
+            // Retry once without the attachment (covers oversized payloads and transient errors)
+            return new Promise(res => setTimeout(res, 1500))
+              .then(() => postRfq(Object.assign({}, finalPayload, { pdfBase64: '' })));
           }).catch(err => {
-            console.error('[RFQ Dispatcher] Error calling /api/send-rfq:', err);
+            console.error('[RFQ Dispatcher] RFQ delivery failed:', err);
+            showDeliveryFallback();
           });
         };
 
@@ -4333,10 +4375,9 @@
       const targetLang = (saved && langDict[saved]) ? saved : (pageIsArabic ? 'ar' : 'en');
       applyLang(targetLang);
 
-      // If user came with Arabic active on the English URL, reflect /ar/rfq cleanly in address bar
-      if (!pageIsArabic && targetLang === 'ar') {
-        try {
-          window.history.replaceState({ lang: 'ar' }, '', window.location.origin + '/ar/rfq' + (window.location.hash || ''));
-        } catch (e) {}
+      // Arabic visitors on the English URL go to the real Arabic page (correct lang/dir/base URL).
+      // A history.replaceState here would break relative asset URLs created later.
+      if (!pageIsArabic && targetLang === 'ar' && /^\/rfq(\.html)?\/?$/.test(window.location.pathname)) {
+        window.location.replace('/ar/rfq' + (window.location.hash || ''));
       }
     })();
