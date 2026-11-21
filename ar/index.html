@@ -139,6 +139,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#1e481c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -182,7 +184,7 @@
         <div class="loader-fill" id="loaderFill"></div>
       </div>
       <div class="loader-meta">
-        <span class="loader-text" id="loaderText" data-i18n="loader_journey">Loading Journey</span>
+        <span class="loader-text" id="loaderText" data-i18n="loader_journey">جاري تحميل الرحلة</span>
         <span class="loader-divider">•</span>
         <span class="loader-pct" id="loaderPct">0%</span>
       </div>
@@ -204,19 +206,19 @@
 
     <!-- Center Capsule Pill Menu -->
     <nav class="nav-pill-group">
-      <a href="#produce" class="nav-pill-item" data-i18n="nav_produce">Our Produce</a>
-      <a href="#specifications" class="nav-pill-item" data-i18n="nav_specs">Specifications</a>
-      <a href="#journey" class="nav-pill-item" data-i18n="nav_process">Export Process</a>
-      <a href="#markets" class="nav-pill-item" data-i18n="nav_global">Markets</a>
-      <a href="#about" class="nav-pill-item" data-i18n="nav_about">About Us</a>
-      <a href="#contact" class="nav-pill-item" data-i18n="nav_contact">Contact</a>
+      <a href="#produce" class="nav-pill-item" data-i18n="nav_produce">محاصيلنا</a>
+      <a href="#specifications" class="nav-pill-item" data-i18n="nav_specs">المواصفات</a>
+      <a href="#journey" class="nav-pill-item" data-i18n="nav_process">رحلة التصدير</a>
+      <a href="#markets" class="nav-pill-item" data-i18n="nav_global">الأسواق</a>
+      <a href="#about" class="nav-pill-item" data-i18n="nav_about">لماذا ريفيا</a>
+      <a href="#contact" class="nav-pill-item" data-i18n="nav_contact">تواصل معنا</a>
     </nav>
 
     <!-- Right Actions: Request a Quote (Orange Pill) & 7-Language Flag Selector -->
     <div class="nav-right-actions">
       <!-- Orange Quote Button -->
-      <a href="rfq.html" class="quote-pill-btn">
-        <span data-i18n="btn_quote">Request a quote</span>
+      <a href="rfq" class="quote-pill-btn">
+        <span data-i18n="btn_quote">طلب عرض سعر</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M7 7h10v10"></path>
           <path d="M7 17 17 7"></path>
@@ -340,16 +342,16 @@
         <button class="mobile-nav-close" id="mobileNavClose" type="button" aria-label="Close Menu">✕</button>
       </div>
       <nav class="mobile-nav-links">
-        <a href="#produce" class="mobile-nav-link" data-i18n="nav_produce">Our Produce</a>
-        <a href="#specifications" class="mobile-nav-link" data-i18n="nav_specs">Specifications</a>
-        <a href="#journey" class="mobile-nav-link" data-i18n="nav_process">Export Process</a>
-        <a href="#markets" class="mobile-nav-link" data-i18n="nav_global">Markets</a>
-        <a href="#about" class="mobile-nav-link" data-i18n="nav_about">About Us</a>
-        <a href="#contact" class="mobile-nav-link" data-i18n="nav_contact">Contact</a>
+        <a href="#produce" class="mobile-nav-link" data-i18n="nav_produce">محاصيلنا</a>
+        <a href="#specifications" class="mobile-nav-link" data-i18n="nav_specs">المواصفات</a>
+        <a href="#journey" class="mobile-nav-link" data-i18n="nav_process">رحلة التصدير</a>
+        <a href="#markets" class="mobile-nav-link" data-i18n="nav_global">الأسواق</a>
+        <a href="#about" class="mobile-nav-link" data-i18n="nav_about">لماذا ريفيا</a>
+        <a href="#contact" class="mobile-nav-link" data-i18n="nav_contact">تواصل معنا</a>
       </nav>
       <div class="mobile-nav-footer">
-        <a href="rfq.html" class="mobile-quote-btn" id="mobileQuoteBtn">
-          <span data-i18n="btn_quote">Request a quote</span>
+        <a href="rfq" class="mobile-quote-btn" id="mobileQuoteBtn">
+          <span data-i18n="btn_quote">طلب عرض سعر</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 7h10v10"></path>
             <path d="M7 17 17 7"></path>
@@ -371,52 +373,52 @@
   <div class="story-container">
     <!-- Chapter 1: Origin (Hero) -->
     <div class="story-card active" id="story-1">
-      <span class="story-eyebrow" data-i18n="hero_eyebrow">PREMIUM EGYPTIAN PRODUCE</span>
-      <h1 class="story-title" data-i18n="hero_title">From Egyptian fields.<br/><em>To global shelves.</em></h1>
-      <p class="story-desc" data-i18n="hero_desc">Egyptian sweet potatoes, carefully sourced and prepared for international markets.</p>
+      <span class="story-eyebrow" data-i18n="hero_eyebrow">01 — التوريد</span>
+      <h1 class="story-title" data-i18n="hero_title">توريد موجه.<br/><em>وفق متطلبات المشتري.</em></h1>
+      <p class="story-desc" data-i18n="hero_desc">يتم توريد المحصول من مزارعين مصريين ذوي خبرة بما يتوافق مع متطلبات كل برنامج تصديري.</p>
       <div class="hero-actions">
-        <a href="rfq.html" class="cta-btn hero-primary-cta" data-i18n="cta_quote">Request a quote ↗</a>
-        <a href="#produce" class="hero-text-link" data-i18n="cta_explore">Explore our produce ↗</a>
+        <a href="rfq" class="cta-btn hero-primary-cta" data-i18n="cta_quote">اطلب عرض سعر ↖</a>
+        <a href="#produce" class="hero-text-link" data-i18n="cta_explore">استكشف محاصيلنا ↖</a>
       </div>
     </div>
 
     <!-- Chapter 2: Selection -->
     <div class="story-card" id="story-2">
-      <span class="story-eyebrow" data-i18n="ch2_eyebrow">02 — CAREFUL SELECTION</span>
-      <h1 class="story-title" data-i18n="ch2_title">Curated grading.<br/><em>Consistent quality.</em></h1>
-      <p class="story-desc" data-i18n="ch2_desc">Rigorous sorting and uniform sizing to meet buyer specifications across international markets.</p>
+      <span class="story-eyebrow" data-i18n="ch2_eyebrow">02 — الفرز والتدريج</span>
+      <h2 class="story-title" data-i18n="ch2_title">اختيار بعناية.<br/><em>وتدريج حسب المواصفة.</em></h2>
+      <p class="story-desc" data-i18n="ch2_desc">يتم تنسيق عمليات الفرز والتدريج عبر محطات تعبئة شريكة وفق المواصفات التجارية المتفق عليها.</p>
       <div class="hero-actions">
-        <a href="#specifications" class="cta-btn" data-i18n="cta_specs">View Specifications ↗</a>
+        <a href="#specifications" class="cta-btn" data-i18n="cta_specs">عرض المواصفات ↖</a>
       </div>
     </div>
 
     <!-- Chapter 3: Packing -->
     <div class="story-card" id="story-3">
-      <span class="story-eyebrow" data-i18n="ch3_eyebrow">03 — EXPORT PACKING</span>
-      <h1 class="story-title" data-i18n="ch3_title">Engineered for export.<br/><em>Protected in every carton.</em></h1>
-      <p class="story-desc" data-i18n="ch3_desc">Corrugated export cartons with ventilation designed to help preserve freshness, product integrity, and skin condition throughout transit.</p>
+      <span class="story-eyebrow" data-i18n="ch3_eyebrow">03 — التعبئة التصديرية</span>
+      <h2 class="story-title" data-i18n="ch3_title">تعبئة للتصدير.<br/><em>واستعداد لرحلة الشحن.</em></h2>
+      <p class="story-desc" data-i18n="ch3_desc">يتم تجهيز المحصول في عبوات تصديرية مناسبة، مع تأمين المنصات وإمكانية تنفيذ العلامة الخاصة حسب الاتفاق.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/201290099230?text=Hello%20REEFIYA,%20I%20would%20like%20to%20inquire%20regarding%20export%20packing%20specifications%20and%20carton%20standards." target="_blank" rel="noopener noreferrer" class="cta-btn hero-ch3-wa-btn" data-i18n="cta_packing">Discuss packing ↗</a>
+        <a href="https://wa.me/201290099230?text=Hello%20REEFIYA,%20I%20would%20like%20to%20inquire%20regarding%20export%20packing%20specifications%20and%20carton%20standards." target="_blank" rel="noopener noreferrer" class="cta-btn hero-ch3-wa-btn" data-i18n="cta_packing">ناقش خيارات التعبئة ↖</a>
       </div>
     </div>
 
     <!-- Chapter 4: Shipment -->
     <div class="story-card" id="story-4">
-      <span class="story-eyebrow" data-i18n="ch4_eyebrow">04 — REEFER COORDINATION</span>
-      <h1 class="story-title" data-i18n="ch4_title">Temperature controlled.<br/><em>Ready for the journey.</em></h1>
-      <p class="story-desc" data-i18n="ch4_desc">Refrigerated shipping with controlled temperature and airflow throughout international transit.</p>
+      <span class="story-eyebrow" data-i18n="ch4_eyebrow">04 — تنسيق الشحن المبرد</span>
+      <h2 class="story-title" data-i18n="ch4_title">تنسيق متطلبات الشحن&nbsp;المبرد.<br/><em>استعدادًا للنقل إلى الوجهة.</em></h2>
+      <p class="story-desc" data-i18n="ch4_desc">يتم تنسيق متطلبات الحاويات المبردة وفق برنامج الشحن المتفق عليه ومتطلبات سوق الوجهة.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/201290099230?text=Hello%20REEFIYA,%20I%20would%20like%20to%20inquire%20regarding%20reefer%20shipping%20and%20cold%20chain%20logistics." target="_blank" rel="noopener noreferrer" class="cta-btn hero-ch4-wa-btn" data-i18n="cta_logistics">Discuss logistics ↗</a>
+        <a href="https://wa.me/201290099230?text=Hello%20REEFIYA,%20I%20would%20like%20to%20inquire%20regarding%20reefer%20shipping%20and%20cold%20chain%20logistics." target="_blank" rel="noopener noreferrer" class="cta-btn hero-ch4-wa-btn" data-i18n="cta_logistics">ناقش متطلبات الشحن ↖</a>
       </div>
     </div>
 
     <!-- Chapter 5: Destination -->
     <div class="story-card" id="story-5">
-      <span class="story-eyebrow" data-i18n="ch5_eyebrow">05 — DOCUMENTATION & DISPATCH</span>
-      <h1 class="story-title" data-i18n="ch5_title">Market ready.<br/><em>Prepared for global buyers.</em></h1>
-      <p class="story-desc" data-i18n="ch5_desc">Export-ready Egyptian produce for importers, distributors, retailers, wholesalers, and food-industry buyers worldwide.</p>
+      <span class="story-eyebrow" data-i18n="ch5_eyebrow">05 — المستندات والشحن</span>
+      <h2 class="story-title" data-i18n="ch5_title">جاهزة للشحن.<br/><em>بتنسيق حتى المغادرة.</em></h2>
+      <p class="story-desc" data-i18n="ch5_desc">يتم تنسيق المستندات التصديرية المطلوبة وإجراءات إرسال الحاويات عبر الموانئ التجارية المصرية وفق برنامج الشحن.</p>
       <div class="hero-actions">
-        <a href="rfq.html" class="cta-btn" data-i18n="cta_quote">Request a quote ↗</a>
+        <a href="rfq" class="cta-btn" data-i18n="cta_quote">اطلب عرض سعر ↖</a>
       </div>
     </div>
   </div>
@@ -425,11 +427,11 @@
   <div class="journey-bottom">
     <div class="journey-top-row">
       <div class="chapters">
-        <span class="chapter-item active" data-chapter="1"><b >01</b> <span data-i18n="ch_name_1">Sourcing</span></span>
-        <span class="chapter-item" data-chapter="2"><b >02</b> <span data-i18n="ch_name_2">Grading</span></span>
-        <span class="chapter-item" data-chapter="3"><b >03</b> <span data-i18n="ch_name_3">Packing</span></span>
-        <span class="chapter-item" data-chapter="4"><b >04</b> <span data-i18n="ch_name_4">Reefer</span></span>
-        <span class="chapter-item" data-chapter="5"><b >05</b> <span data-i18n="ch_name_5">Dispatch</span></span>
+        <span class="chapter-item active" data-chapter="1"><b >01</b> <span data-i18n="ch_name_1">التوريد</span></span>
+        <span class="chapter-item" data-chapter="2"><b >02</b> <span data-i18n="ch_name_2">الفرز</span></span>
+        <span class="chapter-item" data-chapter="3"><b >03</b> <span data-i18n="ch_name_3">التعبئة</span></span>
+        <span class="chapter-item" data-chapter="4"><b >04</b> <span data-i18n="ch_name_4">الشحن المبرد</span></span>
+        <span class="chapter-item" data-chapter="5"><b >05</b> <span data-i18n="ch_name_5">المغادرة</span></span>
       </div>
     </div>
 
@@ -442,10 +444,10 @@
         <span class="scroll-mouse-icon" aria-hidden="true">
           <span class="mouse-wheel-dot"></span>
         </span>
-        <span class="scroll-hint-text" data-i18n="scroll_hint">Scroll to follow the journey</span>
+        <span class="scroll-hint-text" data-i18n="scroll_hint">مرر للاستكشاف</span>
       </div>
       <a href="#produce" class="skip-to-produce-btn" id="skipToProduceBtn">
-        <span data-i18n="skip_produce">Explore Our Produce</span>
+        <span data-i18n="skip_produce">محاصيلنا</span>
         <span class="skip-btn-circle" aria-hidden="true">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -489,9 +491,7 @@
 
   <section class="produce-hero-section" id="produce" aria-labelledby="produceHeadline">
     <!-- Top-Right Global Micro-Slogan: bold and warm golden -->
-    <div class="produce-top-slogan" data-i18n="sec3_corner_slogan">
-      EGYPT GROWN. &nbsp;GLOBALLY BOUND.
-    </div>
+    <div class="produce-top-slogan" data-i18n="sec3_corner_slogan">زراعة مصرية. وجهة عالمية.</div>
 
     <!-- UPPER HERO COMPOSITION: Editorial Left Story + Natural Hero Sweet Potato Field Scene on Right -->
     <div class="produce-hero-top">
@@ -501,29 +501,25 @@
         <div class="produce-section-badge">
           <span class="produce-badge-num">02</span>
           <span class="produce-badge-line"></span>
-          <span class="produce-badge-text" data-i18n="sec3_section_label">OUR HERO PRODUCE</span>
+          <span class="produce-badge-text" data-i18n="sec3_section_label">محاصيلنا</span>
         </div>
 
         <!-- Small eyebrow -->
-        <span class="produce-eyebrow-tag" data-i18n="sec3_eyebrow">
-          EGYPTIAN SWEET POTATOES
-        </span>
+        <span class="produce-eyebrow-tag" data-i18n="sec3_eyebrow">البطاطا الحلوة المصرية</span>
 
         <!-- Main heading (H1) + Subheadline (appears once only) -->
         <h2 class="produce-headline" id="produceHeadline">
-          <span class="produce-hl-main" data-i18n="sec3_headline_l1">Egyptian Sweet Potatoes.</span>
-          <em class="produce-hl-sub" data-i18n="sec3_headline_l2">Where our export journey begins.</em>
+          <span class="produce-hl-main" data-i18n="sec3_headline_l1">البطاطا الحلوة المصرية</span>
+          <em class="produce-hl-sub" data-i18n="sec3_headline_l2">حيث تنطلق رحلتنا التصديرية.</em>
         </h2>
 
         <!-- Active Language Body Copy -->
-        <p class="produce-body-copy" data-i18n="sec3_body">
-          Sweet potatoes are REEFIYA’s primary export crop. By specializing deeply in one crop, we focus on sourcing, grading, packing, and preparing each order around the requirements of the buyer and destination market.
-        </p>
+        <p class="produce-body-copy" data-i18n="sec3_body">تمثل البطاطا الحلوة المحصول التصديري الأساسي لريفيا. ويتيح لنا هذا التركيز مواءمة مراحل التوريد، والفرز، والتعبئة مع المتطلبات المتفق عليها لكل برنامج تصديري.</p>
 
         <!-- Elegant Refined CTA: Gold Underline + Interactive Diagonal Arrow -->
         <div class="produce-cta-wrap">
           <a href="#specifications" class="produce-explore-link">
-            <span class="produce-cta-label" data-i18n="sec3_cta">Explore sweet potatoes ↗</span>
+            <span class="produce-cta-label" data-i18n="sec3_cta">ناقش احتياجاتك من البطاطا الحلوة ↖</span>
           </a>
         </div>
       </div>
@@ -535,9 +531,9 @@
             <path d="M5 21 C9 14, 15 11, 23 10 M17 5 L23 10 L16 15" />
           </svg>
           <div class="hw-lines">
-            <span class="hw-l1" data-i18n="sec3_hw_line1">From</span>
-            <span class="hw-l2" data-i18n="sec3_hw_line2">Egyptian Fields</span>
-            <span class="hw-l3" data-i18n="sec3_hw_line3">to Global Shelves</span>
+            <span class="hw-l1" data-i18n="sec3_hw_line1">من الحقول</span>
+            <span class="hw-l2" data-i18n="sec3_hw_line2">المصرية إلى</span>
+            <span class="hw-l3" data-i18n="sec3_hw_line3">الأسواق العالمية</span>
           </div>
         </div>
       </div>
@@ -565,7 +561,7 @@
           <div class="variety-header-meta">
             <span class="variety-num">01</span>
             <span class="variety-num-sep"></span>
-            <span class="variety-category-tag" data-i18n="sec3_v1_cat">FRESH MARKET</span>
+            <span class="variety-category-tag" data-i18n="sec3_v1_cat">سوق الاستهلاك الطازج</span>
           </div>
           <div class="variety-photo-stage">
             <div class="product-base-glow"></div>
@@ -576,10 +572,8 @@
               loading="lazy"
             >
           </div>
-          <h3 class="variety-title" data-i18n="sec3_v1_name">BELLEVUE</h3>
-          <p class="variety-desc" data-i18n="sec3_v1_desc">
-            Selected Egyptian sweet potatoes for fresh-market and export programs, available in commercial sizes and grades according to buyer requirements.
-          </p>
+          <h3 class="variety-title" data-i18n="sec3_v1_name">بلفين (BELLEVUE)</h3>
+          <p class="variety-desc" data-i18n="sec3_v1_desc">بطاطا حلوة مصرية مختارة ومجهزة لبرامج تصدير السوق الطازج وفق المواصفات التجارية المتفق عليها.</p>
         </div>
 
         <!-- 02 — BEAUREGARD -->
@@ -587,7 +581,7 @@
           <div class="variety-header-meta">
             <span class="variety-num">02</span>
             <span class="variety-num-sep"></span>
-            <span class="variety-category-tag" data-i18n="sec3_v2_cat">COMMERCIAL VARIETY</span>
+            <span class="variety-category-tag" data-i18n="sec3_v2_cat">صنف تجاري معتمد</span>
           </div>
           <div class="variety-photo-stage">
             <div class="product-base-glow active-glow"></div>
@@ -598,10 +592,8 @@
               loading="lazy"
             >
           </div>
-          <h3 class="variety-title" data-i18n="sec3_v2_name">BEAUREGARD</h3>
-          <p class="variety-desc" data-i18n="sec3_v2_desc">
-            A widely traded sweet potato variety available in multiple commercial grades, sizes, and packing specifications.
-          </p>
+          <h3 class="variety-title" data-i18n="sec3_v2_name">بيوريجارد (BEAUREGARD)</h3>
+          <p class="variety-desc" data-i18n="sec3_v2_desc">صنف واسع التداول تجاريًا، ويتم تجهيزه وفق درجات ومواصفات تعبئة تتناسب مع متطلبات المشتري.</p>
         </div>
 
         <!-- 03 — EGYPTIAN VARIETIES -->
@@ -609,7 +601,7 @@
           <div class="variety-header-meta">
             <span class="variety-num">03</span>
             <span class="variety-num-sep"></span>
-            <span class="variety-category-tag" data-i18n="sec3_v3_cat">SEASONAL SELECTION</span>
+            <span class="variety-category-tag" data-i18n="sec3_v3_cat">محاصيل موسمية مختارة</span>
           </div>
           <div class="variety-photo-stage">
             <div class="product-base-glow"></div>
@@ -620,10 +612,8 @@
               loading="lazy"
             >
           </div>
-          <h3 class="variety-title" data-i18n="sec3_v3_name">EGYPTIAN VARIETIES</h3>
-          <p class="variety-desc" data-i18n="sec3_v3_desc">
-            Local high-sugar varieties sourced according to season, availability, and buyer requirements.
-          </p>
+          <h3 class="variety-title" data-i18n="sec3_v3_name">الأصناف المصرية</h3>
+          <p class="variety-desc" data-i18n="sec3_v3_desc">أصناف محلية تقليدية تتميز بنسبة سكر طبيعية عالية، نوفرها بحسب الموسم، ومدى التوفر، ومتطلبات المشتري.</p>
         </div>
       </div>
     </div>
@@ -635,7 +625,7 @@
           <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
           <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
         </svg>
-        <span class="produce-footer-text" data-i18n="sec3_footer_left">PREMIUM EGYPTIAN PRODUCE</span>
+        <span class="produce-footer-text" data-i18n="sec3_footer_left">محاصيل زراعية مصرية فاخرة</span>
       </div>
 
       <!-- Center Timeline Track with 01 / 02 / 03 indicators -->
@@ -651,7 +641,7 @@
       </div>
 
       <div class="produce-footer-right">
-        <span class="produce-footer-text" data-i18n="sec3_footer_right">QUALITY ROOTED IN EGYPT</span>
+        <span class="produce-footer-text" data-i18n="sec3_footer_right">جودة متجذرة في أرض مصر</span>
       </div>
     </div>
   </section>
@@ -669,29 +659,27 @@
           <div class="buyer-sec-badge">
             <span class="buyer-badge-num">03</span>
             <span class="buyer-badge-divider" aria-hidden="true"></span>
-            <span class="buyer-badge-label" data-i18n="sec4_badge_label">BUYER REQUIREMENTS</span>
+            <span class="buyer-badge-label" data-i18n="sec4_badge_label">المواصفات والتعبئة</span>
           </div>
 
           <!-- Eyebrow -->
-          <span class="buyer-eyebrow" data-i18n="sec4_eyebrow">BUILT AROUND YOUR MARKET</span>
+          <span class="buyer-eyebrow" data-i18n="sec4_eyebrow">مجهزة وفق متطلبات سوقك</span>
 
           <!-- Headline -->
           <h2 class="buyer-headline" id="buyerReqHeadline">
-            <span data-i18n="sec4_headline_l1">One crop.</span>
-            <em data-i18n="sec4_headline_l2">Multiple possibilities.</em>
+            <span data-i18n="sec4_headline_l1">محصول واحد.</span>
+            <em data-i18n="sec4_headline_l2">بإمكانات تجارية متعددة.</em>
           </h2>
 
           <!-- Headline underline — thin gold bar like reference -->
           <span class="buyer-headline-underline" aria-hidden="true"></span>
 
           <!-- Body -->
-          <p class="buyer-body-desc" data-i18n="sec4_body">
-            Different markets require different grades, sizes, formats, and commercial specifications. REEFIYA prepares each program around how and where the product will be sold or processed.
-          </p>
+          <p class="buyer-body-desc" data-i18n="sec4_body">تختلف متطلبات الأسواق وقنوات التوزيع من حيث درجات الجودة، والأحجام، وأشكال التعبئة. لذلك ننسق كل برنامج تصديري وفق طريقة بيع المنتج أو توزيعه أو استخدامه في التصنيع.</p>
 
           <!-- CTA Button -->
-          <a href="rfq.html" class="buyer-cta-btn">
-            <span data-i18n="sec4_cta">Tell us what you need</span>
+          <a href="rfq" class="buyer-cta-btn">
+            <span data-i18n="sec4_cta">ناقش مواصفاتك معنا</span>
             <span class="buyer-cta-arrow" aria-hidden="true">&#x2197;</span>
           </a>
         </div>
@@ -724,7 +712,7 @@
                 <div class="buyer-card-title-group">
                   <span class="buyer-card-num">01</span>
                   <span class="buyer-card-num-sep">&#8212;</span>
-                  <h3 class="buyer-card-title" data-i18n="sec4_card1_title">Fresh Market</h3>
+                  <h3 class="buyer-card-title" data-i18n="sec4_card1_title">السوق الطازج</h3>
                 </div>
                 <div class="buyer-card-icon-circle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -734,10 +722,8 @@
                   </svg>
                 </div>
               </div>
-              <span class="buyer-card-tag" data-i18n="sec4_card1_tag">RETAIL &amp; WHOLESALE</span>
-              <p class="buyer-card-desc" data-i18n="sec4_card1_desc">
-                Selected uniform grades for retail chains, wholesale produce terminals, and foodservice channels.
-              </p>
+              <span class="buyer-card-tag" data-i18n="sec4_card1_tag">التجزئة والجملة</span>
+              <p class="buyer-card-desc" data-i18n="sec4_card1_desc">محصول مفروز ومتجانس ومجهز لموزعي التجزئة، وأسواق الجملة، وموردي خدمات الأغذية.</p>
             </div>
           </div>
 
@@ -755,7 +741,7 @@
                 <div class="buyer-card-title-group">
                   <span class="buyer-card-num">02</span>
                   <span class="buyer-card-num-sep">&#8212;</span>
-                  <h3 class="buyer-card-title" data-i18n="sec4_card2_title">Processing</h3>
+                  <h3 class="buyer-card-title" data-i18n="sec4_card2_title">قنوات التصنيع الغذائي</h3>
                 </div>
                 <div class="buyer-card-icon-circle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -764,10 +750,8 @@
                   </svg>
                 </div>
               </div>
-              <span class="buyer-card-tag" data-i18n="sec4_card2_tag">INDUSTRIAL APPLICATIONS</span>
-              <p class="buyer-card-desc" data-i18n="sec4_card2_desc">
-                Cost-effective, high-grade produce prepared for food processors, frozen sweet potato lines, and puree manufacturing.
-              </p>
+              <span class="buyer-card-tag" data-i18n="sec4_card2_tag">تطبيقات التصنيع الغذائي</span>
+              <p class="buyer-card-desc" data-i18n="sec4_card2_desc">درجات تجارية اقتصادية ومناسبة لمصنعي الأغذية العاملين في المنتجات المجمدة، وأصابع البطاطا، والبوريه.</p>
             </div>
           </div>
 
@@ -785,7 +769,7 @@
                 <div class="buyer-card-title-group">
                   <span class="buyer-card-num">03</span>
                   <span class="buyer-card-num-sep">&#8212;</span>
-                  <h3 class="buyer-card-title" data-i18n="sec4_card3_title">Custom Programs</h3>
+                  <h3 class="buyer-card-title" data-i18n="sec4_card3_title">البرامج الخاصة</h3>
                 </div>
                 <div class="buyer-card-icon-circle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -795,10 +779,8 @@
                   </svg>
                 </div>
               </div>
-              <span class="buyer-card-tag" data-i18n="sec4_card3_tag">TAILORED SPECIFICATIONS</span>
-              <p class="buyer-card-desc" data-i18n="sec4_card3_desc">
-                Buyer-specific grading, calibrated sizing, specialized packing, labeling, and private-brand presentation.
-              </p>
+              <span class="buyer-card-tag" data-i18n="sec4_card3_tag">مواصفات حسب الطلب</span>
+              <p class="buyer-card-desc" data-i18n="sec4_card3_desc">معايرة أحجام، وتعبئة متخصصة، وتجهيز علامة تجارية خاصة وفق المواصفات المتفق عليها مع المشتري.</p>
             </div>
           </div>
         </div>
@@ -808,10 +790,10 @@
       <div class="buyer-req-footer">
         <div class="buyer-footer-left">
           <img loading="lazy" decoding="async" src="./reefiya-logo-clean.webp" alt="Reefiya" class="buyer-footer-logo">
-          <span class="buyer-footer-brand-sub" data-i18n="sec4_footer_sub">PREMIUM EGYPTIAN PRODUCE</span>
+          <span class="buyer-footer-brand-sub" data-i18n="sec4_footer_sub">محاصيل زراعية مصرية فاخرة</span>
         </div>
         <div class="buyer-footer-right">
-          <span class="buyer-footer-tagline" data-i18n="sec4_footer_tagline">FROM OUR FIELDS. TO GLOBAL SHELVES.</span>
+          <span class="buyer-footer-tagline" data-i18n="sec4_footer_tagline">من حقولنا. إلى رفوف العالم.</span>
         </div>
       </div>
     </div>
@@ -832,43 +814,43 @@
         <div class="produce-section-badge">
           <span class="produce-badge-num">04</span>
           <span class="produce-badge-line"></span>
-          <span class="produce-badge-text" data-i18n="sec4_markets_badge">MARKETS & PRESENCE</span>
+          <span class="produce-badge-text" data-i18n="sec4_markets_badge">الأسواق والتواجد</span>
         </div>
 
-        <span class="buyer-eyebrow" data-i18n="sec4_markets_eyebrow" style="color: #174D30; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; display: block; font-size: 0.85rem;">COMMERCIAL REACH</span>
+        <span class="buyer-eyebrow" data-i18n="sec4_markets_eyebrow" style="color: #174D30; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; display: block; font-size: 0.85rem;">انتشار تجاري</span>
         
         <h2 class="produce-headline" id="marketsHeadline" style="color: #0b1a10;">
-          <span class="produce-hl-main" data-i18n="sec4_markets_hl1" style="display: block; color: #0b1a10;">Rooted in Egypt.</span>
-          <em class="produce-hl-sub" data-i18n="sec4_markets_hl2" style="display: block; color: #e65100; font-style: normal; font-family: var(--font-heading);">Built for global trade.</em>
+          <span class="produce-hl-main" data-i18n="sec4_markets_hl1" style="display: block; color: #0b1a10;">جذورنا في مصر.</span>
+          <em class="produce-hl-sub" data-i18n="sec4_markets_hl2" style="display: block; color: #e65100; font-style: normal; font-family: var(--font-heading);">ورؤيتنا للعالمية.</em>
         </h2>
 
         <div class="markets-body" style="color: #4a5d50; font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">
-          <p data-i18n="sec4_markets_p1" style="margin-bottom: 0.85rem;">REEFIYA develops export programs for commercial buyers across Europe, the GCC, and international markets.</p>
-          <p data-i18n="sec4_markets_p2">Our operational base in Alexandria supports export coordination from Egypt, while our international commercial footprint supports cross-border communication, contracting, and trade development.</p>
+          <p data-i18n="sec4_markets_p1" style="margin-bottom: 0.85rem;">تقوم ريفيا بإعداد وتطوير برامج تصديرية للمشترين التجاريين عبر أوروبا، ودول مجلس التعاون الخليجي، والأسواق الدولية.</p>
+          <p data-i18n="sec4_markets_p2">تدعم قاعدتنا التشغيلية في الإسكندرية تنسيق عمليات التصدير من مصر، بينما يسهل تواجدنا التجاري الدولي التواصل العابر للحدود، وإبرام العقود، وتطوير حجم التجارة.</p>
         </div>        <!-- Target Markets Block -->
         <div class="markets-block markets-card-box market-dest-card">
           <div class="markets-card-header">
-            <h3 class="markets-card-title" data-i18n="sec4_markets_tm_title">TARGET MARKETS</h3>
-            <span class="markets-card-sub" data-i18n="sec4_markets_tm_sub">Export Destinations</span>
+            <h3 class="markets-card-title" data-i18n="sec4_markets_tm_title">الأسواق المستهدفة</h3>
+            <span class="markets-card-sub" data-i18n="sec4_markets_tm_sub">وجهات التصدير</span>
           </div>
 
           <div style="display: flex; gap: 1rem; align-items: center; justify-content: space-between;">
             <!-- Europe -->
             <div class="market-list-item dest-item-col" data-target="target-eu">
               <img loading="lazy" decoding="async" src="./flags/eu_round.svg" style="width: 38px; height: 38px; display: block; margin: 0 auto 0.45rem; border-radius: 50%; box-shadow: 0 3px 10px rgba(0, 51, 153, 0.25);" alt="Europe">
-              <div style="font-size: 0.85rem; font-weight: 700; color: #174D30;" data-i18n="sec4_markets_eu">Europe</div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: #174D30;" data-i18n="sec4_markets_eu">أوروبا</div>
             </div>
             <div style="width: 1px; height: 36px; background: rgba(23, 77, 48, 0.12);"></div>
             <!-- GCC -->
             <div class="market-list-item dest-item-col" data-target="target-gcc">
               <img loading="lazy" decoding="async" src="./flags/gcc_official_round.webp" style="width: 38px; height: 38px; display: block; margin: 0 auto 0.45rem; border-radius: 50%; box-shadow: 0 3px 10px rgba(13, 40, 24, 0.25); object-fit: contain;" alt="GCC">
-              <div style="font-size: 0.85rem; font-weight: 700; color: #174D30;" data-i18n="sec4_markets_gcc">GCC</div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: #174D30;" data-i18n="sec4_markets_gcc">الخليج العربي</div>
             </div>
             <div style="width: 1px; height: 36px; background: rgba(23, 77, 48, 0.12);"></div>
             <!-- International -->
             <div class="market-list-item dest-item-col" data-target="pin-all">
               <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#174D30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 0.45rem; display: block;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-              <div style="font-size: 0.85rem; font-weight: 700; color: #174D30;" data-i18n="sec4_markets_intl">Global Markets</div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: #174D30;" data-i18n="sec4_markets_intl">الأسواق العالمية</div>
             </div>
           </div>
         </div>
@@ -876,44 +858,44 @@
         <!-- Commercial Presence Block - Sleek 4-Column Layout -->
         <div class="markets-block markets-card-box market-presence-card">
           <div class="markets-card-header">
-            <h3 class="markets-card-title" data-i18n="sec4_markets_cp_title">COMMERCIAL PRESENCE</h3>
-            <span class="markets-card-sub" data-i18n="sec4_markets_cp_sub">Operations & Registered Presence</span>
+            <h3 class="markets-card-title" data-i18n="sec4_markets_cp_title">التواجد التجاري</h3>
+            <span class="markets-card-sub" data-i18n="sec4_markets_cp_sub">العمليات والتواجد المسجل</span>
           </div>
 
           <div style="display: flex; gap: 0.25rem; align-items: flex-start; justify-content: space-between;">
             <!-- Egypt -->
             <div class="market-list-item presence-col-box" data-target="pin-eg">
               <img loading="lazy" decoding="async" src="./flags/eg.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="Egypt">
-              <div class="presence-country-name" data-i18n="sec4_markets_eg">EGYPT</div>
-              <div class="presence-role-desc" data-i18n="sec4_role_eg">Agricultural Sourcing & Export Hub</div>
+              <div class="presence-country-name" data-i18n="sec4_markets_eg">مصر</div>
+              <div class="presence-role-desc" data-i18n="sec4_role_eg">مركز التوريد والتصدير الزراعي</div>
             </div>
             <div style="width: 1px; height: 38px; background: rgba(23, 77, 48, 0.12); align-self: center; flex-shrink: 0;"></div>
             <!-- Saudi Arabia -->
             <div class="market-list-item presence-col-box" data-target="pin-sa">
               <img loading="lazy" decoding="async" src="./flags/sa.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="Saudi Arabia">
-              <div class="presence-country-name" data-i18n="sec4_markets_sa">SAUDI ARABIA</div>
-              <div class="presence-role-desc" data-i18n="sec4_role_sa">Regional Trade Desk</div>
+              <div class="presence-country-name" data-i18n="sec4_markets_sa">السعودية</div>
+              <div class="presence-role-desc" data-i18n="sec4_role_sa">مكتب التجارة الإقليمي</div>
             </div>
             <div style="width: 1px; height: 38px; background: rgba(23, 77, 48, 0.12); align-self: center; flex-shrink: 0;"></div>
             <!-- United States -->
             <div class="market-list-item presence-col-box" data-target="pin-us">
               <img loading="lazy" decoding="async" src="./flags/us.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="United States">
-              <div class="presence-country-name" data-i18n="sec4_markets_us">UNITED STATES</div>
-              <div class="presence-role-desc" data-i18n="sec4_role_us">U.S. Registered LLC</div>
+              <div class="presence-country-name" data-i18n="sec4_markets_us">الولايات المتحدة</div>
+              <div class="presence-role-desc" data-i18n="sec4_role_us">شركة مسجلة (LLC)</div>
             </div>
             <div style="width: 1px; height: 38px; background: rgba(23, 77, 48, 0.12); align-self: center; flex-shrink: 0;"></div>
             <!-- Canada -->
             <div class="market-list-item presence-col-box" data-target="pin-ca">
               <img loading="lazy" decoding="async" src="./flags/ca.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="Canada">
-              <div class="presence-country-name" data-i18n="sec4_markets_ca">CANADA</div>
-              <div class="presence-role-desc" data-i18n="sec4_role_ca">Federally Incorporated</div>
+              <div class="presence-country-name" data-i18n="sec4_markets_ca">كندا</div>
+              <div class="presence-role-desc" data-i18n="sec4_role_ca">شركة مسجلة فيدرالياً</div>
             </div>
           </div>
         </div>
 
         <div class="markets-cta-wrap">
-          <a href="rfq.html" class="cta-btn markets-cta-btn">
-            <span data-i18n="sec4_markets_cta">Start a Trade Conversation</span>
+          <a href="rfq" class="cta-btn markets-cta-btn">
+            <span data-i18n="sec4_markets_cta">ابدأ نقاشاً تجارياً</span>
             <span class="cta-arrow">&#x2197;</span>
           </a>
         </div>
@@ -1758,8 +1740,8 @@
               <img loading="lazy" decoding="async" src="./flags/ca.png" alt="Canada" class="flag-icon">
             </div>
             <div class="card-info">
-              <span class="card-title" data-i18n="sec4_markets_ca">CANADA</span>
-              <span class="card-desc" data-i18n="sec4_markets_ca_desc">Registered Commercial Presence</span>
+              <span class="card-title" data-i18n="sec4_markets_ca">كندا</span>
+              <span class="card-desc" data-i18n="sec4_markets_ca_desc">تواجد تجاري مسجل</span>
             </div>
           </div>
 
@@ -1772,8 +1754,8 @@
               <img loading="lazy" decoding="async" src="./flags/us.png" alt="United States" class="flag-icon">
             </div>
             <div class="card-info">
-              <span class="card-title" data-i18n="sec4_markets_us">UNITED STATES</span>
-              <span class="card-desc" data-i18n="sec4_markets_us_desc">Registered Commercial Presence</span>
+              <span class="card-title" data-i18n="sec4_markets_us">الولايات المتحدة</span>
+              <span class="card-desc" data-i18n="sec4_markets_us_desc">تواجد تجاري مسجل</span>
             </div>
           </div>
 
@@ -1786,8 +1768,8 @@
               <img loading="lazy" decoding="async" src="./flags/eu_round.svg" alt="Europe" style="width: 22px; height: 22px; border-radius: 50%; display: block;">
             </div>
             <div class="card-info">
-              <span class="card-title" data-i18n="sec4_markets_eu">EUROPE</span>
-              <span class="card-desc" data-i18n="sec4_markets_eu_desc">Target Market</span>
+              <span class="card-title" data-i18n="sec4_markets_eu">أوروبا</span>
+              <span class="card-desc" data-i18n="sec4_markets_eu_desc">سوق تصدير مستهدف</span>
             </div>
           </div>
 
@@ -1800,8 +1782,8 @@
               <img loading="lazy" decoding="async" id="card-sa-flag" src="./flags/sa.png" alt="Saudi Arabia" class="flag-icon">
             </div>
             <div class="card-info">
-              <span class="card-title" id="card-sa-title" data-i18n="sec4_markets_sa">SAUDI ARABIA</span>
-              <span class="card-desc" id="card-sa-desc" data-i18n="sec4_markets_sa_desc">Commercial Office<br><strong>Riyadh</strong></span>
+              <span class="card-title" id="card-sa-title" data-i18n="sec4_markets_sa">السعودية</span>
+              <span class="card-desc" id="card-sa-desc" data-i18n="sec4_markets_sa_desc">مكتب تجاري إقليمي<br><strong style="color: #174D30;">الرياض</strong></span>
             </div>
           </div>
 
@@ -1817,8 +1799,8 @@
               <img loading="lazy" decoding="async" src="./flags/eg.png" alt="Egypt" class="flag-icon">
             </div>
             <div class="card-info">
-              <span class="card-title" data-i18n="sec4_markets_eg">EGYPT</span>
-              <span class="card-desc" data-i18n="sec4_markets_eg_desc">Operations Hub<br><strong>Alexandria</strong></span>
+              <span class="card-title" data-i18n="sec4_markets_eg">مصر</span>
+              <span class="card-desc" data-i18n="sec4_markets_eg_desc">مركز العمليات والتصدير<br><strong style="color: #174D30;">الإسكندرية</strong></span>
             </div>
           </div>
 
@@ -1862,32 +1844,30 @@
         <div class="approach-badge">
           <span class="approach-badge-num">05</span>
           <span class="approach-badge-line"></span>
-          <span class="approach-badge-title" data-i18n="sec5_badge">WHY REEFIYA</span>
+          <span class="approach-badge-title" data-i18n="sec5_badge">لماذا ريفيا</span>
         </div>
 
         <!-- Eyebrow -->
         <div class="approach-eyebrow-wrap">
           <span class="approach-eyebrow-line"></span>
-          <span class="approach-eyebrow-text" data-i18n="sec5_eyebrow">OUR APPROACH</span>
+          <span class="approach-eyebrow-text" data-i18n="sec5_eyebrow">نهجنا التجاري</span>
         </div>
 
         <!-- Main Headline -->
         <h2 class="approach-headline" id="approachHeadline">
-          <span class="approach-hl-main" data-i18n="sec5_hl1">Disciplined execution.</span>
-          <span class="approach-hl-sub" data-i18n="sec5_hl2">Clear commercial communication.</span>
+          <span class="approach-hl-main" data-i18n="sec5_hl1">تنفيذ منضبط ودقيق.</span>
+          <span class="approach-hl-sub" data-i18n="sec5_hl2">وتواصل تجاري واضح وشفاف.</span>
         </h2>
 
         <!-- Description -->
         <div class="approach-desc">
-          <p data-i18n="sec5_desc">
-            International produce trade requires more than competitive pricing. It requires clear specifications, realistic commitments, and coordinated execution throughout the commercial process.
-          </p>
+          <p data-i18n="sec5_desc">تتطلب تجارة الحاصلات الزراعية الدولية ما هو أكثر من مجرد الأسعار التنافسية؛ فهي تقوم على دقة المواصفات، والالتزامات الواقعية، والتنفيذ المنسق عبر كامل مراحل العملية التصديرية.</p>
         </div>
 
         <!-- Actions Row -->
         <div class="approach-actions-row">
-          <a href="rfq.html" class="approach-primary-btn">
-            <span data-i18n="sec5_cta_work">Work With REEFIYA</span>
+          <a href="rfq" class="approach-primary-btn">
+            <span data-i18n="sec5_cta_work">اعمل مع ريفيا</span>
             <span class="approach-btn-arrow">&#x2197;</span>
           </a>
           <button type="button" class="approach-video-btn" id="openSec5VideoBtn">
@@ -1896,7 +1876,7 @@
                 <polygon points="6 3 20 12 6 21 6 3"></polygon>
               </svg>
             </span>
-            <span class="approach-video-text" data-i18n="sec5_cta_video">Watch Our Process</span>
+            <span class="approach-video-text" data-i18n="sec5_cta_video">شاهد خطوات العمل</span>
           </button>
         </div>
 
@@ -1905,25 +1885,25 @@
           <div class="stat-pill">
             <div class="stat-pill-top">
               <span class="stat-digit" data-i18n="sec5_num1">4</span>
-              <span class="stat-unit" data-i18n="sec5_unit1">COUNTRIES</span>
+              <span class="stat-unit" data-i18n="sec5_unit1">دول تجارية</span>
             </div>
-            <span class="stat-pill-label" data-i18n="sec5_stat_countries">Global Business Presence</span>
+            <span class="stat-pill-label" data-i18n="sec5_stat_countries">تواجد تجاري عالمي</span>
           </div>
           <div class="stat-pill-divider"></div>
           <div class="stat-pill">
             <div class="stat-pill-top">
               <span class="stat-digit" data-i18n="sec5_num2">1–2</span>
-              <span class="stat-unit" data-i18n="sec5_unit2">BUSINESS DAYS</span>
+              <span class="stat-unit" data-i18n="sec5_unit2">أيام عمل</span>
             </div>
-            <span class="stat-pill-label" data-i18n="sec5_stat_response">Initial RFQ Response</span>
+            <span class="stat-pill-label" data-i18n="sec5_stat_response">استجابة أولية لطلبات السعر</span>
           </div>
           <div class="stat-pill-divider"></div>
           <div class="stat-pill">
             <div class="stat-pill-top">
               <span class="stat-digit" data-i18n="sec5_num3">15+</span>
-              <span class="stat-unit" data-i18n="sec5_unit3">MARKETS</span>
+              <span class="stat-unit" data-i18n="sec5_unit3">سوقاً عالمياً</span>
             </div>
-            <span class="stat-pill-label" data-i18n="sec5_stat_markets">Export Market Reach</span>
+            <span class="stat-pill-label" data-i18n="sec5_stat_markets">نطاق الأسواق التصديرية</span>
           </div>
         </div>
       </div>
@@ -1949,17 +1929,15 @@
                 </svg>
               </span>
             </div>
-            <h3 class="pillar-title" data-i18n="sec5_c1_title">BUYER-LED <br>SPECS</h3>
-            <div class="pillar-tagline" data-i18n="sec5_c1_sub">Built around your market.</div>
-            <p class="pillar-desc" data-i18n="sec5_c1_desc">
-              Programs shaped around the buyer's destination market, distribution channel, and agreed commercial requirements.
-            </p>
+            <h3 class="pillar-title" data-i18n="sec5_c1_title">مواصفات يقودها المشتري</h3>
+            <div class="pillar-tagline" data-i18n="sec5_c1_sub">مصممة خصيصاً لسوقك.</div>
+            <p class="pillar-desc" data-i18n="sec5_c1_desc">برامج تصديرية تتشكل وفق طبيعة سوق الوجهة، وقناة التوزيع، والمواصفات التجارية المتفق عليها مع المشتري.</p>
             <div class="pillar-arrow-btn" aria-hidden="true">
               <span>&#x2192;</span>
             </div>
           </div>
           <div class="pillar-media-side">
-            <span class="pillar-stage-badge" data-i18n="sec5_stage1">STAGE 01 &bull; SPECS</span>
+            <span class="pillar-stage-badge" data-i18n="sec5_stage1">المرحلة 01 • المواصفات</span>
             <img 
               src="./sec5_card1_caliper_potato.webp" 
               alt="Inspection with Caliper" 
@@ -1983,17 +1961,15 @@
                 </svg>
               </span>
             </div>
-            <h3 class="pillar-title" data-i18n="sec5_c2_title">CONFIRMED <br>COMMITMENTS</h3>
-            <div class="pillar-tagline" data-i18n="sec5_c2_sub">Commit to what can be delivered.</div>
-            <p class="pillar-desc" data-i18n="sec5_c2_desc">
-              Realistic commercial commitments built around confirmed specifications, availability, and operational readiness.
-            </p>
+            <h3 class="pillar-title" data-i18n="sec5_c2_title">التزامات مؤكدة وموثوقة</h3>
+            <div class="pillar-tagline" data-i18n="sec5_c2_sub">نلتزم بما يمكن تسليمه بدقة.</div>
+            <p class="pillar-desc" data-i18n="sec5_c2_desc">التزامات تجارية واقعية مبنية على تأكيد المواصفات، وتوافر الكميات، والجاهزية التشغيلية التامة.</p>
             <div class="pillar-arrow-btn" aria-hidden="true">
               <span>&#x2192;</span>
             </div>
           </div>
           <div class="pillar-media-side">
-            <span class="pillar-stage-badge" data-i18n="sec5_stage2">STAGE 02 &bull; PACK</span>
+            <span class="pillar-stage-badge" data-i18n="sec5_stage2">المرحلة 02 • التعبئة</span>
             <img 
               src="./sec5_card2_forklift_boxes.webp" 
               alt="Cold Storage and Forklift Logistics" 
@@ -2018,17 +1994,15 @@
                 </svg>
               </span>
             </div>
-            <h3 class="pillar-title" data-i18n="sec5_c3_title">COORDINATED <br>DISPATCH</h3>
-            <div class="pillar-tagline" data-i18n="sec5_c3_sub">Clear from inquiry to dispatch.</div>
-            <p class="pillar-desc" data-i18n="sec5_c3_desc">
-              Direct communication across product availability, packing schedules, documentation, and shipment coordination.
-            </p>
+            <h3 class="pillar-title" data-i18n="sec5_c3_title">تنسيق وشحن منضبط</h3>
+            <div class="pillar-tagline" data-i18n="sec5_c3_sub">وضوح تام من الاستفسار حتى الشحن.</div>
+            <p class="pillar-desc" data-i18n="sec5_c3_desc">تواصل مباشر ومستمر يغطي توفر المحصول، وجداول التعبئة، والتوثيق، وتنسيق إجراءات الشحن.</p>
             <div class="pillar-arrow-btn" aria-hidden="true">
               <span>&#x2192;</span>
             </div>
           </div>
           <div class="pillar-media-side">
-            <span class="pillar-stage-badge" data-i18n="sec5_stage3">STAGE 03 &bull; SHIP</span>
+            <span class="pillar-stage-badge" data-i18n="sec5_stage3">المرحلة 03 • الشحن</span>
             <img 
               src="./sec5_card3_port_ship_clipboard.webp" 
               alt="Port Shipment Inspection and Dispatch" 
@@ -2046,7 +2020,7 @@
     <div class="approach-video-modal" id="sec5VideoModal" aria-hidden="true">
       <div class="approach-video-dialog">
         <div class="approach-video-header">
-          <span data-i18n="sec5_video_title">REEFIYA Operations — Harvest, Sorting & Cold Storage</span>
+          <span data-i18n="sec5_video_title">عمليات ريفيا — الحصاد، الفرز، وسلسلة التبريد</span>
           <button type="button" class="approach-video-close" id="closeSec5VideoBtn" aria-label="Close video">&times;</button>
         </div>
         <div class="approach-video-frame">
@@ -2102,28 +2076,26 @@
         <div class="sec6-badge-row">
           <span class="sec6-badge-number" data-i18n="sec6_badge_num">06</span>
           <span class="sec6-badge-divider"></span>
-          <span class="sec6-badge-tag" data-i18n="sec6_badge_title">COMMERCIAL INQUIRIES</span>
+          <span class="sec6-badge-tag" data-i18n="sec6_badge_title">الاستفسارات التجارية</span>
         </div>
 
         <!-- Eyebrow: START YOUR EXPORT PROGRAM -->
         <div class="sec6-eyebrow-line">
           <span class="sec6-eyebrow-accent"></span>
-          <span class="sec6-eyebrow-text" data-i18n="sec6_eyebrow">START YOUR EXPORT PROGRAM</span>
+          <span class="sec6-eyebrow-text" data-i18n="sec6_eyebrow">ابدأ برنامجك التصديري</span>
         </div>
 
         <!-- Headline -->
         <div class="sec6-headline-wrap">
           <h2 class="sec6-main-headline" id="sec6Headline">
-            <span class="hl-line"><span data-i18n="sec6_hl1">Let’s Bring</span></span>
-            <span class="hl-line"><span data-i18n="sec6_hl_produce">Egyptian Produce</span></span>
-            <span class="hl-line"><span data-i18n="sec6_hl2">to Your Market.</span></span>
+            <span class="hl-line"><span data-i18n="sec6_hl1">لننقل المحاصيل</span></span>
+            <span class="hl-line"><span data-i18n="sec6_hl_produce">المصرية الفاخرة</span></span>
+            <span class="hl-line"><span data-i18n="sec6_hl2">إلى أسواقكم العالمية.</span></span>
           </h2>
         </div>
 
         <!-- Description -->
-        <p class="sec6-body-desc" data-i18n="sec6_desc">
-          Tell us what your market needs. Our commercial export desk will help you build a tailored export program based on your specifications, volume, packaging preferences, and destination requirements.
-        </p>
+        <p class="sec6-body-desc" data-i18n="sec6_desc">أخبرنا باحتياجات سوقك ومواصفاتك. سيعمل مكتب التصدير التجاري لدينا على تصميم برنامج توريد متكامل مخصص لاحتياجاتك، وحجم شحناتك، وتفضيلات التعبئة، ومتطلبات وجهتك التجارية.</p>
 
         <!-- Trust Highlights: Minimalist Trade Desk Badges -->
         <div class="sec6-trust-strip">
@@ -2135,8 +2107,8 @@
               </svg>
             </span>
             <div class="sec6-pill-text">
-              <strong data-i18n="sec6_badge1_title">Tailored Quotes</strong>
-              <small data-i18n="sec6_badge1_sub">To Your Specs</small>
+              <strong data-i18n="sec6_badge1_title">عروض مخصصة</strong>
+              <small data-i18n="sec6_badge1_sub">حسب مواصفاتك</small>
             </div>
           </div>
 
@@ -2151,8 +2123,8 @@
               </svg>
             </span>
             <div class="sec6-pill-text">
-              <strong data-i18n="sec6_badge2_title">Global Export</strong>
-              <small data-i18n="sec6_badge2_sub">Worldwide Reach</small>
+              <strong data-i18n="sec6_badge2_title">خبرة تصدير دولية</strong>
+              <small data-i18n="sec6_badge2_sub">تغطي الأسواق العالمية</small>
             </div>
           </div>
 
@@ -2166,8 +2138,8 @@
               </svg>
             </span>
             <div class="sec6-pill-text">
-              <strong data-i18n="sec6_badge3_title">Direct Response</strong>
-              <small data-i18n="sec6_badge3_sub">1–2 Business Days</small>
+              <strong data-i18n="sec6_badge3_title">استجابة سريعة</strong>
+              <small data-i18n="sec6_badge3_sub">خلال 1–2 يوم عمل</small>
             </div>
           </div>
         </div>
@@ -2176,8 +2148,8 @@
         <div class="sec6-actions-row">
           
           <!-- Primary CTA: Request Export Quote -->
-          <a href="rfq.html" class="sec6-primary-btn">
-            <span data-i18n="sec6_cta_quote">Request Your Export Quote</span>
+          <a href="rfq" class="sec6-primary-btn">
+            <span data-i18n="sec6_cta_quote">اطلب عرض سعر تصديري</span>
             <span class="sec6-btn-arrow">&#x2192;</span>
           </a>
 
@@ -2192,7 +2164,7 @@
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.888 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.05 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
               </svg>
             </span>
-            <span data-i18n="sec6_cta_whatsapp">Talk to Export Desk</span>
+            <span data-i18n="sec6_cta_whatsapp">تحدث مع فريق التصدير</span>
           </a>
 
         </div>
@@ -2223,51 +2195,47 @@
             <img loading="lazy" decoding="async" src="./reefiya-logo-clean.webp" alt="REEFIYA" class="footer-logo-img">
           </a>
           <div class="footer-brand-accent-line"></div>
-          <h3 class="footer-brand-headline" data-i18n="footer_brand_headline">
-            From Egyptian Fields.<br>To Global Shelves.
-          </h3>
-          <p class="footer-brand-summary" data-i18n="footer_brand_summary">
-            Premium Egyptian produce for global buyers, with export programs built around agreed specifications, careful packing, and clear commercial coordination.
-          </p>
+          <h3 class="footer-brand-headline" data-i18n="footer_brand_headline">من حقول مصر.<br>إلى رفوف العالم.</h3>
+          <p class="footer-brand-summary" data-i18n="footer_brand_summary">مزارعون ومصدرون مصريون متخصصون نربط كبار المشترين الدوليين والمصانع وسلاسل التجزئة ببرامج زراعية تصديرية موثوقة وعالية الجودة.</p>
         </div>
 
         <!-- Column 2: Explore Navigation -->
         <div class="footer-col footer-col-explore">
-          <h4 class="footer-col-title" data-i18n="footer_col_explore">EXPLORE</h4>
+          <h4 class="footer-col-title" data-i18n="footer_col_explore">استكشف</h4>
           <ul class="footer-links-list">
             <li class="footer-link-item">
               <a href="#produce">
-                <span data-i18n="footer_nav_produce">Our Produce</span>
+                <span data-i18n="footer_nav_produce">البطاطا الحلوة الطازجة</span>
                 <span class="footer-link-arrow">↗</span>
               </a>
             </li>
             <li class="footer-link-item">
               <a href="#specifications">
-                <span data-i18n="footer_nav_specs">Specifications</span>
+                <span data-i18n="footer_nav_specs">مواصفات المشترين</span>
                 <span class="footer-link-arrow">↗</span>
               </a>
             </li>
             <li class="footer-link-item">
               <a href="#markets">
-                <span data-i18n="footer_nav_journey">Export Journey</span>
+                <span data-i18n="footer_nav_journey">رحلة التصدير</span>
                 <span class="footer-link-arrow">↗</span>
               </a>
             </li>
             <li class="footer-link-item">
               <a href="#markets">
-                <span data-i18n="footer_nav_markets">Markets</span>
+                <span data-i18n="footer_nav_markets">الوجهات والأسواق الدولية</span>
                 <span class="footer-link-arrow">↗</span>
               </a>
             </li>
             <li class="footer-link-item">
               <a href="#about">
-                <span data-i18n="footer_nav_why">Why Reefiya</span>
+                <span data-i18n="footer_nav_why">لماذا ريفيا</span>
                 <span class="footer-link-arrow">↗</span>
               </a>
             </li>
             <li class="footer-link-item">
               <a href="#contact">
-                <span data-i18n="footer_nav_contact">Contact</span>
+                <span data-i18n="footer_nav_contact">تواصل معنا</span>
                 <span class="footer-link-arrow">↗</span>
               </a>
             </li>
@@ -2276,38 +2244,38 @@
 
         <!-- Column 3: Global Presence -->
         <div class="footer-col footer-col-footprint">
-          <h4 class="footer-col-title" data-i18n="footer_col_footprint">GLOBAL PRESENCE</h4>
+          <h4 class="footer-col-title" data-i18n="footer_col_footprint">التواجد الدولي</h4>
           <div class="footer-footprint-list">
             
             <div class="footer-footprint-card">
               <img loading="lazy" decoding="async" src="flags/eg.png" alt="Egypt" class="footer-footprint-flag">
               <div class="footer-footprint-info">
-                <span class="footer-footprint-country" data-i18n="footer_hub_eg_title">ALEXANDRIA HEADQUARTERS</span>
-                <span class="footer-footprint-role" data-i18n="footer_hub_eg_role">Export Operations • Egypt</span>
+                <span class="footer-footprint-country" data-i18n="footer_hub_eg_title">المقر الرئيسي بالإسكندرية</span>
+                <span class="footer-footprint-role" data-i18n="footer_hub_eg_role">عمليات التصدير • مصر</span>
               </div>
             </div>
 
             <div class="footer-footprint-card">
               <img loading="lazy" decoding="async" src="flags/sa.png" alt="Saudi Arabia" class="footer-footprint-flag">
               <div class="footer-footprint-info">
-                <span class="footer-footprint-country" data-i18n="footer_hub_sa_title">RIYADH REGIONAL DESK</span>
-                <span class="footer-footprint-role" data-i18n="footer_hub_sa_role">Regional Trade & Commercial Relations</span>
+                <span class="footer-footprint-country" data-i18n="footer_hub_sa_title">مكتب الرياض الإقليمي</span>
+                <span class="footer-footprint-role" data-i18n="footer_hub_sa_role">العلاقات التجارية والإقليمية</span>
               </div>
             </div>
 
             <div class="footer-footprint-card">
               <img loading="lazy" decoding="async" src="flags/us.png" alt="United States" class="footer-footprint-flag">
               <div class="footer-footprint-info">
-                <span class="footer-footprint-country" data-i18n="footer_hub_us_title">UNITED STATES</span>
-                <span class="footer-footprint-role" data-i18n="footer_hub_us_role">Registered U.S. Company • LLC</span>
+                <span class="footer-footprint-country" data-i18n="footer_hub_us_title">الولايات المتحدة</span>
+                <span class="footer-footprint-role" data-i18n="footer_hub_us_role">شركة مسجلة في الولايات المتحدة • LLC</span>
               </div>
             </div>
 
             <div class="footer-footprint-card">
               <img loading="lazy" decoding="async" src="flags/ca.png" alt="Canada" class="footer-footprint-flag">
               <div class="footer-footprint-info">
-                <span class="footer-footprint-country" data-i18n="footer_hub_ca_title">CANADA</span>
-                <span class="footer-footprint-role" data-i18n="footer_hub_ca_role">Federally Incorporated Company</span>
+                <span class="footer-footprint-country" data-i18n="footer_hub_ca_title">كندا</span>
+                <span class="footer-footprint-role" data-i18n="footer_hub_ca_role">شركة فيدرالية مسجلة كندية</span>
               </div>
             </div>
 
@@ -2316,7 +2284,7 @@
 
         <!-- Column 4: Commercial Desk -->
         <div class="footer-col footer-col-desk">
-          <h4 class="footer-col-title" data-i18n="footer_col_desk">COMMERCIAL DESK</h4>
+          <h4 class="footer-col-title" data-i18n="footer_col_desk">مكتب التصدير التجاري</h4>
           <div class="footer-desk-contact-list">
             
             <div class="footer-desk-contact-row">
@@ -2340,20 +2308,20 @@
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <span class="footer-desk-arrow">→</span>
-              <span class="footer-desk-address" data-i18n="footer_desk_address">144 Port Said St, El Ibrahimaia Bahry, Alexandria, Egypt</span>
+              <span class="footer-desk-address" data-i18n="footer_desk_address">١٤٤ شارع بورسعيد، الإبراهيمية بحري، الإسكندرية، مصر</span>
             </div>
 
             <!-- WhatsApp Export CTA Button -->
             <a href="https://wa.me/201290099230?text=Hello%20REEFIYA%20Export%20Desk,%20I%20would%20like%20to%20inquire%20regarding%20Egyptian%20sweet%20potato%20exports%20and%20commercial%20programs." target="_blank" rel="noopener noreferrer" class="footer-whatsapp-pill-btn">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-              <span data-i18n="footer_btn_whatsapp">Talk to Export Desk</span>
+              <span data-i18n="footer_btn_whatsapp">محادثة مباشرة عبر واتساب</span>
               <span class="footer-btn-arrow">↗</span>
             </a>
 
             <!-- Rapid Response Status -->
             <div class="footer-status-indicator">
               <span class="footer-status-dot"></span>
-              <span data-i18n="footer_status_text">Commercial replies within <strong>1-2 business days</strong></span>
+              <span data-i18n="footer_status_text">الرد التجاري خلال <strong>1-2 يوم عمل</strong></span>
             </div>
 
           </div>
@@ -2366,7 +2334,7 @@
         
         <!-- Left: Quality & Certifications -->
         <div class="footer-trust-group">
-          <span class="footer-trust-heading" data-i18n="footer_trust_heading">QUALITY & DOCUMENTATION</span>
+          <span class="footer-trust-heading" data-i18n="footer_trust_heading">الجودة والاعتماد الزراعي</span>
           <span class="footer-bar-divider" aria-hidden="true"></span>
           <div class="footer-trust-badges-inline">
             <div class="footer-trust-badge-item" title="GLOBALG.A.P. Certified">
@@ -2386,7 +2354,7 @@
         <!-- Right: Social Links & Developed by EVEXA -->
         <div class="footer-social-developer-group">
           <div class="footer-social-inline">
-            <span class="footer-social-heading" data-i18n="footer_social_heading">FOLLOW REEFIYA</span>
+            <span class="footer-social-heading" data-i18n="footer_social_heading">تابع ريفيا</span>
             <div class="footer-social-icons">
               <a href="https://www.linkedin.com/company/reefiyaexports" class="footer-social-circle" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -2411,7 +2379,7 @@
               <img loading="lazy" decoding="async" src="evexa_logo_pure.png" alt="EVEXA Solutions" class="footer-evexa-img">
             </div>
             <span class="footer-dev-text">
-              <span class="footer-dev-label" data-i18n="footer_dev_label">Developed by</span>
+              <span class="footer-dev-label" data-i18n="footer_dev_label">تطوير وتصميم</span>
               <span class="footer-dev-company">EVEXA SOLUTIONS</span>
             </span>
           </a>
@@ -2421,15 +2389,13 @@
 
       <!-- Bottom Bar: Copyright & Legal Policies -->
       <div class="footer-bottom-bar">
-        <p class="footer-copy-text" data-i18n="footer_copyright">
-          &copy; 2026 REEFIYA Agricultural Export. All Rights Reserved.
-        </p>
+        <p class="footer-copy-text" data-i18n="footer_copyright">© 2026 ريفيا للحاصلات الزراعية والتصدير. جميع الحقوق محفوظة.</p>
         <div class="footer-bottom-meta">
-          <a href="javascript:void(0)" onclick="openLegalModal('privacy')" class="footer-meta-link" data-i18n="footer_link_privacy">Privacy Policy</a>
+          <a href="javascript:void(0)" onclick="openLegalModal('privacy')" class="footer-meta-link" data-i18n="footer_link_privacy">سياسة التصدير</a>
           <span class="footer-meta-separator">|</span>
-          <a href="javascript:void(0)" onclick="openLegalModal('terms')" class="footer-meta-link" data-i18n="footer_link_terms">Terms & Conditions</a>
+          <a href="javascript:void(0)" onclick="openLegalModal('terms')" class="footer-meta-link" data-i18n="footer_link_terms">الشروط التجارية</a>
           <span class="footer-meta-separator">|</span>
-          <a href="#produce" class="footer-meta-link" data-i18n="footer_link_sitemap">Sitemap</a>
+          <a href="#produce" class="footer-meta-link" data-i18n="footer_link_sitemap">خريطة الموقع</a>
         </div>
       </div>
 

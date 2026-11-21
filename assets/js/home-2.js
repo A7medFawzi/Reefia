@@ -2469,8 +2469,8 @@
       } catch (err) {}
 
       // Synchronize RFQ buttons href with current language
-      const targetRfqHref = (langKey === 'ar') ? 'ar/rfq' : 'rfq.html';
-      document.querySelectorAll('a[href="rfq.html"], a[href="ar/rfq"], a[href="/ar/rfq"], a[href="/rfq"]').forEach(btn => {
+      const targetRfqHref = (langKey === 'ar') ? 'ar/rfq' : 'rfq';
+      document.querySelectorAll('a[href="rfq"], a[href="rfq.html"], a[href="ar/rfq"], a[href="/ar/rfq"], a[href="/rfq"]').forEach(btn => {
         btn.setAttribute('href', targetRfqHref);
       });
     }

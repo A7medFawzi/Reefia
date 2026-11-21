@@ -141,6 +141,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#1e481c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -217,7 +219,7 @@
     <!-- Right Actions: Request a Quote (Orange Pill) & 7-Language Flag Selector -->
     <div class="nav-right-actions">
       <!-- Orange Quote Button -->
-      <a href="rfq.html" class="quote-pill-btn">
+      <a href="rfq" class="quote-pill-btn">
         <span data-i18n="btn_quote">Request a quote</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M7 7h10v10"></path>
@@ -350,7 +352,7 @@
         <a href="#contact" class="mobile-nav-link" data-i18n="nav_contact">Contact</a>
       </nav>
       <div class="mobile-nav-footer">
-        <a href="rfq.html" class="mobile-quote-btn" id="mobileQuoteBtn">
+        <a href="rfq" class="mobile-quote-btn" id="mobileQuoteBtn">
           <span data-i18n="btn_quote">Request a quote</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 7h10v10"></path>
@@ -377,7 +379,7 @@
       <h1 class="story-title" data-i18n="hero_title">From Egyptian fields.<br/><em>To global shelves.</em></h1>
       <p class="story-desc" data-i18n="hero_desc">Egyptian sweet potatoes, carefully sourced and prepared for international markets.</p>
       <div class="hero-actions">
-        <a href="rfq.html" class="cta-btn hero-primary-cta" data-i18n="cta_quote">Request a quote ↗</a>
+        <a href="rfq" class="cta-btn hero-primary-cta" data-i18n="cta_quote">Request a quote ↗</a>
         <a href="#produce" class="hero-text-link" data-i18n="cta_explore">Explore our produce ↗</a>
       </div>
     </div>
@@ -385,7 +387,7 @@
     <!-- Chapter 2: Selection -->
     <div class="story-card" id="story-2">
       <span class="story-eyebrow" data-i18n="ch2_eyebrow">02 — CAREFUL SELECTION</span>
-      <h1 class="story-title" data-i18n="ch2_title">Curated grading.<br/><em>Consistent quality.</em></h1>
+      <h2 class="story-title" data-i18n="ch2_title">Curated grading.<br/><em>Consistent quality.</em></h2>
       <p class="story-desc" data-i18n="ch2_desc">Rigorous sorting and uniform sizing to meet buyer specifications across international markets.</p>
       <div class="hero-actions">
         <a href="#specifications" class="cta-btn" data-i18n="cta_specs">View Specifications ↗</a>
@@ -395,7 +397,7 @@
     <!-- Chapter 3: Packing -->
     <div class="story-card" id="story-3">
       <span class="story-eyebrow" data-i18n="ch3_eyebrow">03 — EXPORT PACKING</span>
-      <h1 class="story-title" data-i18n="ch3_title">Engineered for export.<br/><em>Protected in every carton.</em></h1>
+      <h2 class="story-title" data-i18n="ch3_title">Engineered for export.<br/><em>Protected in every carton.</em></h2>
       <p class="story-desc" data-i18n="ch3_desc">Corrugated export cartons with ventilation designed to help preserve freshness, product integrity, and skin condition throughout transit.</p>
       <div class="hero-actions">
         <a href="https://wa.me/201290099230?text=Hello%20REEFIYA,%20I%20would%20like%20to%20inquire%20regarding%20export%20packing%20specifications%20and%20carton%20standards." target="_blank" rel="noopener noreferrer" class="cta-btn hero-ch3-wa-btn" data-i18n="cta_packing">Discuss packing ↗</a>
@@ -405,7 +407,7 @@
     <!-- Chapter 4: Shipment -->
     <div class="story-card" id="story-4">
       <span class="story-eyebrow" data-i18n="ch4_eyebrow">04 — REEFER COORDINATION</span>
-      <h1 class="story-title" data-i18n="ch4_title">Temperature controlled.<br/><em>Ready for the journey.</em></h1>
+      <h2 class="story-title" data-i18n="ch4_title">Temperature controlled.<br/><em>Ready for the journey.</em></h2>
       <p class="story-desc" data-i18n="ch4_desc">Refrigerated shipping with controlled temperature and airflow throughout international transit.</p>
       <div class="hero-actions">
         <a href="https://wa.me/201290099230?text=Hello%20REEFIYA,%20I%20would%20like%20to%20inquire%20regarding%20reefer%20shipping%20and%20cold%20chain%20logistics." target="_blank" rel="noopener noreferrer" class="cta-btn hero-ch4-wa-btn" data-i18n="cta_logistics">Discuss logistics ↗</a>
@@ -415,10 +417,10 @@
     <!-- Chapter 5: Destination -->
     <div class="story-card" id="story-5">
       <span class="story-eyebrow" data-i18n="ch5_eyebrow">05 — DOCUMENTATION & DISPATCH</span>
-      <h1 class="story-title" data-i18n="ch5_title">Market ready.<br/><em>Prepared for global buyers.</em></h1>
+      <h2 class="story-title" data-i18n="ch5_title">Market ready.<br/><em>Prepared for global buyers.</em></h2>
       <p class="story-desc" data-i18n="ch5_desc">Export-ready Egyptian produce for importers, distributors, retailers, wholesalers, and food-industry buyers worldwide.</p>
       <div class="hero-actions">
-        <a href="rfq.html" class="cta-btn" data-i18n="cta_quote">Request a quote ↗</a>
+        <a href="rfq" class="cta-btn" data-i18n="cta_quote">Request a quote ↗</a>
       </div>
     </div>
   </div>
@@ -692,7 +694,7 @@
           </p>
 
           <!-- CTA Button -->
-          <a href="rfq.html" class="buyer-cta-btn">
+          <a href="rfq" class="buyer-cta-btn">
             <span data-i18n="sec4_cta">Tell us what you need</span>
             <span class="buyer-cta-arrow" aria-hidden="true">&#x2197;</span>
           </a>
@@ -914,7 +916,7 @@
         </div>
 
         <div class="markets-cta-wrap">
-          <a href="rfq.html" class="cta-btn markets-cta-btn">
+          <a href="rfq" class="cta-btn markets-cta-btn">
             <span data-i18n="sec4_markets_cta">Start a Trade Conversation</span>
             <span class="cta-arrow">&#x2197;</span>
           </a>
@@ -1888,7 +1890,7 @@
 
         <!-- Actions Row -->
         <div class="approach-actions-row">
-          <a href="rfq.html" class="approach-primary-btn">
+          <a href="rfq" class="approach-primary-btn">
             <span data-i18n="sec5_cta_work">Work With REEFIYA</span>
             <span class="approach-btn-arrow">&#x2197;</span>
           </a>
@@ -2178,7 +2180,7 @@
         <div class="sec6-actions-row">
           
           <!-- Primary CTA: Request Export Quote -->
-          <a href="rfq.html" class="sec6-primary-btn">
+          <a href="rfq" class="sec6-primary-btn">
             <span data-i18n="sec6_cta_quote">Request Your Export Quote</span>
             <span class="sec6-btn-arrow">&#x2192;</span>
           </a>
