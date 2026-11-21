@@ -10,12 +10,12 @@
       --color-light-green: #6dc455;
       --color-dark-green: #326325;
       --color-deep-forest: #0d1e12;
-      --font-heading: 'Playfair Display', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-heading: "Playfair Display", Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
     }
     [dir="rtl"] {
-      --font-heading: 'Alexandria', 'Cairo', system-ui, sans-serif;
-      --font-sans: 'Cairo', system-ui, sans-serif;
+      --font-heading: "Alexandria", "Cairo", system-ui, sans-serif;
+      --font-sans: "Cairo", system-ui, sans-serif;
     }
     html, body {
       width: 100%;
@@ -123,7 +123,7 @@
       line-height: 1;
     }
     [dir="rtl"] .nav-pill-item {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 0.9rem;
       font-weight: 600;
       padding-top: 1px; /* Optical center alignment for Arabic baseline */
@@ -178,7 +178,7 @@
       line-height: 1;
     }
     [dir="rtl"] .quote-pill-btn {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 0.92rem;
       font-weight: 700;
       padding-top: 1px;
@@ -410,7 +410,7 @@
       margin-top: 6px;
     }
     [dir="rtl"] .story-title {
-      font-family: 'Alexandria', sans-serif;
+      font-family: "Alexandria", sans-serif;
       font-size: clamp(1.5rem, 2.5vw, 2.2rem);
       font-weight: 700;
       line-height: 1.55;
@@ -427,7 +427,7 @@
       margin-top: 4px;
     }
     [dir="rtl"] .story-desc {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 1.02rem;
       font-weight: 500;
       line-height: 1.95;
@@ -439,20 +439,20 @@
       text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
     }
     [dir="rtl"] .story-eyebrow {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 0.84rem;
       font-weight: 700;
       letter-spacing: normal;
       margin-bottom: 16px;
     }
     [dir="rtl"] .chapter-item {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-weight: 600;
       font-size: 0.9rem;
       gap: 6px;
     }
     [dir="rtl"] .chapter-item b {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: "Plus Jakarta Sans", sans-serif;
       font-size: 0.78rem;
       font-weight: 600;
     }
@@ -510,7 +510,7 @@
       transform: translateY(-1px);
     }
     [dir="rtl"] .hero-text-link {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 1.02rem;
       font-weight: 600;
       padding-bottom: 4px;
@@ -588,7 +588,7 @@
       100% { transform: translateY(0); opacity: 1; }
     }
     [dir="rtl"] .scroll-indicator-pill {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 0.84rem;
       flex-direction: row-reverse;
     }
@@ -681,7 +681,7 @@
     }
     [dir="rtl"] .skip-to-produce-btn {
       padding: 6px 18px 6px 8px;
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 0.96rem;
       font-weight: 700;
       flex-direction: row;
@@ -764,7 +764,7 @@
     }
     /* Ambient luxury breathing glow behind the Reefiya logo */
     .loader-logo-wrap::before {
-      content: '';
+      content: "";
       position: absolute;
       width: 140px;
       height: 60px;
@@ -808,7 +808,7 @@
     }
     /* Shimmering light streak passing through progress bar */
     .loader-fill::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: -100%;
@@ -835,7 +835,7 @@
       font-family: var(--font-sans);
     }
     [dir="rtl"] .loader-meta {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       letter-spacing: 0.04em;
       font-size: 0.8rem;
     }
@@ -936,7 +936,7 @@
     }
     [dir="rtl"] .mobile-nav-link {
       text-align: right;
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
     }
     .mobile-nav-drawer.open .mobile-nav-sheet {
       transform: translateX(0);
@@ -948,12 +948,7 @@
       padding-bottom: 20px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .mobile-nav-brand-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      color: var(--color-orange);
-    }
+    
     .mobile-nav-close {
       width: 36px;
       height: 36px;
@@ -1023,7 +1018,7 @@
       transition: all 0.2s ease;
     }
     [dir="rtl"] .mobile-quote-btn {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 0.96rem;
       flex-direction: row;
       gap: 10px;
@@ -1311,7 +1306,7 @@
         padding: 5px 12px 5px 6px;
         flex-direction: row;
         gap: 8px;
-        font-family: 'Cairo', sans-serif;
+        font-family: "Cairo", sans-serif;
       }
     }
     /* Small Phones (<= 480px) */
@@ -1373,259 +1368,25 @@
        SECTION 02: ABOUT REEFIYA (Rooted in Egypt. Built for Global Trade)
        Editorial B2B Agricultural Export Aesthetic
        ---------------------------------------------------------------- */
-    .about-reefiya-section {
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
-      background-color: #f7f4ed;
-      background-image: url('/about-bg-map.webp');
-      background-size: cover;
-      background-position: center right;
-      background-repeat: no-repeat;
-      color: #172d1a;
-      z-index: 10;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-top: 1px solid rgba(176, 130, 61, 0.22);
-      box-shadow: 0 -20px 40px rgba(8, 16, 10, 0.35);
-    }
+    
     /* Ambient Warm Vignette Layer - subtle to let the world map appear crisp and clear */
-    .about-reefiya-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 45%, rgba(247, 244, 237, 0.45) 0%, rgba(247, 244, 237, 0.1) 65%, rgba(225, 215, 196, 0.35) 100%);
-      pointer-events: none;
-      z-index: 1;
-    }
-    .about-reefiya-container {
-      position: relative;
-      width: 100%;
-      flex: 1 1 auto;
-      display: grid;
-      grid-template-columns: 48% 52%;
-      min-height: 100vh;
-      align-items: stretch;
-      z-index: 2;
-    }
+
     /* Left Content Column (~46-48%) */
-    .about-content-col {
-      position: relative;
-      z-index: 3;
-      padding: clamp(60px, 7vh, 100px) clamp(36px, 5.5vw, 84px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-width: 640px;
-    }
+    
     /* 02 — ABOUT REEFIYA Section Identifier */
-    .about-section-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .about-badge-num {
-      font-size: 0.84rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      color: #8c6838;
-      font-family: var(--font-sans);
-    }
-    .about-badge-line {
-      display: inline-block;
-      width: 28px;
-      height: 1px;
-      background: #c5a368;
-    }
-    .about-badge-text {
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #2b452f;
-      font-family: var(--font-sans);
-    }
+
     /* Eyebrow: EGYPTIAN ORIGIN. GLOBAL OUTLOOK. */
-    .about-subheading-tag {
-      font-size: 0.82rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #8c6838;
-      margin-bottom: 16px;
-      line-height: 1.4;
-      font-family: var(--font-sans);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
-    }
+    
     /* Main Headline: Rooted in Egypt. / Built for global trade. */
-    .about-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.3rem, 3.8vw, 3.8rem);
-      line-height: 1.12;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 22px;
-    }
-    .about-title-line1 {
-      display: block;
-      color: #17381d; /* Deep REEFIYA green */
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
-    }
-    .about-title-line2 {
-      display: block;
-      font-style: italic;
-      font-weight: 400;
-      color: #b0823d; /* Warm gold */
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-    }
-    [dir="rtl"] .about-title {
-      font-family: 'Alexandria', 'Cairo', serif;
-      font-size: clamp(2rem, 3.4vw, 3.2rem);
-      line-height: 1.42;
-      font-weight: 800;
-      letter-spacing: normal;
-      margin-bottom: 20px;
-    }
-    [dir="rtl"] .about-title-line1 {
-      color: #112a15;
-    }
-    [dir="rtl"] .about-title-line2 {
-      font-style: normal;
-      font-weight: 700;
-      color: #b0823d;
-      margin-top: 4px;
-    }
-    [dir="rtl"] .about-subheading-tag {
-      font-family: 'Cairo', sans-serif;
-      font-weight: 800;
-      font-size: 0.92rem;
-      letter-spacing: normal;
-      color: #8c6838;
-      margin-bottom: 14px;
-    }
-    [dir="rtl"] .about-badge-text {
-      font-family: 'Cairo', sans-serif;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      font-size: 0.85rem;
-    }
+
     /* Body Paragraphs */
-    .about-paragraphs {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      font-size: clamp(0.96rem, 1.1vw, 1.05rem);
-      line-height: 1.76;
-      color: #2e3e32;
-      margin-bottom: 30px;
-      font-family: var(--font-sans);
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
-    }
-    [dir="rtl"] .about-paragraphs {
-      font-family: 'Cairo', sans-serif;
-      font-size: clamp(1.02rem, 1.15vw, 1.12rem);
-      line-height: 1.95;
-      font-weight: 500;
-      color: #213524;
-      text-align: justify;
-      text-justify: kashida;
-    }
+
     /* CTA: Discover REEFIYA ↗ (Refined text-link with thin underline) */
-    .about-cta-wrap {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
-    }
-    .about-link-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.98rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      color: #ffffff;
-      background: linear-gradient(135deg, #17381d 0%, #25542b 100%);
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 999px;
-      border: 1px solid rgba(212, 175, 106, 0.4);
-      box-shadow: 0 6px 20px rgba(23, 56, 29, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      width: fit-content;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-    }
-    [dir="rtl"] .about-link-action {
-      font-family: 'Cairo', sans-serif;
-      font-weight: 700;
-      font-size: 1.04rem;
-      letter-spacing: normal;
-      padding: 10px 24px 12px 24px;
-    }
-    .about-link-action .cta-arrow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: rgba(212, 175, 106, 0.22);
-      color: #f7d28b;
-      font-size: 0.92rem;
-      line-height: 1;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(212, 175, 106, 0.45);
-    }
-    .about-link-action:hover {
-      background: linear-gradient(135deg, #1f4b27 0%, #2f6838 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 26px rgba(23, 56, 29, 0.38), 0 0 15px rgba(212, 175, 106, 0.3);
-      border-color: rgba(212, 175, 106, 0.7);
-      color: #ffffff;
-    }
-    .about-link-action:hover .cta-arrow {
-      background: #d4af6a;
-      color: #17381d;
-      transform: translate(3px, -3px);
-    }
-    [dir="rtl"] .about-link-action:hover .cta-arrow {
-      transform: translate(-3px, -3px);
-    }
+
     /* Right Visual Column (~48-52%) */
-    .about-visual-col {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      min-height: 480px;
-      overflow: hidden;
-      display: flex;
-      align-items: stretch;
-      justify-content: flex-end;
-    }
+    
     /* SVG Organic Mask Container with Flowing Curved Left Edge */
-    .about-visual-wrapper {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      min-height: 480px;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(30px) scale(0.98);
-      transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-    }
+    
     /* Organic flowing shape: clip-path using SVG url */
     .about-organic-viewport {
       position: absolute;
@@ -1636,359 +1397,30 @@
     }
     [dir="rtl"] .about-organic-viewport {
     }
-    .about-farm-photo {
-      width: 100%;
-      height: 112%;
-      object-fit: cover;
-      object-position: center 58%;
-      transform: translateY(0px) scale(1.02);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-    }
+    
     /* Subtle Gold Accent Outline following the curved edge */
-    .about-gold-contour-svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 4;
-    }
-    [dir="rtl"] .about-gold-contour-svg {
-      transform: scaleX(-1);
-    }
-    .gold-contour-path {
-      fill: none;
-      stroke: #d4af6a;
-      stroke-width: 1.2px;
-      opacity: 0.75;
-      filter: drop-shadow(0 0 4px rgba(212, 175, 106, 0.4));
-    }
+
     /* Subtle Cinematic Lighting Gradient over farm photo */
-    .about-photo-gradient {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(247, 244, 237, 0.22) 0%,
-        rgba(247, 244, 237, 0) 35%,
-        rgba(13, 30, 18, 0.2) 75%,
-        rgba(13, 30, 18, 0.5) 100%
-      );
-      pointer-events: none;
-      z-index: 2;
-    }
-    .trade-network-terminal {
-      position: absolute;
-      top: 32px;
-      right: 36px;
-      z-index: 6;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      width: 440px; /* slightly wider to comfortably fit long names like USA in Arabic */
-      pointer-events: auto;
-      opacity: 0;
-      transform: translateY(-16px);
-      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
-      /* Sleek Glassmorphism Bento Card */
-      background: rgba(14, 28, 18, 0.65);
-      backdrop-filter: blur(30px) saturate(120%);
-      -webkit-backdrop-filter: blur(30px) saturate(120%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      padding: 24px;
-      overflow: hidden;
-    }
-    .trade-network-terminal::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 50% 0%, rgba(212, 175, 106, 0.12), transparent 70%);
-      pointer-events: none;
-    }
-    [dir="rtl"] .trade-network-terminal {
-      left: 36px;
-      right: auto;
-      width: 440px; /* Reverted width to avoid clipping on the left edge */
-    }
-    .about-reefiya-section.is-revealed .trade-network-terminal {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .trade-terminal-badge {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 0 0 20px 0;
-      background: transparent;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      margin-bottom: 24px;
-    }
-    [dir="rtl"] .trade-terminal-badge {
-      flex-direction: row;
-    }
-    .trade-origin-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-    }
-    .trade-origin-pulse-dot {
-      position: relative;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #f47d2d;
-      box-shadow: 0 0 10px #f47d2d;
-    }
-    .trade-origin-pulse-dot::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 1.5px solid #f47d2d;
-      animation: originRadar 2s infinite cubic-bezier(0.25, 1, 0.5, 1);
-    }
+
     @keyframes originRadar {
       0% { transform: scale(0.8); opacity: 1; }
       100% { transform: scale(2.2); opacity: 0; }
     }
-    .trade-origin-label {
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      color: #ffffff;
-      text-transform: uppercase;
-      font-family: var(--font-sans);
-    }
-    [dir="rtl"] .trade-origin-label {
-      font-family: 'Cairo', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: normal;
-      font-weight: 700;
-    }
-    .trade-export-tag {
-      font-size: 0.64rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      padding: 3px 9px;
-      background: rgba(212, 175, 106, 0.22);
-      border: 1px solid rgba(212, 175, 106, 0.5);
-      border-radius: 6px;
-      color: #f7d28b;
-      text-transform: uppercase;
-    }
-    [dir="rtl"] .trade-export-tag {
-      font-family: 'Cairo', sans-serif;
-      font-size: 0.70rem;
-      letter-spacing: normal;
-      font-weight: 700;
-    }
+
     /* Executive Global Trade Corridors Grid */
-    .trade-corridors-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      width: 100%;
-    }
-    .trade-corridor-item {
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 10px;
-      padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 12px;
-      color: #FAF6ED;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: default;
-      white-space: nowrap;
-    }
-    [dir="rtl"] .trade-corridor-item {
-      font-family: 'Cairo', sans-serif;
-      font-size: 0.72rem; /* Reduced font size to perfectly fit long names on one line */
-      font-weight: 700;
-      letter-spacing: normal;
-      flex-direction: row;
-      gap: 8px; /* Reduced gap slightly */
-      padding: 10px 12px; /* Reduced padding slightly to give more room */
-      white-space: nowrap; 
-    }
-    .trade-corridor-item.is-hq {
-      background: rgba(212, 175, 106, 0.15);
-      border-color: rgba(212, 175, 106, 0.3);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-    .trade-corridor-item:hover {
-      background: rgba(212, 175, 106, 0.12);
-      border-color: rgba(212, 175, 106, 0.4);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-      color: #ffffff;
-    }
-    .branch-flag-img-wrap {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px;
-      height: 15px;
-      border-radius: 3px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      flex-shrink: 0;
-      background: rgba(0, 0, 0, 0.3);
-    }
-    .branch-real-flag {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .corridor-ping {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #52c41a;
-      box-shadow: 0 0 8px #52c41a, 0 0 14px rgba(82, 196, 26, 0.6);
-      flex-shrink: 0;
-    }
-    .trade-corridor-item.is-hq .corridor-ping {
-      background: #f7d28b;
-      box-shadow: 0 0 8px #f7d28b, 0 0 14px rgba(247, 210, 139, 0.6);
-    }
-    .branch-name {
-      display: inline-block;
-      line-height: 1.2;
-      color: #FAF6ED;
-    }
-    .branch-hq-tag {
-      font-size: 0.62rem;
-      font-weight: 800;
-      padding: 2px 6px;
-      background: rgba(212, 175, 106, 0.25);
-      border: 1px solid rgba(212, 175, 106, 0.7);
-      border-radius: 4px;
-      color: #f7d28b;
-      margin-inline-start: auto;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-      line-height: 1.2;
-    }
-    [dir="rtl"] .branch-hq-tag {
-      font-family: 'Cairo', sans-serif;
-      font-size: 0.66rem;
-      letter-spacing: normal;
-    }
+
     /* Section Entry Trigger States */
-    .about-reefiya-section.is-revealed .about-section-badge,
-    .about-reefiya-section.is-revealed .about-subheading-tag,
-    .about-reefiya-section.is-revealed .about-title-line1,
-    .about-reefiya-section.is-revealed .about-title-line2,
-    .about-reefiya-section.is-revealed .about-paragraphs,
-    .about-reefiya-section.is-revealed .about-cta-wrap,
-    .about-reefiya-section.is-revealed .about-visual-wrapper {
-      opacity: 1;
-      transform: translate(0, 0) scale(1);
-    }
+    
     /* -------------------------------------------
        Responsive Adaptations
        ------------------------------------------- */
     /* Tablet (<= 1024px) */
-    @media (max-width: 1024px) {
-      .about-reefiya-container {
-        grid-template-columns: 50% 50%;
-      }
-      .about-title {
-        font-size: clamp(2.1rem, 3.8vw, 3.2rem);
-      }
-      .about-content-col {
-        padding: 50px 4vw;
-      }
-      .trade-network-terminal {
-        top: 24px;
-        right: 24px;
-        max-width: 280px;
-      }
-      [dir="rtl"] .trade-network-terminal {
-        right: auto;
-        left: 24px;
-      }
-    }
+    
     /* Mobile (<= 860px): Luxury Editorial Mobile Layout */
     @media (max-width: 860px) {
-      .about-reefiya-section {
-        min-height: auto;
-        padding-top: 40px;
-        padding-bottom: 60px;
-      }
-      .about-reefiya-container {
-        display: flex;
-        flex-direction: column;
-        min-height: auto;
-        gap: 28px;
-      }
-      .about-content-col {
-        padding: 40px 6vw 0 6vw;
-        max-width: 100%;
-        order: 1;
-      }
-      .about-title {
-        font-size: clamp(2rem, 8vw, 2.6rem);
-        line-height: 1.35;
-        margin-bottom: 18px;
-      }
-      [dir="rtl"] .about-title {
-        font-size: clamp(1.9rem, 7.5vw, 2.5rem);
-        line-height: 1.45;
-        margin-bottom: 18px;
-      }
-      .about-paragraphs {
-        font-size: 0.98rem;
-        line-height: 1.75;
-        margin-bottom: 24px;
-        gap: 14px;
-      }
-      [dir="rtl"] .about-paragraphs {
-        font-size: 1.02rem;
-        line-height: 1.85;
-      }
-      .about-cta-wrap {
-        margin-bottom: 10px;
-      }
+
       /* Photo Column on Mobile: Full-width luxury organic card with curved border */
-      .about-visual-col {
-        order: 2;
-        width: 100%;
-        min-height: 320px;
-        height: 360px;
-        padding: 0 6vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: relative;
-        overflow: visible;
-      }
-      .about-visual-wrapper {
-        min-height: 320px;
-        height: 100%;
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 106, 0.4);
-      }
+
       /* Override desktop aperture clip-path on mobile so photo shows naturally */
       .about-organic-viewport,
       [dir="rtl"] .about-organic-viewport {
@@ -1997,18 +1429,9 @@
         border-radius: 24px;
         overflow: hidden;
       }
-      .about-gold-contour-svg {
-        display: none;
-      }
-      .about-farm-photo {
-        height: 100%;
-        object-position: center 65%;
-        border-radius: 24px;
-      }
+
       /* Hide trade overlay completely on mobile so the photography is clean and unblocked */
-      .trade-network-terminal {
-        display: none !important;
-      }
+      
     }
     /* =============================================================
        SECTION 03 — HERO PRODUCE: EGYPTIAN SWEET POTATOES
@@ -2021,7 +1444,7 @@
       min-height: 800px;
       max-height: 860px;
       background-color: #052C20;
-      background-image: url('/section3-clean-bg.webp');
+      background-image: url("/section3-clean-bg.webp");
       background-size: 88% auto;
       background-position: right top;
       background-repeat: no-repeat;
@@ -2035,7 +1458,7 @@
     }
     /* Ambient dark overlay gradient ensuring readability on left without over-darkening hero potatoes */
     .produce-hero-section::before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(90deg, rgba(3, 26, 18, 0.94) 0%, rgba(4, 30, 22, 0.86) 38%, rgba(5, 38, 28, 0.42) 58%, rgba(5, 44, 32, 0.08) 80%, transparent 100%),
@@ -2045,7 +1468,7 @@
     }
     /* RTL Hero Section: Mirrored background so potatoes are on the left, dark soil on the right */
     [dir="rtl"] .produce-hero-section {
-      background-image: url('/section3-clean-bg-rtl.webp');
+      background-image: url("/section3-clean-bg-rtl.webp");
       background-position: left top;
     }
     /* In RTL: Dark reading gradient starts from RIGHT to ensure text legibility */
@@ -2071,7 +1494,7 @@
       right: auto;
       left: 5.5vw;
       letter-spacing: normal;
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
     }
     /* UPPER HERO COMPOSITION (~54% of visual weight) */
     .produce-hero-top {
@@ -2134,7 +1557,7 @@
       color: #d4af6a;
     }
     [dir="rtl"] .produce-badge-text {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       letter-spacing: 0.08em;
       font-weight: 800;
       font-size: 0.86rem;
@@ -2151,7 +1574,7 @@
       margin-bottom: -2px;
     }
     [dir="rtl"] .produce-eyebrow-tag {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-weight: 800;
       font-size: 0.90rem;
       letter-spacing: normal;
@@ -2171,7 +1594,7 @@
       color: #FAF6ED;
     }
     [dir="rtl"] .produce-hl-main {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-weight: 700;
       font-size: clamp(2.1rem, 3.0vw, 2.9rem);
       line-height: 1.25;
@@ -2190,7 +1613,7 @@
       letter-spacing: 0.01em;
     }
     [dir="rtl"] .produce-hl-sub {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-style: normal;
       font-weight: 700;
       font-size: clamp(1.35rem, 1.85vw, 1.7rem);
@@ -2209,7 +1632,7 @@
       margin: 4px 0 8px 0;
     }
     [dir="rtl"] .produce-body-copy {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: clamp(0.98rem, 1.1vw, 1.06rem);
       line-height: 1.85;
       font-weight: 500;
@@ -2243,7 +1666,7 @@
       text-transform: uppercase;
     }
     [dir="rtl"] .produce-explore-link {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-style: normal;
       font-weight: 700;
       font-size: 0.98rem;
@@ -2308,14 +1731,14 @@
       display: flex;
       flex-direction: column;
       line-height: 1.0;
-      font-family: 'Caveat', cursive, sans-serif;
+      font-family: "Caveat", cursive, sans-serif;
       font-size: 1.55rem;
       font-weight: 700;
       color: #f7e2a9;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 14px rgba(5, 44, 32, 0.85);
     }
     [dir="rtl"] .hw-lines {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-size: 1.15rem;
       font-weight: 800;
       line-height: 1.55;
@@ -2489,7 +1912,7 @@
       text-transform: uppercase;
     }
     [dir="rtl"] .variety-category-tag {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       letter-spacing: 0.02em;
       font-size: 0.72rem;
     }
@@ -2551,7 +1974,7 @@
       line-height: 1.15;
     }
     [dir="rtl"] .variety-title {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-weight: 700;
       letter-spacing: normal;
       font-size: 1.32rem;
@@ -2567,7 +1990,7 @@
       max-width: 275px;
     }
     [dir="rtl"] .variety-desc {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 0.85rem;
       line-height: 1.72;
       font-weight: 500;
@@ -2613,7 +2036,7 @@
       color: #d4af6a;
     }
     [dir="rtl"] .produce-footer-text {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       letter-spacing: normal;
       font-size: 0.75rem;
     }
@@ -3052,10 +2475,10 @@
     }
     /* Full-width background image */
     .buyer-hero-top::before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
-      background-image: url('/sec4-hero-banner.webp');
+      background-image: url("/sec4-hero-banner.webp");
       background-size: auto 95%;
       background-position: right top;
       background-repeat: no-repeat;
@@ -3065,7 +2488,7 @@
     }
     /* Cream gradient: smooth cloud fade on left, bottom, and right end */
     .buyer-hero-top::after {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       background: 
@@ -3273,7 +2696,7 @@
     }
     /* Unified Hitbox: covers the whole card so hover never drops when moving over children */
     .buyer-card::after {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       z-index: 10;
@@ -3470,19 +2893,14 @@
       color: #4F5A50;
       text-transform: uppercase;
     }
-    .buyer-footer-line {
-      width: 26px;
-      height: 1.5px;
-      background-color: #d4a45a;
-      display: inline-block;
-    }
+    
     /* RTL OVERRIDES: DIRECTION RTL, TEXT-ALIGN RIGHT, BUT KEEP LEFT CONTENT / RIGHT HERO & CARDS ORDER */
     [dir="rtl"] .buyer-req-section {
       direction: rtl;
     }
     /* NEW RTL HERO IMAGE */
     [dir="rtl"] .buyer-hero-top::before {
-      background-image: url('/sec4-hero-banner-rtl.webp');
+      background-image: url("/sec4-hero-banner-rtl.webp");
       background-size: auto 95%;
       background-position: left top;
     }
@@ -3531,14 +2949,14 @@
       align-items: flex-start;
     }
     [dir="rtl"] .buyer-headline {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-weight: 800;
       line-height: 1.4; /* Increased line-height so the text lines don't touch */
       letter-spacing: 0;
       font-size: clamp(32px, 3.2vw, 48px);
     }
     [dir="rtl"] .buyer-card-title {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-weight: 700;
       letter-spacing: 0;
       font-size: 1.3rem; /* Reduced font size to fit on one line or look better if it wraps */
@@ -3554,14 +2972,14 @@
     }
     [dir="rtl"] .buyer-body-desc,
     [dir="rtl"] .buyer-card-desc {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
     }
     [dir="rtl"] .buyer-badge-label,
     [dir="rtl"] .buyer-eyebrow,
     [dir="rtl"] .buyer-card-tag,
     [dir="rtl"] .buyer-footer-brand-sub,
     [dir="rtl"] .buyer-footer-tagline {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       letter-spacing: normal;
     }
     /* RESPONSIVE */
@@ -3719,38 +3137,7 @@
       }
     }
     /* Section 02 RTL Polish */
-    [dir="rtl"] .trade-network-terminal {
-      /* Move widget to the left side in Arabic to sit over the image */
-      left: 36px !important;
-      right: auto !important;
-      direction: rtl !important;
-    }
-    [dir="rtl"] .trade-terminal-badge {
-      flex-direction: row !important;
-    }
-    [dir="rtl"] .trade-corridors-list {
-      direction: rtl !important;
-    }
-    [dir="rtl"] .trade-corridor-item {
-      direction: rtl !important;
-      flex-direction: row !important;
-      justify-content: flex-start !important;
-      gap: 9px !important;
-    }
-    [dir="rtl"] .trade-corridor-item .branch-hq-tag {
-      margin-right: auto !important;
-      margin-left: 0 !important;
-    }
-    [dir="rtl"] .about-link-action {
-      flex-direction: row !important;
-      gap: 12px !important;
-    }
-    [dir="rtl"] .about-link-action .cta-arrow {
-      transform: scaleX(-1) !important;
-    }
-    [dir="rtl"] .about-link-action:hover .cta-arrow {
-      transform: scaleX(-1) translate(-2px, -2px) !important;
-    }
+
     .interactive-world-map path {
       fill: rgba(255, 255, 255, 0.15) !important;
       stroke: rgba(255, 255, 255, 0.05);
@@ -3762,10 +3149,7 @@
       fill: var(--color-gold) !important;
       transform: translateY(-2px);
     }
-    .map-pin { transition: all 0.3s ease; }
-    .map-pin.highlight .pin-dot { background: var(--color-gold) !important; transform: scale(1.5); box-shadow: 0 0 10px var(--color-gold); }
-    .map-pin.highlight .pin-dot { background: var(--color-gold) !important; transform: scale(1.5); box-shadow: 0 0 10px var(--color-gold); }
-    .map-pin.highlight .pin-card { opacity: 1 !important; pointer-events: auto !important; }
+
     /* Make map paths highlight too if they match country? We don't have ids for paths, but we can just highlight the pins! */
     /* =========================================================
        SECTION 05 — WHY REEFIYA / OUR APPROACH (SEAMLESS ORGANIC BLEND)
@@ -3787,7 +3171,7 @@
     }
     /* Ambient Warm Cream Tint Layer */
     .approach-section::before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       background: radial-gradient(circle at 20% 30%, #ffffff 0%, #FAF7F2 65%, #f4efe4 100%);
@@ -3843,43 +3227,7 @@
       display: none !important;
     }
     /* Floating Slogan Card (From Egyptian Fields. To Global Shelves.) */
-    .approach-slogan-card {
-      position: absolute;
-      top: clamp(24px, 3.5vw, 42px);
-      right: clamp(40px, 5.5vw, 85px);
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-radius: 20px;
-      padding: 14px 22px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      box-shadow: 0 16px 38px rgba(23, 77, 48, 0.09), 0 2px 8px rgba(0, 0, 0, 0.03);
-      border: 1px solid rgba(181, 137, 61, 0.28);
-      z-index: 4;
-      pointer-events: auto;
-      transition: all 0.35s ease;
-    }
-    .approach-slogan-card:hover {
-      background: rgba(255, 255, 255, 0.92);
-      transform: translateY(-2px);
-      box-shadow: 0 20px 45px rgba(23, 77, 48, 0.14);
-      border-color: rgba(23, 77, 48, 0.35);
-    }
-    .approach-slogan-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #edf5ee;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 0 rgba(23, 77, 48, 0.25);
-      animation: sloganLeafPulse 2.8s infinite ease-in-out;
-      border: 1px solid rgba(23, 77, 48, 0.12);
-    }
+
     @keyframes sloganLeafPulse {
       0%, 100% {
         transform: scale(1);
@@ -3890,32 +3238,7 @@
         box-shadow: 0 0 0 6px rgba(23, 77, 48, 0);
       }
     }
-    .approach-slogan-content {
-      display: flex;
-      flex-direction: column;
-    }
-    .approach-slogan-l1 {
-      font-family: var(--font-heading);
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #174D30;
-      line-height: 1.25;
-    }
-    .approach-slogan-l2 {
-      font-family: var(--font-heading);
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #174D30;
-      line-height: 1.25;
-    }
-    .approach-slogan-bar {
-      display: inline-block;
-      width: 24px;
-      height: 2px;
-      background: linear-gradient(90deg, #e65100 0%, #b5893d 100%);
-      margin-top: 5px;
-      border-radius: 2px;
-    }
+
     /* Container */
     .approach-container {
       width: 100%;
@@ -4320,7 +3643,7 @@
       left: auto;
       right: 10px;
       letter-spacing: normal;
-      font-family: 'Cairo', var(--font-heading);
+      font-family: "Cairo", var(--font-heading);
       font-size: 0.72rem;
     }
     /* Continuous Flow Journey Rail (Connects cleanly between cards behind milestone nodes) */
@@ -4436,41 +3759,7 @@
       display: none !important;
     }
     /* Glass Tag on Image Corner */
-    .pillar-glass-tag {
-      position: absolute;
-      bottom: 8px;
-      left: 8px;
-      background: rgba(11, 26, 16, 0.72);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 20px;
-      padding: 3px 9px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      color: #ffffff;
-      font-family: var(--font-sans);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-      z-index: 2;
-      pointer-events: none;
-      transition: all 0.3s ease;
-    }
-    .pillar-glass-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 6px #4ade80;
-    }
-    .approach-pillar-card:hover .pillar-glass-tag {
-      background: rgba(23, 77, 48, 0.88);
-      border-color: rgba(255, 255, 255, 0.35);
-      transform: translateY(-2px);
-    }
+
     /* -------------------------------------------
        RTL Adaptations (Arabic & Right-to-Left)
        ------------------------------------------- */
@@ -4490,10 +3779,7 @@
       left: 0;
       transform: scaleX(-1);
     }
-    [dir="rtl"] .approach-slogan-card {
-      right: auto;
-      left: clamp(40px, 5.5vw, 85px);
-    }
+    
     [dir="rtl"] .approach-editorial-zone {
       align-items: flex-start;
       text-align: right;
@@ -4508,21 +3794,17 @@
     }
     [dir="rtl"] .approach-hl-main,
     [dir="rtl"] .approach-hl-sub {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       letter-spacing: normal;
       line-height: 1.35;
     }
     [dir="rtl"] .approach-desc {
-      font-family: 'Cairo', var(--font-sans);
+      font-family: "Cairo", var(--font-sans);
       font-size: 1.0rem;
       line-height: 1.65;
       margin-bottom: 1.25rem;
     }
-    [dir="rtl"] .approach-slogan-l1,
-    [dir="rtl"] .approach-slogan-l2 {
-      font-family: 'Cairo', sans-serif;
-      font-weight: 700;
-    }
+    
     [dir="rtl"] .approach-pillar-card {
       padding: 14px 18px 14px 14px;
     }
@@ -4530,18 +3812,18 @@
       text-align: right;
     }
     [dir="rtl"] .pillar-title {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-size: clamp(1.15rem, 1.25vw, 1.35rem);
       line-height: 1.35;
       letter-spacing: normal;
     }
     [dir="rtl"] .pillar-tagline {
-      font-family: 'Cairo', var(--font-sans);
+      font-family: "Cairo", var(--font-sans);
       letter-spacing: normal;
       font-size: 0.82rem;
     }
     [dir="rtl"] .pillar-desc {
-      font-family: 'Cairo', var(--font-sans);
+      font-family: "Cairo", var(--font-sans);
       font-size: 0.82rem;
       line-height: 1.6;
     }
@@ -4564,19 +3846,16 @@
     [dir="rtl"] .approach-pillar-card:hover .pillar-arrow-btn span {
       transform: scaleX(-1) translateX(4px);
     }
-    [dir="rtl"] .pillar-glass-tag {
-      left: auto;
-      right: 8px;
-    }
+    
     [dir="rtl"] .stat-pill-label {
-      font-family: 'Cairo', var(--font-sans);
+      font-family: "Cairo", var(--font-sans);
       letter-spacing: normal;
     }
     [dir="rtl"] .stat-digit {
-      font-family: 'Cairo', var(--font-heading);
+      font-family: "Cairo", var(--font-heading);
     }
     [dir="rtl"] .stat-unit {
-      font-family: 'Cairo', var(--font-heading);
+      font-family: "Cairo", var(--font-heading);
       letter-spacing: normal;
     }
     [dir="rtl"] .approach-video-btn {
@@ -4609,14 +3888,9 @@
       .approach-hero-backdrop {
         display: none !important;
       }
-      .approach-hero-header {
-        max-width: 100%;
-        margin-bottom: 2rem;
-      }
+      
       /* Slogan card: hide on mobile screens to prevent header clutter */
-      .approach-slogan-card {
-        display: none !important;
-      }
+      
       /* Headline & text sizing with crisp typography */
       .approach-hl-main,
       .approach-hl-sub {
@@ -4905,8 +4179,7 @@
       z-index: 2;
       pointer-events: none;
     }
-    .sec6-leaf-flourish-tl,
-    .sec6-leaf-flourish-br {
+    .sec6-leaf-flourish-tl {
       display: none;
     }
     /* Main Container */
@@ -5005,13 +4278,7 @@
     .sec6-main-headline .hl-line {
       display: block;
     }
-    .sec6-headline-leaves {
-      display: inline-block;
-      vertical-align: middle;
-      margin-left: 8px;
-      width: 34px;
-      height: 30px;
-    }
+    
     /* Description */
     .sec6-body-desc {
       font-family: var(--font-sans);
@@ -5118,7 +4385,7 @@
       min-width: 0;
     }
     .sec6-primary-btn::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: -100%;
@@ -5208,21 +4475,21 @@
       margin-right: 0;
     }
     [dir="rtl"] .sec6-badge-tag {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       letter-spacing: 0.08em;
       font-size: 0.76rem;
       font-weight: 800;
       color: #174D30;
     }
     [dir="rtl"] .sec6-eyebrow-text {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       letter-spacing: 0.06em;
       font-size: 0.78rem;
       font-weight: 800;
       color: #e65100;
     }
     [dir="rtl"] .sec6-main-headline {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-size: clamp(1.45rem, 1.8vw, 1.95rem);
       font-weight: 800;
       color: #0b2415;
@@ -5237,13 +4504,9 @@
       white-space: normal;
       display: inline;
     }
-    [dir="rtl"] .sec6-headline-leaves {
-      margin-left: 0;
-      margin-right: 8px;
-      transform: scaleX(-1);
-    }
+    
     [dir="rtl"] .sec6-body-desc {
-      font-family: 'Cairo', var(--font-sans);
+      font-family: "Cairo", var(--font-sans);
       font-size: 0.95rem;
       line-height: 1.65;
       font-weight: 600;
@@ -5259,18 +4522,18 @@
       }
     }
     [dir="rtl"] .sec6-pill-text strong {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-size: 0.74rem;
       font-weight: 700;
     }
     [dir="rtl"] .sec6-pill-text small {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 0.64rem;
       font-weight: 600;
     }
     [dir="rtl"] .sec6-primary-btn,
     [dir="rtl"] .sec6-whatsapp-btn {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
       font-size: 0.94rem;
       font-weight: 700;
     }
@@ -5434,8 +4697,7 @@
         font-size: 0.92rem;
         border-radius: 36px;
       }
-      .sec6-leaf-flourish-tl,
-      .sec6-leaf-flourish-br {
+      .sec6-leaf-flourish-tl {
         display: none;
       }
     }
@@ -5455,7 +4717,7 @@
     }
     /* Ambient Warm Vignette & Subtle Radial Shimmer */
     .site-luxury-footer::before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       background: 
@@ -5541,7 +4803,7 @@
       gap: 12px;
     }
     .footer-col-title::after {
-      content: '';
+      content: "";
       flex: 0 0 28px;
       height: 1px;
       background: rgba(255, 255, 255, 0.15);
@@ -5583,12 +4845,7 @@
       opacity: 1;
       color: #dfad5e;
     }
-    [dir="rtl"] .footer-link-arrow {
-      transform: rotate(270deg);
-    }
-    [dir="rtl"] .footer-link-item a:hover {
-      transform: translateX(-4px);
-    }
+
     [dir="rtl"] .footer-link-item a:hover .footer-link-arrow {
       transform: rotate(270deg) translate(-2px, 2px);
     }
@@ -5973,11 +5230,11 @@
       align-items: flex-start;
     }
     [dir="rtl"] .footer-brand-headline {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       line-height: 1.4;
     }
     [dir="rtl"] .footer-col-title {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       letter-spacing: 0.06em;
     }
     [dir="rtl"] .footer-brand-summary,
@@ -5990,7 +5247,7 @@
     [dir="rtl"] .footer-copy-text,
     [dir="rtl"] .footer-meta-link,
     [dir="rtl"] .footer-dev-label {
-      font-family: 'Cairo', sans-serif;
+      font-family: "Cairo", sans-serif;
     }
     [dir="rtl"] .footer-link-item a:hover {
       transform: translateX(-4px);
@@ -6358,7 +5615,7 @@
     }
     /* Elegant Harbor Background with Seamless Fade at Top AND Bottom */
     .markets-presence-section::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       right: 0;
@@ -6366,7 +5623,7 @@
       height: 44%;
       min-height: 220px;
       max-height: 380px;
-      background-image: url('/markets-harbor-clean.webp');
+      background-image: url("/markets-harbor-clean.webp");
       background-size: cover;
       background-position: center bottom;
       background-repeat: no-repeat;
@@ -6377,7 +5634,7 @@
       mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 22%, rgba(0,0,0,0.95) 55%, rgba(0,0,0,0.95) 78%, rgba(0,0,0,0.3) 93%, rgba(0,0,0,0) 100%);
     }
     .markets-presence-section::before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       background: radial-gradient(circle at 50% 25%, #ffffff 0%, #fbf9f4 50%, rgba(244, 239, 228, 0.4) 100%);
@@ -6408,28 +5665,9 @@
       margin-top: 60px; /* Perfectly aligned with the slimmed & stretched left stack */
     }
     /* Strict aspect-ratio matching world map coordinates */
-    .map-viewport-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1000 / 585;
-      user-select: none;
-      background: radial-gradient(ellipse 85% 70% at 50% 48%, rgba(255, 255, 255, 0.88) 0%, rgba(251, 248, 241, 0.60) 45%, rgba(247, 244, 237, 0) 75%) !important;
-      border: none !important;
-      box-shadow: none !important;
-      border-radius: 0 !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-    }
+    
     /* Presence column hover polish */
-    .presence-col {
-      padding: 6px 4px;
-      border-radius: 8px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .presence-col:hover {
-      transform: translateY(-3px) scale(1.04);
-      background: rgba(23, 77, 48, 0.04);
-    }
+
     /* World Map Base Paths - Clean Warm Muted Green matching Reference */
     .interactive-world-map path {
       fill: #e1ede5 !important;
@@ -6499,43 +5737,7 @@
       stroke-linecap: round;
     }
     /* ALL EUROPE HIGHLIGHT STATE */
-    .highlight-europe #de path, .highlight-europe path#de,
-    .highlight-europe #fr path.mainland, .highlight-europe #fr path.corsica,
-    .highlight-europe #es path, .highlight-europe path#es,
-    .highlight-europe #pt path, .highlight-europe path#pt,
-    .highlight-europe #dk path, .highlight-europe path#dk,
-    .highlight-europe #no path, .highlight-europe path#no,
-    .highlight-europe #se path, .highlight-europe path#se,
-    .highlight-europe #fi path, .highlight-europe path#fi,
-    .highlight-europe #ee path, .highlight-europe path#ee,
-    .highlight-europe #gb path, .highlight-europe path#gb,
-    .highlight-europe #it path, .highlight-europe path#it,
-    .highlight-europe #gr path, .highlight-europe path#gr,
-    .highlight-europe #pl path, .highlight-europe path#pl,
-    .highlight-europe #nl path, .highlight-europe path#nl,
-    .highlight-europe #be path, .highlight-europe path#be,
-    .highlight-europe #at path, .highlight-europe path#at,
-    .highlight-europe #ch path, .highlight-europe path#ch,
-    .highlight-europe #ie path, .highlight-europe path#ie,
-    .highlight-europe #cz path, .highlight-europe path#cz,
-    .highlight-europe #ro path, .highlight-europe path#ro,
-    .highlight-europe #hu path, .highlight-europe path#hu,
-    .highlight-europe #bg path, .highlight-europe path#bg,
-    .highlight-europe #hr path, .highlight-europe path#hr,
-    .highlight-europe #sk path, .highlight-europe path#sk,
-    .highlight-europe #si path, .highlight-europe path#si,
-    .highlight-europe #lt path, .highlight-europe path#lt,
-    .highlight-europe #lv path, .highlight-europe path#lv,
-    .highlight-europe #lu path, .highlight-europe path#lu,
-    .highlight-europe #cy path, .highlight-europe path#cy,
-    .highlight-europe #mt path, .highlight-europe path#mt,
-    .highlight-europe #al path, .highlight-europe path#al,
-    .highlight-europe #ba path, .highlight-europe path#ba,
-    .highlight-europe #rs path, .highlight-europe path#rs,
-    .highlight-europe #me path, .highlight-europe path#me,
-    .highlight-europe #mk path, .highlight-europe path#mk,
-    .highlight-europe #by path, .highlight-europe path#by,
-    .highlight-europe #ua path, .highlight-europe path#ua {
+    .highlight-europe #de path, .highlight-europe path#de, .highlight-europe #fr path.mainland, .highlight-europe #es path, .highlight-europe path#es, .highlight-europe #pt path, .highlight-europe path#pt, .highlight-europe #dk path, .highlight-europe path#dk, .highlight-europe #no path, .highlight-europe path#no, .highlight-europe #se path, .highlight-europe path#se, .highlight-europe #fi path, .highlight-europe path#fi, .highlight-europe #ee path, .highlight-europe path#ee, .highlight-europe #gb path, .highlight-europe path#gb, .highlight-europe #it path, .highlight-europe path#it, .highlight-europe #gr path, .highlight-europe path#gr, .highlight-europe #pl path, .highlight-europe path#pl, .highlight-europe #nl path, .highlight-europe path#nl, .highlight-europe #be path, .highlight-europe path#be, .highlight-europe #at path, .highlight-europe path#at, .highlight-europe #ch path, .highlight-europe path#ch, .highlight-europe #ie path, .highlight-europe path#ie, .highlight-europe #cz path, .highlight-europe path#cz, .highlight-europe #ro path, .highlight-europe path#ro, .highlight-europe #hu path, .highlight-europe path#hu, .highlight-europe #bg path, .highlight-europe path#bg, .highlight-europe #hr path, .highlight-europe path#hr, .highlight-europe #sk path, .highlight-europe path#sk, .highlight-europe #si path, .highlight-europe path#si, .highlight-europe #lt path, .highlight-europe path#lt, .highlight-europe #lv path, .highlight-europe path#lv, .highlight-europe #lu path, .highlight-europe path#lu, .highlight-europe #cy path, .highlight-europe path#cy, .highlight-europe #mt path, .highlight-europe path#mt, .highlight-europe #al path, .highlight-europe path#al, .highlight-europe #ba path, .highlight-europe path#ba, .highlight-europe #rs path, .highlight-europe path#rs, .highlight-europe #me path, .highlight-europe path#me, .highlight-europe #mk path, .highlight-europe path#mk, .highlight-europe #by path, .highlight-europe path#by, .highlight-europe #ua path, .highlight-europe path#ua {
       fill: #f47d2d !important;
       stroke: #ffffff !important;
       stroke-width: 0.8px;
@@ -6553,50 +5755,7 @@
       filter: drop-shadow(0 0 6px rgba(244, 125, 45, 0.45));
     }
     /* ALL INTERNATIONAL MARKETS HIGHLIGHT STATE */
-    .highlight-all #de path, .highlight-all path#de,
-    .highlight-all #fr path.mainland, .highlight-all #fr path.corsica,
-    .highlight-all #es path, .highlight-all path#es,
-    .highlight-all #pt path, .highlight-all path#pt,
-    .highlight-all #dk path, .highlight-all path#dk,
-    .highlight-all #no path, .highlight-all path#no,
-    .highlight-all #se path, .highlight-all path#se,
-    .highlight-all #fi path, .highlight-all path#fi,
-    .highlight-all #ee path, .highlight-all path#ee,
-    .highlight-all #gb path, .highlight-all path#gb,
-    .highlight-all #it path, .highlight-all path#it,
-    .highlight-all #gr path, .highlight-all path#gr,
-    .highlight-all #pl path, .highlight-all path#pl,
-    .highlight-all #nl path, .highlight-all path#nl,
-    .highlight-all #be path, .highlight-all path#be,
-    .highlight-all #at path, .highlight-all path#at,
-    .highlight-all #ch path, .highlight-all path#ch,
-    .highlight-all #ie path, .highlight-all path#ie,
-    .highlight-all #cz path, .highlight-all path#cz,
-    .highlight-all #ro path, .highlight-all path#ro,
-    .highlight-all #hu path, .highlight-all path#hu,
-    .highlight-all #bg path, .highlight-all path#bg,
-    .highlight-all #hr path, .highlight-all path#hr,
-    .highlight-all #sk path, .highlight-all path#sk,
-    .highlight-all #si path, .highlight-all path#si,
-    .highlight-all #lt path, .highlight-all path#lt,
-    .highlight-all #lv path, .highlight-all path#lv,
-    .highlight-all #lu path, .highlight-all path#lu,
-    .highlight-all #cy path, .highlight-all path#cy,
-    .highlight-all #mt path, .highlight-all path#mt,
-    .highlight-all #al path, .highlight-all path#al,
-    .highlight-all #ba path, .highlight-all path#ba,
-    .highlight-all #rs path, .highlight-all path#rs,
-    .highlight-all #me path, .highlight-all path#me,
-    .highlight-all #mk path, .highlight-all path#mk,
-    .highlight-all #by path, .highlight-all path#by,
-    .highlight-all #ua path, .highlight-all path#ua,
-    .highlight-all path#sa,
-    .highlight-all path#ae,
-    .highlight-all path#om,
-    .highlight-all path#qa,
-    .highlight-all path#kw,
-    .highlight-all #us path,
-    .highlight-all #ca path {
+    .highlight-all #de path, .highlight-all path#de, .highlight-all #fr path.mainland, .highlight-all #es path, .highlight-all path#es, .highlight-all #pt path, .highlight-all path#pt, .highlight-all #dk path, .highlight-all path#dk, .highlight-all #no path, .highlight-all path#no, .highlight-all #se path, .highlight-all path#se, .highlight-all #fi path, .highlight-all path#fi, .highlight-all #ee path, .highlight-all path#ee, .highlight-all #gb path, .highlight-all path#gb, .highlight-all #it path, .highlight-all path#it, .highlight-all #gr path, .highlight-all path#gr, .highlight-all #pl path, .highlight-all path#pl, .highlight-all #nl path, .highlight-all path#nl, .highlight-all #be path, .highlight-all path#be, .highlight-all #at path, .highlight-all path#at, .highlight-all #ch path, .highlight-all path#ch, .highlight-all #ie path, .highlight-all path#ie, .highlight-all #cz path, .highlight-all path#cz, .highlight-all #ro path, .highlight-all path#ro, .highlight-all #hu path, .highlight-all path#hu, .highlight-all #bg path, .highlight-all path#bg, .highlight-all #hr path, .highlight-all path#hr, .highlight-all #sk path, .highlight-all path#sk, .highlight-all #si path, .highlight-all path#si, .highlight-all #lt path, .highlight-all path#lt, .highlight-all #lv path, .highlight-all path#lv, .highlight-all #lu path, .highlight-all path#lu, .highlight-all #cy path, .highlight-all path#cy, .highlight-all #mt path, .highlight-all path#mt, .highlight-all #al path, .highlight-all path#al, .highlight-all #ba path, .highlight-all path#ba, .highlight-all #rs path, .highlight-all path#rs, .highlight-all #me path, .highlight-all path#me, .highlight-all #mk path, .highlight-all path#mk, .highlight-all #by path, .highlight-all path#by, .highlight-all #ua path, .highlight-all path#ua, .highlight-all path#sa, .highlight-all path#ae, .highlight-all path#om, .highlight-all path#qa, .highlight-all path#kw, .highlight-all #us path, .highlight-all #ca path {
       fill: #d4af6a !important;
       stroke: #ffffff !important;
       stroke-width: 0.6px;
@@ -6782,7 +5941,7 @@
       padding: clamp(18px, 2.0vw, 28px) 5% clamp(26px, 2.6vw, 38px) !important;
     }
     [dir="rtl"] .markets-presence-section::after {
-      background-image: url('/markets-harbor-clean-rtl.webp') !important;
+      background-image: url("/markets-harbor-clean-rtl.webp") !important;
       background-position: center bottom !important;
     }
     [dir="rtl"] .markets-container {
@@ -6800,7 +5959,7 @@
       margin-bottom: 1.1rem !important;
     }
     [dir="rtl"] #marketsHeadline .produce-hl-main {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-size: clamp(2.3rem, 3.3vw, 3.2rem) !important;
       line-height: 1.45 !important;
       letter-spacing: normal;
@@ -6808,7 +5967,7 @@
       padding-bottom: 4px !important;
     }
     [dir="rtl"] #marketsHeadline .produce-hl-sub {
-      font-family: 'Alexandria', 'Cairo', sans-serif;
+      font-family: "Alexandria", "Cairo", sans-serif;
       font-size: clamp(1.45rem, 2.0vw, 1.95rem) !important;
       line-height: 1.45 !important;
       letter-spacing: normal;
@@ -7002,95 +6161,7 @@
       overflow: visible;
     }
     /* Hybrid Trade Stats & Strategic Network Grid */
-    .metrics-stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.8rem;
-      margin-bottom: 0.85rem;
-      border-bottom: 1px solid rgba(23, 77, 48, 0.08);
-      padding-bottom: 0.75rem;
-    }
-    .metric-cell {
-      text-align: center;
-      background: rgba(23, 77, 48, 0.025);
-      border: 1px solid rgba(23, 77, 48, 0.07);
-      border-radius: 12px;
-      padding: 0.45rem 0.3rem;
-      transition: all 0.25s ease;
-    }
-    .metric-cell:hover {
-      background: rgba(23, 77, 48, 0.05);
-      border-color: rgba(23, 77, 48, 0.16);
-      transform: translateY(-2px);
-    }
-    .metric-value {
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #174D30;
-      line-height: 1.1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
-    }
-    .metric-value .metric-plus {
-      color: #df9e51;
-      font-size: 0.95rem;
-      font-weight: 800;
-    }
-    .metric-label {
-      font-family: var(--font-sans);
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: #556c5e;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-top: 0.2rem;
-    }
-    .hubs-pill-track {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .hub-pill-btn {
-      flex: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      padding: 5px 6px;
-      border-radius: 20px;
-      background: #faf8f3;
-      border: 1px solid rgba(23, 77, 48, 0.12);
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .hub-pill-btn:hover,
-    .hub-pill-btn.is-active {
-      background: #ffffff;
-      border-color: #df9e51;
-      box-shadow: 0 4px 12px rgba(223, 158, 81, 0.2);
-      transform: translateY(-2px);
-    }
-    .hub-pill-flag {
-      width: 16px;
-      height: 11px;
-      object-fit: cover;
-      border-radius: 2px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-      flex-shrink: 0;
-    }
-    .hub-pill-text {
-      font-family: var(--font-sans);
-      font-size: 0.67rem;
-      font-weight: 700;
-      color: #174D30;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-    }
+
     /* Crisp typography for Section 04 - zero glow or dark text shadow */
     #marketsHeadline .produce-hl-main,
     #marketsHeadline .produce-hl-sub {
@@ -7109,7 +6180,7 @@
     }
     /* Soft organic luminous cloud/fade behind the button for clear separation from background water & leaves */
     .markets-cta-wrap::before {
-      content: '';
+      content: "";
       position: absolute;
       left: -80px;
       top: 50%;
@@ -7463,9 +6534,7 @@
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
     }
     /* Reveal only after preloader is dismissed */
-    .loader.hidden ~ .minimal-section-rail,
-    body.is-loaded .minimal-section-rail,
-    .minimal-section-rail.is-visible {
+    .loader.hidden ~ .minimal-section-rail, .minimal-section-rail.is-visible {
       opacity: 1;
       visibility: visible;
     }
@@ -7576,3 +6645,7 @@
         display: none !important;
       }
     }
+
+/* Variety names link to their dedicated landing pages */
+.variety-title-link { color: inherit; text-decoration: none; }
+.variety-title-link:hover, .variety-title-link:focus-visible { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }

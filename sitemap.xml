@@ -46,4 +46,105 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/rfq"/>
   </url>
 
+  <!-- Variety landing pages -->
+  <url>
+    <loc>https://reefiya.com/varieties/beauregard</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reefiya.com/varieties/beauregard"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/varieties/beauregard"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/varieties/beauregard"/>
+  </url>
+
+  <url>
+    <loc>https://reefiya.com/ar/varieties/beauregard</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reefiya.com/varieties/beauregard"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/varieties/beauregard"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/varieties/beauregard"/>
+  </url>
+
+  <url>
+    <loc>https://reefiya.com/varieties/bellevue</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reefiya.com/varieties/bellevue"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/varieties/bellevue"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/varieties/bellevue"/>
+  </url>
+
+  <url>
+    <loc>https://reefiya.com/ar/varieties/bellevue</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reefiya.com/varieties/bellevue"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/varieties/bellevue"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/varieties/bellevue"/>
+  </url>
+
+  <url>
+    <loc>https://reefiya.com/varieties/egyptian</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reefiya.com/varieties/egyptian"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/varieties/egyptian"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/varieties/egyptian"/>
+  </url>
+
+  <url>
+    <loc>https://reefiya.com/ar/varieties/egyptian</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reefiya.com/varieties/egyptian"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/varieties/egyptian"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/varieties/egyptian"/>
+  </url>
+  <!-- Product programme pages -->
+  <url>
+    <loc>https://reefiya.com/products/frozen</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reefiya.com/products/frozen"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/products/frozen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/products/frozen"/>
+  </url>
+
+  <url>
+    <loc>https://reefiya.com/ar/products/frozen</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reefiya.com/products/frozen"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/products/frozen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/products/frozen"/>
+  </url>
+
+  <url>
+    <loc>https://reefiya.com/products/industrial</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reefiya.com/products/industrial"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/products/industrial"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/products/industrial"/>
+  </url>
+
+  <url>
+    <loc>https://reefiya.com/ar/products/industrial</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reefiya.com/products/industrial"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/products/industrial"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reefiya.com/products/industrial"/>
+  </url>
+
 </urlset>

@@ -22,14 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const isAr = currentLang.toLowerCase().startsWith('ar');
 
         if (mode === 'gcc') {
-          cardSaFlag.src = './flags/gcc_official_round.webp';
+          cardSaFlag.src = '/flags/gcc_official_round.webp';
           cardSaFlag.style.width = '20px';
           cardSaFlag.style.height = '20px';
           cardSaFlag.style.borderRadius = '50%';
           cardSaTitle.textContent = isAr ? 'دول مجلس التعاون الخليجي' : ((langData.sec4_markets_gcc || 'GCC') + ' (GULF MARKETS)').toUpperCase();
           cardSaDesc.innerHTML = isAr ? 'السوق الإقليمي المستهدف' : (langData.sec4_markets_eu_desc || 'Target Regional Market');
         } else {
-          cardSaFlag.src = './flags/sa.png';
+          cardSaFlag.src = '/flags/sa.png';
           cardSaFlag.style.width = '22px';
           cardSaFlag.style.height = '15px';
           cardSaFlag.style.borderRadius = '2px';
