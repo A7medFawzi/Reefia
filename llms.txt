@@ -53,6 +53,9 @@
 - **Key Maritime Gateways:** Alexandria Port, El Dekheila Port, and Damietta Port with fast short-sea routes to Southern and Western European ports (4–7 days).
 
 ## Quick Access Links
+- [Beauregard variety page](https://reefiya.com/varieties/beauregard) · [Arabic](https://reefiya.com/ar/varieties/beauregard)
+- [Bellevue variety page](https://reefiya.com/varieties/bellevue) · [Arabic](https://reefiya.com/ar/varieties/bellevue)
+- [Egyptian local varieties page](https://reefiya.com/varieties/egyptian) · [Arabic](https://reefiya.com/ar/varieties/egyptian)
 - [Commercial RFQ Form](https://reefiya.com/rfq): Online multi-step Request for Quotation configurator with instant PDF export.
 - [Arabic Landing Portal](https://reefiya.com/ar): النسخة العربية الرسمية لمكتب التصدير التجاري.
 - [Specification Overview](https://reefiya.com/#specs): Comprehensive packaging, calibration, and curing guidelines.

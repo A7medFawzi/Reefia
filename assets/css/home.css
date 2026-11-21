@@ -7576,3 +7576,7 @@
         display: none !important;
       }
     }
+
+/* Variety names link to their dedicated landing pages */
+.variety-title-link { color: inherit; text-decoration: none; }
+.variety-title-link:hover, .variety-title-link:focus-visible { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
