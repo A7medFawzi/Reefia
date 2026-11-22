@@ -253,12 +253,12 @@
     (function () {
       var box = document.getElementById('lightbox');
       if (!box || typeof box.showModal !== 'function') return;
-      var cap = box.querySelector('.v-lightbox-cap'), im = document.createElement('img');
-      box.insertBefore(im, cap);
+      var cap = box.querySelector('.v-lightbox-cap'), im = null;
       document.querySelectorAll('.v-zoom').forEach(function (a) {
         a.addEventListener('click', function (e) {
           e.preventDefault();
           var src = a.querySelector('img');
+          if (!im) { im = document.createElement('img'); box.insertBefore(im, cap); }
           im.src = a.getAttribute('href');
           im.alt = src ? src.alt : '';
           cap.textContent = im.alt;
