@@ -278,6 +278,12 @@ def img(src, alt, w, h, cls="", lazy=True, extra=""):
     return f'<img{c} src="{src}" alt="{esc(alt)}" width="{w}" height="{h}"{lz}{extra}>'
 
 
+def fig(src, alt, w, h, indent="          "):
+    """Captioned photo that opens full-size in the lightbox."""
+    return (f'{indent}<figure><a class="v-zoom" href="{src}" aria-label="{esc(alt)}">{img(src, alt, w, h)}</a>'
+            f'<figcaption>{esc(alt)}</figcaption></figure>')
+
+
 def section(id_, title, body, sub=None, extra_cls=""):
     s = f'<p class="v-sub">{sub}</p>' if sub else ""
     return f"""
@@ -345,7 +351,7 @@ def page(lang, key):
           <h2 id="h-profile">{esc(c['name'])}</h2>
 {spec_table(rows)}
         </div>
-        <div class="v-photo">{img(p['photo'], c['alt'], 900, 1100)}</div>
+        <a class="v-photo v-zoom" href="{p['photo']}" aria-label="{esc(c['alt'])}">{img(p['photo'], c['alt'], 900, 1100)}</a>
       </div>
     </section>""")
     elif kind == "industrial":
@@ -362,14 +368,14 @@ def page(lang, key):
     </section>""")
     else:  # frozen
         cards = "\n".join(f"""          <div class="v-card v-product">
-            {img(src, alt, 600, 700)}
+            <a class="v-zoom" href="{src}" aria-label="{esc(alt)}">{img(src, alt, 600, 700)}</a>
             <h3>{esc(n)}</h3>
             <p>{d}</p>
           </div>""" for n, d, src, alt in c["products"])
         body.append(section("products", esc(c["eyebrow"]), f'        <div class="v-grid v-grid-2">\n{cards}\n        </div>'))
 
     # ---- gallery
-    gal = "\n".join(f'          <figure>{img(src, alt, 800, 600)}</figure>' for src, alt in zip(p["gallery"], c["gallery_alts"]))
+    gal = "\n".join(fig(src, alt, 800, 600) for src, alt in zip(p["gallery"], c["gallery_alts"]))
     body.append(f"""
     <div class="v-gallery-wrap"><div class="wrap"><div class="v-gallery">
 {gal}
@@ -387,7 +393,7 @@ def page(lang, key):
               </tbody>
             </table>
           </div>
-          <div class="v-photo">{img('/photos/calibration-sizes.webp', t['calib_alt'], 1200, 1003)}</div>
+          <a class="v-photo v-zoom" href="/photos/calibration-sizes.webp" aria-label="{esc(t['calib_alt'])}">{img('/photos/calibration-sizes.webp', t['calib_alt'], 1200, 1003)}</a>
         </div>
         <p class="v-note">{esc(t['sizes_note'])}</p>"""
         body.append(section("sizes", esc(t["h_sizes"]), table, esc(t["sizes_sub"])))
@@ -403,14 +409,14 @@ def page(lang, key):
 
     if kind in ("fresh", "industrial"):
         # ---- packhouse
-        ph = "\n".join(f'          <figure>{img(src, alt, 675, 1200)}</figure>' for src, alt in zip(PACKHOUSE, t["packhouse_alts"]))
+        ph = "\n".join(fig(src, alt, 675, 1200) for src, alt in zip(PACKHOUSE, t["packhouse_alts"]))
         body.append(section("packhouse", esc(t["h_packhouse"]), f'        <div class="v-gallery v-gallery-tall">\n{ph}\n        </div>', esc(t["packhouse_sub"]), "v-dark"))
 
     # ---- shipping
     ship_rows = t["ship"] if kind != "frozen" else [r for r in t["ship"] if r[0] in ("Terms", "Documents", "شروط الشحن", "المستندات")]
     if kind == "frozen":
         ship_rows = [(c["facts"][1][0], c["facts"][1][1])] + ship_rows
-    ship_photos = "\n".join(f'            <figure>{img(src, alt, 900, 1100)}</figure>' for src, alt in zip(SHIP_PHOTOS, t["ship_alts"]))
+    ship_photos = "\n".join(fig(src, alt, 900, 1100, "            ") for src, alt in zip(SHIP_PHOTOS, t["ship_alts"]))
     if kind == "frozen":
         # The loading photos show fresh produce, so the frozen page shows the terms only.
         ship_body = spec_table(ship_rows)
@@ -534,7 +540,30 @@ def page(lang, key):
       </div>
     </div>
   </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <dialog class="v-lightbox" id="lightbox" aria-label="{esc(c['name'])}">
+    <button type="button" class="v-lightbox-close" aria-label="{'إغلاق' if lang == 'ar' else 'Close'}">×</button>
+    <img alt="">
+    <p class="v-lightbox-cap"></p>
+  </dialog>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function () {{
+      var box = document.getElementById('lightbox');
+      if (!box || typeof box.showModal !== 'function') return;
+      var im = box.querySelector('img'), cap = box.querySelector('.v-lightbox-cap');
+      document.querySelectorAll('.v-zoom').forEach(function (a) {{
+        a.addEventListener('click', function (e) {{
+          e.preventDefault();
+          var src = a.querySelector('img');
+          im.src = a.getAttribute('href');
+          im.alt = src ? src.alt : '';
+          cap.textContent = im.alt;
+          box.showModal();
+        }});
+      }});
+      box.addEventListener('click', function (e) {{ if (e.target === box || e.target.classList.contains('v-lightbox-close')) box.close(); }});
+    }})();
+  </script>
 </body>
 </html>
 """
@@ -547,6 +576,8 @@ def main():
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(page(lang, key), encoding="utf-8")
             print("wrote", out.relative_to(ROOT))
+    import subprocess, sys
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "stamp_assets.py")], check=True)
 
 
 if __name__ == "__main__":

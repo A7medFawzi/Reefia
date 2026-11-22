@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/variety.css">
+  <link rel="stylesheet" href="/assets/css/variety.css?v=167f358c">
   <link rel="preload" as="image" href="/photos/frozen-cubes.webp">
   <script type="application/ld+json">
 {
@@ -132,12 +132,12 @@
         
         <div class="v-grid v-grid-2">
           <div class="v-card v-product">
-            <img src="/photos/frozen-cubes-pack.webp" alt="مكعبات بطاطا حلوة مجمّدة من ريفيا، عبوة 1 كجم" width="600" height="700" loading="lazy" decoding="async">
+            <a class="v-zoom" href="/photos/frozen-cubes-pack.webp" aria-label="مكعبات بطاطا حلوة مجمّدة من ريفيا، عبوة 1 كجم"><img src="/photos/frozen-cubes-pack.webp" alt="مكعبات بطاطا حلوة مجمّدة من ريفيا، عبوة 1 كجم" width="600" height="700" loading="lazy" decoding="async"></a>
             <h3>مكعبات بطاطا حلوة</h3>
             <p>عبوة 1 كجم</p>
           </div>
           <div class="v-card v-product">
-            <img src="/photos/frozen-fries-pack.webp" alt="أصابع بطاطا حلوة مغطاة من ريفيا، عبوة 1.13 كجم" width="600" height="700" loading="lazy" decoding="async">
+            <a class="v-zoom" href="/photos/frozen-fries-pack.webp" aria-label="أصابع بطاطا حلوة مغطاة من ريفيا، عبوة 1.13 كجم"><img src="/photos/frozen-fries-pack.webp" alt="أصابع بطاطا حلوة مغطاة من ريفيا، عبوة 1.13 كجم" width="600" height="700" loading="lazy" decoding="async"></a>
             <h3>أصابع بطاطا حلوة</h3>
             <p>مغطاة <bdi dir="ltr">5/16″</bdi> · عبوة 1.13 كجم</p>
           </div>
@@ -145,9 +145,9 @@
       </div>
     </section>
     <div class="v-gallery-wrap"><div class="wrap"><div class="v-gallery">
-          <figure><img src="/photos/frozen-fries.webp" alt="أصابع بطاطا حلوة" width="800" height="600" loading="lazy" decoding="async"></figure>
-          <figure><img src="/photos/frozen-cubes-close.webp" alt="مكعبات بطاطا حلوة عن قرب" width="800" height="600" loading="lazy" decoding="async"></figure>
-          <figure><img src="/photos/frozen-cubes.webp" alt="مكعبات بطاطا حلوة مجمّدة" width="800" height="600" loading="lazy" decoding="async"></figure>
+          <figure><a class="v-zoom" href="/photos/frozen-fries.webp" aria-label="أصابع بطاطا حلوة"><img src="/photos/frozen-fries.webp" alt="أصابع بطاطا حلوة" width="800" height="600" loading="lazy" decoding="async"></a><figcaption>أصابع بطاطا حلوة</figcaption></figure>
+          <figure><a class="v-zoom" href="/photos/frozen-cubes-close.webp" aria-label="مكعبات بطاطا حلوة عن قرب"><img src="/photos/frozen-cubes-close.webp" alt="مكعبات بطاطا حلوة عن قرب" width="800" height="600" loading="lazy" decoding="async"></a><figcaption>مكعبات بطاطا حلوة عن قرب</figcaption></figure>
+          <figure><a class="v-zoom" href="/photos/frozen-cubes.webp" aria-label="مكعبات بطاطا حلوة مجمّدة"><img src="/photos/frozen-cubes.webp" alt="مكعبات بطاطا حلوة مجمّدة" width="800" height="600" loading="lazy" decoding="async"></a><figcaption>مكعبات بطاطا حلوة مجمّدة</figcaption></figure>
     </div></div></div>
     <section class="v-section " aria-labelledby="h-ship">
       <div class="wrap">
@@ -209,6 +209,29 @@
       </div>
     </div>
   </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <dialog class="v-lightbox" id="lightbox" aria-label="المنتجات المجمّدة">
+    <button type="button" class="v-lightbox-close" aria-label="إغلاق">×</button>
+    <img alt="">
+    <p class="v-lightbox-cap"></p>
+  </dialog>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function () {
+      var box = document.getElementById('lightbox');
+      if (!box || typeof box.showModal !== 'function') return;
+      var im = box.querySelector('img'), cap = box.querySelector('.v-lightbox-cap');
+      document.querySelectorAll('.v-zoom').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var src = a.querySelector('img');
+          im.src = a.getAttribute('href');
+          im.alt = src ? src.alt : '';
+          cap.textContent = im.alt;
+          box.showModal();
+        });
+      });
+      box.addEventListener('click', function (e) { if (e.target === box || e.target.classList.contains('v-lightbox-close')) box.close(); });
+    })();
+  </script>
 </body>
 </html>
