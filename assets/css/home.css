@@ -6648,4 +6648,9 @@
 
 /* Variety names link to their dedicated landing pages */
 .variety-title-link { color: inherit; text-decoration: none; }
-.variety-title-link:hover, .variety-title-link:focus-visible { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+/* The whole card is the link: the title link stretches over the card */
+.variety-title-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 5; }
+.variety-title-link:focus-visible { outline: none; }
+.variety-item:has(.variety-title-link:focus-visible) { outline: 2px solid rgba(212, 175, 106, 0.9); outline-offset: 4px; }
+.variety-item:hover .variety-title-link { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.variety-item.pos-center:hover { border-color: rgba(212, 175, 106, 0.6); box-shadow: 0 20px 46px rgba(0, 0, 0, 0.55), 0 0 36px rgba(212, 175, 106, 0.14); }

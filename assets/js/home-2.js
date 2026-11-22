@@ -3075,12 +3075,7 @@
       }
     }
 
-    varietyItems.forEach((item) => {
-      item.addEventListener('click', () => {
-        const idx = parseInt(item.getAttribute('data-variety-index'), 10);
-        setProductActive(idx);
-      });
-    });
+    // Each card is a link to its variety page (see .variety-title-link::after in home.css).
 
     timelineStepBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
