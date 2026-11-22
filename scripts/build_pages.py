@@ -542,7 +542,6 @@ def page(lang, key):
   </footer>
   <dialog class="v-lightbox" id="lightbox" aria-label="{esc(c['name'])}">
     <button type="button" class="v-lightbox-close" aria-label="{'إغلاق' if lang == 'ar' else 'Close'}">×</button>
-    <img alt="">
     <p class="v-lightbox-cap"></p>
   </dialog>
   <script>
@@ -550,7 +549,8 @@ def page(lang, key):
     (function () {{
       var box = document.getElementById('lightbox');
       if (!box || typeof box.showModal !== 'function') return;
-      var im = box.querySelector('img'), cap = box.querySelector('.v-lightbox-cap');
+      var cap = box.querySelector('.v-lightbox-cap'), im = document.createElement('img');
+      box.insertBefore(im, cap);
       document.querySelectorAll('.v-zoom').forEach(function (a) {{
         a.addEventListener('click', function (e) {{
           e.preventDefault();
