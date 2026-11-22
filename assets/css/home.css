@@ -6667,7 +6667,9 @@
 /* Real catalogue photos: soft fade into the card so they match the illustrated cards */
 .buyer-card-media--photo::after {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 26%);
+  background: linear-gradient(to bottom,
+    rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.92) 12%, rgba(255, 255, 255, 0.6) 28%,
+    rgba(255, 255, 255, 0.22) 44%, rgba(255, 255, 255, 0) 60%);
 }
 .buyer-card-media--photo img { object-position: center; }
 .buyer-private-label {
