@@ -88,8 +88,12 @@ a { color: inherit; }
 .v-hero-img img { position: relative; width: 100%; height: auto; filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.45)); }
 
 /* Real photo in hero */
-.v-hero-photo { border-radius: 22px; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45); aspect-ratio: 4 / 3; border: 1px solid rgba(255, 254, 242, 0.12); }
-.v-hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+/* Photos keep their natural shape: never cropped */
+.v-hero-photo { display: flex; justify-content: center; align-items: center; }
+.v-hero-photo img {
+  width: auto; height: auto; max-width: 100%; max-height: 540px; border-radius: 22px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 254, 242, 0.12);
+}
 
 /* Facts strip */
 .v-facts { margin-top: -28px; position: relative; z-index: 2; }
@@ -109,8 +113,11 @@ a { color: inherit; }
 [dir="rtl"] .v-section h2 { font-weight: 800; }
 .v-section > .wrap > p.v-sub { color: var(--muted); max-width: 720px; margin-bottom: 28px; }
 .v-split { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
-.v-photo { display: block; border-radius: var(--radius); overflow: hidden; box-shadow: 0 20px 44px rgba(23, 44, 26, 0.14); aspect-ratio: 4 / 3; max-height: 520px; }
-.v-photo img { width: 100%; height: 100%; object-fit: cover; }
+.v-photo { display: flex; justify-content: center; }
+.v-photo img {
+  width: auto; height: auto; max-width: 100%; max-height: 520px;
+  border-radius: var(--radius); box-shadow: 0 20px 44px rgba(23, 44, 26, 0.14);
+}
 .v-list { list-style: none; display: grid; gap: 12px; }
 .v-list li { display: flex; gap: 12px; align-items: flex-start; }
 .v-list li::before {
@@ -127,8 +134,10 @@ a { color: inherit; }
 
 /* Photo galleries */
 .v-gallery-wrap { padding-top: 40px; }
-.v-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.v-gallery figure { position: relative; border-radius: 14px; overflow: hidden; background: #e9e4d6; aspect-ratio: 4 / 3; margin: 0; }
+/* Justified row: each photo's width follows its own aspect ratio (--r), so every
+   photo in the row has the same height and none is cropped. */
+.v-gallery { display: flex; gap: 14px; }
+.v-gallery figure { position: relative; flex: var(--r, 1.33) 1 0; aspect-ratio: var(--r, 1.33); min-width: 0; border-radius: 14px; overflow: hidden; background: #e9e4d6; margin: 0; }
 .v-gallery figure a { display: block; width: 100%; height: 100%; }
 .v-gallery figcaption {
   position: absolute; inset-inline: 0; bottom: 0; padding: 28px 14px 12px;
@@ -137,10 +146,7 @@ a { color: inherit; }
 }
 .v-gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
 .v-gallery figure:hover img { transform: scale(1.03); }
-.v-gallery-tall { grid-template-columns: repeat(4, 1fr); }
-.v-gallery-tall figure { aspect-ratio: 9 / 14; }
-.v-gallery-2 { grid-template-columns: repeat(2, 1fr); }
-.v-gallery-2 figure { aspect-ratio: 3 / 4; }
+.v-gallery-tall { max-width: 980px; margin-inline: auto; }
 
 /* Dark band section (packhouse) */
 .v-section.v-dark { background: var(--forest); color: var(--cream); margin-top: 72px; padding-bottom: 72px; }
@@ -208,9 +214,7 @@ a { color: inherit; }
   .v-facts ul { grid-template-columns: repeat(2, 1fr); }
   .v-grid, .v-others .v-grid, .v-grid-2 { grid-template-columns: 1fr; }
   .v-grid-5 { grid-template-columns: repeat(2, 1fr); }
-  .v-gallery { grid-template-columns: repeat(2, 1fr); }
-  .v-gallery figure:nth-child(3):last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
-  .v-gallery-tall { grid-template-columns: repeat(2, 1fr); }
+  .v-hero-photo img { max-height: 420px; }
   .v-hero-photo { max-width: 560px; margin-inline: auto; width: 100%; order: -1; }
 }
 @media (max-width: 560px) {
@@ -220,6 +224,11 @@ a { color: inherit; }
   .v-nav a:not(.v-cta):not(.v-lang) { display: none; }
   .v-hero { padding: 36px 0 56px; }
   .v-section { padding-top: 56px; }
+  .v-gallery { flex-direction: column; }
+  .v-gallery figure { flex: none; width: 100%; }
+  .v-gallery-tall { flex-direction: row; flex-wrap: wrap; }
+  .v-gallery-tall figure { width: calc(50% - 7px); }
+  .v-photo img { max-height: 440px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

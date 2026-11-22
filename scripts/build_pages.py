@@ -272,7 +272,18 @@ def url(lang, key):
     return SITE + T[lang]["prefix"] + PAGES[key]["path"]
 
 
+def real_size(src, w, h):
+    """Use the photo's true pixel size so the browser reserves the right shape (no cropping)."""
+    f = ROOT / src.lstrip("/")
+    if src.startswith("/photos/") and f.exists():
+        from PIL import Image
+        with Image.open(f) as im:
+            return im.size
+    return w, h
+
+
 def img(src, alt, w, h, cls="", lazy=True, extra=""):
+    w, h = real_size(src, w, h)
     lz = ' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high"'
     c = f' class="{cls}"' if cls else ""
     return f'<img{c} src="{src}" alt="{esc(alt)}" width="{w}" height="{h}"{lz}{extra}>'
@@ -280,7 +291,8 @@ def img(src, alt, w, h, cls="", lazy=True, extra=""):
 
 def fig(src, alt, w, h, indent="          "):
     """Captioned photo that opens full-size in the lightbox."""
-    return (f'{indent}<figure><a class="v-zoom" href="{src}" aria-label="{esc(alt)}">{img(src, alt, w, h)}</a>'
+    rw, rh = real_size(src, w, h)
+    return (f'{indent}<figure style="--r:{rw / rh:.3f}"><a class="v-zoom" href="{src}" aria-label="{esc(alt)}">{img(src, alt, w, h)}</a>'
             f'<figcaption>{esc(alt)}</figcaption></figure>')
 
 
