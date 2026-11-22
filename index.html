@@ -146,7 +146,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/home.css?v=f9b614fb">
+  <link rel="stylesheet" href="/assets/css/home.css?v=b7e1675c">
   <style>
     /* Kept inline: url(#id) must resolve against this document's inline SVG clipPaths */
     .about-organic-viewport { clip-path: url(#organicApertureClip); -webkit-clip-path: url(#organicApertureClip); }
@@ -729,7 +729,7 @@
                 <div class="buyer-card-title-group">
                   <span class="buyer-card-num">01</span>
                   <span class="buyer-card-num-sep">&#8212;</span>
-                  <h3 class="buyer-card-title" data-i18n="sec4_card1_title">Fresh Market</h3>
+                  <h3 class="buyer-card-title"><a class="buyer-card-link" href="#produce" data-i18n="sec4_card1_title">Fresh Market</a></h3>
                 </div>
                 <div class="buyer-card-icon-circle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -746,12 +746,13 @@
             </div>
           </div>
 
-          <!-- Card 2: Processing -->
+          <!-- Card 2: Industrial supply -->
           <div class="buyer-card">
-            <div class="buyer-card-media">
+            <div class="buyer-card-media buyer-card-media--photo">
               <img
-                src="./sec4-card2-processing.webp"
-                alt="Sweet potato cubes and puree bowl for food industry applications"
+                src="/photos/card-industrial.webp"
+                alt="Bulk bins of sweet potatoes for industrial supply"
+                width="900" height="720"
                 loading="lazy"
               >
             </div>
@@ -760,7 +761,7 @@
                 <div class="buyer-card-title-group">
                   <span class="buyer-card-num">02</span>
                   <span class="buyer-card-num-sep">&#8212;</span>
-                  <h3 class="buyer-card-title" data-i18n="sec4_card2_title">Processing</h3>
+                  <h3 class="buyer-card-title"><a class="buyer-card-link" href="products/industrial" data-i18n="sec4_card2_title">Industrial Supply</a></h3>
                 </div>
                 <div class="buyer-card-icon-circle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -769,19 +770,20 @@
                   </svg>
                 </div>
               </div>
-              <span class="buyer-card-tag" data-i18n="sec4_card2_tag">INDUSTRIAL APPLICATIONS</span>
+              <span class="buyer-card-tag" data-i18n="sec4_card2_tag">FOOD FACTORIES · BULK BINS</span>
               <p class="buyer-card-desc" data-i18n="sec4_card2_desc">
-                Cost-effective, high-grade produce prepared for food processors, frozen sweet potato lines, and puree manufacturing.
+                Fresh whole sweet potatoes for food factories and production lines, supplied in strapped bulk bins. Size and grade agreed per buyer.
               </p>
             </div>
           </div>
 
-          <!-- Card 3: Custom Programs -->
+          <!-- Card 3: Frozen products -->
           <div class="buyer-card">
-            <div class="buyer-card-media">
+            <div class="buyer-card-media buyer-card-media--photo">
               <img
-                src="./sec4-card3-custom.webp"
-                alt="Reefiya export carton, mesh bag, and packaging"
+                src="/photos/card-frozen.webp"
+                alt="Frozen sweet potato cubes"
+                width="900" height="720"
                 loading="lazy"
               >
             </div>
@@ -790,23 +792,26 @@
                 <div class="buyer-card-title-group">
                   <span class="buyer-card-num">03</span>
                   <span class="buyer-card-num-sep">&#8212;</span>
-                  <h3 class="buyer-card-title" data-i18n="sec4_card3_title">Custom Programs</h3>
+                  <h3 class="buyer-card-title"><a class="buyer-card-link" href="products/frozen" data-i18n="sec4_card3_title">Frozen Products</a></h3>
                 </div>
                 <div class="buyer-card-icon-circle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    <line x1="12" y1="2" x2="12" y2="22"></line>
+                    <line x1="3.3" y1="7" x2="20.7" y2="17"></line>
+                    <line x1="3.3" y1="17" x2="20.7" y2="7"></line>
+                    <polyline points="9 4 12 6.5 15 4"></polyline>
+                    <polyline points="9 20 12 17.5 15 20"></polyline>
                   </svg>
                 </div>
               </div>
-              <span class="buyer-card-tag" data-i18n="sec4_card3_tag">TAILORED SPECIFICATIONS</span>
+              <span class="buyer-card-tag" data-i18n="sec4_card3_tag">CUBES · FRIES · −18 °C</span>
               <p class="buyer-card-desc" data-i18n="sec4_card3_desc">
-                Buyer-specific grading, calibrated sizing, specialized packing, labeling, and private-brand presentation.
+                Frozen sweet potato cubes and battered fries, packed under the Reefiya label. Specifications and pack sizes agreed per buyer.
               </p>
             </div>
           </div>
         </div>
+        <p class="buyer-private-label" data-i18n="sec4_private_label">Private label available on every programme: cartons, bags and labels printed to your design.</p>
       </div>
 
       <!-- Section Footer Row -->
@@ -2493,7 +2498,7 @@
     </div>
   </div>
 
-  <script src="/assets/js/home-2.js?v=965596a9"></script>
+  <script src="/assets/js/home-2.js?v=559981f1"></script>
 <script src="/assets/js/home-3.js?v=8f56ee03"></script>
 
 </body>
