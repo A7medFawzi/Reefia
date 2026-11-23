@@ -6643,3 +6643,7 @@
   margin: 22px auto 0; max-width: 760px; text-align: center;
   font-size: 0.95rem; line-height: 1.6; color: #2f4a35; font-weight: 500;
 }
+
+/* Real photos in the approach cards: keep labels and heads in frame on very wide cards */
+.approach-pillar-card .pillar-photo { object-position: 50% 35%; }
+.approach-pillar-card .pillar-photo[src*="home-card-sizes"] { object-position: 50% 78%; }
