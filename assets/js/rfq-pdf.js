@@ -450,7 +450,10 @@
       const displayCountryReg = (countryReg === 'Other' && otherCountryReg) ? otherCountryReg : countryReg;
       const additionalNotes = getVal('inputAdditionalRequirements', '');
 
-      const produceName = t.valProduce || (isArabic ? 'البطاطا الحلوة المصرية' : 'Egyptian Sweet Potatoes');
+      // Programme-aware product line and first row label (fresh / industrial / frozen)
+      const isFrozenProg = typeof getProgramme === 'function' && getProgramme() === 'Frozen';
+      const produceName = getText('sumProductVal', '') || t.valProduce || (isArabic ? 'البطاطا الحلوة المصرية' : 'Egyptian Sweet Potatoes');
+      const itemsLabel = isFrozenProg ? (getText('lblSumVarieties', '') || t.lblVarieties) : t.lblVarieties;
       const varieties = isArabic ? sanitizeAr(getText('sumVarietiesVal', '—')) : getText('sumVarietiesVal', '—');
       const sizing = getText('sumSizingVal', '—');
 
@@ -459,7 +462,9 @@
       const customWeightSpec = getVal('inputCustomWeightSpec', '');
       let packagingWeightsDisplay = '';
 
-      if (checkedWeight && checkedWeight.value === 'Custom Weight Requirements') {
+      if (isFrozenProg) {
+        packagingWeightsDisplay = getText('sumNetWeightVal', '—');
+      } else if (checkedWeight && checkedWeight.value === 'Custom Weight Requirements') {
         packagingWeightsDisplay = customWeightSpec || (d && (d.sumCustomWeight || d.wtNotSpecTitle)) || (isArabic ? 'متطلبات وزن مخصصة' : 'Custom Weight Requirements');
       } else {
         packagingWeightsDisplay = (d && (d.sumStandardWeight || d.wtStandardTitle)) || (isArabic ? 'أوزان ريفيا القياسية (REEFIYA Standard)' : 'REEFIYA Standard Weights');
@@ -579,7 +584,7 @@
                 <td style="padding:4.5px 8px; color:#172c1a; font-weight:700; text-align:right; border-bottom:1px solid #eee8db;">${produceName}</td>
               </tr>
               <tr style="border-bottom:1px solid #eee8db;">
-                <td style="padding:4.5px 8px; font-weight:700; color:#4a4537; text-align:right; background:#f9f7f2; border-left:1px solid #eee8db; border-bottom:1px solid #eee8db;">${t.lblVarieties}</td>
+                <td style="padding:4.5px 8px; font-weight:700; color:#4a4537; text-align:right; background:#f9f7f2; border-left:1px solid #eee8db; border-bottom:1px solid #eee8db;">${itemsLabel}</td>
                 <td style="padding:4.5px 8px; color:#172c1a; text-align:right; border-bottom:1px solid #eee8db;">${varieties}</td>
               </tr>
               <tr style="border-bottom:1px solid #eee8db;">
@@ -759,7 +764,7 @@
                 <td style="padding:4.5px 8px; color:#172c1a; font-weight:700; border-bottom:1px solid #eee8db;">${produceName}</td>
               </tr>
               <tr style="border-bottom:1px solid #eee8db;">
-                <td style="padding:4.5px 8px; font-weight:700; color:#4a4537; background:#f9f7f2; border-right:1px solid #eee8db; border-bottom:1px solid #eee8db;">${t.lblVarieties}</td>
+                <td style="padding:4.5px 8px; font-weight:700; color:#4a4537; background:#f9f7f2; border-right:1px solid #eee8db; border-bottom:1px solid #eee8db;">${itemsLabel}</td>
                 <td style="padding:4.5px 8px; color:#172c1a; border-bottom:1px solid #eee8db;">${varieties}</td>
               </tr>
               <tr style="border-bottom:1px solid #eee8db;">

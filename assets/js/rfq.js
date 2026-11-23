@@ -28,6 +28,19 @@
       const emptyPlaceholder = d.sumNotSelected || 'Not selected yet';
       const notSpecPlaceholder = d.sumNotSpecified || 'Not specified';
 
+      // 0. Programme (fresh / industrial / frozen) drives the product rows
+      const prog = getProgramme();
+      const isFrozen = prog === 'Frozen';
+      const isInd = prog === 'Industrial';
+      const progTitle = { Fresh: d.progFreshTitle, Industrial: d.progIndTitle, Frozen: d.progFrozenTitle }[prog] || prog;
+      const prodValEl = document.getElementById('sumProductVal');
+      if (prodValEl) prodValEl.textContent = `${d.valProduce || 'Egyptian Sweet Potatoes'} · ${progTitle}`;
+      const lblVarEl = document.getElementById('lblSumVarieties');
+      if (lblVarEl) lblVarEl.textContent = isFrozen ? (d.sumProducts || 'Products:') : (d.sumVarieties || 'Preferred Varieties:');
+      const reqSizeEl = document.getElementById('reqSizingStar');
+      if (reqSizeEl) reqSizeEl.textContent = isInd ? (d.reqSizingInd || d.reqSizing) : d.reqSizing;
+      renumberStep1();
+
       // 1. Varieties mapping
       const varietyMap = {
         'Beauregard': d.vNameBeau || 'Beauregard',
@@ -107,6 +120,25 @@
           wEl.textContent = emptyPlaceholder;
           wEl.style.color = '#736b5b';
         }
+      }
+
+      // Programme overrides for the product rows
+      const setRow = (el, text, filled) => {
+        if (!el) return;
+        el.textContent = text;
+        el.style.color = filled ? '#172c1a' : '#736b5b';
+      };
+      if (isFrozen) {
+        const frozenNames = getFrozenSelection(d).map(f => f.name);
+        setRow(vEl, frozenNames.length ? frozenNames.join(currentLang === 'ar' ? '، ' : ', ') : emptyPlaceholder, frozenNames.length > 0);
+        const specInp = document.getElementById('inputFrozenSpec');
+        const spec = specInp ? specInp.value.trim() : '';
+        setRow(sEl, spec || d.sumPerSpec || 'As per buyer specification', true);
+        setRow(pEl, d.sumFrozenPacks || 'Frozen packs · Reefiya label', true);
+        const weights = getFrozenSelection(d).map(f => f.weight);
+        setRow(wEl, weights.length ? weights.join(' · ') : emptyPlaceholder, weights.length > 0);
+      } else if (isInd && selectedSizing.length === 0) {
+        setRow(sEl, d.sumPerSpec || 'As per buyer specification', true);
       }
 
       // 5. Private Label
@@ -300,10 +332,7 @@
       // 14. Dynamic Step Progress Completion Indicator
       const stepCounterEl = document.getElementById('txtStepCountLabel');
       if (stepCounterEl) {
-        const selectedVarCount = document.querySelectorAll('.chk-variety:checked').length;
-        const selectedSizeCount = document.querySelectorAll('.chk-size:checked').length;
-        const selectedPkgCount = document.querySelectorAll('.chk-pkg:checked').length;
-        const isStep1Complete = selectedVarCount > 0 && selectedSizeCount > 0 && selectedPkgCount > 0;
+        const isStep1Complete = step1MissingMessage() === null;
         if (isStep1Complete) {
           stepCounterEl.innerHTML = currentLang === 'ar' 
             ? '<span style="color:#234f20; font-weight:800;">✓ تم استيفاء:</span> <strong>الخطوة 01 من 03</strong>'
@@ -314,6 +343,58 @@
             : '<span>Step 01 of 03</span>';
         }
       }
+    }
+
+    /* PROGRAMME: fresh export, industrial supply or frozen products */
+    function getProgramme() {
+      const r = document.querySelector('input[name="programme"]:checked');
+      return r ? r.value : 'Fresh';
+    }
+
+    function getFrozenSelection(d) {
+      const items = {
+        'Frozen sweet potato cubes (1 kg pack)': { name: `${d.frzCubesTitle || 'Frozen sweet potato cubes'} (1 kg)`, nameAr: 'مكعبات بطاطا حلوة مجمدة (1 كجم)', weight: '1 kg' },
+        'Battered sweet potato fries 5/16 in (1.13 kg pack)': { name: `${d.frzFriesTitle || 'Battered sweet potato fries'} 5/16″ (1.13 kg)`, nameAr: 'أصابع بطاطا حلوة مغلفة 5/16″ (1.13 كجم)', weight: '1.13 kg' }
+      };
+      return Array.from(document.querySelectorAll('.chk-frozen:checked')).map(el => items[el.value] || { name: el.value, nameAr: el.value, weight: '' });
+    }
+
+    // Number the visible step-1 questions 1, 2, 3… (the set changes with the programme)
+    function renumberStep1() {
+      const form = document.getElementById('step1Form');
+      if (!form) return;
+      let n = 0;
+      form.querySelectorAll('.form-group-item').forEach(item => {
+        if (item.hidden) return;
+        n += 1;
+        const num = item.querySelector('.label-title > span:first-child');
+        if (num) num.textContent = `${n}.`;
+      });
+    }
+
+    function handleProgrammeChange() {
+      const prog = getProgramme();
+      const isFrozen = prog === 'Frozen';
+      ['grpVariety', 'grpSizing', 'grpPackaging', 'grpNetWeight'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.hidden = isFrozen;
+      });
+      const frozenGrp = document.getElementById('grpFrozen');
+      if (frozenGrp) frozenGrp.hidden = !isFrozen;
+
+      if (prog === 'Industrial') {
+        // Sensible defaults for factory supply; the buyer can still change them.
+        if (!document.querySelectorAll('.chk-pkg:checked').length) {
+          const bins = document.querySelector('.chk-pkg[value="Bulk Pallet Bins"]');
+          if (bins) bins.checked = true;
+        }
+        const vol = document.getElementById('selectOrderVolume');
+        if (vol && !vol.value) {
+          vol.value = 'Industrial Bulk Order';
+          if (typeof handleVolumeChange === 'function') handleVolumeChange();
+        }
+      }
+      updateLiveSummary();
     }
 
     /* 3. CONDITIONAL DRAWERS */
@@ -357,25 +438,34 @@
       }, 3500);
     }
 
+    // Returns the first missing-field message for step 1, or null when step 1 is complete.
+    function step1MissingMessage() {
+      const d = langDict[currentLang] || langDict['en'];
+      const ar = currentLang === 'ar';
+      const prog = getProgramme();
+      if (prog === 'Frozen') {
+        return document.querySelectorAll('.chk-frozen:checked').length ? null
+          : (d.toastFrozen || 'Please select at least one frozen product.');
+      }
+      if (!document.querySelectorAll('.chk-variety:checked').length) {
+        return ar ? 'يرجى اختيار صنف واحد على الأقل من أصناف البطاطا.' : 'Please select at least one sweet potato variety.';
+      }
+      // Industrial buyers agree size and grade with us, so sizing is optional for them.
+      if (prog !== 'Industrial' && !document.querySelectorAll('.chk-size:checked').length) {
+        return ar ? 'يرجى اختيار حجم / كاليبر واحد على الأقل.' : 'Please select at least one sizing calibration.';
+      }
+      if (!document.querySelectorAll('.chk-pkg:checked').length) {
+        return ar ? 'يرجى اختيار حل تعبئة واحد على الأقل.' : 'Please select at least one packaging solution.';
+      }
+      return null;
+    }
+
     function validateStep1() {
-      const varieties = Array.from(document.querySelectorAll('.chk-variety:checked')).map(el => el.value);
-      if (varieties.length === 0) {
-        displayToastAlert(currentLang === 'ar' ? 'يرجى اختيار صنف واحد على الأقل من أصناف البطاطا.' : 'Please select at least one sweet potato variety.');
+      const msg = step1MissingMessage();
+      if (msg) {
+        displayToastAlert(msg);
         return;
       }
-
-      const sizings = Array.from(document.querySelectorAll('.chk-size:checked')).map(el => el.value);
-      if (sizings.length === 0) {
-        displayToastAlert(currentLang === 'ar' ? 'يرجى اختيار حجم / كاليبر واحد على الأقل.' : 'Please select at least one sizing calibration.');
-        return;
-      }
-
-      const packagings = Array.from(document.querySelectorAll('.chk-pkg:checked')).map(el => el.value);
-      if (packagings.length === 0) {
-        displayToastAlert(currentLang === 'ar' ? 'يرجى اختيار حل تعبئة واحد على الأقل.' : 'Please select at least one packaging solution.');
-        return;
-      }
-
       goToStep(2);
     }
 
@@ -1369,6 +1459,8 @@
             .trim();
         };
 
+        const prog = getProgramme();
+        const dCur = langDict[currentLang] || langDict['en'];
         const arVarMap = {
           'Beauregard': 'بوريجارد (Beauregard)',
           'Bellevue': 'بيلفيو (Bellevue)',
@@ -1437,6 +1529,19 @@
           arOrderVolume = qty ? `حجم مخصص (${qty})` : 'حجم مخصص';
         }
 
+        // Programme-specific Arabic values for the export team
+        let arVarietiesOut = arVarieties, arSizingOut = arSizing, arPackagingOut = arPackaging, arNetWeightOut = arNetWeight;
+        if (prog === 'Frozen') {
+          const frozenSel = getFrozenSelection(dCur);
+          arVarietiesOut = frozenSel.map(f => f.nameAr).join('، ') || '—';
+          const spec = getVal('inputFrozenSpec', '');
+          arSizingOut = spec ? `مواصفات المشتري: ${spec}` : 'حسب مواصفات المشتري';
+          arPackagingOut = 'عبوات مجمدة تحت علامة ريفيا (−18 °C)';
+          arNetWeightOut = frozenSel.map(f => f.weight).join(' · ') || '—';
+        } else if (prog === 'Industrial' && arSizing === '—') {
+          arSizingOut = 'حسب الاتفاق مع المشتري';
+        }
+
         const hiddenCountry = document.getElementById('hiddenDestinationCountry');
         const destCountryText = getText('sumDestinationCountryVal', '—');
         const isPortAssisted = document.getElementById('chkPortAssistance') ? document.getElementById('chkPortAssistance').checked : false;
@@ -1465,6 +1570,7 @@
         const payload = {
           rfqReference: rfqRef,
           selectedLanguage: currentLang,
+          programme: prog,
           buyer: {
             companyName: getVal('inputCompanyName', '—'),
             contactPerson: getVal('inputContactName', '—'),
@@ -1475,6 +1581,8 @@
             website: getVal('inputCompanyWebsite', '—')
           },
           produce: {
+            product: getText('sumProductVal', ''),
+            itemsLabel: getText('lblSumVarieties', ''),
             varieties: getText('sumVarietiesVal', '—'),
             sizing: getText('sumSizingVal', '—'),
             packaging: getText('sumPackagingVal', '—'),
@@ -1489,10 +1597,10 @@
             shippingWindow: getText('sumShippingWindowVal', '—')
           },
           produceAr: {
-            varieties: arVarieties,
-            sizing: arSizing,
-            packaging: arPackaging,
-            netWeight: arNetWeight,
+            varieties: arVarietiesOut,
+            sizing: arSizingOut,
+            packaging: arPackagingOut,
+            netWeight: arNetWeightOut,
             privateLabel: arPrivateLabel
           },
           shippingAr: {
@@ -1599,6 +1707,25 @@
         titleStep3: 'Company & Contact',
         lblProduce: 'Product',
         valProduce: 'Egyptian Sweet Potatoes',
+        progFreshTitle: "Fresh export",
+        progFreshDesc: "Retail chains, wholesale markets and foodservice",
+        progIndTitle: "Industrial supply",
+        progIndDesc: "Whole roots for food factories, in bulk bins",
+        progFrozenTitle: "Frozen products",
+        progFrozenDesc: "Cubes and battered fries, kept at −18 °C",
+        lblFrozen: "Frozen Products",
+        reqFrozen: "* Required (Select one or more products)",
+        frzCubesTitle: "Frozen sweet potato cubes",
+        frzCubesDesc: "1 kg pack · Reefiya label",
+        frzFriesTitle: "Battered sweet potato fries",
+        frzFriesDesc: "5/16″ cut · 1.13 kg pack · Reefiya label",
+        lblFrozenSpec: "Specification or pack-size notes (optional)",
+        phFrozenSpec: "e.g., 10 × 1 kg per carton, other cut sizes",
+        sumProducts: "Products:",
+        sumPerSpec: "As per buyer specification",
+        sumFrozenPacks: "Frozen packs · Reefiya label",
+        reqSizingInd: "Optional (size and grade agreed per buyer)",
+        toastFrozen: "Please select at least one frozen product.",
         valProduceSub: 'Premium Egyptian sweet potatoes, available in a range of varieties and sizes.',
         lockedStatus: 'Fixed Product',
         lblVariety: 'Preferred Varieties',
@@ -1767,6 +1894,25 @@
         titleStep3: 'بيانات الشركة والتواصل',
         lblProduce: 'المنتج',
         valProduce: 'البطاطا الحلوة المصرية',
+        progFreshTitle: "تصدير طازج",
+        progFreshDesc: "سلاسل التجزئة وأسواق الجملة والمطاعم",
+        progIndTitle: "توريد صناعي",
+        progIndDesc: "بطاطا كاملة لمصانع الأغذية في صناديق سائبة",
+        progFrozenTitle: "منتجات مجمدة",
+        progFrozenDesc: "مكعبات وأصابع مغلفة، تُحفظ على ⁦−18 °C⁩",
+        lblFrozen: "المنتجات المجمدة",
+        reqFrozen: "* إجباري (اختر منتجاً واحداً أو أكثر)",
+        frzCubesTitle: "مكعبات بطاطا حلوة مجمدة",
+        frzCubesDesc: "عبوة 1 كجم · علامة ريفيا",
+        frzFriesTitle: "أصابع بطاطا حلوة مغلفة",
+        frzFriesDesc: "قطع 5/16″ · عبوة 1.13 كجم · علامة ريفيا",
+        lblFrozenSpec: "المواصفات أو أحجام العبوات (اختياري)",
+        phFrozenSpec: "مثال: 10 × 1 كجم في الكرتونة، أحجام تقطيع أخرى",
+        sumProducts: "المنتجات:",
+        sumPerSpec: "حسب مواصفات المشتري",
+        sumFrozenPacks: "عبوات مجمدة · علامة ريفيا",
+        reqSizingInd: "اختياري (الحجم والدرجة حسب الاتفاق مع المشتري)",
+        toastFrozen: "يرجى اختيار منتج مجمد واحد على الأقل.",
         valProduceSub: 'بطاطا حلوة مصرية فاخرة، متوفرة بتشكيلة متنوعة من الأصناف والأحجام.',
         lockedStatus: 'منتج محدد',
         lblVariety: 'الأصناف المفضلة',
@@ -1983,6 +2129,12 @@
       setSafeText('valProduceName', d.valProduce);
       setSafeText('valProduceSub', d.valProduceSub);
       setSafeText('txtLockedStatus', d.lockedStatus);
+      ['progFreshTitle', 'progFreshDesc', 'progIndTitle', 'progIndDesc', 'progFrozenTitle', 'progFrozenDesc',
+       'frzCubesTitle', 'frzCubesDesc', 'frzFriesTitle', 'frzFriesDesc', 'lblFrozenSpec'].forEach(k => setSafeText(k, d[k]));
+      setSafeText('lblFrozenHeading', d.lblFrozen);
+      setSafeText('reqFrozenStar', d.reqFrozen);
+      const frozenSpecInp = document.getElementById('inputFrozenSpec');
+      if (frozenSpecInp && d.phFrozenSpec) frozenSpecInp.placeholder = d.phFrozenSpec;
 
       setSafeText('lblVarietyHeading', d.lblVariety);
       setSafeText('reqVarietyStar', d.reqVariety);
@@ -2235,9 +2387,9 @@
             const currentOrigin = window.location.origin;
             const currentHash = window.location.hash || '';
             if (chosenLang === 'ar') {
-              window.history.replaceState({ lang: 'ar' }, '', currentOrigin + '/ar/rfq' + currentHash);
+              window.history.replaceState({ lang: 'ar' }, '', currentOrigin + '/ar/rfq' + window.location.search + currentHash);
             } else {
-              window.history.replaceState({ lang: chosenLang }, '', currentOrigin + '/rfq' + currentHash);
+              window.history.replaceState({ lang: chosenLang }, '', currentOrigin + '/rfq' + window.location.search + currentHash);
             }
           } catch (navErr) {}
 
@@ -2257,6 +2409,22 @@
       // Arabic visitors on the English URL go to the real Arabic page (correct lang/dir/base URL).
       // A history.replaceState here would break relative asset URLs created later.
       if (!pageIsArabic && targetLang === 'ar' && /^\/rfq(\.html)?\/?$/.test(window.location.pathname)) {
-        window.location.replace('/ar/rfq' + (window.location.hash || ''));
+        window.location.replace('/ar/rfq' + (window.location.search || '') + (window.location.hash || ''));
       }
+    })();
+
+    // Product pages link here with ?programme=fresh|industrial|frozen (and &variety=…) to preselect
+    (function initProgrammeFromUrl() {
+      const q = new URLSearchParams(window.location.search);
+      const prog = { fresh: 'Fresh', industrial: 'Industrial', frozen: 'Frozen' }[(q.get('programme') || '').toLowerCase()];
+      if (prog) {
+        const r = document.querySelector(`input[name="programme"][value="${prog}"]`);
+        if (r) r.checked = true;
+      }
+      const variety = { bellevue: 'Bellevue', beauregard: 'Beauregard', egyptian: 'Other Egyptian Varieties (Seasonal)' }[(q.get('variety') || '').toLowerCase()];
+      if (variety) {
+        const c = document.querySelector(`.chk-variety[value="${variety}"]`);
+        if (c) c.checked = true;
+      }
+      handleProgrammeChange();
     })();

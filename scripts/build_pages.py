@@ -329,7 +329,8 @@ def page(lang, key):
     plain_h1 = c["h1"].replace("<em>", "").replace("</em>", "").rstrip(".")
 
     # Calls to action on every product page: the RFQ form and WhatsApp.
-    primary = f'<a class="btn btn-primary" href="{t["rfq"]}">{esc(t["cta_quote"])}</a>'
+    rfq_q = f"?programme={kind}" + (f"&variety={key}" if kind == "fresh" else "")
+    primary = f'<a class="btn btn-primary" href="{t["rfq"]}{esc(rfq_q)}">{esc(t["cta_quote"])}</a>'
 
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Product", "@id": canonical + "#product", "name": plain_h1, "description": c["desc"],

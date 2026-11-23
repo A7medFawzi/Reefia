@@ -418,6 +418,17 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, error: 'Missing buyer details' });
     }
 
+    // Programme (fresh / industrial / frozen) chosen at the top of the form
+    const PROGRAMMES = { Fresh: 'تصدير طازج', Industrial: 'توريد صناعي', Frozen: 'منتجات مجمدة' };
+    const programmeRaw = plain(payload.programme, 20, 'Fresh');
+    const programme = Object.prototype.hasOwnProperty.call(PROGRAMMES, programmeRaw) ? programmeRaw : 'Fresh';
+    const isFrozen = programme === 'Frozen';
+    const arProductVal = `البطاطا الحلوة المصرية — ${PROGRAMMES[programme]}`;
+    const arItemsLabel = isFrozen ? 'المنتجات المطلوبة:' : 'الأصناف المطلوبة:';
+    // Buyer-language product line and row label, as shown on the form summary
+    const productVal = produce.product ? safe(produce.product, 120) : null;
+    const itemsLabel = (isFrozen && produce.itemsLabel) ? safe(produce.itemsLabel, 40) : null;
+
     // Buyer language values
     const varieties = safe(produce.varieties);
     const sizing = safe(produce.sizing);
@@ -477,7 +488,7 @@ export default async function handler(req, res) {
     // =========================================================================
     // 1. REEFIYA INTERNAL TEAM NOTIFICATION (ARABIC)
     // =========================================================================
-    const teamSubject = `[طلب تصدير جديد] ${companyNameRaw} (${countryRegRaw}) — ${rfqRef}`.replace(/[\r\n]+/g, ' ');
+    const teamSubject = `[طلب تصدير جديد · ${PROGRAMMES[programme]}] ${companyNameRaw} (${countryRegRaw}) — ${rfqRef}`.replace(/[\r\n]+/g, ' ');
     const teamHtml = `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -545,8 +556,8 @@ export default async function handler(req, res) {
       <div class="section-head">02. مواصفات المنتج والتعبئة المطلوبة</div>
       <div class="data-card">
         <table class="data-table">
-          <tr><td class="row-label">المنتج:</td><td class="row-value">البطاطا الحلوة المصرية الفاخرة</td></tr>
-          <tr><td class="row-label">الأصناف المطلوبة:</td><td class="row-value">${arVarieties}</td></tr>
+          <tr><td class="row-label">المنتج:</td><td class="row-value">${arProductVal}</td></tr>
+          <tr><td class="row-label">${arItemsLabel}</td><td class="row-value">${arVarieties}</td></tr>
           <tr><td class="row-label">الأحجام والفرز:</td><td class="row-value">${arSizing}</td></tr>
           <tr><td class="row-label">نوع التعبئة:</td><td class="row-value">${arPackaging}</td></tr>
           <tr><td class="row-label">الوزن الصافي:</td><td class="row-value">${arNetWeight}</td></tr>
@@ -632,8 +643,8 @@ export default async function handler(req, res) {
 
       const sumRowsHtml = [
         makeCustRow(i18n.company, companyName),
-        makeCustRow(i18n.product, i18n.product_val),
-        makeCustRow(i18n.varieties, isRtl ? arVarieties : varieties),
+        makeCustRow(i18n.product, isRtl ? arProductVal : (productVal || i18n.product_val)),
+        makeCustRow(isRtl ? arItemsLabel : (itemsLabel || i18n.varieties), isRtl ? arVarieties : varieties),
         makeCustRow(i18n.sizing, isRtl ? arSizing : sizing),
         makeCustRow(i18n.packaging, isRtl ? arPackaging : packaging),
         makeCustRow(i18n.order_volume, isRtl ? arOrderVolume : orderVolume),
