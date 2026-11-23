@@ -2428,3 +2428,21 @@
         justify-content: center;
       }
     }
+
+/* Programme selector (fresh / industrial / frozen) and frozen products */
+.form-group-item[hidden] { display: none !important; }
+@media (min-width: 700px) {
+  .variety-selection-grid.programme-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.v-thumb-img.frozen-thumb { object-fit: contain; background: #fff; }
+@media (max-width: 699px) {
+  .programme-grid .v-card-shell { display: grid; grid-template-columns: 76px 1fr; column-gap: 12px; align-items: center; padding: 10px 40px 10px 10px; }
+  [dir="rtl"] .programme-grid .v-card-shell { padding: 10px 10px 10px 40px; }
+  .programme-grid .v-thumb-img { grid-row: span 2; width: 76px; height: 60px; margin: 0; }
+  .programme-grid .v-card-shell h6 { align-self: end; }
+  .programme-grid .v-card-shell p { align-self: start; }
+  .programme-grid .v-check-icon { top: 50%; transform: translateY(-50%); }
+}
+
+/* Field validation */
+.custom-text-field.is-invalid { border-color: #c0392b !important; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15) !important; }

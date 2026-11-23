@@ -12,6 +12,10 @@
         footer_nav_markets: 'Markets',
         footer_nav_why: 'Why Reefiya',
         footer_nav_contact: 'Contact',
+        footer_nav_frozen: 'Frozen Products',
+        footer_nav_industrial: 'Industrial Supply',
+        footer_nav_catalogue: 'Export Catalogue (PDF)',
+        footer_nav_privacy: "Privacy policy",
         footer_col_footprint: 'GLOBAL PRESENCE',
         footer_hub_eg_title: 'ALEXANDRIA HEADQUARTERS',
         footer_hub_eg_role: 'Export Operations • Egypt',
@@ -224,12 +228,13 @@
         sec4_card1_title: 'Fresh Market',
         sec4_card1_tag: 'RETAIL & WHOLESALE',
         sec4_card1_desc: 'Graded, uniform produce prepared for retail distributors, wholesale markets, and foodservice suppliers.',
-        sec4_card2_title: 'Processing Channels',
-        sec4_card2_tag: 'INDUSTRIAL APPLICATIONS',
-        sec4_card2_desc: 'Cost-effective commercial grades prepared for food processors producing frozen products, fries, and puree.',
-        sec4_card3_title: 'Custom Programs',
-        sec4_card3_tag: 'TAILORED SPECIFICATIONS',
-        sec4_card3_desc: 'Calibrated sizing, specialized packaging, and private-label presentation tailored to agreed buyer requirements.',
+        sec4_card2_title: 'Industrial Supply',
+        sec4_card2_tag: 'FOOD FACTORIES · BULK BINS',
+        sec4_card2_desc: 'Fresh whole sweet potatoes for food factories and production lines, supplied in strapped bulk bins. Size and grade agreed per buyer.',
+        sec4_card3_title: 'Frozen Products',
+        sec4_card3_tag: 'CUBES · FRIES · −18 °C',
+        sec4_card3_desc: 'Frozen sweet potato cubes and battered fries, packed under the Reefiya label. Specifications and pack sizes agreed per buyer.',
+        sec4_private_label: 'Private label available on every programme: cartons, bags and labels printed to your design.',
         sec4_footer_sub: 'PREMIUM EGYPTIAN PRODUCE',
         sec4_footer_tagline: 'FROM OUR FIELDS. TO GLOBAL SHELVES.',
         video_title: 'OUR STORY',
@@ -272,6 +277,10 @@
         footer_nav_markets: 'الأسواق العالمية',
         footer_nav_why: 'لماذا ريفيا',
         footer_nav_contact: 'تواصل معنا',
+        footer_nav_frozen: 'المنتجات المجمّدة',
+        footer_nav_industrial: 'التوريد الصناعي',
+        footer_nav_catalogue: 'كتالوج التصدير (PDF)',
+        footer_nav_privacy: "سياسة الخصوصية",
         footer_col_footprint: 'التواجد الدولي',
         footer_hub_eg_title: 'المقر الرئيسي بالإسكندرية',
         footer_hub_eg_role: 'عمليات التصدير • مصر',
@@ -432,10 +441,10 @@
         sec3_hw_line3: 'الأسواق العالمية',
         sec3_hw_phrase: 'من الحقول المصرية إلى الأسواق العالمية',
         sec3_v1_cat: 'سوق الاستهلاك الطازج',
-        sec3_v1_name: 'بلفين (BELLEVUE)',
+        sec3_v1_name: 'بيلفيو (BELLEVUE)',
         sec3_v1_desc: 'بطاطا حلوة مصرية مختارة ومجهزة لبرامج تصدير السوق الطازج وفق المواصفات التجارية المتفق عليها.',
         sec3_v2_cat: 'صنف تجاري معتمد',
-        sec3_v2_name: 'بيوريجارد (BEAUREGARD)',
+        sec3_v2_name: 'بوريجارد (BEAUREGARD)',
         sec3_v2_desc: 'صنف واسع التداول تجاريًا، ويتم تجهيزه وفق درجات ومواصفات تعبئة تتناسب مع متطلبات المشتري.',
         sec3_v3_cat: 'محاصيل موسمية مختارة',
         sec3_v3_name: 'الأصناف المصرية',
@@ -484,12 +493,13 @@
         sec4_card1_title: 'السوق الطازج',
         sec4_card1_tag: 'التجزئة والجملة',
         sec4_card1_desc: 'محصول مفروز ومتجانس ومجهز لموزعي التجزئة، وأسواق الجملة، وموردي خدمات الأغذية.',
-        sec4_card2_title: 'قنوات التصنيع الغذائي',
-        sec4_card2_tag: 'تطبيقات التصنيع الغذائي',
-        sec4_card2_desc: 'درجات تجارية اقتصادية ومناسبة لمصنعي الأغذية العاملين في المنتجات المجمدة، وأصابع البطاطا، والبوريه.',
-        sec4_card3_title: 'البرامج الخاصة',
-        sec4_card3_tag: 'مواصفات حسب الطلب',
-        sec4_card3_desc: 'معايرة أحجام، وتعبئة متخصصة، وتجهيز علامة تجارية خاصة وفق المواصفات المتفق عليها مع المشتري.',
+        sec4_card2_title: 'التوريد الصناعي',
+        sec4_card2_tag: 'مصانع الأغذية · صناديق سائبة',
+        sec4_card2_desc: 'بطاطا حلوة طازجة كاملة لمصانع الأغذية وخطوط الإنتاج، تُورَّد في صناديق سائبة مربوطة. الحجم والدرجة حسب الاتفاق مع المشتري.',
+        sec4_card3_title: 'المنتجات المجمدة',
+        sec4_card3_tag: 'مكعبات · أصابع · ⁦−18 °C⁩',
+        sec4_card3_desc: 'مكعبات بطاطا حلوة مجمدة وأصابع مغلفة، معبأة تحت علامة ريفيا. المواصفات وأحجام العبوات حسب الاتفاق مع المشتري.',
+        sec4_private_label: 'التعبئة بعلامتك الخاصة متاحة في كل البرامج: كراتين وأكياس وملصقات مطبوعة بتصميمك.',
         sec4_footer_sub: 'محاصيل زراعية مصرية فاخرة',
         sec4_footer_tagline: 'من حقولنا. إلى رفوف العالم.',
         video_title: 'قصتنا',
@@ -532,6 +542,10 @@
         footer_nav_markets: 'Märkte',
         footer_nav_why: 'Warum REEFIYA',
         footer_nav_contact: 'Kontakt',
+        footer_nav_frozen: 'Tiefkühlprodukte',
+        footer_nav_industrial: 'Industrieversorgung',
+        footer_nav_catalogue: 'Exportkatalog (PDF)',
+        footer_nav_privacy: "Datenschutz",
         footer_col_footprint: 'GLOBALE PRÄSENZ',
         footer_hub_eg_title: 'ÄGYPTEN',
         footer_hub_eg_role: 'Betriebszentrum',
@@ -744,12 +758,13 @@
         sec4_card1_title: 'Frischmarkt',
         sec4_card1_tag: 'EINZEL- & GROSSHANDEL',
         sec4_card1_desc: 'Sortierte, einheitliche Ware, aufbereitet für Lebensmitteleinzelhändler, Großmärkte und Foodservice-Lieferanten.',
-        sec4_card2_title: 'Verarbeitungsindustrie',
-        sec4_card2_tag: 'INDUSTRIELLE ANWENDUNGEN',
-        sec4_card2_desc: 'Wirtschaftliche Handelssortierungen, ideal für lebensmittelverarbeitende Betriebe von Tiefkühlkost, Pommes und Püree.',
-        sec4_card3_title: 'Sonderprogramme',
-        sec4_card3_tag: 'MASSGESCHNEIDERTE SPEZIFIKATIONEN',
-        sec4_card3_desc: 'Kalibrierte Größensortierung, Spezialverpackung und Eigenmarken-Präsentation (Private Label) nach Käufervorgabe.',
+        sec4_card2_title: 'Industrielle Versorgung',
+        sec4_card2_tag: 'LEBENSMITTELWERKE · GROSSKISTEN',
+        sec4_card2_desc: 'Frische, ganze Süßkartoffeln für Lebensmittelwerke und Produktionslinien, geliefert in umreiften Großkisten. Größe und Sortierung nach Absprache.',
+        sec4_card3_title: 'Tiefkühlprodukte',
+        sec4_card3_tag: 'WÜRFEL · POMMES · −18 °C',
+        sec4_card3_desc: 'Tiefgekühlte Süßkartoffelwürfel und panierte Pommes unter der Marke Reefiya. Spezifikationen und Packungsgrößen nach Absprache.',
+        sec4_private_label: 'Private Label in allen Programmen: Kartons, Beutel und Etiketten nach Ihrem Design.',
         sec4_footer_sub: 'PREMIUM ÄGYPTISCHE ERZEUGNISSE',
         sec4_footer_tagline: 'VON UNSEREN FELDERN. IN DIE REGALE WELTWEIT.',
         video_title: 'UNSERE GESCHICHTE',
@@ -792,6 +807,10 @@
         footer_nav_markets: 'Marchés',
         footer_nav_why: 'Pourquoi REEFIYA',
         footer_nav_contact: 'Contact',
+        footer_nav_frozen: 'Produits surgelés',
+        footer_nav_industrial: 'Approvisionnement industriel',
+        footer_nav_catalogue: 'Catalogue export (PDF)',
+        footer_nav_privacy: "Politique de confidentialité",
         footer_col_footprint: 'PRÉSENCE MONDIALE',
         footer_hub_eg_title: 'ÉGYPTE',
         footer_hub_eg_role: 'Centre d\'Opérations',
@@ -1004,12 +1023,13 @@
         sec4_card1_title: 'Marché du Frais',
         sec4_card1_tag: 'DÉTAIL & COMMERCE DE GROS',
         sec4_card1_desc: 'Produits calibrés et homogènes, préparés pour les distributeurs de la grande distribution, les grossistes et la restauration.',
-        sec4_card2_title: 'Filière Transformation',
-        sec4_card2_tag: 'APPLICATIONS INDUSTRIELLES',
-        sec4_card2_desc: 'Calibres industriels compétitifs destinés aux transformateurs de produits surgelés, frites et purées de patates douces.',
-        sec4_card3_title: 'Programmes Sur-Mesure',
-        sec4_card3_tag: 'CAHIER DES CHARGES DÉDIÉ',
-        sec4_card3_desc: 'Calibrage sur-mesure, emballages spécialisés et conditionnement sous marque de distributeur (MDD) selon vos accords.',
+        sec4_card2_title: 'Approvisionnement industriel',
+        sec4_card2_tag: 'USINES ALIMENTAIRES · PALOX',
+        sec4_card2_desc: 'Patates douces fraîches entières pour usines alimentaires et lignes de production, livrées en palox cerclés. Calibre et qualité selon accord.',
+        sec4_card3_title: 'Produits surgelés',
+        sec4_card3_tag: 'CUBES · FRITES · −18 °C',
+        sec4_card3_desc: 'Cubes de patate douce surgelés et frites enrobées, sous la marque Reefiya. Spécifications et conditionnements selon accord.',
+        sec4_private_label: 'Marque de distributeur disponible sur tous les programmes : cartons, sacs et étiquettes à votre design.',
         sec4_footer_sub: 'PRODUITS ÉGYPTIENS HAUT DE GAMME',
         sec4_footer_tagline: 'DE NOS CHAMPS. AUX RAYONS DU MONDE ENTIER.',
         video_title: 'NOTRE HISTOIRE',
@@ -1052,6 +1072,10 @@
         footer_nav_markets: 'Markten',
         footer_nav_why: 'Waarom REEFIYA',
         footer_nav_contact: 'Contact',
+        footer_nav_frozen: 'Diepvriesproducten',
+        footer_nav_industrial: 'Industriële levering',
+        footer_nav_catalogue: 'Exportcatalogus (PDF)',
+        footer_nav_privacy: "Privacybeleid",
         footer_col_footprint: 'WERELDWIJDE VOETAFDRUK',
         footer_hub_eg_title: 'EGYPTE',
         footer_hub_eg_role: 'Operationeel Centrum',
@@ -1264,12 +1288,13 @@
         sec4_card1_title: 'Versmarkt',
         sec4_card1_tag: 'RETAIL & GROOTHANDEL',
         sec4_card1_desc: 'Gesorteerde, uniforme producten klaargemaakt voor retaildistributeurs, groothandelsmarkten en foodservice-leveranciers.',
-        sec4_card2_title: 'Verwerkingsindustrie',
-        sec4_card2_tag: 'INDUSTRIËLE TOEPASSINGEN',
-        sec4_card2_desc: 'Kostenefficiënte commerciële kwaliteiten voor voedselverwerkers die diepvriesproducten, frites en puree produceren.',
-        sec4_card3_title: 'Maatwerkprogramma’s',
-        sec4_card3_tag: 'KLANTSPECIFIEKE SPECIFICATIES',
-        sec4_card3_desc: 'Gekalibreerde sortering, gespecialiseerde verpakking en private-label presentatie afgestemd op overeengekomen koperswensen.',
+        sec4_card2_title: 'Industriële levering',
+        sec4_card2_tag: 'VOEDINGSFABRIEKEN · BULKKISTEN',
+        sec4_card2_desc: 'Verse, hele zoete aardappelen voor voedingsfabrieken en productielijnen, geleverd in omsnoerde bulkkisten. Maat en kwaliteit in overleg.',
+        sec4_card3_title: 'Diepvriesproducten',
+        sec4_card3_tag: 'BLOKJES · FRIETEN · −18 °C',
+        sec4_card3_desc: 'Diepgevroren zoete-aardappelblokjes en gepaneerde frieten onder het Reefiya-label. Specificaties en verpakkingen in overleg.',
+        sec4_private_label: 'Private label mogelijk in elk programma: dozen, zakken en etiketten naar uw ontwerp.',
         sec4_footer_sub: 'PREMIUM EGYPTISCHE PRODUCTEN',
         sec4_footer_tagline: 'VAN ONZE VELDEN. NAAR SCHAPPEN WERELDWIJD.',
         video_title: 'ONS VERHAAL',
@@ -1312,6 +1337,10 @@
         footer_nav_markets: 'Mercados',
         footer_nav_why: 'Por qué REEFIYA',
         footer_nav_contact: 'Contacto',
+        footer_nav_frozen: 'Productos congelados',
+        footer_nav_industrial: 'Suministro industrial',
+        footer_nav_catalogue: 'Catálogo de exportación (PDF)',
+        footer_nav_privacy: "Política de privacidad",
         footer_col_footprint: 'PRESENCIA GLOBAL',
         footer_hub_eg_title: 'EGIPTO',
         footer_hub_eg_role: 'Centro de Operaciones',
@@ -1524,12 +1553,13 @@
         sec4_card1_title: 'Mercado Fresco',
         sec4_card1_tag: 'MINORISTA Y MAYORISTA',
         sec4_card1_desc: 'Producto seleccionado y uniforme, preparado para cadenas minoristas, mercados mayoristas y proveedores de hostelería.',
-        sec4_card2_title: 'Canales de Procesamiento',
-        sec4_card2_tag: 'APLICACIONES INDUSTRIALES',
-        sec4_card2_desc: 'Calidades comerciales rentables preparadas para industrias de alimentos congelados, bastones y puré.',
-        sec4_card3_title: 'Programas Personalizados',
-        sec4_card3_tag: 'ESPECIFICACIONES A MEDIDA',
-        sec4_card3_desc: 'Calibrado específico, envasado especializado y presentación con marca propia acordada según las necesidades del comprador.',
+        sec4_card2_title: 'Suministro industrial',
+        sec4_card2_tag: 'FÁBRICAS · CONTENEDORES A GRANEL',
+        sec4_card2_desc: 'Batatas frescas enteras para fábricas de alimentos y líneas de producción, en contenedores a granel flejados. Calibre y calidad según acuerdo.',
+        sec4_card3_title: 'Productos congelados',
+        sec4_card3_tag: 'CUBOS · BASTONES · −18 °C',
+        sec4_card3_desc: 'Cubos de batata congelados y bastones rebozados, envasados con la marca Reefiya. Especificaciones y formatos según acuerdo.',
+        sec4_private_label: 'Marca propia disponible en todos los programas: cajas, bolsas y etiquetas con su diseño.',
         sec4_footer_sub: 'PRODUCTOS EGIPCIOS DE PRIMERA CALIDAD',
         sec4_footer_tagline: 'DE NUESTROS CAMPOS. AL MUNDO.',
         video_title: 'NUESTRA HISTORIA',
@@ -1572,6 +1602,10 @@
         footer_nav_markets: 'Рынки сбыта',
         footer_nav_why: 'Почему REEFIYA',
         footer_nav_contact: 'Контакты',
+        footer_nav_frozen: 'Замороженная продукция',
+        footer_nav_industrial: 'Промышленные поставки',
+        footer_nav_catalogue: 'Экспортный каталог (PDF)',
+        footer_nav_privacy: "Политика конфиденциальности",
         footer_col_footprint: 'ГЛОБАЛЬНОЕ ПРИСУТСТВИЕ',
         footer_hub_eg_title: 'ЕГИПЕТ',
         footer_hub_eg_role: 'Операционный центр',
@@ -1786,12 +1820,13 @@
         sec4_card1_title: 'Свежий рынок',
         sec4_card1_tag: 'РОЗНИЦА И ОПТ',
         sec4_card1_desc: 'Калиброванная однородная продукция для розничных сетей, оптовых баз и предприятий сектора HoReCa.',
-        sec4_card2_title: 'Промышленная переработка',
-        sec4_card2_tag: 'ДЛЯ ПРОИЗВОДИТЕЛЕЙ',
-        sec4_card2_desc: 'Выгодные промышленные фракции для производителей замороженных полуфабрикатов, соломки и пюре.',
-        sec4_card3_title: 'Индивидуальные программы',
-        sec4_card3_tag: 'ПОД ВАШИ ТРЕБОВАНИЯ',
-        sec4_card3_desc: 'Точная калибровка, специализированная тара и фасовка под собственной торговой маркой заказчика (СТМ).',
+        sec4_card2_title: 'Промышленные поставки',
+        sec4_card2_tag: 'ПИЩЕВЫЕ ЗАВОДЫ · НАВАЛОМ',
+        sec4_card2_desc: 'Свежий цельный батат для пищевых предприятий и производственных линий в обвязанных контейнерах. Калибр и сорт по согласованию.',
+        sec4_card3_title: 'Замороженная продукция',
+        sec4_card3_tag: 'КУБИКИ · СОЛОМКА · −18 °C',
+        sec4_card3_desc: 'Замороженный батат кубиками и соломка в кляре под маркой Reefiya. Спецификации и фасовка по согласованию.',
+        sec4_private_label: 'СТМ доступна во всех программах: коробки, пакеты и этикетки по вашему дизайну.',
         sec4_footer_sub: 'ПРЕМИУМ ПРОДУКЦИЯ ЕГИПТА',
         sec4_footer_tagline: 'С НАШИХ ПОЛЕЙ. НА ПОЛКИ ВСЕГО МИРА.',
         footer_brand_tagline: 'Египетский урожай. Мировая дисциплина.',
@@ -1832,6 +1867,10 @@
         footer_nav_markets: 'Pazarlar',
         footer_nav_why: 'Neden REEFIYA',
         footer_nav_contact: 'İletişim',
+        footer_nav_frozen: 'Dondurulmuş Ürünler',
+        footer_nav_industrial: 'Endüstriyel Tedarik',
+        footer_nav_catalogue: 'İhracat Kataloğu (PDF)',
+        footer_nav_privacy: "Gizlilik politikası",
         footer_col_footprint: 'KÜRESEL VARLIK',
         footer_hub_eg_title: 'MISIR',
         footer_hub_eg_role: 'Operasyon Merkezi',
@@ -2044,12 +2083,13 @@
         sec4_card1_title: 'Taze Tüketim Pazarı',
         sec4_card1_tag: 'PERAKENDE & TOPTAN',
         sec4_card1_desc: 'Perakende dağıtıcıları, toptancı halleri ve gıda tedarikçileri için özenle sınıflandırılmış homojen ürünler.',
-        sec4_card2_title: 'Gıda İşleme Kanalları',
-        sec4_card2_tag: 'ENDÜSTRİYEL KULLANIM',
-        sec4_card2_desc: 'Dondurulmuş ürün, tatlı patates kızartması ve püre üreten sanayi kuruluşları için ekonomik ticari dereceler.',
-        sec4_card3_title: 'Özel Programlar',
-        sec4_card3_tag: 'TALEP ODAKLI ÇÖZÜMLER',
-        sec4_card3_desc: 'Alıcıyla mutabık kalınan standartlara göre kalibre edilmiş boyutlandırma, özel ambalaj ve özel marka (private label).',
+        sec4_card2_title: 'Endüstriyel Tedarik',
+        sec4_card2_tag: 'GIDA FABRİKALARI · DÖKME KASA',
+        sec4_card2_desc: 'Gıda fabrikaları ve üretim hatları için taze, bütün tatlı patates; çemberli dökme kasalarda teslim. Boyut ve kalite alıcıyla belirlenir.',
+        sec4_card3_title: 'Dondurulmuş Ürünler',
+        sec4_card3_tag: 'KÜP · KIZARTMALIK · −18 °C',
+        sec4_card3_desc: 'Reefiya markasıyla paketlenen dondurulmuş tatlı patates küpleri ve kaplamalı kızartmalık. Özellikler ve ambalaj boyutları alıcıyla belirlenir.',
+        sec4_private_label: 'Tüm programlarda özel marka: koli, poşet ve etiketler sizin tasarımınızla basılır.',
         sec4_footer_sub: 'BİRİNCİ SINIF MISIR TARIM ÜRÜNLERİ',
         sec4_footer_tagline: 'TARLALARIMIZDAN. DÜNYA RAFLARINA.',
         video_title: 'HİKAYEMİZ',
@@ -2092,6 +2132,10 @@
         footer_nav_markets: 'Mercati',
         footer_nav_why: 'Perché REEFIYA',
         footer_nav_contact: 'Contatti',
+        footer_nav_frozen: 'Prodotti surgelati',
+        footer_nav_industrial: 'Fornitura industriale',
+        footer_nav_catalogue: 'Catalogo export (PDF)',
+        footer_nav_privacy: "Informativa sulla privacy",
         footer_col_footprint: 'PRESENZA GLOBALE',
         footer_hub_eg_title: 'EGITTO',
         footer_hub_eg_role: 'Hub Operativo',
@@ -2304,12 +2348,13 @@
         sec4_card1_title: 'Mercato del Fresco',
         sec4_card1_tag: 'RETAIL & INGROSSO',
         sec4_card1_desc: 'Prodotto uniforme e selezionato per la grande distribuzione organizzata, mercati all\'ingrosso e fornitori horeca.',
-        sec4_card2_title: 'Canali di Trasformazione',
-        sec4_card2_tag: 'APPLICAZIONI INDUSTRIALI',
-        sec4_card2_desc: 'Qualità commerciali vantaggiose per industrie alimentari specializzate in surgelati, stick e purea di patate dolci.',
-        sec4_card3_title: 'Programmi Personalizzati',
-        sec4_card3_tag: 'SPECIFICHE SU RICHIESTA',
-        sec4_card3_desc: 'Calibrazione rigorosa, packaging dedicato e confezionamento a marchio privato (Private Label) secondo accordi.',
+        sec4_card2_title: 'Fornitura industriale',
+        sec4_card2_tag: 'STABILIMENTI · BINS',
+        sec4_card2_desc: 'Patate dolci fresche intere per stabilimenti alimentari e linee di produzione, fornite in bins reggiati. Calibro e qualità concordati.',
+        sec4_card3_title: 'Prodotti surgelati',
+        sec4_card3_tag: 'CUBETTI · STICK · −18 °C',
+        sec4_card3_desc: 'Cubetti di patata dolce surgelati e stick pastellati, confezionati a marchio Reefiya. Specifiche e formati concordati.',
+        sec4_private_label: 'Private label disponibile su ogni programma: cartoni, sacchi ed etichette con il vostro design.',
         sec4_footer_sub: 'PRODOTTI AGRICOLI EGIZIANI DI PREGIO',
         sec4_footer_tagline: 'DAI NOSTRI CAMPI. AGLI SCAFFALI DI TUTTO IL MONDO.',
         video_title: 'LA NOSTRA STORIA',
@@ -2602,9 +2647,21 @@
 
     window.addEventListener('resize', resizeCanvas);
 
+    const isReady = im => im && im.complete && im.naturalWidth > 0;
+
+    // Draws the requested frame, or the nearest frame that has loaded so the hero is never blank.
+    // Returns true only when the exact frame was drawn, so callers retry until it is.
     function renderFrame(index) {
-      const img = images[index - 1];
-      if (!img || !img.complete || img.naturalWidth === 0) return;
+      let img = images[index - 1];
+      let exact = isReady(img);
+      if (!exact) {
+        img = null;
+        for (let d = 1; d < frameCount && !img; d++) {
+          if (isReady(images[index - 1 - d])) img = images[index - 1 - d];
+          else if (isReady(images[index - 1 + d])) img = images[index - 1 + d];
+        }
+        if (!img) return false;
+      }
 
       const cWidth = canvas.width;
       const cHeight = canvas.height;
@@ -2630,6 +2687,7 @@
         img.width * ratio,
         img.height * ratio
       );
+      return exact;
     }
 
     function hideLoader() {
@@ -2647,6 +2705,8 @@
       }
       const img = new Image();
       img.decoding = 'async';
+      // The first frame is what visitors see on arrival: fetch it before the rest
+      if ('fetchPriority' in img) img.fetchPriority = i === 1 ? 'high' : 'low';
       img.src = currentFrame(i);
       const onProgress = () => {
         loadedCount++;
@@ -2827,9 +2887,11 @@
 
       const currentScrollY = window.scrollY || window.pageYOffset;
       if (rounded !== lastDrawnIndex || currentScrollY !== lastScrollY) {
-        renderFrame(rounded);
+        // Only remember the frame as drawn once its image has really loaded,
+        // otherwise keep retrying on the next tick (fixes a blank hero on first load)
+        const drawn = renderFrame(rounded);
         updateOverlayStates(progress, rounded);
-        lastDrawnIndex = rounded;
+        lastDrawnIndex = drawn ? rounded : -1;
         lastScrollY = currentScrollY;
       }
 
@@ -2964,10 +3026,15 @@
     }
 
     window.addEventListener('scroll', updateNavScrollSpy, { passive: true });
+    // Keep the page from ever being shifted sideways (it would cut off the left edge)
+    window.addEventListener('scroll', () => {
+      if (window.scrollX !== 0) window.scrollTo(0, window.scrollY);
+      if (document.body.scrollLeft !== 0) document.body.scrollLeft = 0;
+    }, { passive: true });
     updateNavScrollSpy();
 
     // Smooth scroll for nav items with offset compensation
-    document.querySelectorAll('.nav-pill-item, .mobile-nav-link, .skip-to-produce-btn').forEach(link => {
+    document.querySelectorAll('.nav-pill-item, .mobile-nav-link, .skip-to-produce-btn, .buyer-card-link[href^="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
         const targetId = link.getAttribute('href');
         if (targetId && targetId.startsWith('#')) {
@@ -3048,12 +3115,7 @@
       }
     }
 
-    varietyItems.forEach((item) => {
-      item.addEventListener('click', () => {
-        const idx = parseInt(item.getAttribute('data-variety-index'), 10);
-        setProductActive(idx);
-      });
-    });
+    // Each card is a link to its variety page (see .variety-title-link::after in home.css).
 
     timelineStepBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
