@@ -2741,24 +2741,6 @@
     .buyer-card:hover .buyer-card-media img {
       transform: scale(1.04) translateZ(0);
     }
-    /* Card 3 specifically: show full image without cropping */
-    .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      background: transparent;
-      overflow: hidden;
-    }
-    .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media img {
-      transform-origin: bottom center; /* Prevents bottom from clipping when scaling up on hover */
-    }
-    .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center bottom;
-      transform-origin: center bottom;
-    }
     .buyer-card-toprow {
       width: 100%;
       display: flex;
@@ -3057,20 +3039,6 @@
         height: 250px;
         min-height: 250px;
         max-height: 250px;
-      }
-      .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media {
-        display: block;
-        height: auto;
-        min-height: 0;
-        max-height: none;
-      }
-      .buyer-cards-grid .buyer-card:nth-child(3) .buyer-card-media img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1448 / 1086;
-        object-fit: cover;
-        object-position: center center;
-        display: block;
       }
       .buyer-req-footer {
         flex-direction: column;
@@ -6663,15 +6631,14 @@
 .buyer-card-link::after { content: ""; position: absolute; inset: 0; z-index: 11; border-radius: inherit; }
 .buyer-card-link:focus-visible { outline: none; }
 .buyer-card:has(.buyer-card-link:focus-visible) { outline: 2px solid #c47a2c; outline-offset: 4px; }
-.buyer-card:hover .buyer-card-link { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
-/* Real catalogue photos: soft fade into the card so they match the illustrated cards */
-.buyer-card-media--photo::after {
-  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(to bottom,
-    rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.92) 12%, rgba(255, 255, 255, 0.6) 28%,
-    rgba(255, 255, 255, 0.22) 44%, rgba(255, 255, 255, 0) 60%);
+/* Real catalogue photos: the image itself fades out at the top (mask), so it melts into
+   the card on any background, with no seam when the card lifts on hover */
+.buyer-card-media--photo img {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 15%, #000 40%);
+          mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 15%, #000 40%);
 }
-.buyer-card-media--photo img { object-position: center; }
+.buyer-cards-grid .buyer-card .buyer-card-media--photo { display: block; }
+.buyer-cards-grid .buyer-card .buyer-card-media--photo img { object-fit: cover; object-position: center; }
 .buyer-private-label {
   margin: 22px auto 0; max-width: 760px; text-align: center;
   font-size: 0.95rem; line-height: 1.6; color: #2f4a35; font-weight: 500;
