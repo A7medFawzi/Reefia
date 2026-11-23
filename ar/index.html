@@ -144,7 +144,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/home.css?v=aba9da5b">
+  <link rel="stylesheet" href="/assets/css/home.css?v=5c8e7c4c">
   <style>
     /* Kept inline: url(#id) must resolve against this document's inline SVG clipPaths */
     .about-organic-viewport { clip-path: url(#organicApertureClip); -webkit-clip-path: url(#organicApertureClip); }
@@ -163,6 +163,21 @@
         } else {
           window.__preloaderText = 'Loading Journey';
         }
+      } catch (e) {}
+    })();
+  </script>
+  <script>
+    // Start the first hero frame right away (before the page body is parsed); home-2.js reuses it.
+    (function () {
+      try {
+        var w = window.innerWidth, h = window.innerHeight, d = window.devicePixelRatio || 1;
+        var small = Math.min(w, h) * d < 1100 || w < 768;
+        var img = new Image();
+        if ('fetchPriority' in img) img.fetchPriority = 'high';
+        img.src = small ? '/frames/sm/001.webp' : '/frames/lg/001.jpg';
+        window.__heroFirstFrame = img;
+        // Hold back the big background photos of lower sections until the hero has started
+        document.documentElement.classList.add('defer-bg');
       } catch (e) {}
     })();
   </script>
@@ -570,7 +585,7 @@
               src="./produce-bellevue-tight.webp" 
               alt="Bellevue Egyptian Sweet Potatoes" 
               class="variety-product-img"
-              loading="lazy"
+              loading="lazy" fetchpriority="low"
             >
           </div>
           <h3 class="variety-title"><a class="variety-title-link" href="ar/varieties/bellevue" data-i18n="sec3_v1_name">بيلفيو (BELLEVUE)</a></h3>
@@ -590,7 +605,7 @@
               src="./produce-beauregard-tight.webp" 
               alt="Beauregard Sweet Potatoes" 
               class="variety-product-img"
-              loading="lazy"
+              loading="lazy" fetchpriority="low"
             >
           </div>
           <h3 class="variety-title"><a class="variety-title-link" href="ar/varieties/beauregard" data-i18n="sec3_v2_name">بوريجارد (BEAUREGARD)</a></h3>
@@ -610,7 +625,7 @@
               src="./produce-egyptian-tight.webp" 
               alt="Egyptian Local Sweet Potato Varieties" 
               class="variety-product-img"
-              loading="lazy"
+              loading="lazy" fetchpriority="low"
             >
           </div>
           <h3 class="variety-title"><a class="variety-title-link" href="ar/varieties/egyptian" data-i18n="sec3_v3_name">الأصناف المصرية</a></h3>
@@ -691,7 +706,7 @@
             src="/photos/home-banner-cartons.webp"
             alt="بطاطا حلوة بيلفيو معبأة في كراتين تصدير"
             class="buyer-hero-img"
-            loading="lazy"
+            loading="lazy" fetchpriority="low"
           >
         </div>
       </div>
@@ -706,7 +721,7 @@
                 src="/photos/card-fresh.webp"
                 alt="كرتونة تصدير ريفيا من البطاطا الحلوة الطازجة، بعضها مقطوع ليظهر اللب البرتقالي"
                 width="900" height="720"
-                loading="lazy"
+                loading="lazy" fetchpriority="low"
               >
             </div>
             <div class="buyer-card-header">
@@ -736,7 +751,7 @@
                 src="/photos/card-industrial.webp"
                 alt="صناديق سائبة من البطاطا الحلوة للتوريد الصناعي"
                 width="900" height="720"
-                loading="lazy"
+                loading="lazy" fetchpriority="low"
               >
             </div>
             <div class="buyer-card-header">
@@ -767,7 +782,7 @@
                 src="/photos/card-frozen.webp"
                 alt="مكعبات بطاطا حلوة مجمدة"
                 width="900" height="720"
-                loading="lazy"
+                loading="lazy" fetchpriority="low"
               >
             </div>
             <div class="buyer-card-header">
@@ -800,7 +815,7 @@
       <!-- Section Footer Row -->
       <div class="buyer-req-footer">
         <div class="buyer-footer-left">
-          <img loading="lazy" decoding="async" src="./reefiya-logo-clean.webp" alt="Reefiya" class="buyer-footer-logo">
+          <img loading="lazy" fetchpriority="low" decoding="async" src="./reefiya-logo-clean.webp" alt="Reefiya" class="buyer-footer-logo">
           <span class="buyer-footer-brand-sub" data-i18n="sec4_footer_sub">محاصيل زراعية مصرية فاخرة</span>
         </div>
         <div class="buyer-footer-right">
@@ -848,13 +863,13 @@
           <div style="display: flex; gap: 1rem; align-items: center; justify-content: space-between;">
             <!-- Europe -->
             <div class="market-list-item dest-item-col" data-target="target-eu">
-              <img loading="lazy" decoding="async" src="./flags/eu_round.svg" style="width: 38px; height: 38px; display: block; margin: 0 auto 0.45rem; border-radius: 50%; box-shadow: 0 3px 10px rgba(0, 51, 153, 0.25);" alt="Europe">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="./flags/eu_round.svg" style="width: 38px; height: 38px; display: block; margin: 0 auto 0.45rem; border-radius: 50%; box-shadow: 0 3px 10px rgba(0, 51, 153, 0.25);" alt="Europe">
               <div style="font-size: 0.85rem; font-weight: 700; color: #174D30;" data-i18n="sec4_markets_eu">أوروبا</div>
             </div>
             <div style="width: 1px; height: 36px; background: rgba(23, 77, 48, 0.12);"></div>
             <!-- GCC -->
             <div class="market-list-item dest-item-col" data-target="target-gcc">
-              <img loading="lazy" decoding="async" src="./flags/gcc_official_round.webp" style="width: 38px; height: 38px; display: block; margin: 0 auto 0.45rem; border-radius: 50%; box-shadow: 0 3px 10px rgba(13, 40, 24, 0.25); object-fit: contain;" alt="GCC">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="./flags/gcc_official_round.webp" style="width: 38px; height: 38px; display: block; margin: 0 auto 0.45rem; border-radius: 50%; box-shadow: 0 3px 10px rgba(13, 40, 24, 0.25); object-fit: contain;" alt="GCC">
               <div style="font-size: 0.85rem; font-weight: 700; color: #174D30;" data-i18n="sec4_markets_gcc">الخليج العربي</div>
             </div>
             <div style="width: 1px; height: 36px; background: rgba(23, 77, 48, 0.12);"></div>
@@ -876,28 +891,28 @@
           <div style="display: flex; gap: 0.25rem; align-items: flex-start; justify-content: space-between;">
             <!-- Egypt -->
             <div class="market-list-item presence-col-box" data-target="pin-eg">
-              <img loading="lazy" decoding="async" src="./flags/eg.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="Egypt">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="./flags/eg.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="Egypt">
               <div class="presence-country-name" data-i18n="sec4_markets_eg">مصر</div>
               <div class="presence-role-desc" data-i18n="sec4_role_eg">مركز التوريد والتصدير الزراعي</div>
             </div>
             <div style="width: 1px; height: 38px; background: rgba(23, 77, 48, 0.12); align-self: center; flex-shrink: 0;"></div>
             <!-- Saudi Arabia -->
             <div class="market-list-item presence-col-box" data-target="pin-sa">
-              <img loading="lazy" decoding="async" src="./flags/sa.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="Saudi Arabia">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="./flags/sa.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="Saudi Arabia">
               <div class="presence-country-name" data-i18n="sec4_markets_sa">السعودية</div>
               <div class="presence-role-desc" data-i18n="sec4_role_sa">مكتب التجارة الإقليمي</div>
             </div>
             <div style="width: 1px; height: 38px; background: rgba(23, 77, 48, 0.12); align-self: center; flex-shrink: 0;"></div>
             <!-- United States -->
             <div class="market-list-item presence-col-box" data-target="pin-us">
-              <img loading="lazy" decoding="async" src="./flags/us.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="United States">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="./flags/us.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="United States">
               <div class="presence-country-name" data-i18n="sec4_markets_us">الولايات المتحدة</div>
               <div class="presence-role-desc" data-i18n="sec4_role_us">شركة مسجلة (LLC)</div>
             </div>
             <div style="width: 1px; height: 38px; background: rgba(23, 77, 48, 0.12); align-self: center; flex-shrink: 0;"></div>
             <!-- Canada -->
             <div class="market-list-item presence-col-box" data-target="pin-ca">
-              <img loading="lazy" decoding="async" src="./flags/ca.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="Canada">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="./flags/ca.png" style="width: 27px; height: 18px; object-fit: cover; display: block; margin: 0 auto 0.4rem; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.12);" alt="Canada">
               <div class="presence-country-name" data-i18n="sec4_markets_ca">كندا</div>
               <div class="presence-role-desc" data-i18n="sec4_role_ca">شركة مسجلة فيدرالياً</div>
             </div>
@@ -1748,7 +1763,7 @@
           </div>
           <div class="map-card-item card-ca" id="card-ca" style="left: 14%; top: 6%;">
             <div class="card-icon-box">
-              <img loading="lazy" decoding="async" src="./flags/ca.png" alt="Canada" class="flag-icon">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="./flags/ca.png" alt="Canada" class="flag-icon">
             </div>
             <div class="card-info">
               <span class="card-title" data-i18n="sec4_markets_ca">كندا</span>
@@ -1762,7 +1777,7 @@
           </div>
           <div class="map-card-item card-us" id="card-us" style="left: 11%; top: 47%;">
             <div class="card-icon-box">
-              <img loading="lazy" decoding="async" src="./flags/us.png" alt="United States" class="flag-icon">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="./flags/us.png" alt="United States" class="flag-icon">
             </div>
             <div class="card-info">
               <span class="card-title" data-i18n="sec4_markets_us">الولايات المتحدة</span>
@@ -1776,7 +1791,7 @@
           </div>
           <div class="map-card-item card-eu" id="card-eu" style="left: 55%; top: 23%;">
             <div class="card-icon-box eu-box">
-              <img loading="lazy" decoding="async" src="./flags/eu_round.svg" alt="Europe" style="width: 22px; height: 22px; border-radius: 50%; display: block;">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="./flags/eu_round.svg" alt="Europe" style="width: 22px; height: 22px; border-radius: 50%; display: block;">
             </div>
             <div class="card-info">
               <span class="card-title" data-i18n="sec4_markets_eu">أوروبا</span>
@@ -1790,7 +1805,7 @@
           </div>
           <div class="map-card-item card-sa" id="card-sa" style="left: 66%; top: 40%;">
             <div class="card-icon-box">
-              <img loading="lazy" decoding="async" id="card-sa-flag" src="./flags/sa.png" alt="Saudi Arabia" class="flag-icon">
+              <img loading="lazy" fetchpriority="low" decoding="async" id="card-sa-flag" src="./flags/sa.png" alt="Saudi Arabia" class="flag-icon">
             </div>
             <div class="card-info">
               <span class="card-title" id="card-sa-title" data-i18n="sec4_markets_sa">السعودية</span>
@@ -1807,7 +1822,7 @@
           </div>
           <div class="map-card-item card-eg" id="card-eg" style="left: 65.5%; top: 61%;">
             <div class="card-icon-box">
-              <img loading="lazy" decoding="async" src="./flags/eg.png" alt="Egypt" class="flag-icon">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="./flags/eg.png" alt="Egypt" class="flag-icon">
             </div>
             <div class="card-info">
               <span class="card-title" data-i18n="sec4_markets_eg">مصر</span>
@@ -1833,7 +1848,7 @@
           src="/photos/home-approach-pallets.webp" 
           alt="كراتين ريفيا من البطاطا الحلوة على بالتة تصدير" 
           class="approach-backdrop-img"
-          loading="lazy"
+          loading="lazy" fetchpriority="low"
         />
         <!-- Organic Multistage Masks & Gradient Fades -->
         <div class="approach-backdrop-fade"></div>
@@ -1842,7 +1857,7 @@
 
       <!-- Right Edge Organic Ribbon Waves -->
       <div class="approach-ribbon-wrap">
-        <img loading="lazy" decoding="async" src="./sec5_organic_ribbon_vector.svg" alt="" class="approach-ribbon-img" />
+        <img loading="lazy" fetchpriority="low" decoding="async" src="./sec5_organic_ribbon_vector.svg" alt="" class="approach-ribbon-img" />
       </div>
     </div>
 
@@ -1953,7 +1968,7 @@
               src="/photos/calibration-sizes.webp" 
               alt="بطاطا حلوة مفروزة حسب الحجم: M وL1 وL2 وXL" 
               class="pillar-photo"
-              loading="lazy"
+              loading="lazy" fetchpriority="low"
             />
           </div>
         </div>
@@ -1985,7 +2000,7 @@
               src="/photos/beauregard-tray-pack.webp" 
               alt="بطاطا حلوة بوريجارد معبأة في صناديق" 
               class="pillar-photo"
-              loading="lazy"
+              loading="lazy" fetchpriority="low"
             />
           </div>
         </div>
@@ -2018,7 +2033,7 @@
               src="/photos/home-card-loading.webp" 
               alt="تحميل كراتين ريفيا في حاوية مبردة" 
               class="pillar-photo"
-              loading="lazy"
+              loading="lazy" fetchpriority="low"
             />
           </div>
         </div>
@@ -2055,12 +2070,12 @@
   <section class="sec6-inquiries-section" id="contact" aria-labelledby="sec6Headline">
     <!-- Golden Harvest Panoramic Field Background -->
     <div class="sec6-bg-backdrop">
-      <img loading="lazy" decoding="async" 
+      <img loading="lazy" fetchpriority="low" decoding="async" 
         src="/photos/port-alexandria.webp" 
         alt="سفينة حاويات في ميناء الإسكندرية" 
         class="sec6-bg-image"
       />
-      <img loading="lazy" decoding="async" 
+      <img loading="lazy" fetchpriority="low" decoding="async" 
         src="/photos/port-alexandria.webp" 
         alt="سفينة حاويات في ميناء الإسكندرية" 
         class="sec6-bg-image-rtl"
@@ -2205,7 +2220,7 @@
         <!-- Column 1: Brand, Tagline & Summary -->
         <div class="footer-col-brand">
           <a href="#" class="footer-brand-logo-wrap" aria-label="Reefiya Home">
-            <img loading="lazy" decoding="async" src="./reefiya-logo-clean.webp" alt="REEFIYA" class="footer-logo-img">
+            <img loading="lazy" fetchpriority="low" decoding="async" src="./reefiya-logo-clean.webp" alt="REEFIYA" class="footer-logo-img">
           </a>
           <div class="footer-brand-accent-line"></div>
           <h3 class="footer-brand-headline" data-i18n="footer_brand_headline">من حقول مصر.<br>إلى رفوف العالم.</h3>
@@ -2285,7 +2300,7 @@
           <div class="footer-footprint-list">
             
             <div class="footer-footprint-card">
-              <img loading="lazy" decoding="async" src="flags/eg.png" alt="Egypt" class="footer-footprint-flag">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="flags/eg.png" alt="Egypt" class="footer-footprint-flag">
               <div class="footer-footprint-info">
                 <span class="footer-footprint-country" data-i18n="footer_hub_eg_title">المقر الرئيسي بالإسكندرية</span>
                 <span class="footer-footprint-role" data-i18n="footer_hub_eg_role">عمليات التصدير • مصر</span>
@@ -2293,7 +2308,7 @@
             </div>
 
             <div class="footer-footprint-card">
-              <img loading="lazy" decoding="async" src="flags/sa.png" alt="Saudi Arabia" class="footer-footprint-flag">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="flags/sa.png" alt="Saudi Arabia" class="footer-footprint-flag">
               <div class="footer-footprint-info">
                 <span class="footer-footprint-country" data-i18n="footer_hub_sa_title">مكتب الرياض الإقليمي</span>
                 <span class="footer-footprint-role" data-i18n="footer_hub_sa_role">العلاقات التجارية والإقليمية</span>
@@ -2301,7 +2316,7 @@
             </div>
 
             <div class="footer-footprint-card">
-              <img loading="lazy" decoding="async" src="flags/us.png" alt="United States" class="footer-footprint-flag">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="flags/us.png" alt="United States" class="footer-footprint-flag">
               <div class="footer-footprint-info">
                 <span class="footer-footprint-country" data-i18n="footer_hub_us_title">الولايات المتحدة</span>
                 <span class="footer-footprint-role" data-i18n="footer_hub_us_role">شركة مسجلة في الولايات المتحدة • LLC</span>
@@ -2309,7 +2324,7 @@
             </div>
 
             <div class="footer-footprint-card">
-              <img loading="lazy" decoding="async" src="flags/ca.png" alt="Canada" class="footer-footprint-flag">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="flags/ca.png" alt="Canada" class="footer-footprint-flag">
               <div class="footer-footprint-info">
                 <span class="footer-footprint-country" data-i18n="footer_hub_ca_title">كندا</span>
                 <span class="footer-footprint-role" data-i18n="footer_hub_ca_role">شركة فيدرالية مسجلة كندية</span>
@@ -2375,15 +2390,15 @@
           <span class="footer-bar-divider" aria-hidden="true"></span>
           <div class="footer-trust-badges-inline">
             <div class="footer-trust-badge-item" title="GLOBALG.A.P. Certified">
-              <img loading="lazy" decoding="async" src="cert_globalgap_official.webp" alt="GLOBALG.A.P." class="footer-trust-cert-icon" style="height: 38px;">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="cert_globalgap_official.webp" alt="GLOBALG.A.P." class="footer-trust-cert-icon" style="height: 38px;">
             </div>
             <span class="footer-bar-divider" aria-hidden="true" style="height: 28px; opacity: 0.7;"></span>
             <div class="footer-trust-badge-item" title="ISO 22000 Certified">
-              <img loading="lazy" decoding="async" src="cert_iso_official.webp" alt="ISO 22000" class="footer-trust-cert-icon" style="height: 38px;">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="cert_iso_official.webp" alt="ISO 22000" class="footer-trust-cert-icon" style="height: 38px;">
             </div>
             <span class="footer-bar-divider" aria-hidden="true" style="height: 28px; opacity: 0.7;"></span>
             <div class="footer-trust-badge-item" title="Egyptian Plant Quarantine Approved">
-              <img loading="lazy" decoding="async" src="cert_quarantine_official.webp" alt="Egyptian Plant Quarantine" class="footer-trust-cert-icon" style="height: 42px;">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="cert_quarantine_official.webp" alt="Egyptian Plant Quarantine" class="footer-trust-cert-icon" style="height: 42px;">
             </div>
           </div>
         </div>
@@ -2413,7 +2428,7 @@
           <!-- Developed by EVEXA Link & Logo -->
           <a href="https://www.evexa.tech/en" target="_blank" rel="noopener noreferrer" class="footer-developer-credit" title="Developed by EVEXA SOLUTIONS">
             <div class="footer-evexa-logo-wrap">
-              <img loading="lazy" decoding="async" src="evexa_logo_pure.png" alt="EVEXA Solutions" class="footer-evexa-img">
+              <img loading="lazy" fetchpriority="low" decoding="async" src="evexa_logo_pure.png" alt="EVEXA Solutions" class="footer-evexa-img">
             </div>
             <span class="footer-dev-text">
               <span class="footer-dev-label" data-i18n="footer_dev_label">تطوير وتصميم</span>
@@ -2471,7 +2486,7 @@
     </div>
   </div>
 
-  <script src="/assets/js/home-2.js?v=6d235e41"></script>
+  <script src="/assets/js/home-2.js?v=3293754f"></script>
 <script src="/assets/js/home-3.js?v=8f56ee03"></script>
 
 </body>

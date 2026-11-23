@@ -6701,3 +6701,8 @@
     background: linear-gradient(to left, #FAF7F2 0%, rgba(250, 247, 242, 0.95) 12%, rgba(250, 247, 242, 0.65) 28%, rgba(250, 247, 242, 0.15) 48%, transparent 68%);
   }
 }
+
+/* Performance: lower-section background photos wait until the hero's first frame is shown */
+html.defer-bg .produce-hero-section,
+html.defer-bg .buyer-hero-top::before,
+html.defer-bg .markets-presence-section::after { background-image: none !important; }

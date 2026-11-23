@@ -2697,41 +2697,62 @@
     }
 
     const uniqueFrameCount = Math.ceil(frameCount / frameStep);
-    for (let i = 1; i <= frameCount; i++) {
-      if (sourceIndex(i) !== i) {
-        // Reuse the already-requested neighbouring frame on small screens
-        images.push(images[sourceIndex(i) - 1]);
-        continue;
+    for (let i = 1; i <= frameCount; i++) images.push(null);
+
+    const onFrameSettled = () => {
+      loadedCount++;
+      const percent = Math.round((loadedCount / uniqueFrameCount) * 100);
+      if (loaderFill) loaderFill.style.width = `${percent}%`;
+      if (loaderPct) loaderPct.textContent = `${percent}%`;
+      if (loadedCount === 1) {
+        resizeCanvas();
+        renderFrame(1);
+        // The hero is usable as soon as its first frame shows; the rest streams in behind it
+        setTimeout(hideLoader, 250);
+        // Let the lower sections fetch their background photos a little later, off the critical path
+        setTimeout(() => document.documentElement.classList.remove('defer-bg'), 1200);
       }
-      const img = new Image();
-      img.decoding = 'async';
-      // The first frame is what visitors see on arrival: fetch it before the rest
-      if ('fetchPriority' in img) img.fetchPriority = i === 1 ? 'high' : 'low';
-      img.src = currentFrame(i);
-      const onProgress = () => {
-        loadedCount++;
-        const percent = Math.round((loadedCount / uniqueFrameCount) * 100);
-        if (loaderFill) {
-          loaderFill.style.width = `${percent}%`;
-        }
-        if (loaderPct) {
-          loaderPct.textContent = `${percent}%`;
-        }
-        if (loadedCount === 1) {
-          resizeCanvas();
-          renderFrame(1);
-        }
-        if (loadedCount >= uniqueFrameCount) {
-          setTimeout(hideLoader, 350);
-        }
-      };
-      img.onload = onProgress;
-      img.onerror = onProgress;
-      images.push(img);
+    };
+
+    function requestFrame(i) {
+      let img;
+      const early = window.__heroFirstFrame;
+      if (i === 1 && early && early.src && early.src.indexOf(currentFrame(1)) !== -1) {
+        img = early; // already requested from <head>
+      } else {
+        img = new Image();
+        img.decoding = 'async';
+        img.src = currentFrame(i);
+      }
+      images[i - 1] = img;
+      // Small screens reuse the neighbouring frame for the skipped ones
+      if (frameStep > 1 && i + 1 <= frameCount) images[i] = img;
+      return new Promise(resolve => {
+        if (img.complete && img.naturalWidth) { onFrameSettled(); resolve(); return; }
+        img.onload = () => { onFrameSettled(); resolve(); };
+        img.onerror = () => { onFrameSettled(); resolve(); };
+      });
     }
+
+    // Load order: frame 1 first, then a coarse pass across the whole scroll range,
+    // then fill in. A few at a time, so the frames on screen are never stuck behind 100 parallel downloads.
+    const loadOrder = [];
+    const seen = new Set();
+    [1, 16, 8, 4, 2, 1].forEach((step, pass) => {
+      for (let i = 1; i <= frameCount; i += Math.max(step, frameStep)) {
+        const src = sourceIndex(i);
+        if (!seen.has(src) && (pass > 0 || src === 1)) { seen.add(src); loadOrder.push(src); }
+      }
+    });
+    requestFrame(loadOrder.shift()).then(() => {
+      let cursor = 0;
+      const worker = () => cursor < loadOrder.length ? requestFrame(loadOrder[cursor++]).then(worker) : null;
+      for (let k = 0; k < 6; k++) worker();
+    });
 
     // Safety fallback: Ensure preloader always dismisses even if network stalls
     setTimeout(hideLoader, 1500);
+    setTimeout(() => document.documentElement.classList.remove('defer-bg'), 4000); // never hold them back for long
     window.addEventListener('load', () => {
       setTimeout(hideLoader, 500);
     });
