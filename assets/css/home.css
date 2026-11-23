@@ -6648,25 +6648,38 @@
 .approach-pillar-card .pillar-photo { object-position: 50% 35%; }
 .approach-pillar-card .pillar-photo[src*="home-card-sizes"] { object-position: 50% 78%; }
 
-/* Section 03 banner with a real photo: a clean rounded image beside the text
-   instead of a full-bleed faded background (a fade washes out a real photo) */
+/* Section 03 banner with a real photo: the photo sits at the right edge at full
+   height and only its inner edge and bottom melt into the cream background, so the
+   produce itself stays crisp (mirrored for Arabic). */
 @media (min-width: 1025px) {
   .buyer-hero-top::before {
-    inset: 24px clamp(24px, 4vw, 56px) 64px 48%;
-    border-radius: 22px;
-    background-size: cover;
-    background-position: center 45%;
-    box-shadow: 0 24px 50px rgba(30, 44, 26, 0.16);
+    inset: 0;
+    background-size: auto 100%;
+    background-position: right top;
   }
   [dir="rtl"] .buyer-hero-top::before {
-    inset: 24px 48% 64px clamp(24px, 4vw, 56px);
-    background-size: cover;
-    background-position: center 45%;
+    background-size: auto 100%;
+    background-position: left top;
   }
-  .buyer-hero-top::after,
-  [dir="rtl"] .buyer-hero-top::after { display: none; }
+  .buyer-hero-top::after {
+    background:
+      linear-gradient(to right, #f7f4ed 0%, #f7f4ed calc(100% - 680px),
+        rgba(247, 244, 237, 0.55) calc(100% - 560px), rgba(247, 244, 237, 0) calc(100% - 430px)),
+      linear-gradient(to bottom, rgba(247, 244, 237, 0) 60%, rgba(247, 244, 237, 0.7) 85%, #f7f4ed 100%);
+  }
+  [dir="rtl"] .buyer-hero-top::after {
+    background:
+      linear-gradient(to left, #f7f4ed 0%, #f7f4ed calc(100% - 680px),
+        rgba(247, 244, 237, 0.55) calc(100% - 560px), rgba(247, 244, 237, 0) calc(100% - 430px)),
+      linear-gradient(to bottom, rgba(247, 244, 237, 0) 60%, rgba(247, 244, 237, 0.7) 85%, #f7f4ed 100%);
+  }
 }
 @media (max-width: 1024px) {
   .buyer-hero-top::before,
   [dir="rtl"] .buyer-hero-top::before { background-position: center 40%; }
+}
+
+/* The page must never scroll sideways (programmatic scrolls can move an overflow:hidden root) */
+@supports (overflow: clip) {
+  html, body { overflow-x: clip; }
 }

@@ -3009,6 +3009,11 @@
     }
 
     window.addEventListener('scroll', updateNavScrollSpy, { passive: true });
+    // Keep the page from ever being shifted sideways (it would cut off the left edge)
+    window.addEventListener('scroll', () => {
+      if (window.scrollX !== 0) window.scrollTo(0, window.scrollY);
+      if (document.body.scrollLeft !== 0) document.body.scrollLeft = 0;
+    }, { passive: true });
     updateNavScrollSpy();
 
     // Smooth scroll for nav items with offset compensation
