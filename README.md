@@ -16,6 +16,8 @@ Static bilingual (EN / AR) marketing site plus an RFQ form, deployed on Vercel.
 | `photos/` | Real photos taken from the Export Catalogue 2026 (WebP) |
 | `downloads/reefiya-export-catalogue-2026.pdf` | Compressed catalogue for download (`/catalogue` redirects here) |
 | `assets/js/rfq-pdf.js`, `assets/js/i18n/` | PDF builder and extra RFQ languages, loaded on demand |
+| `og/` | Social share images (1200×630, EN/AR per page), built by `node scripts/build_og.js` from `scripts/og_template.html` with a local server on :8080 |
+| `scripts/seo_meta.py` | Titles, descriptions and share tags for the home and RFQ pages |
 | `api/send-rfq.js` | Vercel serverless function that emails RFQs through Resend |
 | `scripts/`, `server.py` | Local tooling only (excluded from deploys by `.vercelignore`) |
 
