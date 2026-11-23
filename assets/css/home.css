@@ -6645,8 +6645,9 @@
 }
 
 /* Real photos in the approach cards: keep labels and heads in frame on very wide cards */
-.approach-pillar-card .pillar-photo { object-position: 50% 35%; }
-.approach-pillar-card .pillar-photo[src*="home-card-sizes"] { object-position: 50% 78%; }
+.approach-pillar-card .pillar-photo { object-position: 50% 50%; }
+.approach-pillar-card .pillar-photo[src*="home-card-sizes"] { object-position: 50% 15%; }
+.approach-pillar-card .pillar-photo[src*="home-card-loading"] { object-position: 50% 32%; }
 
 /* The page must never scroll sideways (programmatic scrolls can move an overflow:hidden root) */
 @supports (overflow: clip) {
