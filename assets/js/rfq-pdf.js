@@ -454,6 +454,7 @@
       const isFrozenProg = typeof getProgramme === 'function' && getProgramme() === 'Frozen';
       const produceName = getText('sumProductVal', '') || t.valProduce || (isArabic ? 'البطاطا الحلوة المصرية' : 'Egyptian Sweet Potatoes');
       const itemsLabel = isFrozenProg ? (getText('lblSumVarieties', '') || t.lblVarieties) : t.lblVarieties;
+      const sizingLabel = isFrozenProg ? (getText('lblSumSizing', '') || t.lblSizing) : t.lblSizing;
       const varieties = isArabic ? sanitizeAr(getText('sumVarietiesVal', '—')) : getText('sumVarietiesVal', '—');
       const sizing = getText('sumSizingVal', '—');
 
@@ -588,7 +589,7 @@
                 <td style="padding:4.5px 8px; color:#172c1a; text-align:right; border-bottom:1px solid #eee8db;">${varieties}</td>
               </tr>
               <tr style="border-bottom:1px solid #eee8db;">
-                <td style="padding:4.5px 8px; font-weight:700; color:#4a4537; text-align:right; background:#f9f7f2; border-left:1px solid #eee8db; border-bottom:1px solid #eee8db;">${t.lblSizing}</td>
+                <td style="padding:4.5px 8px; font-weight:700; color:#4a4537; text-align:right; background:#f9f7f2; border-left:1px solid #eee8db; border-bottom:1px solid #eee8db;">${sizingLabel}</td>
                 <td style="padding:4.5px 8px; color:#172c1a; text-align:right; border-bottom:1px solid #eee8db;"><span style="direction:ltr; display:inline-block;">${sizing}</span></td>
               </tr>
               <tr style="border-bottom:1px solid #eee8db;">
@@ -768,7 +769,7 @@
                 <td style="padding:4.5px 8px; color:#172c1a; border-bottom:1px solid #eee8db;">${varieties}</td>
               </tr>
               <tr style="border-bottom:1px solid #eee8db;">
-                <td style="padding:4.5px 8px; font-weight:700; color:#4a4537; background:#f9f7f2; border-right:1px solid #eee8db; border-bottom:1px solid #eee8db;">${t.lblSizing}</td>
+                <td style="padding:4.5px 8px; font-weight:700; color:#4a4537; background:#f9f7f2; border-right:1px solid #eee8db; border-bottom:1px solid #eee8db;">${sizingLabel}</td>
                 <td style="padding:4.5px 8px; color:#172c1a; border-bottom:1px solid #eee8db;">${sizing}</td>
               </tr>
               <tr style="border-bottom:1px solid #eee8db;">

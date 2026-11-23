@@ -83,6 +83,7 @@
         sumProduct: 'Ürün:',
         sumVarieties: 'Çeşitler:',
         sumSizing: 'Kalibre:',
+        sumSpec: "Spesifikasyon:",
         sumPackaging: 'Paketleme:',
         sumNetWeight: 'Net Ağırlık:',
         sumPrivateLabel: 'Özel Marka:',

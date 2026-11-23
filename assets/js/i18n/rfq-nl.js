@@ -83,6 +83,7 @@
         sumProduct: 'Product:',
         sumVarieties: 'Variëteiten:',
         sumSizing: 'Kaliber:',
+        sumSpec: "Specificatie:",
         sumPackaging: 'Verpakking:',
         sumNetWeight: 'Nettogewicht:',
         sumPrivateLabel: 'Private Label:',

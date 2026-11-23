@@ -83,6 +83,7 @@
         sumProduct: 'Продукт:',
         sumVarieties: 'Сорта:',
         sumSizing: 'Калибр:',
+        sumSpec: "Спецификация:",
         sumPackaging: 'Упаковка:',
         sumNetWeight: 'Вес нетто:',
         sumPrivateLabel: 'СТМ:',

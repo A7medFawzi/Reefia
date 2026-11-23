@@ -37,6 +37,8 @@
       if (prodValEl) prodValEl.textContent = `${d.valProduce || 'Egyptian Sweet Potatoes'} · ${progTitle}`;
       const lblVarEl = document.getElementById('lblSumVarieties');
       if (lblVarEl) lblVarEl.textContent = isFrozen ? (d.sumProducts || 'Products:') : (d.sumVarieties || 'Preferred Varieties:');
+      const lblSizeEl = document.getElementById('lblSumSizing');
+      if (lblSizeEl) lblSizeEl.textContent = isFrozen ? (d.sumSpec || 'Specification:') : d.sumSizing;
       const reqSizeEl = document.getElementById('reqSizingStar');
       if (reqSizeEl) reqSizeEl.textContent = isInd ? (d.reqSizingInd || d.reqSizing) : d.reqSizing;
       renumberStep1();
@@ -381,6 +383,15 @@
       });
       const frozenGrp = document.getElementById('grpFrozen');
       if (frozenGrp) frozenGrp.hidden = !isFrozen;
+
+      // "Industrial bulk order" makes no sense for frozen products
+      const indOpt = document.getElementById('optVolIndustrial');
+      const volSel = document.getElementById('selectOrderVolume');
+      if (indOpt) { indOpt.hidden = isFrozen; indOpt.disabled = isFrozen; }
+      if (isFrozen && volSel && volSel.value === 'Industrial Bulk Order') {
+        volSel.value = '';
+        if (typeof handleVolumeChange === 'function') handleVolumeChange();
+      }
 
       if (prog === 'Industrial') {
         // Sensible defaults for factory supply; the buyer can still change them.
@@ -1535,7 +1546,7 @@
           const frozenSel = getFrozenSelection(dCur);
           arVarietiesOut = frozenSel.map(f => f.nameAr).join('، ') || '—';
           const spec = getVal('inputFrozenSpec', '');
-          arSizingOut = spec ? `مواصفات المشتري: ${spec}` : 'حسب مواصفات المشتري';
+          arSizingOut = spec || 'حسب مواصفات المشتري';
           arPackagingOut = 'عبوات مجمدة تحت علامة ريفيا (−18 °C)';
           arNetWeightOut = frozenSel.map(f => f.weight).join(' · ') || '—';
         } else if (prog === 'Industrial' && arSizing === '—') {
@@ -1583,6 +1594,7 @@
           produce: {
             product: getText('sumProductVal', ''),
             itemsLabel: getText('lblSumVarieties', ''),
+            sizingLabel: getText('lblSumSizing', ''),
             varieties: getText('sumVarietiesVal', '—'),
             sizing: getText('sumSizingVal', '—'),
             packaging: getText('sumPackagingVal', '—'),
@@ -1776,6 +1788,7 @@
         sumProduct: 'Product:',
         sumVarieties: 'Preferred Varieties:',
         sumSizing: 'Size / Caliber:',
+        sumSpec: "Specification:",
         sumPackaging: 'Packaging:',
         sumNetWeight: 'Net Weight:',
         sumPrivateLabel: 'Private Label:',
@@ -1963,6 +1976,7 @@
         sumProduct: 'المنتج:',
         sumVarieties: 'الأصناف المفضلة:',
         sumSizing: 'الحجم / الكاليبر:',
+        sumSpec: "المواصفات:",
         sumPackaging: 'التعبئة:',
         sumNetWeight: 'الوزن الصافي:',
         sumPrivateLabel: 'العلامة الخاصة:',
