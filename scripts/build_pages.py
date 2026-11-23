@@ -169,8 +169,7 @@ PAGES = {
     "egyptian": {
         "path": "/varieties/egyptian", "kind": "fresh", "card": "/produce-egyptian-tight.webp",
         "hero": "/photos/egyptian-field.webp", "photo": "/photos/egyptian-carton.webp",
-        # Only three real Egyptian-variety photos exist (field, two cartons), so this page has no gallery row.
-        "gallery": [],
+        "gallery": ["/photos/egyptian-field-2.webp", "/photos/egyptian-carton-2.webp", "/photos/egyptian-carton-3.webp"],
         "en": {
             "name": "Egyptian varieties", "eyebrow": "Seasonal selection",
             "title": "Egyptian Local Sweet Potato Varieties for Export | REEFIYA",
@@ -179,7 +178,7 @@ PAGES = {
             "lead": "Traditional local varieties, sourced according to season, availability and buyer requirements.",
             "profile": "Robust local character · high sugar", "use": "Fresh market · seasonal programmes",
             "availability": "Seasonal · confirm at enquiry", "alt": "Egyptian local sweet potatoes in the field",
-            "gallery_alts": ["Egyptian variety in an export carton", "Egyptian variety packed for export", "Harvested sweet potatoes in the field"],
+            "gallery_alts": ["Egyptian variety freshly harvested in the field", "Egyptian variety packed for export", "Egyptian variety in an export carton"],
         },
         "ar": {
             "name": "الأصناف المصرية", "eyebrow": "اختيار موسمي",
@@ -189,7 +188,7 @@ PAGES = {
             "lead": "أصناف محلية تقليدية يتم توريدها حسب الموسم والمتاح ومتطلبات المشتري.",
             "profile": "طابع محلي قوي · سكريات عالية", "use": "السوق الطازج · البرامج الموسمية",
             "availability": "موسمي · يتم التأكيد عند الاستفسار", "alt": "بطاطا حلوة مصرية بلدي في الأرض",
-            "gallery_alts": ["صنف مصري في كرتونة تصدير", "صنف مصري معبأ للتصدير", "بطاطا حلوة بعد الحصاد في الأرض"],
+            "gallery_alts": ["صنف مصري بعد الحصاد مباشرة في الحقل", "صنف مصري معبأ للتصدير", "صنف مصري في كرتونة تصدير"],
         },
     },
     "industrial": {
