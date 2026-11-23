@@ -6652,3 +6652,24 @@
 @supports (overflow: clip) {
   html, body { overflow-x: clip; }
 }
+
+/* Section 03 banner: no cream wash on the outer edge (the photo runs to the edge),
+   and the inner fade follows the photo's position on any screen width */
+@media (min-width: 1025px) {
+  .buyer-hero-top::after {
+    background:
+      linear-gradient(to right, #f7f4ed 0, #f7f4ed calc(100% - 745px),
+        rgba(247, 244, 237, 0.85) calc(100% - 665px), rgba(247, 244, 237, 0.45) calc(100% - 565px),
+        rgba(247, 244, 237, 0) calc(100% - 430px)),
+      linear-gradient(to top, #f7f4ed 0%, rgba(247, 244, 237, 0.96) 35px, rgba(247, 244, 237, 0.72) 70px,
+        rgba(247, 244, 237, 0.3) 105px, transparent 135px);
+  }
+  [dir="rtl"] .buyer-hero-top::after {
+    background:
+      linear-gradient(to left, #f7f4ed 0, #f7f4ed calc(100% - 745px),
+        rgba(247, 244, 237, 0.85) calc(100% - 665px), rgba(247, 244, 237, 0.45) calc(100% - 565px),
+        rgba(247, 244, 237, 0) calc(100% - 430px)),
+      linear-gradient(to top, #f7f4ed 0%, rgba(247, 244, 237, 0.96) 35px, rgba(247, 244, 237, 0.72) 70px,
+        rgba(247, 244, 237, 0.3) 105px, transparent 135px);
+  }
+}
