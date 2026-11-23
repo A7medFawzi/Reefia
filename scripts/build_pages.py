@@ -122,7 +122,7 @@ PAGES = {
         "gallery": ["/photos/beauregard-tray-pack.webp", "/photos/beauregard-overview.webp", "/photos/harvest-field.webp"],
         "en": {
             "name": "Beauregard", "eyebrow": "Export variety",
-            "title": "Beauregard Sweet Potatoes from Egypt | Export Supplier — REEFIYA",
+            "title": "Beauregard Sweet Potatoes from Egypt | Export Supplier | Reefiya",
             "desc": "Egyptian Beauregard sweet potatoes for export: rich orange flesh, high yield, graded S to XL / Jumbo, packed in cartons, crates, mesh bags or bulk bins and shipped in 40 ft reefers.",
             "h1": "Beauregard sweet potatoes, <em>graded and packed in Egypt.</em>",
             "lead": "A widely traded commercial variety, available in multiple grades, sizes and packing specifications.",
@@ -147,7 +147,7 @@ PAGES = {
         "gallery": ["/photos/bellevue-cartons-pair.webp", "/photos/bellevue-crate.webp", "/photos/harvest-field.webp"],
         "en": {
             "name": "Bellevue", "eyebrow": "Fresh market",
-            "title": "Bellevue Sweet Potatoes from Egypt | Export Supplier — REEFIYA",
+            "title": "Bellevue Sweet Potatoes from Egypt | Export Supplier | Reefiya",
             "desc": "Egyptian Bellevue sweet potatoes for retail chains, wholesale terminals and foodservice: smooth, uniform skin and a sweet taste. Graded S to XL / Jumbo, private label available.",
             "h1": "Bellevue sweet potatoes, <em>made for the fresh market.</em>",
             "lead": "Selected Egyptian sweet potatoes for retail chains, wholesale terminals and foodservice.",
@@ -172,7 +172,7 @@ PAGES = {
         "gallery": ["/photos/egyptian-field-2.webp", "/photos/egyptian-carton-2.webp", "/photos/egyptian-carton-3.webp"],
         "en": {
             "name": "Egyptian varieties", "eyebrow": "Seasonal selection",
-            "title": "Egyptian Local Sweet Potato Varieties for Export | REEFIYA",
+            "title": "Egyptian Local Sweet Potato Varieties for Export | Reefiya",
             "desc": "Traditional Egyptian sweet potato varieties with a robust local character and high sugar, sourced by season and availability for fresh-market and seasonal programmes.",
             "h1": "Egyptian local varieties, <em>sourced by season.</em>",
             "lead": "Traditional local varieties, sourced according to season, availability and buyer requirements.",
@@ -197,7 +197,7 @@ PAGES = {
         "gallery": ["/photos/harvest-field.webp", "/photos/egyptian-field.webp", "/photos/loading-empty-cartons.webp"],
         "en": {
             "name": "Industrial supply", "eyebrow": "Industrial programme",
-            "title": "Bulk Sweet Potatoes for Food Factories | Industrial Supply — REEFIYA",
+            "title": "Bulk Sweet Potatoes for Food Factories | Industrial Supply | Reefiya",
             "desc": "Cost-effective, high-grade fresh whole sweet potatoes supplied in strapped bulk pallet bins to food factories and production lines. Size and grade agreed per buyer.",
             "h1": "Raw supply for <em>industrial lines.</em>",
             "lead": "Cost-effective, high-grade fresh sweet potatoes supplied in bulk to food factories and production lines.",
@@ -210,7 +210,7 @@ PAGES = {
         },
         "ar": {
             "name": "التوريد الصناعي", "eyebrow": "البرنامج الصناعي",
-            "title": "بطاطا حلوة بالجملة لمصانع الأغذية | التوريد الصناعي — ريفيا",
+            "title": "بطاطا حلوة بالجملة لمصانع الأغذية | التوريد الصناعي | ريفيا",
             "desc": "بطاطا حلوة طازجة كاملة بجودة عالية وتكلفة مناسبة، تُورّد في صناديق بالتات مربوطة لمصانع الأغذية وخطوط الإنتاج. الحجم والدرجة حسب اتفاق المشتري.",
             "h1": "توريد خام <em>لخطوط الإنتاج.</em>",
             "lead": "بطاطا حلوة طازجة بجودة عالية وتكلفة مناسبة، تُورّد بالجملة لمصانع الأغذية وخطوط الإنتاج.",
@@ -228,7 +228,7 @@ PAGES = {
         "gallery": ["/photos/frozen-fries.webp", "/photos/frozen-cubes-close.webp", "/photos/frozen-cubes.webp"],
         "en": {
             "name": "Frozen products", "eyebrow": "Frozen programme",
-            "title": "Frozen Sweet Potato Cubes & Fries from Egypt | REEFIYA",
+            "title": "Frozen Sweet Potato Cubes & Fries from Egypt | Reefiya",
             "desc": "Frozen sweet potato cubes (1 kg pack) and battered 5/16″ sweet potato fries (1.13 kg pack) packed under the Reefiya label. Keep frozen at −18 °C. Specifications agreed per buyer.",
             "h1": "Frozen sweet potato <em>cubes and fries.</em>",
             "lead": "Frozen sweet potato cubes and fries, packed under the Reefiya label. Specifications and pack sizes agreed per buyer.",
@@ -464,10 +464,17 @@ def page(lang, key):
   <meta property="og:url" content="{canonical}">
   <meta property="og:title" content="{esc(c['title'])}">
   <meta property="og:description" content="{esc(c['desc'])}">
-  <meta property="og:image" content="{SITE}{p['hero']}">
+  <meta property="og:image" content="{SITE}/og/{lang}-{key}.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{esc(c['name'])}: Reefiya">
   <meta property="og:locale" content="{t['locale']}">
+  <meta property="og:locale:alternate" content="{T[other]['locale']}">
   <meta property="og:site_name" content="Reefiya">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{esc(c['title'])}">
+  <meta name="twitter:description" content="{esc(c['desc'])}">
+  <meta name="twitter:image" content="{SITE}/og/{lang}-{key}.jpg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -585,7 +592,7 @@ def page(lang, key):
 # ----------------------------------------------------------------------------
 PRIVACY = {
     "en": {
-        "title": "Privacy Policy | REEFIYA",
+        "title": "Privacy Policy | Reefiya",
         "desc": "How REEFIYA collects, uses and protects the information you share through reefiya.com and the RFQ form.",
         "h1": "Privacy policy",
         "lead": "How we handle the information you share with us through reefiya.com.",
@@ -625,7 +632,7 @@ PRIVACY = {
 }
 
 NOT_FOUND = {
-    "en": {"title": "Page not found | REEFIYA", "h1": "This page isn't here.",
+    "en": {"title": "Page not found | Reefiya", "h1": "This page isn't here.",
            "lead": "The link may be old or mistyped. These pages will get you where you need to go:",
            "links": [("Home", "/"), ("Bellevue", "/varieties/bellevue"), ("Beauregard", "/varieties/beauregard"),
                      ("Egyptian varieties", "/varieties/egyptian"), ("Industrial supply", "/products/industrial"),
@@ -656,6 +663,16 @@ def simple_page(lang, path, title, desc, h1, lead, body, noindex=False, alt_path
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}">{robots}{alt}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{esc(title)}">
+  <meta property="og:description" content="{esc(desc)}">
+  <meta property="og:image" content="{SITE}/og/{lang}-home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="{t['locale']}">
+  <meta property="og:site_name" content="Reefiya">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{SITE}/og/{lang}-home.jpg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
