@@ -6646,8 +6646,16 @@
 
 /* Real photos in the approach cards: keep labels and heads in frame on very wide cards */
 .approach-pillar-card .pillar-photo { object-position: 50% 50%; }
-.approach-pillar-card .pillar-photo[src*="home-card-sizes"] { object-position: 50% 15%; }
-.approach-pillar-card .pillar-photo[src*="home-card-loading"] { object-position: 50% 32%; }
+.approach-pillar-card .pillar-photo[src*="calibration-sizes"] { object-position: 50% 0%; }
+
+/* Photo area keeps a photo shape (3:2) that grows with the card, instead of a fixed
+   195px strip that turned wide cards into thin, heavily cropped bands */
+.approach-pillar-card .pillar-media-side {
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 3 / 2;
+  max-height: 340px;
+}
 
 /* The page must never scroll sideways (programmatic scrolls can move an overflow:hidden root) */
 @supports (overflow: clip) {
