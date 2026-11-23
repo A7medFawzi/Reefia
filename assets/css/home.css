@@ -6706,3 +6706,27 @@
 html.defer-bg .produce-hero-section,
 html.defer-bg .buyer-hero-top::before,
 html.defer-bg .markets-presence-section::after { background-image: none !important; }
+
+/* Footer bottom bar: wrap the certificates and the social / credit group on mid widths
+   instead of pushing the social icons past the screen edge (seen at 1024px) */
+@media (min-width: 861px) and (max-width: 1320px) {
+  .footer-trust-documentation-bar { flex-wrap: wrap; row-gap: 18px; }
+  .footer-trust-documentation-bar .footer-social-developer-group { flex: 1 1 100%; justify-content: flex-start; }
+}
+
+/* Arabic: never set body text below a readable size (Arabic needs more than Latin) */
+[dir="rtl"] .presence-role-desc { font-size: max(0.72rem, 11.5px) !important; }
+[dir="rtl"] .presence-country-name { font-size: max(0.78rem, 12px) !important; }
+[dir="rtl"] .markets-card-sub,
+[dir="rtl"] .markets-card-title,
+[dir="rtl"] .card-title { font-size: max(0.75rem, 12px) !important; }
+
+/* Variety carousel step numbers: bigger tap area without changing their look */
+.timeline-step-btn { position: relative; }
+.timeline-step-btn::after { content: ""; position: absolute; inset: -12px -8px; }
+[dir="rtl"] .stat-unit,
+[dir="rtl"] .stat-pill-label,
+[dir="rtl"] .footer-footprint-role,
+[dir="rtl"] .footer-dev-label,
+[dir="rtl"] .card-desc,
+[dir="rtl"] .card-desc strong { font-size: max(0.72rem, 11.5px) !important; }
