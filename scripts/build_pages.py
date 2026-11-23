@@ -169,7 +169,8 @@ PAGES = {
     "egyptian": {
         "path": "/varieties/egyptian", "kind": "fresh", "card": "/produce-egyptian-tight.webp",
         "hero": "/photos/egyptian-field.webp", "photo": "/photos/egyptian-carton.webp",
-        "gallery": ["/photos/egyptian-carton-2.webp", "/photos/egyptian-overview.webp", "/photos/harvest-field.webp"],
+        # Only three real Egyptian-variety photos exist (field, two cartons), so this page has no gallery row.
+        "gallery": [],
         "en": {
             "name": "Egyptian varieties", "eyebrow": "Seasonal selection",
             "title": "Egyptian Local Sweet Potato Varieties for Export | REEFIYA",
@@ -328,11 +329,8 @@ def page(lang, key):
     wa = f"https://wa.me/{WA}?text=" + urllib.parse.quote(wa_text)
     plain_h1 = c["h1"].replace("<em>", "").replace("</em>", "").rstrip(".")
 
-    # Primary CTA: the RFQ form covers fresh / industrial supply; frozen goes to email.
-    if kind == "frozen":
-        primary = f'<a class="btn btn-primary" href="mailto:exports@reefiya.com?subject={urllib.parse.quote(c["mail_subject"])}">{esc(t["cta_email"])}</a>'
-    else:
-        primary = f'<a class="btn btn-primary" href="{t["rfq"]}">{esc(t["cta_quote"])}</a>'
+    # Calls to action on every product page: the RFQ form and WhatsApp.
+    primary = f'<a class="btn btn-primary" href="{t["rfq"]}">{esc(t["cta_quote"])}</a>'
 
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Product", "@id": canonical + "#product", "name": plain_h1, "description": c["desc"],
@@ -388,7 +386,7 @@ def page(lang, key):
 
     # ---- gallery
     gal = "\n".join(fig(src, alt, 800, 600) for src, alt in zip(p["gallery"], c["gallery_alts"]))
-    body.append(f"""
+    if gal: body.append(f"""
     <div class="v-gallery-wrap"><div class="wrap"><div class="v-gallery">
 {gal}
     </div></div></div>""")
@@ -536,7 +534,7 @@ def page(lang, key):
         </div>
         <div class="v-actions">
           {primary}
-          <a class="btn btn-ghost" href="{CATALOGUE}" target="_blank" rel="noopener">{esc(t['cta_catalogue'])}</a>
+          <a class="btn btn-whatsapp" href="{wa}" target="_blank" rel="noopener">{esc(t['cta_wa'])}</a>
         </div>
       </div>
     </section>
