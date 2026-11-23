@@ -33,8 +33,6 @@
         sumFrozenPacks: "Dondurulmuş paketler · Reefiya markası",
         reqSizingInd: "İsteğe bağlı (boyut ve kalite alıcıyla belirlenir)",
         toastFrozen: "Lütfen en az bir dondurulmuş ürün seçin.",
-        valProduceSub: 'Özenle kalibre edilmiş ve kürlenmiş birinci sınıf ihracat patatesleri.',
-        lockedStatus: 'Sabit Ürün',
         lblVariety: 'Tercih Edilen Çeşitler',
         reqVariety: '* Zorunlu (Bir veya birden fazla seçin)',
         vNameBellevue: 'Bellevue',

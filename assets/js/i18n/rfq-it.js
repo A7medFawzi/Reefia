@@ -33,8 +33,6 @@
         sumFrozenPacks: "Confezioni surgelate · marchio Reefiya",
         reqSizingInd: "Facoltativo (calibro e qualità concordati)",
         toastFrozen: "Seleziona almeno un prodotto surgelato.",
-        valProduceSub: 'Patate dolci egiziane di qualità superiore, calibrate ed esportate con cura.',
-        lockedStatus: 'Prodotto Fisso',
         lblVariety: 'Varietà Preferite',
         reqVariety: '* Richiesto (Seleziona una o più)',
         vNameBellevue: 'Bellevue',

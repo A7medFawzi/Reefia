@@ -33,8 +33,6 @@
         sumFrozenPacks: "Diepvriesverpakkingen · Reefiya-label",
         reqSizingInd: "Optioneel (maat en kwaliteit in overleg)",
         toastFrozen: "Kies minstens één diepvriesproduct.",
-        valProduceSub: 'Premium geharde en gekalibreerde zoete aardappelen direct van Egyptische teelt.',
-        lockedStatus: 'Vast Product',
         lblVariety: 'Gewenste Variëteiten',
         reqVariety: '* Vereist (Selecteer een of meer)',
         vNameBellevue: 'Bellevue',

@@ -1738,8 +1738,6 @@
         sumFrozenPacks: "Frozen packs · Reefiya label",
         reqSizingInd: "Optional (size and grade agreed per buyer)",
         toastFrozen: "Please select at least one frozen product.",
-        valProduceSub: 'Premium Egyptian sweet potatoes, available in a range of varieties and sizes.',
-        lockedStatus: 'Fixed Product',
         lblVariety: 'Preferred Varieties',
         reqVariety: '* Required (Select one or more varieties)',
         vNameBellevue: 'Bellevue',
@@ -1926,8 +1924,6 @@
         sumFrozenPacks: "عبوات مجمدة · علامة ريفيا",
         reqSizingInd: "اختياري (الحجم والدرجة حسب الاتفاق مع المشتري)",
         toastFrozen: "يرجى اختيار منتج مجمد واحد على الأقل.",
-        valProduceSub: 'بطاطا حلوة مصرية فاخرة، متوفرة بتشكيلة متنوعة من الأصناف والأحجام.',
-        lockedStatus: 'منتج محدد',
         lblVariety: 'الأصناف المفضلة',
         reqVariety: '* إجباري (اختر صنفاً أو أكثر)',
         vNameBellevue: 'بيلفيو (Bellevue)',
@@ -2140,9 +2136,6 @@
       setSafeText('titleStep3', d.titleStep3);
 
       setSafeText('lblProduceHeading', d.lblProduce);
-      setSafeText('valProduceName', d.valProduce);
-      setSafeText('valProduceSub', d.valProduceSub);
-      setSafeText('txtLockedStatus', d.lockedStatus);
       ['progFreshTitle', 'progFreshDesc', 'progIndTitle', 'progIndDesc', 'progFrozenTitle', 'progFrozenDesc',
        'frzCubesTitle', 'frzCubesDesc', 'frzFriesTitle', 'frzFriesDesc', 'lblFrozenSpec'].forEach(k => setSafeText(k, d[k]));
       setSafeText('lblFrozenHeading', d.lblFrozen);

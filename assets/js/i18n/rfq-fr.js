@@ -33,8 +33,6 @@
         sumFrozenPacks: "Sachets surgelés · marque Reefiya",
         reqSizingInd: "Facultatif (calibre et qualité selon accord)",
         toastFrozen: "Veuillez choisir au moins un produit surgelé.",
-        valProduceSub: 'Patates douces calibrées et soignées de qualité supérieure, récoltées en Égypte.',
-        lockedStatus: 'Produit Fixe',
         lblVariety: 'Variétés Souhaitées',
         reqVariety: '* Requis (Sélectionnez une ou plusieurs)',
         vNameBellevue: 'Bellevue',

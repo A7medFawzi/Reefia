@@ -33,8 +33,6 @@
         sumFrozenPacks: "Tiefkühlpackungen · Marke Reefiya",
         reqSizingInd: "Optional (Größe und Sortierung nach Absprache)",
         toastFrozen: "Bitte wählen Sie mindestens ein Tiefkühlprodukt.",
-        valProduceSub: 'Premium-Süßkartoffeln in Exportqualität, kalibriert und gehärtet.',
-        lockedStatus: 'Festes Produkt',
         lblVariety: 'Bevorzugte Sorten',
         reqVariety: '* Erforderlich (Eine oder mehrere auswählen)',
         vNameBellevue: 'Bellevue',

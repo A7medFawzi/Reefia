@@ -33,8 +33,6 @@
         sumFrozenPacks: "Envases congelados · marca Reefiya",
         reqSizingInd: "Opcional (calibre y calidad según acuerdo)",
         toastFrozen: "Seleccione al menos un producto congelado.",
-        valProduceSub: 'Batatas egipcias de primera calidad, curadas y calibradas con los mejores estándares.',
-        lockedStatus: 'Producto Fijo',
         lblVariety: 'Variedades Preferidas',
         reqVariety: '* Requerido (Seleccione una o más)',
         vNameBellevue: 'Bellevue',
