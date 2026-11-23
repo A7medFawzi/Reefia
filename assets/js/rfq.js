@@ -1275,10 +1275,21 @@
 
       const generatedRef = `RFQ-${yy}${mm}${dd}-${countryCode}-${randSuffix}`;
 
-      setTimeout(() => {
+      // Remove any earlier "could not deliver" box before trying again
+      const oldFallback = document.getElementById('rfqDeliveryFallback');
+      if (oldFallback) oldFallback.remove();
+
+      // Send first, and only confirm to the buyer once the RFQ has really been delivered
+      const delivery = (typeof triggerRfqEmailDispatch === 'function')
+        ? Promise.resolve(triggerRfqEmailDispatch(generatedRef)).catch(() => false)
+        : Promise.resolve(false);
+
+      delivery.then(delivered => {
         isSubmittingRfq = false;
         submitBtn.disabled = false;
         submitBtn.innerHTML = origBtnContent;
+        // On failure the contact box (WhatsApp / email) is already shown; the form stays filled so the buyer can retry
+        if (!delivered) return;
 
         // Ensure all modal texts are strictly rendered in current selected language
         if (typeof applyLang === 'function') {
@@ -1294,12 +1305,7 @@
 
         const confModal = document.getElementById('confirmationModal');
         if (confModal) confModal.classList.add('show');
-
-        // Trigger Resend Email Notification (if configured)
-        if (typeof triggerRfqEmailDispatch === 'function') {
-          triggerRfqEmailDispatch(generatedRef);
-        }
-      }, 1200);
+      });
     }
 
     /* ==========================================================================
@@ -1674,30 +1680,33 @@
           return data;
         }));
 
+        // Resolves true once the RFQ is delivered, false (after showing the contact box) if it is not
         const dispatchToServer = (finalPayload) => {
-          postRfq(finalPayload).catch(err => {
+          return postRfq(finalPayload).catch(err => {
             console.warn('[RFQ Dispatcher] First attempt failed, retrying without PDF:', err);
             // Retry once without the attachment (covers oversized payloads and transient errors)
             return new Promise(res => setTimeout(res, 1500))
               .then(() => postRfq(Object.assign({}, finalPayload, { pdfBase64: '' })));
-          }).catch(err => {
+          }).then(() => true).catch(err => {
             console.error('[RFQ Dispatcher] RFQ delivery failed:', err);
             showDeliveryFallback(err);
+            return false;
           });
         };
 
         // Render the identical high-fidelity PDF (loading the PDF module on demand).
         // Never let a slow or stuck PDF render block the RFQ itself: give up on the attachment after 15 s.
         const pdfTimeout = new Promise((_, reject) => setTimeout(() => reject(new Error('PDF render timed out')), 15000));
-        Promise.race([ensurePdfModule().then(() => generateRfqPdfDocument(rfqRef)), pdfTimeout]).then(res => {
+        return Promise.race([ensurePdfModule().then(() => generateRfqPdfDocument(rfqRef)), pdfTimeout]).then(res => {
           payload.pdfBase64 = res.base64; // Guaranteed clean pure Base64
-          dispatchToServer(payload);
-        }).catch(err => {
+          return dispatchToServer(payload);
+        }, err => {
           console.error('[RFQ Dispatcher] PDF render error, sending RFQ payload without attachment:', err);
-          dispatchToServer(payload);
+          return dispatchToServer(payload);
         });
       } catch (e) {
         console.error('[RFQ Dispatcher] Error preparing payload:', e);
+        return Promise.resolve(false);
       }
     }
     window.triggerRfqEmailDispatch = triggerRfqEmailDispatch;
