@@ -2647,9 +2647,21 @@
 
     window.addEventListener('resize', resizeCanvas);
 
+    const isReady = im => im && im.complete && im.naturalWidth > 0;
+
+    // Draws the requested frame, or the nearest frame that has loaded so the hero is never blank.
+    // Returns true only when the exact frame was drawn, so callers retry until it is.
     function renderFrame(index) {
-      const img = images[index - 1];
-      if (!img || !img.complete || img.naturalWidth === 0) return;
+      let img = images[index - 1];
+      let exact = isReady(img);
+      if (!exact) {
+        img = null;
+        for (let d = 1; d < frameCount && !img; d++) {
+          if (isReady(images[index - 1 - d])) img = images[index - 1 - d];
+          else if (isReady(images[index - 1 + d])) img = images[index - 1 + d];
+        }
+        if (!img) return false;
+      }
 
       const cWidth = canvas.width;
       const cHeight = canvas.height;
@@ -2675,6 +2687,7 @@
         img.width * ratio,
         img.height * ratio
       );
+      return exact;
     }
 
     function hideLoader() {
@@ -2692,6 +2705,8 @@
       }
       const img = new Image();
       img.decoding = 'async';
+      // The first frame is what visitors see on arrival: fetch it before the rest
+      if ('fetchPriority' in img) img.fetchPriority = i === 1 ? 'high' : 'low';
       img.src = currentFrame(i);
       const onProgress = () => {
         loadedCount++;
@@ -2872,9 +2887,11 @@
 
       const currentScrollY = window.scrollY || window.pageYOffset;
       if (rounded !== lastDrawnIndex || currentScrollY !== lastScrollY) {
-        renderFrame(rounded);
+        // Only remember the frame as drawn once its image has really loaded,
+        // otherwise keep retrying on the next tick (fixes a blank hero on first load)
+        const drawn = renderFrame(rounded);
         updateOverlayStates(progress, rounded);
-        lastDrawnIndex = rounded;
+        lastDrawnIndex = drawn ? rounded : -1;
         lastScrollY = currentScrollY;
       }
 
