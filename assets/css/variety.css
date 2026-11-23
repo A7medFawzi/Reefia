@@ -234,3 +234,21 @@ a { color: inherit; }
   html { scroll-behavior: auto; }
   .btn, .v-others a.v-card { transition: none; }
 }
+
+/* Simple pages (privacy policy, 404) */
+.v-hero-simple { padding: 56px 0 64px; }
+.v-hero-simple .wrap { grid-template-columns: 1fr; }
+.v-prose .wrap { max-width: 820px; }
+.v-prose h2 { font-size: clamp(1.25rem, 2.2vw, 1.5rem); margin: 34px 0 10px; }
+.v-prose p, .v-prose li { color: var(--ink); line-height: 1.75; }
+.v-prose p + p { margin-top: 10px; }
+.v-prose ul { margin: 10px 0 0; padding-inline-start: 22px; display: grid; gap: 6px; }
+.v-prose a { color: var(--green-deep); font-weight: 700; }
+.v-updated { color: var(--muted); font-size: 0.9rem; }
+.v-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.v-chip {
+  display: inline-block; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--card); color: var(--green-deep); font-weight: 700; text-decoration: none;
+}
+.v-chip:hover, .v-chip:focus-visible { border-color: var(--green-deep); }
+.v-footer a { color: inherit; }

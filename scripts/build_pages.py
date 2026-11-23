@@ -26,7 +26,7 @@ T = {
         "dir": "ltr", "locale": "en_US",
         "fonts": "family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Plus+Jakarta+Sans:wght@400;600;700;800",
         "home": "/", "rfq": "/rfq", "prefix": "",
-        "nav_home": "Home", "nav_products": "Products", "nav_catalogue": "Catalogue (PDF)", "nav_quote": "Request a quote",
+        "nav_home": "Home", "nav_privacy": "Privacy policy", "nav_products": "Products", "nav_catalogue": "Catalogue (PDF)", "nav_quote": "Request a quote",
         "lang_switch": "العربية", "crumb_products": "Products",
         "cta_quote": "Request a quotation ↗", "cta_wa": "WhatsApp the export desk", "cta_catalogue": "Download the catalogue (PDF)",
         "cta_email": "Email the export desk",
@@ -70,7 +70,7 @@ T = {
         "dir": "rtl", "locale": "ar_EG",
         "fonts": "family=Alexandria:wght@600;700;800&family=Cairo:wght@400;600;700;800",
         "home": "/ar/", "rfq": "/ar/rfq", "prefix": "/ar",
-        "nav_home": "الرئيسية", "nav_products": "المنتجات", "nav_catalogue": "الكتالوج (PDF)", "nav_quote": "اطلب عرض سعر",
+        "nav_home": "الرئيسية", "nav_privacy": "سياسة الخصوصية", "nav_products": "المنتجات", "nav_catalogue": "الكتالوج (PDF)", "nav_quote": "اطلب عرض سعر",
         "lang_switch": "English", "crumb_products": "المنتجات",
         "cta_quote": "اطلب عرض سعر ↖", "cta_wa": "تواصل مع مكتب التصدير واتساب", "cta_catalogue": "حمّل الكتالوج (PDF)",
         "cta_email": "راسل مكتب التصدير",
@@ -542,7 +542,7 @@ def page(lang, key):
 
   <footer class="v-footer">
     <div class="wrap">
-      <div>© <span id="y">2026</span> {esc(t['footer'])} · <a href="{t['home']}">reefiya.com</a> · <a href="mailto:exports@reefiya.com">exports@reefiya.com</a></div>
+      <div>© <span id="y">2026</span> {esc(t['footer'])} · <a href="{t['home']}">reefiya.com</a> · <a href="mailto:exports@reefiya.com">exports@reefiya.com</a> · <a href="{t['prefix']}/privacy">{esc(t['nav_privacy'])}</a></div>
       <div class="v-certs">
         <img src="/cert_globalgap_official.webp" alt="GLOBALG.A.P." loading="lazy" width="130" height="34">
         <img src="/cert_iso_official.webp" alt="ISO 22000" loading="lazy" width="100" height="30">
@@ -579,6 +579,172 @@ def page(lang, key):
 """
 
 
+
+# ----------------------------------------------------------------------------
+# Simple pages: privacy policy and 404 (same header / footer as product pages)
+# ----------------------------------------------------------------------------
+PRIVACY = {
+    "en": {
+        "title": "Privacy Policy | REEFIYA",
+        "desc": "How REEFIYA collects, uses and protects the information you share through reefiya.com and the RFQ form.",
+        "h1": "Privacy policy",
+        "lead": "How we handle the information you share with us through reefiya.com.",
+        "updated": "Last updated: November 2026",
+        "sections": [
+            ("Who we are", "<p>This website is operated by <strong>Reefiya LLC</strong> (REEFIYA), an exporter of Egyptian sweet potatoes, 144 Port Said St, El Ibrahimaia Bahry, Alexandria, Egypt. For any privacy question, contact <a href=\"mailto:exports@reefiya.com\">exports@reefiya.com</a>.</p>"),
+            ("What we collect", "<p>When you send a request for quotation (RFQ), we receive the details you enter:</p><ul><li>Company name, website and country of registration</li><li>Contact person, job title, business email and phone number</li><li>Your product, packaging, volume and shipping requirements, and any notes you add</li></ul><p>We do not ask for payment details or sensitive personal data. If you contact us by WhatsApp or email, we receive what you send there.</p>"),
+            ("How we use it", "<p>We use your information only to review your enquiry, prepare a commercial reply and quotation, and communicate with your company about it. We send you a confirmation email with a PDF copy of your request. We do not sell your information or use it for third-party marketing.</p>"),
+            ("Legal basis", "<p>We process your details because you asked us for a quotation (steps before a possible contract) and because we have a legitimate interest in answering business enquiries and running our export business.</p>"),
+            ("Service providers", "<p>We use a small number of providers to run this website and deliver emails:</p><ul><li><strong>Vercel</strong>: website hosting and privacy-friendly visit statistics</li><li><strong>Resend</strong>: delivery of RFQ emails to our export team and to you</li><li><strong>Google Fonts</strong>: web fonts (your browser requests them from Google)</li><li><strong>WhatsApp</strong>: only if you choose to contact us there</li></ul><p>These providers may process data outside your country. They act on our instructions and protect data under their own security terms.</p>"),
+            ("Cookies and statistics", "<p>We do not use advertising or tracking cookies. Visit statistics come from Vercel Web Analytics, which counts page views without cookies and without identifying you. Your browser stores your language choice and a draft RFQ reference number locally on your device; you can clear them at any time in your browser settings.</p>"),
+            ("How long we keep it", "<p>We keep RFQ details for as long as needed to handle your enquiry and any business relationship that follows, and as required by law for commercial records. You can ask us to delete them earlier.</p>"),
+            ("Your rights", "<p>You can ask to see, correct or delete the personal information we hold about you, or object to how we use it. Email <a href=\"mailto:exports@reefiya.com\">exports@reefiya.com</a> and we will reply within a reasonable time. If you are in the EU or UK, you may also complain to your local data protection authority.</p>"),
+            ("Security", "<p>Access to RFQ information is limited to our export team and the service providers above. Our form is protected against spam and abuse, and data is sent over encrypted connections (HTTPS).</p>"),
+            ("Changes", "<p>We may update this policy. The date at the top shows when it last changed.</p>"),
+        ],
+    },
+    "ar": {
+        "title": "سياسة الخصوصية | ريفيا",
+        "desc": "كيف تجمع ريفيا المعلومات التي تشاركها عبر reefiya.com ونموذج طلب عرض السعر وتستخدمها وتحميها.",
+        "h1": "سياسة الخصوصية",
+        "lead": "كيف نتعامل مع المعلومات التي تشاركها معنا عبر reefiya.com.",
+        "updated": "آخر تحديث: نوفمبر 2026",
+        "sections": [
+            ("من نحن", "<p>يدير هذا الموقع <strong>شركة ريفيا (Reefiya LLC)</strong>، مُصدّر البطاطا الحلوة المصرية، 144 شارع بورسعيد، الإبراهيمية بحري، الإسكندرية، مصر. لأي استفسار عن الخصوصية تواصل معنا على <a href=\"mailto:exports@reefiya.com\">exports@reefiya.com</a>.</p>"),
+            ("ما الذي نجمعه", "<p>عند إرسال طلب عرض سعر (RFQ) نستلم البيانات التي تكتبها:</p><ul><li>اسم الشركة وموقعها الإلكتروني ودولة التسجيل</li><li>اسم المسؤول ومسماه الوظيفي والبريد الإلكتروني ورقم الهاتف</li><li>متطلباتك من المنتج والتعبئة والكمية والشحن، وأي ملاحظات تضيفها</li></ul><p>لا نطلب بيانات دفع ولا بيانات شخصية حساسة. وإذا تواصلت معنا عبر واتساب أو البريد الإلكتروني نستلم ما ترسله هناك.</p>"),
+            ("كيف نستخدمها", "<p>نستخدم بياناتك فقط لمراجعة طلبك وإعداد الرد التجاري وعرض السعر والتواصل مع شركتك بخصوصه. ونرسل لك بريد تأكيد مرفقاً به نسخة PDF من طلبك. لا نبيع بياناتك ولا نستخدمها في تسويق لصالح أطراف أخرى.</p>"),
+            ("الأساس القانوني", "<p>نعالج بياناتك لأنك طلبت منا عرض سعر (خطوات تسبق تعاقداً محتملاً)، ولأن لدينا مصلحة مشروعة في الرد على الاستفسارات التجارية وإدارة أعمال التصدير.</p>"),
+            ("مزودو الخدمة", "<p>نستعين بعدد محدود من المزودين لتشغيل الموقع وإرسال الرسائل:</p><ul><li><strong>Vercel</strong>: استضافة الموقع وإحصاءات زيارات تحترم الخصوصية</li><li><strong>Resend</strong>: إرسال رسائل طلبات عرض السعر لفريق التصدير ولك</li><li><strong>Google Fonts</strong>: خطوط الموقع (يطلبها متصفحك من Google)</li><li><strong>واتساب</strong>: فقط إذا اخترت التواصل معنا عبره</li></ul><p>قد يعالج هؤلاء المزودون البيانات خارج بلدك، ويعملون وفق تعليماتنا ويحمونها بموجب شروط الأمان الخاصة بهم.</p>"),
+            ("ملفات تعريف الارتباط والإحصاءات", "<p>لا نستخدم ملفات تعريف ارتباط إعلانية أو للتتبع. إحصاءات الزيارات من Vercel Web Analytics، وهي تعد مشاهدات الصفحات بدون ملفات تعريف ارتباط وبدون التعرف على هويتك. ويحفظ متصفحك اختيار اللغة ورقماً مرجعياً مبدئياً لطلبك على جهازك فقط، ويمكنك مسحهما في أي وقت من إعدادات المتصفح.</p>"),
+            ("مدة الاحتفاظ", "<p>نحتفظ ببيانات طلبات عرض السعر طوال المدة اللازمة للتعامل مع طلبك وأي علاقة تجارية تنتج عنه، وبما يقتضيه القانون للسجلات التجارية. ويمكنك أن تطلب حذفها قبل ذلك.</p>"),
+            ("حقوقك", "<p>يمكنك أن تطلب الاطلاع على بياناتك الشخصية لدينا أو تصحيحها أو حذفها، أو الاعتراض على طريقة استخدامها. راسلنا على <a href=\"mailto:exports@reefiya.com\">exports@reefiya.com</a> وسنرد خلال مدة معقولة. وإذا كنت في الاتحاد الأوروبي أو المملكة المتحدة يمكنك أيضاً تقديم شكوى لهيئة حماية البيانات في بلدك.</p>"),
+            ("الأمان", "<p>الاطلاع على بيانات الطلبات مقصور على فريق التصدير لدينا ومزودي الخدمة المذكورين أعلاه. النموذج محمي من الرسائل المزعجة وإساءة الاستخدام، وتُرسل البيانات عبر اتصالات مشفرة (HTTPS).</p>"),
+            ("التعديلات", "<p>قد نحدّث هذه السياسة، ويوضح التاريخ في الأعلى آخر تعديل.</p>"),
+        ],
+    },
+}
+
+NOT_FOUND = {
+    "en": {"title": "Page not found | REEFIYA", "h1": "This page isn't here.",
+           "lead": "The link may be old or mistyped. These pages will get you where you need to go:",
+           "links": [("Home", "/"), ("Bellevue", "/varieties/bellevue"), ("Beauregard", "/varieties/beauregard"),
+                     ("Egyptian varieties", "/varieties/egyptian"), ("Industrial supply", "/products/industrial"),
+                     ("Frozen products", "/products/frozen")]},
+    "ar": {"title": "الصفحة غير موجودة | ريفيا", "h1": "هذه الصفحة غير موجودة.",
+           "lead": "ربما يكون الرابط قديماً أو به خطأ. هذه الصفحات توصلك إلى ما تحتاجه:",
+           "links": [("الرئيسية", "/ar/"), ("بيلفيو", "/ar/varieties/bellevue"), ("بوريجارد", "/ar/varieties/beauregard"),
+                     ("الأصناف المصرية", "/ar/varieties/egyptian"), ("التوريد الصناعي", "/ar/products/industrial"),
+                     ("المنتجات المجمدة", "/ar/products/frozen")]},
+}
+
+
+def simple_page(lang, path, title, desc, h1, lead, body, noindex=False, alt_path=None):
+    t = T[lang]
+    other = "ar" if lang == "en" else "en"
+    canonical = SITE + t["prefix"] + path
+    wa = f"https://wa.me/{WA}"
+    robots = '\n  <meta name="robots" content="noindex">' if noindex else ""
+    alt = "" if noindex else f"""
+  <link rel="canonical" href="{canonical}">
+  <link rel="alternate" hreflang="en" href="{SITE}{path}">
+  <link rel="alternate" hreflang="ar" href="{SITE}/ar{path}">"""
+    switch = alt_path if alt_path is not None else T[other]["prefix"] + path
+    return f"""<!DOCTYPE html>
+<html lang="{lang}" dir="{t['dir']}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{esc(title)}</title>
+  <meta name="description" content="{esc(desc)}">{robots}{alt}
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#1e481c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?{t['fonts']}&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/variety.css">
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="v-header">
+    <div class="wrap">
+      <a class="v-logo" href="{t['home']}" aria-label="REEFIYA"><img src="/reefiya-logo-clean.webp" alt="Reefiya" width="124" height="30"></a>
+      <nav class="v-nav" aria-label="{esc(t['nav_products'])}">
+        <a href="{t['home']}">{esc(t['nav_home'])}</a>
+        <a href="{t['home']}#produce">{esc(t['nav_products'])}</a>
+        <a href="{CATALOGUE}" target="_blank" rel="noopener">{esc(t['nav_catalogue'])}</a>
+        <a class="v-lang" href="{switch}" hreflang="{other}" lang="{other}">{esc(t['lang_switch'])}</a>
+        <a class="v-cta" href="{t['rfq']}">{esc(t['nav_quote'])}</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="v-hero v-hero-simple">
+      <div class="wrap">
+        <div>
+          <h1>{h1}</h1>
+          <p class="v-lead">{esc(lead)}</p>
+        </div>
+      </div>
+    </section>
+{body}
+  </main>
+
+  <footer class="v-footer">
+    <div class="wrap">
+      <div>© <span id="y">2026</span> {esc(t['footer'])} · <a href="{t['home']}">reefiya.com</a> · <a href="mailto:exports@reefiya.com">exports@reefiya.com</a> · <a href="{t['prefix']}/privacy">{esc(t['nav_privacy'])}</a></div>
+      <div class="v-actions"><a class="btn btn-whatsapp" href="{wa}" target="_blank" rel="noopener">{esc(t['cta_wa'])}</a></div>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+"""
+
+
+def privacy_page(lang):
+    c = PRIVACY[lang]
+    secs = "\n".join(f'        <h2>{esc(h)}</h2>\n        {b}' for h, b in c["sections"])
+    body = f"""    <section class="v-section v-prose">
+      <div class="wrap">
+        <p class="v-updated">{esc(c['updated'])}</p>
+{secs}
+      </div>
+    </section>"""
+    return simple_page(lang, "/privacy", c["title"], c["desc"], esc(c["h1"]), c["lead"], body)
+
+
+def not_found_page():
+    # One bilingual page: Vercel serves /404.html for every missing URL.
+    en, ar = NOT_FOUND["en"], NOT_FOUND["ar"]
+    links = lambda c: "\n".join(f'          <a class="v-chip" href="{h}">{esc(n)}</a>' for n, h in c["links"])
+    body = f"""    <section class="v-section">
+      <div class="wrap">
+        <div class="v-chips">
+{links(en)}
+        </div>
+        <div class="v-actions" style="margin-top:24px">
+          <a class="btn btn-primary" href="/rfq">{esc(T['en']['cta_quote'])}</a>
+        </div>
+      </div>
+    </section>
+    <section class="v-section" dir="rtl" lang="ar">
+      <div class="wrap">
+        <h2>{esc(ar['h1'])}</h2>
+        <p class="v-sub">{esc(ar['lead'])}</p>
+        <div class="v-chips">
+{links(ar)}
+        </div>
+        <div class="v-actions" style="margin-top:24px">
+          <a class="btn btn-primary" href="/ar/rfq">{esc(T['ar']['cta_quote'])}</a>
+        </div>
+      </div>
+    </section>"""
+    return simple_page("en", "/404", en["title"], en["lead"], esc(en["h1"]), en["lead"], body, noindex=True, alt_path="/ar/")
+
+
 def main():
     for lang in ("en", "ar"):
         for key in ORDER:
@@ -586,6 +752,12 @@ def main():
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(page(lang, key), encoding="utf-8")
             print("wrote", out.relative_to(ROOT))
+    for lang in ("en", "ar"):
+        out = ROOT / (T[lang]["prefix"].strip("/") + "/privacy.html").lstrip("/")
+        out.write_text(privacy_page(lang), encoding="utf-8")
+        print("wrote", out.relative_to(ROOT))
+    (ROOT / "404.html").write_text(not_found_page(), encoding="utf-8")
+    print("wrote 404.html")
     import subprocess, sys
     subprocess.run([sys.executable, str(ROOT / "scripts" / "stamp_assets.py")], check=True)
 
