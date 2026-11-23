@@ -164,4 +164,10 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://reefiya.com/ar/privacy"/>
   </url>
 
+  <url>
+    <loc>https://reefiya.com/downloads/reefiya-export-catalogue-2026.pdf</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

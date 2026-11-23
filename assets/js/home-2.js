@@ -2728,7 +2728,9 @@
       // Small screens reuse the neighbouring frame for the skipped ones
       if (frameStep > 1 && i + 1 <= frameCount) images[i] = img;
       return new Promise(resolve => {
-        if (img.complete && img.naturalWidth) { onFrameSettled(); resolve(); return; }
+        // Already loaded (cached or requested from <head>): settle on the next microtask, so the rest of
+        // this script (which declares the render state used by resizeCanvas) has finished running first
+        if (img.complete && img.naturalWidth) { Promise.resolve().then(() => { onFrameSettled(); resolve(); }); return; }
         img.onload = () => { onFrameSettled(); resolve(); };
         img.onerror = () => { onFrameSettled(); resolve(); };
       });
@@ -2744,9 +2746,9 @@
         if (!seen.has(src) && (pass > 0 || src === 1)) { seen.add(src); loadOrder.push(src); }
       }
     });
-    requestFrame(loadOrder.shift()).then(() => {
+    requestFrame(loadOrder.shift()).catch(() => {}).then(() => {
       let cursor = 0;
-      const worker = () => cursor < loadOrder.length ? requestFrame(loadOrder[cursor++]).then(worker) : null;
+      const worker = () => cursor < loadOrder.length ? requestFrame(loadOrder[cursor++]).catch(() => {}).then(worker) : null;
       for (let k = 0; k < 6; k++) worker();
     });
 
@@ -2968,40 +2970,41 @@
       }, { passive: true });
     }
 
-    // Professional Smart Sticky Navbar (Hide on scroll down, instant reveal on scroll up, never auto-hide on pause)
+    // Smart sticky navbar: hide after a decisive scroll down, reveal after a short scroll up.
+    // Distances are accumulated per direction, because touch scrolling fires many tiny steps
+    // (2-5 px each) that never crossed a per-event threshold, so the bar stayed hidden on phones.
     let lastNavScrollY = window.scrollY || window.pageYOffset;
+    let navTravel = 0; // signed distance travelled in the current direction
     const navEl = document.querySelector('.site-nav-container');
+    const HIDE_AFTER = 40, SHOW_AFTER = 16;
+
+    const setNavHidden = hidden => {
+      if (!navEl || navEl.classList.contains('nav-hidden') === hidden) return;
+      navEl.classList.toggle('nav-hidden', hidden);
+      if (hidden && langMenu && langMenu.classList.contains('open')) {
+        langMenu.classList.remove('open');
+        langBtn.setAttribute('aria-expanded', 'false');
+      }
+    };
 
     window.addEventListener('scroll', () => {
-      const currentY = window.scrollY || window.pageYOffset;
-      const scrollDiff = currentY - lastNavScrollY;
-
-      // Calculate hero scroll distance
-      const heroDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 3.4);
-      const isInsideHero = currentY < (heroDistance - 100);
-
-      if (isInsideHero || currentY < 90) {
-        // Always permanently visible and stable while inside Hero sequence!
-        if (navEl && navEl.classList.contains('nav-hidden')) {
-          navEl.classList.remove('nav-hidden');
-        }
-      } else {
-        // After passing Hero, smart hide on decisive scroll down, reveal on scroll up
-        if (scrollDiff > 10) {
-          if (navEl && !navEl.classList.contains('nav-hidden')) {
-            navEl.classList.add('nav-hidden');
-            if (langMenu && langMenu.classList.contains('open')) {
-              langMenu.classList.remove('open');
-              langBtn.setAttribute('aria-expanded', 'false');
-            }
-          }
-        } else if (scrollDiff < -6) {
-          if (navEl && navEl.classList.contains('nav-hidden')) {
-            navEl.classList.remove('nav-hidden');
-          }
-        }
-      }
+      const currentY = Math.max(0, window.scrollY || window.pageYOffset); // ignore iOS overscroll bounce
+      const diff = currentY - lastNavScrollY;
       lastNavScrollY = currentY;
+      if (diff === 0) return;
+
+      const heroDistance = scrollContainerEl ? scrollContainerEl.offsetHeight : (window.innerHeight * 3.4);
+      if (currentY < heroDistance - 100 || currentY < 90) {
+        // Always visible inside the hero sequence and near the top
+        navTravel = 0;
+        setNavHidden(false);
+        return;
+      }
+      // Restart the count whenever the direction changes
+      if ((diff > 0) !== (navTravel > 0)) navTravel = 0;
+      navTravel += diff;
+      if (navTravel > HIDE_AFTER) setNavHidden(true);
+      else if (navTravel < -SHOW_AFTER) setNavHidden(false);
     }, { passive: true });
 
     // Interactive ScrollSpy for Navbar (Highlight the active section dynamically)
