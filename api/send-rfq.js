@@ -409,7 +409,8 @@ export default async function handler(req, res) {
     const contactPerson = escapeHtml(contactPersonRaw);
     const jobTitle = safe(buyer.jobTitle, 120);
     const businessEmail = hasValidEmail ? escapeHtml(emailRaw) : '—';
-    const businessPhone = safe(buyer.businessPhone, 40);
+    // Phone: keep digits and the usual separators only (defence in depth; the form already filters it)
+    const businessPhone = escapeHtml(plain(buyer.businessPhone, 40, '—').replace(/[^0-9 ()+\-.—]/g, '').trim() || '—');
     const countryReg = escapeHtml(countryRegRaw);
     const website = safe(buyer.website, 200);
 

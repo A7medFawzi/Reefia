@@ -839,6 +839,7 @@
 
     /* STEP 2 VALIDATION */
     function validateStep2() {
+      if (!strictCheckStep2()) return;
       // 1. Order Volume
       const vol = document.getElementById('selectOrderVolume').value;
       if (!vol) {
@@ -1163,6 +1164,7 @@
 
     function submitFinalRfq() {
       if (isSubmittingRfq) return;
+      if (!strictCheckStep3()) return;
 
       // 1. Company Name
       const compName = document.getElementById('inputCompanyName').value.trim();
@@ -2451,3 +2453,121 @@
       }
       handleProgrammeChange();
     })();
+
+    /* ==========================================================================
+       FIELD VALIDATION: input guards while typing + strict checks before each step
+       ========================================================================== */
+    const RFQ_LIMITS = {
+      inputCompanyName: 120, inputContactName: 80, inputJobTitle: 80, inputBusinessEmail: 254,
+      inputBusinessPhone: 20, inputCompanyWebsite: 200, inputOtherCountry: 60, inputOtherCountryReg: 60,
+      inputDestPort: 80, inputTrialQty: 60, inputIndustrialQty: 80, inputCustomVolumeQty: 120,
+      inputCustomWeightSpec: 150, inputFrozenSpec: 200, inputPrivateLabel: 1000, inputAdditionalRequirements: 2000
+    };
+    const RE_LETTER = /\p{L}/u;
+    const RE_PERSON = /^[\p{L}\p{M}'’.\- ]{2,80}$/u;
+    const RE_PLACE = /^[\p{L}\p{M}0-9'’.,()\- ]{2,80}$/u;
+    const RE_EMAIL = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,24}$/;
+    const RE_WEBSITE = /^(https?:\/\/)?([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,24}(:\d{2,5})?([\/?#]\S*)?$/i;
+
+    // Arabic-Indic and Persian digits typed on Arabic keyboards become 0-9
+    const toLatinDigits = v => v.replace(/[٠-٩]/g, d => String(d.charCodeAt(0) - 0x0660))
+                                .replace(/[۰-۹]/g, d => String(d.charCodeAt(0) - 0x06F0));
+
+    function rfqMsg(en, ar) { return currentLang === 'ar' ? ar : en; }
+
+    function markInvalid(id, en, ar) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.add('is-invalid');
+        el.setAttribute('aria-invalid', 'true');
+        try { el.focus({ preventScroll: false }); } catch (e) { el.focus(); }
+      }
+      displayToastAlert(rfqMsg(en, ar));
+      return false;
+    }
+    const fieldVal = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+    const isShown = id => { const el = document.getElementById(id); return !!(el && el.offsetParent !== null); };
+
+    function strictCheckStep2() {
+      const vol = fieldVal('selectOrderVolume');
+      if (vol === 'Trial Order' && fieldVal('inputTrialQty') && !/\d/.test(fieldVal('inputTrialQty'))) {
+        return markInvalid('inputTrialQty', 'Please enter the trial quantity as a number (e.g. 5 MT).', 'يرجى كتابة الكمية التجريبية بالأرقام (مثال: 5 طن).');
+      }
+      if (vol.includes('6+')) {
+        const n = Number(fieldVal('input6plusCount'));
+        if (!Number.isInteger(n) || n < 6 || n > 999) {
+          return markInvalid('input6plusCount', 'Please enter a whole number of containers, 6 or more.', 'يرجى إدخال عدد حاويات صحيح، 6 أو أكثر.');
+        }
+      }
+      if (vol === 'Industrial Bulk Order' && fieldVal('inputIndustrialQty') && !/\d/.test(fieldVal('inputIndustrialQty'))) {
+        return markInvalid('inputIndustrialQty', 'Please include a number in the quantity (e.g. 60 MT per month).', 'يرجى كتابة الكمية بالأرقام (مثال: 60 طن شهرياً).');
+      }
+      if (vol === 'Custom Volume' && fieldVal('inputCustomVolumeQty') && !/\d/.test(fieldVal('inputCustomVolumeQty'))) {
+        return markInvalid('inputCustomVolumeQty', 'Please include a number in the volume (e.g. 12 MT).', 'يرجى كتابة الكمية بالأرقام (مثال: 12 طن).');
+      }
+      if (fieldVal('hiddenDestinationCountry') === 'Other' && fieldVal('inputOtherCountry') && !RE_PLACE.test(fieldVal('inputOtherCountry'))) {
+        return markInvalid('inputOtherCountry', 'Please enter a valid country name.', 'يرجى كتابة اسم دولة صحيح.');
+      }
+      const port = fieldVal('inputDestPort');
+      const assisted = document.getElementById('chkPortAssistance') && document.getElementById('chkPortAssistance').checked;
+      if (!assisted && port && (!RE_PLACE.test(port) || !RE_LETTER.test(port))) {
+        return markInvalid('inputDestPort', 'Please enter a valid port name (e.g. Rotterdam).', 'يرجى كتابة اسم ميناء صحيح (مثال: روتردام).');
+      }
+      return true;
+    }
+
+    function strictCheckStep3() {
+      const company = fieldVal('inputCompanyName');
+      if (company.length < 2 || !RE_LETTER.test(company)) {
+        return markInvalid('inputCompanyName', 'Please enter your registered company name.', 'يرجى إدخال اسم الشركة المسجل بشكل صحيح.');
+      }
+      if (!RE_PERSON.test(fieldVal('inputContactName'))) {
+        return markInvalid('inputContactName', 'Please enter the contact person’s name using letters only.', 'يرجى كتابة اسم المسؤول بالحروف فقط.');
+      }
+      const job = fieldVal('inputJobTitle');
+      if (job && !RE_LETTER.test(job)) {
+        return markInvalid('inputJobTitle', 'Please enter a valid job title.', 'يرجى كتابة مسمى وظيفي صحيح.');
+      }
+      if (!RE_EMAIL.test(fieldVal('inputBusinessEmail'))) {
+        return markInvalid('inputBusinessEmail', 'Please enter a valid business email (e.g. name@company.com).', 'يرجى إدخال بريد إلكتروني صحيح (مثال: name@company.com).');
+      }
+      const phone = toLatinDigits(fieldVal('inputBusinessPhone'));
+      const digits = phone.replace(/\D/g, '');
+      if (!/^[0-9 ()+\-.]+$/.test(phone) || digits.length < 6 || digits.length > 15) {
+        return markInvalid('inputBusinessPhone', 'Please enter a valid phone / WhatsApp number using digits only.', 'يرجى إدخال رقم هاتف / واتساب صحيح بالأرقام فقط.');
+      }
+      const web = fieldVal('inputCompanyWebsite');
+      if (web && !RE_WEBSITE.test(web)) {
+        return markInvalid('inputCompanyWebsite', 'Please enter a valid website (e.g. www.company.com).', 'يرجى إدخال رابط موقع صحيح (مثال: www.company.com).');
+      }
+      if (fieldVal('hiddenCountryOfRegistration') === 'Other' && fieldVal('inputOtherCountryReg') && !RE_PLACE.test(fieldVal('inputOtherCountryReg'))) {
+        return markInvalid('inputOtherCountryReg', 'Please enter a valid country name.', 'يرجى كتابة اسم دولة صحيح.');
+      }
+      return true;
+    }
+
+    (function attachInputGuards() {
+      Object.entries(RFQ_LIMITS).forEach(([id, max]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (!el.getAttribute('maxlength')) el.setAttribute('maxlength', String(max));
+        el.addEventListener('input', () => { el.classList.remove('is-invalid'); el.removeAttribute('aria-invalid'); });
+      });
+      // Phone: keep only digits and the usual separators while typing (Arabic digits are converted)
+      const phone = document.getElementById('inputBusinessPhone');
+      if (phone) {
+        phone.setAttribute('inputmode', 'tel');
+        phone.setAttribute('dir', 'ltr');
+        phone.addEventListener('input', () => {
+          const clean = toLatinDigits(phone.value).replace(/[^0-9 ()+\-.]/g, '');
+          if (clean !== phone.value) phone.value = clean;
+        });
+      }
+      const count = document.getElementById('input6plusCount');
+      if (count) { count.setAttribute('step', '1'); count.setAttribute('max', '999'); count.setAttribute('inputmode', 'numeric'); }
+      const email = document.getElementById('inputBusinessEmail');
+      if (email) { email.setAttribute('dir', 'ltr'); email.setAttribute('autocomplete', 'email'); }
+      const web = document.getElementById('inputCompanyWebsite');
+      if (web) web.setAttribute('dir', 'ltr');
+    })();
+

@@ -2443,3 +2443,6 @@
   .programme-grid .v-card-shell p { align-self: start; }
   .programme-grid .v-check-icon { top: 50%; transform: translateY(-50%); }
 }
+
+/* Field validation */
+.custom-text-field.is-invalid { border-color: #c0392b !important; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15) !important; }
