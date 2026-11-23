@@ -6682,3 +6682,22 @@
         rgba(247, 244, 237, 0.3) 105px, transparent 135px);
   }
 }
+
+/* Approach banner: English and other LTR languages mirror the Arabic layout,
+   which shows more of the photo with a softer, wider fade */
+@media (min-width: 1121px) {
+  .approach-hero-media-wrap {
+    -webkit-mask-image: radial-gradient(ellipse 95% 95% at 75% 42%, #000 45%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.2) 80%, transparent 100%);
+    mask-image: radial-gradient(ellipse 95% 95% at 75% 42%, #000 45%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.2) 80%, transparent 100%);
+  }
+  .approach-backdrop-fade {
+    background: linear-gradient(to right, #FAF7F2 0%, rgba(250, 247, 242, 0.95) 12%, rgba(250, 247, 242, 0.65) 28%, rgba(250, 247, 242, 0.15) 48%, transparent 68%);
+  }
+  [dir="rtl"] .approach-hero-media-wrap {
+    -webkit-mask-image: radial-gradient(ellipse 95% 95% at 25% 42%, #000 45%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.2) 80%, transparent 100%);
+    mask-image: radial-gradient(ellipse 95% 95% at 25% 42%, #000 45%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.2) 80%, transparent 100%);
+  }
+  [dir="rtl"] .approach-backdrop-fade {
+    background: linear-gradient(to left, #FAF7F2 0%, rgba(250, 247, 242, 0.95) 12%, rgba(250, 247, 242, 0.65) 28%, rgba(250, 247, 242, 0.15) 48%, transparent 68%);
+  }
+}
