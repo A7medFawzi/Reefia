@@ -1628,7 +1628,7 @@
         };
 
         // Shown only if the RFQ could not be delivered, so the lead is never silently lost.
-        const showDeliveryFallback = () => {
+        const showDeliveryFallback = (err) => {
           if (document.getElementById('rfqDeliveryFallback')) return;
           const isAr = currentLang === 'ar';
           const waText = encodeURIComponent(`Hello REEFIYA Export Desk, I submitted RFQ ${rfqRef} on your website but it may not have been delivered.`);
@@ -1657,7 +1657,11 @@
           close.type = 'button'; close.textContent = '×'; close.setAttribute('aria-label', 'Close');
           close.style.cssText = 'position:absolute;top:6px;' + (isAr ? 'left' : 'right') + ':10px;background:none;border:0;font-size:20px;cursor:pointer;color:inherit;';
           close.onclick = () => box.remove();
-          box.append(close, msg, links);
+          // Small technical code so the team can tell why delivery failed
+          const code = document.createElement('div');
+          code.style.cssText = 'margin-top:8px;font:500 11px/1.4 monospace;opacity:.6;direction:ltr;text-align:left;';
+          code.textContent = `Code: ${err && err.status ? err.status : 'network'}${err && err.message ? ' · ' + String(err.message).slice(0, 80) : ''}`;
+          box.append(close, msg, links, code);
           document.body.appendChild(box);
         };
 
@@ -1678,7 +1682,7 @@
               .then(() => postRfq(Object.assign({}, finalPayload, { pdfBase64: '' })));
           }).catch(err => {
             console.error('[RFQ Dispatcher] RFQ delivery failed:', err);
-            showDeliveryFallback();
+            showDeliveryFallback(err);
           });
         };
 
